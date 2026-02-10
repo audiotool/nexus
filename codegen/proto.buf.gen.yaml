@@ -1,0 +1,24 @@
+version: v2
+clean: false
+plugins:
+  # Typescript - protobuf messages
+  - remote: buf.build/bufbuild/es:v1.10.0
+    opt: target=ts
+    out: ./src/gen/
+
+  # Typescript - gRPC
+  - remote: buf.build/bufbuild/connect-es:v0.11.0
+    opt: target=ts
+    out: ./src/gen/
+
+inputs:
+  - git_repo: https://github.com/audiotool/protos
+    branch: main
+    paths:
+      - audiotool/document/
+      - audiotool/project/
+      - audiotool/preset/
+      - audiotool/user/
+      - audiotool/sample/
+      - audiotool/audiograph/
+      - audiotool/longrunning/

@@ -1,0 +1,23 @@
+/* Hide "defined in" source file references */
+.tsd-sources {
+  display: none;
+}
+
+/* Hide source links and file references */
+.tsd-sources ul,
+.tsd-sources li {
+  display: none;
+}
+
+/* Alternative: Hide only the initial declaration, keep method signatures */
+.tsd-panel > .tsd-signature:first-child {
+  display: none;
+}
+
+th {
+  display: none;
+}
+
+img[alt="img-half"] {
+  width: 50%;
+}

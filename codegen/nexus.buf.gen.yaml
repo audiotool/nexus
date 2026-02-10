@@ -1,0 +1,14 @@
+version: v2
+clean: false # avoid removing existing files
+plugins:
+  # Typescript - own generators
+  - local: ./codegen/bin/main_wrapper.js
+    opt: target=ts
+    strategy: all
+    out: src/gen
+
+inputs:
+  - git_repo: https://github.com/audiotool/protos
+    branch: main
+    paths:
+      - audiotool/document/
