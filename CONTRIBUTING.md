@@ -20,7 +20,7 @@ To create a new test project testing the current package's functionality, best u
 2. in your new directory, call `npm/bun link @audiotool/nexus --save`
 
 This will create a symlink from your project to this package's `dist` directory.
-If you cann `npm run build` here, your new directory will immediately see the updated
+If you run `npm run build` here, your new directory will immediately see the updated
 package.
 
 What's finally uploaded to npm can be seen by calling `npm run pack`, which generates a `.tgz` file in `dist/`; this file can then be installed with:
