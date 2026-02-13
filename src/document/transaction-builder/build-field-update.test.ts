@@ -19,7 +19,7 @@ describe("test buildModificationForFieldUpdate", () => {
           value: {
             field: field.location.toPointerMessage(),
             value: {
-              case: "int32",
+              case: "uint32",
               value: 22,
             },
           },

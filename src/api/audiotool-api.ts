@@ -60,7 +60,7 @@ export const createAudiotoolAPI = async (
   getToken: () => Promise<string>,
   prismaUrl?: string,
 ): Promise<AudiotoolAPI> => {
-  const prismaTransport = createAuthorizedKeepaliveTransport({
+  const prismaTransport = await createAuthorizedKeepaliveTransport({
     baseUrl: prismaUrl ?? "https://rpc.audiotool.com/",
     useBinaryFormat: false,
     typeRegistry: createRegistry(Preset),

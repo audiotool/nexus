@@ -1,9 +1,9 @@
 import assert from "assert"
 import { existsSync, readdirSync } from "fs"
 import { resolve } from "path"
-import { defineConfig } from "vite"
 import dts from "vite-plugin-dts"
 import tsconfigPaths from "vite-tsconfig-paths"
+import { defineConfig } from "vitest/config"
 
 import packageJson from "./package.json"
 
@@ -53,6 +53,7 @@ export default defineConfig({
         "@bufbuild/protobuf",
         "@connectrpc/connect",
         "@connectrpc/connect-web",
+        "@connectrpc/connect-node",
         "toposort",
         "utility-types",
         "uuid",
@@ -65,6 +66,9 @@ export default defineConfig({
     },
     // inline assets up to 1MB
     assetsInlineLimit: 1024 * 1024,
+  },
+  test: {
+    setupFiles: ["./src/testing/test-setup.ts"],
   },
   plugins: [
     tsconfigPaths(),

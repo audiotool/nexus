@@ -5,6 +5,11 @@ title: 📜 Changelog
 > [!WARNING]
 > The package should be considered "early alpha" and can change **significantly** between releases, even between minor version numbers.
 
+## 0.0.12
+
+- updated networking code to work better in node.js: Connection no longer hangs on creation, and termination after `nexus.stop()` is faster.
+- added type exports for logged in / logged out variants of logged in status: type {@link index.LoginStatus} = {@link index.LoggedInStatus} | {@link index.LoggedOutStatus}
+
 ## 0.0.11
 
 - {@link index.AudiotoolClient.createSyncedDocument} changed it's signature: `mode: "online"` is no longer needed - the document is always

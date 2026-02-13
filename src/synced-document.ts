@@ -246,7 +246,7 @@ export const createOnlineDocument = async (
   // create document service using url contained in session
   const documentService = createRetryingPromiseClient(
     DocumentService,
-    createAuthorizedKeepaliveTransport({
+    await createAuthorizedKeepaliveTransport({
       baseUrl:
         session.session?.documentServiceUrl ??
         throw_("backend returned no document service url"),
@@ -267,6 +267,6 @@ export const createOnlineDocument = async (
   const connected = new ValueNotifier(false)
 
   // make gateway.blocked update connected
-  gateway.blocked.subscribe((v) => connected.setValue(!v))
+  gateway.blocked.subscribe((v) => connected.setValue(!v), true)
   return createSyncedDocument(document, connected, validator, gateway)
 }

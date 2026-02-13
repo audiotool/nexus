@@ -1,6 +1,7 @@
 import type { IMessageTypeRegistry } from "@bufbuild/protobuf"
 import type { Transport } from "@connectrpc/connect"
-import { createConnectTransport } from "@connectrpc/connect-web"
+
+import { runningInNodeJs } from "@utils/platform"
 import type { Brand } from "utility-types"
 import type { RetryOptions } from "./retrying-client"
 
@@ -19,8 +20,7 @@ export const KEEPALIVE_HEADER = "###keepalive###"
  * it will be extracted and used to determine the keepalive option for fetch.
  */
 export type KeepaliveTransport = Brand<Transport, "keepalive">
-
-export const createAuthorizedKeepaliveTransport = ({
+export const createAuthorizedKeepaliveTransport = async ({
   baseUrl,
   useBinaryFormat,
   typeRegistry,
@@ -30,25 +30,55 @@ export const createAuthorizedKeepaliveTransport = ({
   useBinaryFormat: boolean
   typeRegistry?: IMessageTypeRegistry
   getToken: () => Promise<string>
-}): KeepaliveTransport =>
-  createConnectTransport({
+}): Promise<KeepaliveTransport> => {
+  // Node is a special case. It appears to work fine with `connect-web`, except the termination
+  // behavior, where aborting a fetch request doesn't close the underlying undici TCP
+  // connection pool — those sockets stay alive for minutes waiting to be reused.
+  // This is handled in connect-node, making sure the pool isn't kept alive after termination.
+  if (runningInNodeJs) {
+    // create note transport, differences:
+    // * no cors, no credentials: omit requirement
+    // * no keepalive - there's no page unload
+
+    return (await import("@connectrpc/connect-node")).createConnectTransport({
+      baseUrl,
+      httpVersion: "2",
+      jsonOptions: {
+        typeRegistry,
+      },
+      useBinaryFormat,
+      interceptors: [
+        (next) => async (req) => {
+          // delete keepalive header, that concept doesn't exist in node
+          req.header.delete(KEEPALIVE_HEADER)
+          // set auth header
+          req.header.set("Authorization", await getToken())
+          // pass the request to the next interceptor
+          return next(req)
+        },
+      ],
+    }) as KeepaliveTransport
+  }
+  return (await import("@connectrpc/connect-web")).createConnectTransport({
     baseUrl,
     useBinaryFormat,
     fetch: async (input, init) => {
+      // remove keepalive header, extract whether it was set
       const { headers, keepalive } = unpackHeader(init?.headers)
       headers.set("Authorization", await getToken())
 
       return fetch(input, {
-        credentials: "omit",
+        credentials: "omit", // omit credentials to avoid CORS errors
         ...init,
         headers,
-        keepalive,
+        keepalive, // pass on keepalive option to fetch
       })
     },
     jsonOptions: {
       typeRegistry,
     },
   }) as KeepaliveTransport
+}
 
 /** Takes the `keepalive` parameter out of `options`, packs it into the
  * keepalive header.

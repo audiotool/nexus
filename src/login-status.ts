@@ -1,36 +1,38 @@
 import type { createAudiotoolClient } from "./audiotool-client"
 import { neverThrowingFetch } from "./utils/fetch/never-throwing-fetch"
 
+export type LoggedInStatus = {
+  /** The app is authorized to make actions on a user's behalf. */
+  loggedIn: true
+
+  /** Simple utility to get the current user name. The result of this function is cached. */
+  getUserName(): Promise<string | Error>
+
+  /** Log the current user out and reload the page. */
+  logout: () => void
+
+  /** Get the current authentication token. Might refresh the token if need be, but most often
+   * just returns the token.
+   */
+  getToken: () => Promise<string | Error>
+}
+
+export type LoggedOutStatus = {
+  /** The app is not authorized to make actions on a user's behalf. Call login to authorize.*/
+  loggedIn: false
+
+  /** If an error is the reason the user is logged out, this is set. Otherwise, the user just hasn't logged in yet. */
+  error?: Error
+
+  /** start the authorization flow by redirecting the user to the login page of audiotool. */
+  login: () => Promise<void>
+}
+
 /**
  * The current authentication status of the user in this tab. Either logged in or logged out.
  * To change the authentication status, call login or logout on this object.
  */
-export type LoginStatus =
-  | {
-      /** The app is authorized to make actions on a user's behalf. */
-      loggedIn: true
-
-      /** Simple utility to get the current user name. The result of this function is cached. */
-      getUserName(): Promise<string | Error>
-
-      /** Log the current user out and reload the page. */
-      logout: () => void
-
-      /** Get the current authentication token. Might refresh the token if need be, but most often
-       * just returns the token.
-       */
-      getToken: () => Promise<string | Error>
-    }
-  | {
-      /** The app is not authorized to make actions on a user's behalf. Call login to authorize.*/
-      loggedIn: false
-
-      /** If an error is the reason the user is logged out, this is set. Otherwise, the user just hasn't logged in yet. */
-      error?: Error
-
-      /** start the authorization flow by redirecting the user to the login page of audiotool. */
-      login: () => Promise<void>
-    }
+export type LoginStatus = LoggedInStatus | LoggedOutStatus
 
 type LocalStorageKeys = {
   accessToken: string

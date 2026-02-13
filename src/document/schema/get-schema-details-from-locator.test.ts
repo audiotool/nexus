@@ -85,7 +85,7 @@ describe("_getSchemaLocatorDetails", () => {
         fieldName: "playModeIndex",
         primitive: {
           type: "number",
-          scalarType: ScalarType.INT32,
+          scalarType: ScalarType.UINT32,
           default: 3,
           range: {
             min: 1,

@@ -33,7 +33,12 @@ export {
 } from "../audiotool-client"
 export type { SyncedDocument } from "../synced-document"
 
-export { getLoginStatus, type LoginStatus } from "../login-status"
+export {
+  getLoginStatus,
+  type LoggedInStatus,
+  type LoggedOutStatus,
+  type LoginStatus,
+} from "../login-status"
 
 export { createOfflineDocument } from "../synced-document"
 export type { OfflineDocument } from "../synced-document"

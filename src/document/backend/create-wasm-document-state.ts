@@ -3,10 +3,8 @@ import { assert, throw_ } from "@utils/lang"
 
 import wasmUrl from "@document/mock/wasm/document_validator.wasm?no-inline"
 import wasmJsUrl from "@document/mock/wasm/wasm_exec.js?no-inline"
+import { runningInBrowser } from "@utils/platform"
 ;[wasmUrl, wasmJsUrl] // make sure these aren't optimized away
-
-/** true if in a node.js-like environment */
-const runningInNode: boolean = typeof process !== "undefined"
 
 // caches past initializations of the wasm document state builder
 let wasmDocumentStateBuilderCache:
@@ -148,7 +146,7 @@ declare global {
  * In the browser, it will import the file.
  */
 const executeWrapperJs = async (): Promise<void> => {
-  if (!runningInNode) {
+  if (runningInBrowser) {
     return import(`${import.meta.env.VITE_WASM_ASSETS_PREFIX}/wasm_exec.js`)
   }
 
@@ -179,7 +177,7 @@ const executeWrapperJs = async (): Promise<void> => {
 }
 
 const loadWasm = async (): Promise<WebAssembly.Module> => {
-  if (!runningInNode) {
+  if (runningInBrowser) {
     return await fetch(
       `${import.meta.env.VITE_WASM_ASSETS_PREFIX}/document_validator.wasm.gz`,
     ).then(async (res) =>

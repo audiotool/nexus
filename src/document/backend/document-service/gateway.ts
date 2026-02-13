@@ -21,11 +21,11 @@ export const createCollabGateway = (
     logRejectedTransactions?: boolean
   },
 ): NexusGateway => {
-  const blocked = new ValueNotifier(false)
   const studioServiceConnection = createDocumentServiceConnection(
     documentService,
     projectName,
   )
+
   const consolidator = new NexusStateConsolidator(state)
 
   const receivedTransactions: Transaction[] = []
@@ -45,9 +45,10 @@ export const createCollabGateway = (
   }
   loop()
 
+  const blocked = new ValueNotifier(true)
   studioServiceConnection.connectionOk.subscribe((ok) => {
     blocked.setValue(!ok)
-  })
+  }, true)
 
   let terminated = false
 
