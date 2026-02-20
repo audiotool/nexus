@@ -1,14 +1,3 @@
-/* Hide "defined in" source file references */
-.tsd-sources {
-  display: none;
-}
-
-/* Hide source links and file references */
-.tsd-sources ul,
-.tsd-sources li {
-  display: none;
-}
-
 /* Alternative: Hide only the initial declaration, keep method signatures */
 .tsd-panel > .tsd-signature:first-child {
   display: none;
@@ -20,4 +9,13 @@ th {
 
 img[alt="img-half"] {
   width: 50%;
+}
+
+/** prettier formatting of `code` elements */
+:not(pre) > code {
+  background: color-mix(in srgb, var(--color-accent) 15%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-accent) 35%, transparent);
+  border-radius: 4px;
+  padding: 0.15em 0.35em;
+  font-size: 0.9em;
 }
