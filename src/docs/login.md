@@ -160,6 +160,16 @@ To deploy your app, you need to update the `redirectUrl` so that the user is red
 
 - for more issues and questions, join our discord: https://discord.gg/5Cde4Zvret
 
+> [!NOTE]
+> Client ID, scopes, and redirect URIs can safely be:
+>
+> - hard-coded into your app
+> - checked into git
+> - sent to your users' browsers
+> - shared with friends and foes
+>
+> Only websites at the redirect URIs you specify for your app on developer.audiotool.com can use it to authorize their apps.
+
 ## Advanced
 
 ### PAT-based authentication
