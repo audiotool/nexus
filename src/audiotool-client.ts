@@ -26,7 +26,8 @@ export type AudiotoolClient = {
   /**
    * Create a synced document instance for real-time collaboration.
    *
-   * **NOTE:** Can currently only create one synced document per tab.
+   * Make sure to call {@link SyncedDocument.start} to start the synchronization process,
+   * and {@link SyncedDocument.stop} before throwing the document away.
    *
    * @param opts Configuration for the document connection
    * @returns Promise resolving to a SyncedDocument instance
