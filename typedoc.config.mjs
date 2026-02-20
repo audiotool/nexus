@@ -20,6 +20,10 @@ const config = {
   navigation: {
     includeCategories: false,
   },
+  navigationLinks: {
+    "Developer Hub": "https://developer.audiotool.com",
+    "Github Repository": "https://github.com/audiotool/nexus",
+  },
   readme: "src/docs/index.md",
   projectDocuments: [
     "src/docs/getting-started.md",
@@ -30,7 +34,8 @@ const config = {
     "src/docs/entities.md",
     "src/docs/changelog.md",
   ],
-  disableSources: true,
+  disableSources: false,
+  gitRemote: "origin",
   includeVersion: true,
   searchInComments: true,
   searchInDocuments: true,
