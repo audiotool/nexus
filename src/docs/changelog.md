@@ -23,8 +23,6 @@ To get more background on the changes we make, join our [Discord](https://discor
 - **`createAudiotoolClient()` signature changed** - Now takes `{auth, transport}` instead of `{authorization}`
 - **Removed exports**: `getLoginStatus`, `LoggedInStatus`, `LoggedOutStatus`, `LoginStatus`, `AudiotoolAPI`, `createAudiotoolAPI`
 
-Prompt to give an agent to adjust your code:
-
 ### New Features
 
 - New `@audiotool/nexus/node` export for Node.js/Bun/Deno server-side usage
@@ -33,8 +31,10 @@ Prompt to give an agent to adjust your code:
 - Added `createPATAuth()` for PAT-based authentication
 - Added `exportTokens()` to authenticated client for server-side token handoff
 
+**Prompt for an agent:**
+
 ```markdown
-Migrate my code from @audiotool/nexus 0.0.12 to 0.0.13. Apply these changes:
+Migrate my code from @audiotool/nexus 0.0.12 to 0.0.14. Apply these changes:
 
 1. Replace `getLoginStatus({clientId, redirectUrl, scope})` with `audiotool({clientId, redirectUrl, scope})`.
    - `status.loggedIn` becomes `at.status === "authenticated"`
