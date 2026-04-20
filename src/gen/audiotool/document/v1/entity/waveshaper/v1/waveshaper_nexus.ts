@@ -1,5 +1,5 @@
 // THIS FILE IS GENERATED - DO NOT EDIT
-// Copyright 2025 Audiotool Inc.
+// Copyright 2026 Audiotool Inc.
 
 import { PrimitiveField } from "@document/fields"
 import { type NexusLocation } from "@document/location"
@@ -59,6 +59,11 @@ export type Waveshaper = {
    * default | 0
    * range | full*/
   positionY: PrimitiveField<number, "mut">
+  /**
+   *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   *  This is used for record-keeping only and has no effect on the sound of the device.
+   */
+  presetName: PrimitiveField<string, "mut">
   /**
    *  Allow adjustment of the volume of the signal before it is processed
    *  Equivalent to a dB range of [-inf, 9.0].
@@ -182,6 +187,15 @@ export type Waveshaper = {
    * default | true
    * is | {@link api.TargetType.AutomatableParameter}*/
   isActive: PrimitiveField<boolean, "mut">
+  /**
+   *  If oversampling is disabled, the waveshaper will not oversample to 2x the sample rate, resulting in a different
+   *  quality of sound.
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | false*/
+  disableOversampling: PrimitiveField<boolean, "mut">
 }
 /** @internal */
 
@@ -208,6 +222,11 @@ export type WaveshaperConstructor = {
    * default | 0
    * range | full*/
   positionY?: number
+  /**
+   *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   *  This is used for record-keeping only and has no effect on the sound of the device.
+   */
+  presetName?: string
   /**
    *  Allow adjustment of the volume of the signal before it is processed
    *  Equivalent to a dB range of [-inf, 9.0].
@@ -299,6 +318,15 @@ export type WaveshaperConstructor = {
    * --- | ---
    * default | true*/
   isActive?: boolean
+  /**
+   *  If oversampling is disabled, the waveshaper will not oversample to 2x the sample rate, resulting in a different
+   *  quality of sound.
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | false*/
+  disableOversampling?: boolean
 }
 
 /**

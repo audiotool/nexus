@@ -303,13 +303,13 @@ await nexus.modify((t) => {
 
 ---
 
-### Unique Automation Event Positions
+### Automation Event Positions
 
     duplicate tick value of event in automation collection (collection: <uuid>)
 
-**Cause**: Automation events in the same collection must have unique tick positions.
+**Cause**: At most two automation events in the same collection can share the same tick position. If two events share a tick, exactly one of them must have `isSecond: true`.
 
-Field: {@link entities.AutomationEvent.positionTicks}
+Field: {@link entities.AutomationEvent.positionTicks}, {@link entities.AutomationEvent.isSecond}
 
 <details>
 <summary>In Code</summary>
@@ -326,21 +326,22 @@ await nexus.modify((t) => {
     value: 0.5,
   })
 
-  // Error: duplicate tick position
+  // Error: duplicate tick position without isSecond
   t.create("automationEvent", {
     collection: collection.location,
-    tick: 1000, // Same tick!
+    tick: 1000, // Same tick, but neither has isSecond!
     value: 0.8,
   })
 })
 ```
 
-Correct Example
+Correct Examples
 
 ```typescript
 await nexus.modify((t) => {
   const collection = t.create("automationCollection", {})
 
+  // Option 1: Use different ticks
   t.create("automationEvent", {
     collection: collection.location,
     tick: 1000,
@@ -351,6 +352,20 @@ await nexus.modify((t) => {
     collection: collection.location,
     tick: 2000, // Different tick
     value: 0.8,
+  })
+
+  // Option 2: Two events on the same tick with isSecond
+  t.create("automationEvent", {
+    collection: collection.location,
+    tick: 3000,
+    value: 0.5,
+  })
+
+  t.create("automationEvent", {
+    collection: collection.location,
+    tick: 3000, // Same tick is OK...
+    value: 0.8,
+    isSecond: true, // ...if exactly one has isSecond: true
   })
 })
 ```

@@ -30,7 +30,8 @@ export class AutomationEvent extends Message<AutomationEvent> {
   /**
    * The position of this event in ticks in the collection.
    *
-   * position_ticks must be unique among all automation events pointing to the same automation collection.
+   * There can be at most two automation events with the same position_ticks value
+   * pointing to the same automation collection. Exactly one of them must have is_second set to true.
    *
    * @generated from field: int32 position_ticks = 3;
    */
@@ -64,6 +65,15 @@ export class AutomationEvent extends Message<AutomationEvent> {
    */
   interpolation = 0;
 
+  /**
+   * If two automation events lie on the same tick, exactly one of them must have is_second set to true.
+   * This orders the automation events on the same tick. If no other automation event lies on the same tick,
+   * is_second doesn't matter.
+   *
+   * @generated from field: bool is_second = 7;
+   */
+  isSecond = false;
+
   constructor(data?: PartialMessage<AutomationEvent>) {
     super();
     proto3.util.initPartial(data, this);
@@ -78,6 +88,7 @@ export class AutomationEvent extends Message<AutomationEvent> {
     { no: 4, name: "value", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 5, name: "slope", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 6, name: "interpolation", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 7, name: "is_second", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AutomationEvent {

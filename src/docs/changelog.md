@@ -5,19 +5,110 @@ title: 📜 Changelog
 > [!WARNING]
 > The package should be considered "early alpha" and can change **significantly** between releases, even between minor version numbers.
 
+To get more background on the changes we make, join our [Discord](https://discord.gg/5Cde4Zvret).
+
+## 0.0.13 & 0.0.14
+
+### Breaking Changes
+
+- **New authentication API** - `audiotool()` replaces `getLoginStatus()` and returns the client directly when authenticated
+- **Flattened API** - Services are now directly on the client:
+  - `client.api.projectService` → `client.projects`
+  - `client.api.userService` → `client.users`
+  - `client.api.sampleService` → `client.samples`
+  - `client.api.projectRoleService` → `client.projectRoles`
+  - `client.api.presets` → `client.presets`
+  - `client.api.audioGraphService` → `client.audioGraph`
+- **Renamed `createSyncedDocument` to `open`** - More intuitive: `client.open("...")`
+- **`createAudiotoolClient()` signature changed** - Now takes `{auth, transport}` instead of `{authorization}`
+- **Removed exports**: `getLoginStatus`, `LoggedInStatus`, `LoggedOutStatus`, `LoginStatus`, `AudiotoolAPI`, `createAudiotoolAPI`
+
+Prompt to give an agent to adjust your code:
+
+### New Features
+
+- New `@audiotool/nexus/node` export for Node.js/Bun/Deno server-side usage
+- Fixed Vite browser builds - main entry no longer imports Node.js-specific code
+- Added `createServerAuth()` for using browser OAuth tokens server-side
+- Added `createPATAuth()` for PAT-based authentication
+- Added `exportTokens()` to authenticated client for server-side token handoff
+
+```markdown
+Migrate my code from @audiotool/nexus 0.0.12 to 0.0.13. Apply these changes:
+
+1. Replace `getLoginStatus({clientId, redirectUrl, scope})` with `audiotool({clientId, redirectUrl, scope})`.
+   - `status.loggedIn` becomes `at.status === "authenticated"`
+   - `!status.loggedIn` becomes `at.status === "unauthenticated"`
+   - `status.login()` / `status.logout()` become `at.login()` / `at.logout()`
+   - `status.getUserName()` becomes `at.userName` (sync, no await)
+
+2. Remove `createAudiotoolClient({authorization: status})`. When `at.status === "authenticated"`,
+   `at` IS the client — use it directly.
+
+3. Replace `client.api.projectService` with `client.projects`,
+   `client.api.userService` with `client.users`,
+   `client.api.sampleService` with `client.samples`,
+   `client.api.projectRoleService` with `client.projectRoles`,
+   `client.api.presets` with `client.presets`,
+   `client.api.audioGraphService` with `client.audioGraph`.
+
+4. Replace `client.createSyncedDocument({project: url})` with `client.open(url)`.
+
+5. For Node.js: add `import { createNodeTransport, createDiskWasmLoader } from "@audiotool/nexus/node"`
+   and pass `transport: createNodeTransport(), wasm: createDiskWasmLoader()` to `createAudiotoolClient`.
+
+6. Remove imports of: getLoginStatus, LoggedInStatus, LoggedOutStatus, LoginStatus,
+   AudiotoolAPI, createAudiotoolAPI — these no longer exist.
+
+7. The Beatbox 8 and Beatbox 9 drum machines now map MIDI notes to drum sounds
+   following the General MIDI percussion standard (matching Gakki and MIDI files).
+   If your code writes notes to bb8/bb9 pattern steps by MIDI key number, use this
+   mapping (same for all three: bb8, bb9, Gakki):
+
+   | Key | Note | Drum Sound         | Key | Note | Drum Sound     |
+   | --- | ---- | ------------------ | --- | ---- | -------------- |
+   | 35  | B0   | Acoustic Bass Drum | 59  | B2   | Ride Cymbal 2  |
+   | 36  | C1   | Bass Drum 1        | 60  | C3   | Hi Bongo       |
+   | 37  | C#1  | Side Stick         | 61  | C#3  | Low Bongo      |
+   | 38  | D1   | Acoustic Snare     | 62  | D3   | Mute Hi Conga  |
+   | 39  | Eb1  | Hand Clap          | 63  | Eb3  | Open Hi Conga  |
+   | 40  | E1   | Electric Snare     | 64  | E3   | Low Conga      |
+   | 41  | F1   | Low Floor Tom      | 65  | F3   | High Timbale   |
+   | 42  | F#1  | Closed Hi Hat      | 66  | F#3  | Low Timbale    |
+   | 43  | G1   | High Floor Tom     | 67  | G3   | High Agogo     |
+   | 44  | Ab1  | Pedal Hi-Hat       | 68  | Ab3  | Low Agogo      |
+   | 45  | A1   | Low Tom            | 69  | A3   | Cabasa         |
+   | 46  | Bb1  | Open Hi-Hat        | 70  | Bb3  | Maracas        |
+   | 47  | B1   | Low-Mid Tom        | 71  | B3   | Short Whistle  |
+   | 48  | C2   | Hi Mid Tom         | 72  | C4   | Long Whistle   |
+   | 49  | C#2  | Crash Cymbal 1     | 73  | C#4  | Short Guiro    |
+   | 50  | D2   | High Tom           | 74  | D4   | Long Guiro     |
+   | 51  | Eb2  | Ride Cymbal 1      | 75  | Eb4  | Claves         |
+   | 52  | E2   | Chinese Cymbal     | 76  | E4   | Hi Wood Block  |
+   | 53  | F2   | Ride Bell          | 77  | F4   | Low Wood Block |
+   | 54  | F#2  | Tambourine         | 78  | F#4  | Mute Cuica     |
+   | 55  | G2   | Splash Cymbal      | 79  | G4   | Open Cuica     |
+   | 56  | Ab2  | Cowbell            | 80  | Ab4  | Mute Triangle  |
+   | 57  | A2   | Crash Cymbal 2     | 81  | A4   | Open Triangle  |
+
+   If your existing code used the old bb8/bb9 mapping (where notes were assigned
+   to pads in a different order), update the note numbers to match the table
+   above. The same note numbers now work across bb8, bb9, and Gakki, so any
+   drum-writing helper you have can be unified.
+```
+
 ## 0.0.12
 
 - updated networking code to work better in node.js: Connection no longer hangs on creation, and termination after `nexus.stop()` is faster.
-- added type exports for logged in / logged out variants of logged in status: type {@link index.LoginStatus} = {@link index.LoggedInStatus} | {@link index.LoggedOutStatus}
 
 ## 0.0.11
 
-- {@link index.AudiotoolClient.createSyncedDocument} changed it's signature: `mode: "online"` is no longer needed - the document is always
+- {@link index.AudiotoolClient.createSyncedDocument} (now: `open`) changed it's signature: `mode: "online"` is no longer needed - the document is always
   online and synced:
 
   ```
   const client = ...
-  const nexus = await nexus.createSyncedDocument({project})
+  const nexus = await client.createSyncedDocument({ project})
   ```
 
 - new function {@link index.createOfflineDocument}, allowing you to create offline documents without any network calls:
@@ -74,7 +165,7 @@ npm install @audiotool/nexus
 
 ## API
 
-- refactored and simplified authentication. [Managing User Login](./login.md), documenting the API {@link index.getLoginStatus}
+- refactored and simplified authentication. [Managing User Login](./login.md)
 - updated the API bindings to the newest version, some change slipped through the last time
 
 ### Documentation

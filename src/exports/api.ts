@@ -27,12 +27,11 @@ export * as sample from "../gen/audiotool/sample/v1/sample_pb"
 
 export * from "@api/index"
 
-export type { AudiotoolAPI } from "@api/audiotool-api"
 export type { NexusPreset, PresetUtil } from "@api/preset-utils"
 
 export {
   neverThrowingFetch,
   type NeverThrowingFetch,
 } from "@utils/fetch/never-throwing-fetch"
-export type { KeepaliveTransport } from "@utils/grpc/keepalive-transport"
+export type { KeepaliveTransport } from "../transport/types"
 export type { RetryingClient, RetryOptions } from "@utils/grpc/retrying-client"

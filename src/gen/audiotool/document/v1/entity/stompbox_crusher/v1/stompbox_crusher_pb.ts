@@ -42,6 +42,14 @@ export class StompboxCrusher extends Message<StompboxCrusher> {
   positionY = 0;
 
   /**
+   * The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   * This is used for record-keeping only and has no effect on the sound of the device.
+   *
+   * @generated from field: string preset_name = 13;
+   */
+  presetName = "";
+
+  /**
    * Allows for adjustment of the volume of the signal before it is processed.
    * Equivalent to a dB range of [-inf, 27.0].
    *
@@ -112,6 +120,7 @@ export class StompboxCrusher extends Message<StompboxCrusher> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "position_x", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "position_y", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 13, name: "preset_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "pre_gain", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 6, name: "downsampling_factor", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 7, name: "post_gain", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },

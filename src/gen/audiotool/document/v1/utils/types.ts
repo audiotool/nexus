@@ -1,5 +1,5 @@
 // THIS FILE IS GENERATED - DO NOT EDIT
-// Copyright 2025 Audiotool Inc.
+// Copyright 2026 Audiotool Inc.
 
 import {
   type AudioDevice,
@@ -101,6 +101,11 @@ import {
   type GakkiConstructor,
 } from "@gen/document/v1/entity/gakki/v1/gakki_nexus"
 import { Gakki as Gakki_pb } from "@gen/document/v1/entity/gakki/v1/gakki_pb"
+import {
+  type GenericVst3PluginBeta,
+  type GenericVst3PluginBetaConstructor,
+} from "@gen/document/v1/entity/generic_vst3_plugin_beta/v1/generic_vst3_plugin_beta_nexus"
+import { GenericVst3PluginBeta as GenericVst3PluginBeta_pb } from "@gen/document/v1/entity/generic_vst3_plugin_beta/v1/generic_vst3_plugin_beta_pb"
 import {
   type GraphicalEQ,
   type GraphicalEQConstructor,
@@ -462,6 +467,7 @@ export type EntityTypes = {
   desktopNoteCable: DesktopNoteCable
   exciter: Exciter
   gakki: Gakki
+  genericVst3PluginBeta: GenericVst3PluginBeta
   graphicalEQ: GraphicalEQ
   gravity: Gravity
   groove: Groove
@@ -563,6 +569,7 @@ export type ConstructorTypes = {
   desktopNoteCable: DesktopNoteCableConstructor
   exciter: ExciterConstructor
   gakki: GakkiConstructor
+  genericVst3PluginBeta: GenericVst3PluginBetaConstructor
   graphicalEQ: GraphicalEQConstructor
   gravity: GravityConstructor
   groove: GrooveConstructor
@@ -662,6 +669,8 @@ export const entityUrlToTypeKey = {
     "desktopNoteCable",
   ["audiotool.document.v1.entity.exciter.v1.Exciter"]: "exciter",
   ["audiotool.document.v1.entity.gakki.v1.Gakki"]: "gakki",
+  ["audiotool.document.v1.entity.generic_vst3_plugin_beta.v1.GenericVst3PluginBeta"]:
+    "genericVst3PluginBeta",
   ["audiotool.document.v1.entity.graphical_eq.v1.GraphicalEQ"]: "graphicalEQ",
   ["audiotool.document.v1.entity.gravity.v1.Gravity"]: "gravity",
   ["audiotool.document.v1.entity.groove.v1.Groove"]: "groove",
@@ -786,6 +795,7 @@ export const entityMessageTypes = {
   desktopNoteCable: DesktopNoteCable_pb,
   exciter: Exciter_pb,
   gakki: Gakki_pb,
+  genericVst3PluginBeta: GenericVst3PluginBeta_pb,
   graphicalEQ: GraphicalEQ_pb,
   gravity: Gravity_pb,
   groove: Groove_pb,

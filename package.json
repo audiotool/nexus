@@ -1,6 +1,6 @@
 {
   "name": "@audiotool/nexus",
-  "version": "0.0.12",
+  "version": "0.0.14",
   "type": "module",
   "license": "MIT",
   "description": "Audiotool Nexus SDK",
@@ -25,6 +25,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js"
+    },
+    "./node": {
+      "types": "./dist/node.d.ts",
+      "import": "./dist/node.js"
     },
     "./document": {
       "types": "./dist/document.d.ts",

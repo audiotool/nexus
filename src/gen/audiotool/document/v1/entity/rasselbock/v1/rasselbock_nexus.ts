@@ -1,5 +1,5 @@
 // THIS FILE IS GENERATED - DO NOT EDIT
-// Copyright 2025 Audiotool Inc.
+// Copyright 2026 Audiotool Inc.
 
 import { ArrayField, PrimitiveField } from "@document/fields"
 import { type NexusLocation } from "@document/location"
@@ -46,6 +46,11 @@ export type Rasselbock = {
    * default | 0
    * range | full*/
   positionY: PrimitiveField<number, "mut">
+  /**
+   *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   *  This is used for record-keeping only and has no effect on the sound of the device.
+   */
+  presetName: PrimitiveField<string, "mut">
   /**
    *  Empty fields which RasselbockPatterns can point to. At most one pattern
    *  can point to a specific element in this list.
@@ -151,6 +156,11 @@ export type RasselbockConstructor = {
    * default | 0
    * range | full*/
   positionY?: number
+  /**
+   *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   *  This is used for record-keeping only and has no effect on the sound of the device.
+   */
+  presetName?: string
   /**
    *  The index of the currently selected pattern. Determines which pattern the Rasselbock
    *  currently plays back, unless a pattern track is connected to it.

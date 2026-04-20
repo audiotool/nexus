@@ -23,7 +23,7 @@ const createAttachResponse = (id: string, commitIndex: number) =>
   new AttachResponse({
     message: {
       case: "transaction",
-      value: new Transaction({ id, commitIndex }),
+      value: new Transaction({ id, commitIndex: BigInt(commitIndex) }),
     },
   })
 
@@ -245,11 +245,11 @@ describe("transaction-receiver", () => {
       // 3. client should reestablish stream with commit index 42
 
       let callCount = 0
-      let lastSeenCommitIndex = -1
+      let lastSeenCommitIndex = -1n
 
       const documentService = createDocumentService((req) => {
         callCount++
-        lastSeenCommitIndex = req.commitIndex ?? 0
+        lastSeenCommitIndex = req.commitIndex ?? 0n
         if (callCount === 1) {
           // First call: return a transaction then error
           return asyncIterateElementsThenThrow(
@@ -276,7 +276,7 @@ describe("transaction-receiver", () => {
 
       const second = await secondPromise
       expect(second.value?.id).toBe("tx-2")
-      expect(lastSeenCommitIndex).toBe(42)
+      expect(lastSeenCommitIndex).toBe(42n)
 
       receiver.terminate()
     })

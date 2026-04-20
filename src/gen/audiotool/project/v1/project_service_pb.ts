@@ -18,9 +18,9 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { FieldMask, Message, proto3 } from "@bufbuild/protobuf";
+import { FieldMask, Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { Project } from "./project_pb.js";
-import { Session } from "./session_pb.js";
+import { Session } from "./document_session_pb.js";
 
 /**
  * SyncTrackMode defines the mode to sync a track.
@@ -653,9 +653,9 @@ export class SyncTrackRequest extends Message<SyncTrackRequest> {
   /**
    * Commit index used to render the audio & images if mode is audio.
    *
-   * @generated from field: uint32 commit_index = 3;
+   * @generated from field: uint64 commit_index = 3;
    */
-  commitIndex = 0;
+  commitIndex = protoInt64.zero;
 
   constructor(data?: PartialMessage<SyncTrackRequest>) {
     super();
@@ -667,7 +667,7 @@ export class SyncTrackRequest extends Message<SyncTrackRequest> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "mode", kind: "enum", T: proto3.getEnumType(SyncTrackMode) },
-    { no: 3, name: "commit_index", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 3, name: "commit_index", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SyncTrackRequest {
@@ -852,7 +852,7 @@ export class CloseSessionResponse extends Message<CloseSessionResponse> {
  */
 export class ListSessionsRequest extends Message<ListSessionsRequest> {
   /**
-   * The standard CEL filter.
+   * The standard list filter (CEL).
    *
    * Supported fields:
    * - session.project_name
@@ -1046,6 +1046,80 @@ export class GetLatestVersionBundleResponse extends Message<GetLatestVersionBund
 
   static equals(a: GetLatestVersionBundleResponse | PlainMessage<GetLatestVersionBundleResponse> | undefined, b: GetLatestVersionBundleResponse | PlainMessage<GetLatestVersionBundleResponse> | undefined): boolean {
     return proto3.util.equals(GetLatestVersionBundleResponse, a, b);
+  }
+}
+
+/**
+ * Request for ProjectService.ReconvertLegacyProject.
+ *
+ * @generated from message audiotool.project.v1.ReconvertLegacyProjectRequest
+ */
+export class ReconvertLegacyProjectRequest extends Message<ReconvertLegacyProjectRequest> {
+  /**
+   * Required. The name of the project to reconvert, in the form of `projects/{project_id}`.
+   *
+   * @generated from field: string name = 1;
+   */
+  name = "";
+
+  constructor(data?: PartialMessage<ReconvertLegacyProjectRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "audiotool.project.v1.ReconvertLegacyProjectRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ReconvertLegacyProjectRequest {
+    return new ReconvertLegacyProjectRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ReconvertLegacyProjectRequest {
+    return new ReconvertLegacyProjectRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ReconvertLegacyProjectRequest {
+    return new ReconvertLegacyProjectRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ReconvertLegacyProjectRequest | PlainMessage<ReconvertLegacyProjectRequest> | undefined, b: ReconvertLegacyProjectRequest | PlainMessage<ReconvertLegacyProjectRequest> | undefined): boolean {
+    return proto3.util.equals(ReconvertLegacyProjectRequest, a, b);
+  }
+}
+
+/**
+ * Response for ProjectService.ReconvertLegacyProject.
+ *
+ * @generated from message audiotool.project.v1.ReconvertLegacyProjectResponse
+ */
+export class ReconvertLegacyProjectResponse extends Message<ReconvertLegacyProjectResponse> {
+  constructor(data?: PartialMessage<ReconvertLegacyProjectResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "audiotool.project.v1.ReconvertLegacyProjectResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ReconvertLegacyProjectResponse {
+    return new ReconvertLegacyProjectResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ReconvertLegacyProjectResponse {
+    return new ReconvertLegacyProjectResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ReconvertLegacyProjectResponse {
+    return new ReconvertLegacyProjectResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ReconvertLegacyProjectResponse | PlainMessage<ReconvertLegacyProjectResponse> | undefined, b: ReconvertLegacyProjectResponse | PlainMessage<ReconvertLegacyProjectResponse> | undefined): boolean {
+    return proto3.util.equals(ReconvertLegacyProjectResponse, a, b);
   }
 }
 

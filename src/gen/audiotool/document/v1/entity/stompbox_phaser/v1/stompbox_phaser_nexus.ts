@@ -1,5 +1,5 @@
 // THIS FILE IS GENERATED - DO NOT EDIT
-// Copyright 2025 Audiotool Inc.
+// Copyright 2026 Audiotool Inc.
 
 import { PrimitiveField } from "@document/fields"
 import { NexusObject } from "@document/object"
@@ -41,6 +41,11 @@ export type StompboxPhaser = {
    * default | 0
    * range | full*/
   positionY: PrimitiveField<number, "mut">
+  /**
+   *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   *  This is used for record-keeping only and has no effect on the sound of the device.
+   */
+  presetName: PrimitiveField<string, "mut">
   /**
    *  Allow for a frequency range to be set for the effect. Only frequencies between the min and max will be affected.
    *
@@ -145,6 +150,11 @@ export type StompboxPhaserConstructor = {
    * default | 0
    * range | full*/
   positionY?: number
+  /**
+   *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   *  This is used for record-keeping only and has no effect on the sound of the device.
+   */
+  presetName?: string
   /**
    *  Allow for a frequency range to be set for the effect. Only frequencies between the min and max will be affected.
    *

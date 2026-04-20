@@ -17,7 +17,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { CreateProjectRequest, CreateProjectResponse, DeleteProjectRequest, DeleteProjectResponse, GetLatestVersionBundleRequest, GetLatestVersionBundleResponse, GetProjectRequest, GetProjectResponse, ListProjectsRequest, ListProjectsResponse, ListSessionsRequest, ListSessionsResponse, OpenSessionRequest, OpenSessionResponse, SyncTrackRequest, UpdateProjectRequest, UpdateProjectResponse, UploadCoverRequest, UploadCoverResponse } from "./project_service_pb.js";
+import { CreateProjectRequest, CreateProjectResponse, DeleteProjectRequest, DeleteProjectResponse, GetLatestVersionBundleRequest, GetLatestVersionBundleResponse, GetProjectRequest, GetProjectResponse, ListProjectsRequest, ListProjectsResponse, ListSessionsRequest, ListSessionsResponse, OpenSessionRequest, OpenSessionResponse, ReconvertLegacyProjectRequest, ReconvertLegacyProjectResponse, SyncTrackRequest, UpdateProjectRequest, UpdateProjectResponse } from "./project_service_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 import { Operation } from "../../longrunning/v1/operation_pb.js";
 
@@ -63,17 +63,6 @@ export const ProjectService = {
       kind: MethodKind.Unary,
     },
     /**
-     * Upload a cover.
-     *
-     * @generated from rpc audiotool.project.v1.ProjectService.UploadCover
-     */
-    uploadCover: {
-      name: "UploadCover",
-      I: UploadCoverRequest,
-      O: UploadCoverResponse,
-      kind: MethodKind.Unary,
-    },
-    /**
      * Update a project.
      *
      * @generated from rpc audiotool.project.v1.ProjectService.UpdateProject
@@ -115,8 +104,7 @@ export const ProjectService = {
      * Open a session. This will create a new session if one does not exist.
      *
      * This is used to allow multiple users to work on a project at the same time and opens the
-     * Document. The returned session contains the URLs to connect to the DocumentService
-     * which uses his own proto for communication. (audiotool.document.v1.DocumentService)
+     * Document.
      *
      * @generated from rpc audiotool.project.v1.ProjectService.OpenSession
      */
@@ -150,6 +138,20 @@ export const ProjectService = {
       name: "GetLatestVersionBundle",
       I: GetLatestVersionBundleRequest,
       O: GetLatestVersionBundleResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * ReconvertLegacyProject reconverts a legacy project from the old audiotool platform.
+     *
+     * This RPC will kick out all clients connected to the project and is only available for
+     * projects with a `legacy_project_name` set.
+     *
+     * @generated from rpc audiotool.project.v1.ProjectService.ReconvertLegacyProject
+     */
+    reconvertLegacyProject: {
+      name: "ReconvertLegacyProject",
+      I: ReconvertLegacyProjectRequest,
+      O: ReconvertLegacyProjectResponse,
       kind: MethodKind.Unary,
     },
   }

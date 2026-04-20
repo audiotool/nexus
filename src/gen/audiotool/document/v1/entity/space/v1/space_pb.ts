@@ -47,6 +47,14 @@ export class Space extends Message<Space> {
   positionY = 0;
 
   /**
+   * The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   * This is used for record-keeping only and has no effect on the sound of the device.
+   *
+   * @generated from field: string preset_name = 34;
+   */
+  presetName = "";
+
+  /**
    * Micro tuning.
    *
    * @generated from field: audiotool.document.v1.Pointer micro_tuning = 5;
@@ -276,6 +284,7 @@ export class Space extends Message<Space> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "position_x", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "position_y", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 34, name: "preset_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "micro_tuning", kind: "message", T: Pointer },
     { no: 6, name: "gain", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 7, name: "stereo_detune_shift", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
@@ -346,7 +355,8 @@ export class SpaceLFO extends Message<SpaceLFO> {
   /**
    * The rate of the LFO, expressed as a normalized value.
    * The meaning of the value depends on the is_synced flag:
-   * - if is_synced is false, the  value maps linearly to Hz (0.01 .. 500.0).
+   * - if is_synced is false, the value maps exponentially to Hz (0.1 .. 100.0) with formula:
+   *       hz = 0.1 * 1000^value
    * - if is_synced is true, then the value is quantized to one of 30 bar time durations.
    *   The bar time durations are:
    *      1/256, 1/192, 1/128, 1/96, 1/64, 1/48, 1/32, 1/24, 1/16,

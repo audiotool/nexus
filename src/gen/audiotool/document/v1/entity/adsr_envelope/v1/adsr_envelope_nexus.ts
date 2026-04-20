@@ -1,5 +1,5 @@
 // THIS FILE IS GENERATED - DO NOT EDIT
-// Copyright 2025 Audiotool Inc.
+// Copyright 2026 Audiotool Inc.
 
 import { PrimitiveField } from "@document/fields"
 
@@ -26,7 +26,8 @@ export type AdsrEnvelope = {
   /**
    *  The attack time of this envelope, expressed as a normalized value.
    *  The meaning of the value depends on the is_synced flag:
-   *  - if is_synced is false, the value maps linearly to milliseconds (1.0 .. 10_000.0).
+   *  - if is_synced is false, the value maps to milliseconds (1.0 .. 10_000.0) with formula:
+   *        millis = 1. + 9999.0 * value^3.3232274
    *  - if is_synced is true, then the value is quantized to one of 30 bar time durations.
    *    The bar time durations are:
    *       1/256, 1/192, 1/128, 1/96, 1/64, 1/48, 1/32, 1/24, 1/16,
@@ -53,7 +54,8 @@ export type AdsrEnvelope = {
   /**
    *  The attack time of this envelope, expressed as a normalized value.
    *  The meaning of the value depends on the is_synced flag:
-   *  - if is_synced is false, the value maps linearly to milliseconds (1.0 .. 10_000.0).
+   *  - if is_synced is false, the value maps to milliseconds (1.0 .. 10_000.0) with formula:
+   *        millis = 1. + 9999.0 * value^3.3232274
    *  - if is_synced is true, then the value is quantized to one of 30 bar time durations.
    *    The bar time durations are:
    *       1/256, 1/192, 1/128, 1/96, 1/64, 1/48, 1/32, 1/24, 1/16,
@@ -100,7 +102,8 @@ export type AdsrEnvelope = {
   /**
    *  The attack time of this envelope, expressed as a normalized value.
    *  The meaning of the value depends on the is_synced flag:
-   *  - if is_synced is false, the value maps linearly to milliseconds (1.0 .. 10_000.0).
+   *  - if is_synced is false, the value maps to milliseconds (1.0 .. 10_000.0) with formula:
+   *        millis = 1. + 9999.0 * value^3.3232274
    *  - if is_synced is true, then the value is quantized to one of 30 bar time durations.
    *    The bar time durations are:
    *       1/256, 1/192, 1/128, 1/96, 1/64, 1/48, 1/32, 1/24, 1/16,
@@ -139,7 +142,8 @@ export type AdsrEnvelopeConstructor = {
   /**
    *  The attack time of this envelope, expressed as a normalized value.
    *  The meaning of the value depends on the is_synced flag:
-   *  - if is_synced is false, the value maps linearly to milliseconds (1.0 .. 10_000.0).
+   *  - if is_synced is false, the value maps to milliseconds (1.0 .. 10_000.0) with formula:
+   *        millis = 1. + 9999.0 * value^3.3232274
    *  - if is_synced is true, then the value is quantized to one of 30 bar time durations.
    *    The bar time durations are:
    *       1/256, 1/192, 1/128, 1/96, 1/64, 1/48, 1/32, 1/24, 1/16,
@@ -164,7 +168,8 @@ export type AdsrEnvelopeConstructor = {
   /**
    *  The attack time of this envelope, expressed as a normalized value.
    *  The meaning of the value depends on the is_synced flag:
-   *  - if is_synced is false, the value maps linearly to milliseconds (1.0 .. 10_000.0).
+   *  - if is_synced is false, the value maps to milliseconds (1.0 .. 10_000.0) with formula:
+   *        millis = 1. + 9999.0 * value^3.3232274
    *  - if is_synced is true, then the value is quantized to one of 30 bar time durations.
    *    The bar time durations are:
    *       1/256, 1/192, 1/128, 1/96, 1/64, 1/48, 1/32, 1/24, 1/16,
@@ -207,7 +212,8 @@ export type AdsrEnvelopeConstructor = {
   /**
    *  The attack time of this envelope, expressed as a normalized value.
    *  The meaning of the value depends on the is_synced flag:
-   *  - if is_synced is false, the value maps linearly to milliseconds (1.0 .. 10_000.0).
+   *  - if is_synced is false, the value maps to milliseconds (1.0 .. 10_000.0) with formula:
+   *        millis = 1. + 9999.0 * value^3.3232274
    *  - if is_synced is true, then the value is quantized to one of 30 bar time durations.
    *    The bar time durations are:
    *       1/256, 1/192, 1/128, 1/96, 1/64, 1/48, 1/32, 1/24, 1/16,

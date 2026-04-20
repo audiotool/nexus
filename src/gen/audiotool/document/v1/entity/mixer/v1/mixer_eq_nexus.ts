@@ -1,5 +1,5 @@
 // THIS FILE IS GENERATED - DO NOT EDIT
-// Copyright 2025 Audiotool Inc.
+// Copyright 2026 Audiotool Inc.
 
 import { PrimitiveField } from "@document/fields"
 
@@ -43,7 +43,7 @@ export type MixerEq = {
    * key | value
    * --- | ---
    * default | 500
-   * range | [200, 700]
+   * range | [200, 1600]
    * is | {@link api.TargetType.AutomatableParameter}*/
   lowMidFrequencyHz: PrimitiveField<number, "mut">
   /**
@@ -63,7 +63,7 @@ export type MixerEq = {
    * key | value
    * --- | ---
    * default | 4800
-   * range | [1600, 7200]
+   * range | [1600, 10000]
    * is | {@link api.TargetType.AutomatableParameter}*/
   highMidFrequencyHz: PrimitiveField<number, "mut">
   /**
@@ -134,7 +134,7 @@ export type MixerEqConstructor = {
    * key | value
    * --- | ---
    * default | 500
-   * range | [200, 700]*/
+   * range | [200, 1600]*/
   lowMidFrequencyHz?: number
   /**
    *  Low mid shelf filter gain in decibels.
@@ -152,7 +152,7 @@ export type MixerEqConstructor = {
    * key | value
    * --- | ---
    * default | 4800
-   * range | [1600, 7200]*/
+   * range | [1600, 10000]*/
   highMidFrequencyHz?: number
   /**
    *  High mid shelf filter gain in decibels.

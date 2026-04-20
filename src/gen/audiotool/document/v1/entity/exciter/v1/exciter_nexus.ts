@@ -1,5 +1,5 @@
 // THIS FILE IS GENERATED - DO NOT EDIT
-// Copyright 2025 Audiotool Inc.
+// Copyright 2026 Audiotool Inc.
 
 import { PrimitiveField } from "@document/fields"
 import { NexusObject } from "@document/object"
@@ -43,6 +43,11 @@ export type Exciter = {
    * default | 0
    * range | full*/
   positionY: PrimitiveField<number, "mut">
+  /**
+   *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   *  This is used for record-keeping only and has no effect on the sound of the device.
+   */
+  presetName: PrimitiveField<string, "mut">
   /**
    *  Audio Input
    *
@@ -125,6 +130,11 @@ export type ExciterConstructor = {
    * default | 0
    * range | full*/
   positionY?: number
+  /**
+   *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   *  This is used for record-keeping only and has no effect on the sound of the device.
+   */
+  presetName?: string
   /**
    *  The "tone" frequency is the frequency above which the exciter will add distortion to the signal.
    *

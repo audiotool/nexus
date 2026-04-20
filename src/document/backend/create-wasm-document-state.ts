@@ -1,15 +1,28 @@
 import { Modification, Transaction } from "@gen/document/v1/document_service_pb"
 import { assert, throw_ } from "@utils/lang"
-
-import wasmUrl from "@document/mock/wasm/document_validator.wasm?no-inline"
-import wasmJsUrl from "@document/mock/wasm/wasm_exec.js?no-inline"
-import { runningInBrowser } from "@utils/platform"
-;[wasmUrl, wasmJsUrl] // make sure these aren't optimized away
+import type { WasmLoader } from "../../wasm/types"
 
 // caches past initializations of the wasm document state builder
 let wasmDocumentStateBuilderCache:
   | Promise<() => WasmDocumentState>
   | undefined = undefined
+
+// stores the wasm loader to use - set via initWasmLoader
+let currentWasmLoader: WasmLoader | undefined = undefined
+
+/**
+ * Initialize the WASM loader to use for document state.
+ * Must be called before getWasmDocumentState() if not using the default browser loader.
+ * No-op if WASM is already initialized.
+ *
+ * @internal
+ */
+export const initWasmLoader = (loader: WasmLoader): void => {
+  if (wasmDocumentStateBuilderCache !== undefined) {
+    return
+  }
+  currentWasmLoader = loader
+}
 
 /**
  * Get a new {@link WasmDocumentState} instance. On first run, this fetches and initializes the wasm module.
@@ -20,13 +33,17 @@ export const getWasmDocumentState = async (): Promise<WasmDocumentState> => {
     const builder = await wasmDocumentStateBuilderCache
     return builder()
   }
+
+  // Get the loader - use browser loader by default
+  const loader = currentWasmLoader ?? (await getDefaultWasmLoader())
+
   const { promise, resolve } = Promise.withResolvers<() => WasmDocumentState>()
   wasmDocumentStateBuilderCache = promise
 
-  // start importing the js wrapper. TODO: start this earlier.
-  const wrapperImportPromise: Promise<void> = executeWrapperJs()
-  // start loading the wasm module. TODO: start this earlier.
-  const wasmPromise: Promise<WebAssembly.Module> = loadWasm()
+  // start importing the js wrapper
+  const wrapperImportPromise: Promise<void> = loader.executeRuntime()
+  // start loading the wasm module
+  const wasmPromise: Promise<WebAssembly.Module> = loader.loadModule()
 
   // wait for the js wrapper to be imported, which should give us the exports below
   await wrapperImportPromise
@@ -140,71 +157,29 @@ declare global {
   var createDocumentState: (() => WasmState) | undefined
 }
 
-/** Executes the wrapper js code required to initialize the validator wasm.
- *
- * In node.js-like environments, it will read the file from the filesystem.
- * In the browser, it will import the file.
+/**
+ * Get the default WASM loader for the current environment.
+ * - Test mode: uses disk loader (tests run in Node.js)
+ * - Browser: uses fetch-based loader
+ * - Node.js/Bun/Deno without explicit loader: throws helpful error
  */
-const executeWrapperJs = async (): Promise<void> => {
-  if (runningInBrowser) {
-    return import(`${import.meta.env.VITE_WASM_ASSETS_PREFIX}/wasm_exec.js`)
-  }
-
-  // load node.js modules only now so the imports aren't triggered in the web.
-  const path = await import("node:path")
-  const url = await import("node:url")
-  const fs = await import("node:fs")
-
-  let filePath: string
-
+const getDefaultWasmLoader = async (): Promise<WasmLoader> => {
+  // In test mode, always use disk loader since tests run in Node.js
   if (import.meta.env.MODE === "test") {
-    // this happens when executing unit tests via vitest, which doesn't bundle the code.
-    filePath = "src/document/mock/wasm/wasm_exec.js"
-  } else {
-    // bundled mode, need to resolve the path relative to this file's location.
-    filePath = path.resolve(
-      path.dirname(url.fileURLToPath(import.meta.url)),
-      `.${wasmJsUrl}`,
-    )
+    const { createDiskWasmLoader } = await import("../../wasm/disk-wasm-loader")
+    return createDiskWasmLoader()
   }
-  // read the file async to get some perf boost
-  const { promise, resolve } = Promise.withResolvers<void>()
-  fs.readFile(filePath, "utf-8", (err, data) =>
-    // throw error or eval and resolve promise
-    err != null ? throw_(err) : (eval(data), resolve()),
-  )
-  return await promise
-}
 
-const loadWasm = async (): Promise<WebAssembly.Module> => {
-  if (runningInBrowser) {
-    return await fetch(
-      `${import.meta.env.VITE_WASM_ASSETS_PREFIX}/document_validator.wasm.gz`,
-    ).then(async (res) =>
-      res.ok
-        ? WebAssembly.compileStreaming(res)
-        : throw_("couldn't fetch wasm module"),
+  // Detect server-side environment and throw helpful error
+  if (typeof process !== "undefined") {
+    throw new Error(
+      "Can't load Wasm: server-side usage requires createDiskWasmLoader() from @audiotool/nexus/node",
     )
   }
 
-  // load node.js modules only now so the imports aren't triggered in the web.
-  const fs = await import("node:fs")
-  const path = await import("node:path")
-  const url = await import("node:url")
-
-  let filePath: string
-  // test mode, no bundling. used during npm run test.
-  if (import.meta.env.MODE === "test") {
-    filePath = "src/document/mock/wasm/document_validator.wasm"
-  } else {
-    // bundled mode, need to resolve the path relative to this file's location.
-    filePath = path.resolve(
-      path.dirname(url.fileURLToPath(import.meta.url)),
-      `.${wasmUrl}`,
-    )
-  }
-
-  return WebAssembly.compile(new Uint8Array(fs.readFileSync(filePath)))
+  // In browser, use fetch-based loader
+  const { createBrowserWasmLoader } = await import("../../wasm/browser-wasm-loader")
+  return createBrowserWasmLoader()
 }
 
 /**

@@ -6,6 +6,7 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { Any, Message, proto3, protoInt64 } from "@bufbuild/protobuf";
 import { Pointer } from "./pointer_pb.js";
+import { Client } from "./client_pb.js";
 
 /**
  * Request for [AttachMetadata][audiotool.document.v1.AttachMetadata].
@@ -308,6 +309,96 @@ export class ClientCoordinates extends Message<ClientCoordinates> {
 }
 
 /**
+ * Request for [GetCommitIndexRange][audiotool.document.v1.GetCommitIndexRange].
+ *
+ * @generated from message audiotool.document.v1.GetCommitIndexRangeRequest
+ */
+export class GetCommitIndexRangeRequest extends Message<GetCommitIndexRangeRequest> {
+  /**
+   * The document id is used to identify the document.
+   *
+   * @generated from field: string project_name = 1;
+   */
+  projectName = "";
+
+  constructor(data?: PartialMessage<GetCommitIndexRangeRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "audiotool.document.v1.GetCommitIndexRangeRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "project_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetCommitIndexRangeRequest {
+    return new GetCommitIndexRangeRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetCommitIndexRangeRequest {
+    return new GetCommitIndexRangeRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetCommitIndexRangeRequest {
+    return new GetCommitIndexRangeRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GetCommitIndexRangeRequest | PlainMessage<GetCommitIndexRangeRequest> | undefined, b: GetCommitIndexRangeRequest | PlainMessage<GetCommitIndexRangeRequest> | undefined): boolean {
+    return proto3.util.equals(GetCommitIndexRangeRequest, a, b);
+  }
+}
+
+/**
+ * Response for [GetCommitIndexRange][audiotool.document.v1.GetCommitIndexRange].
+ *
+ * @generated from message audiotool.document.v1.GetCommitIndexRangeResponse
+ */
+export class GetCommitIndexRangeResponse extends Message<GetCommitIndexRangeResponse> {
+  /**
+   * The minimum commit_index currently held by the server.
+   *
+   * @generated from field: uint64 min_commit_index = 1;
+   */
+  minCommitIndex = protoInt64.zero;
+
+  /**
+   * The maximum commit_index currently held by the server.
+   *
+   * @generated from field: uint64 max_commit_index = 2;
+   */
+  maxCommitIndex = protoInt64.zero;
+
+  constructor(data?: PartialMessage<GetCommitIndexRangeResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "audiotool.document.v1.GetCommitIndexRangeResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "min_commit_index", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 2, name: "max_commit_index", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetCommitIndexRangeResponse {
+    return new GetCommitIndexRangeResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): GetCommitIndexRangeResponse {
+    return new GetCommitIndexRangeResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): GetCommitIndexRangeResponse {
+    return new GetCommitIndexRangeResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: GetCommitIndexRangeResponse | PlainMessage<GetCommitIndexRangeResponse> | undefined, b: GetCommitIndexRangeResponse | PlainMessage<GetCommitIndexRangeResponse> | undefined): boolean {
+    return proto3.util.equals(GetCommitIndexRangeResponse, a, b);
+  }
+}
+
+/**
  * Request for [GetEntities][audiotool.document.v1.GetEntities].
  *
  * @generated from message audiotool.document.v1.GetEntitiesRequest
@@ -327,6 +418,18 @@ export class GetEntitiesRequest extends Message<GetEntitiesRequest> {
    */
   filter = "";
 
+  /**
+   * The commit_index for the entities to get.
+   *
+   * If the commit_index is 0, you will receive the latest entities.
+   *
+   * If the commit_index is > 0, you will receive the entities at the commit_index or an error if
+   * the commit_index is out of bound.
+   *
+   * @generated from field: uint64 commit_index = 3;
+   */
+  commitIndex = protoInt64.zero;
+
   constructor(data?: PartialMessage<GetEntitiesRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -337,6 +440,7 @@ export class GetEntitiesRequest extends Message<GetEntitiesRequest> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "project_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "filter", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "commit_index", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): GetEntitiesRequest {
@@ -425,9 +529,19 @@ export class AttachRequest extends Message<AttachRequest> {
    *
    * If the client is up to date with the server the server will send a NoopResponse message.
    *
-   * @generated from field: uint32 commit_index = 2;
+   * @generated from field: uint64 commit_index = 2;
    */
-  commitIndex = 0;
+  commitIndex = protoInt64.zero;
+
+  /**
+   * The id of the client. This is used to identify the client
+   * (audiotool.document.v1.Client) and is used to distinguish between multiple clients of the same
+   * source (e.g. user has opened the document on multiple devices). This name can be reused if a
+   * client reconnects.
+   *
+   * @generated from field: string client_id = 3;
+   */
+  clientId = "";
 
   constructor(data?: PartialMessage<AttachRequest>) {
     super();
@@ -438,7 +552,8 @@ export class AttachRequest extends Message<AttachRequest> {
   static readonly typeName = "audiotool.document.v1.AttachRequest";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "project_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "commit_index", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 2, name: "commit_index", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 3, name: "client_id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AttachRequest {
@@ -527,9 +642,9 @@ export class Noop extends Message<Noop> {
   /**
    * The current commit_index of the server.
    *
-   * @generated from field: uint32 server_commit_index = 1;
+   * @generated from field: uint64 server_commit_index = 1;
    */
-  serverCommitIndex = 0;
+  serverCommitIndex = protoInt64.zero;
 
   constructor(data?: PartialMessage<Noop>) {
     super();
@@ -539,7 +654,7 @@ export class Noop extends Message<Noop> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "audiotool.document.v1.Noop";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "server_commit_index", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 1, name: "server_commit_index", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Noop {
@@ -556,107 +671,6 @@ export class Noop extends Message<Noop> {
 
   static equals(a: Noop | PlainMessage<Noop> | undefined, b: Noop | PlainMessage<Noop> | undefined): boolean {
     return proto3.util.equals(Noop, a, b);
-  }
-}
-
-/**
- * Request for [Modify][audiotool.document.v1.Modify].
- *
- * @generated from message audiotool.document.v1.ModifyRequest
- */
-export class ModifyRequest extends Message<ModifyRequest> {
-  /**
-   * Possible requests. The first one (and only the first one) should be the document id
-   * to which subsequent transactions should be applied.
-   *
-   * @generated from oneof audiotool.document.v1.ModifyRequest.message
-   */
-  message: {
-    /**
-     * The document id on which to apply subsequent transactions.
-     *
-     * @generated from field: string project_name = 1;
-     */
-    value: string;
-    case: "projectName";
-  } | {
-    /**
-     * The transaction to apply to the document.
-     *
-     * @generated from field: audiotool.document.v1.Transaction transaction = 2;
-     */
-    value: Transaction;
-    case: "transaction";
-  } | { case: undefined; value?: undefined } = { case: undefined };
-
-  constructor(data?: PartialMessage<ModifyRequest>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "audiotool.document.v1.ModifyRequest";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "project_name", kind: "scalar", T: 9 /* ScalarType.STRING */, oneof: "message" },
-    { no: 2, name: "transaction", kind: "message", T: Transaction, oneof: "message" },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ModifyRequest {
-    return new ModifyRequest().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ModifyRequest {
-    return new ModifyRequest().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ModifyRequest {
-    return new ModifyRequest().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: ModifyRequest | PlainMessage<ModifyRequest> | undefined, b: ModifyRequest | PlainMessage<ModifyRequest> | undefined): boolean {
-    return proto3.util.equals(ModifyRequest, a, b);
-  }
-}
-
-/**
- * Response for [Modify][audiotool.document.v1.Modify].
- *
- * @generated from message audiotool.document.v1.ModifyResponse
- */
-export class ModifyResponse extends Message<ModifyResponse> {
-  /**
-   * If the transaction was applied to the document, this will be "". Otherwise contains a message
-   * explaining why it couldn't be applied.
-   *
-   * @generated from field: string error = 1;
-   */
-  error = "";
-
-  constructor(data?: PartialMessage<ModifyResponse>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "audiotool.document.v1.ModifyResponse";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "error", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ModifyResponse {
-    return new ModifyResponse().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ModifyResponse {
-    return new ModifyResponse().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ModifyResponse {
-    return new ModifyResponse().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: ModifyResponse | PlainMessage<ModifyResponse> | undefined, b: ModifyResponse | PlainMessage<ModifyResponse> | undefined): boolean {
-    return proto3.util.equals(ModifyResponse, a, b);
   }
 }
 
@@ -768,9 +782,9 @@ export class Transaction extends Message<Transaction> {
    * An incremental number that is increased with each accepted transaction provided by the
    * document-service.
    *
-   * @generated from field: uint32 commit_index = 2;
+   * @generated from field: uint64 commit_index = 2;
    */
-  commitIndex = 0;
+  commitIndex = protoInt64.zero;
 
   /**
    * A list of modifications to the document. The order of the modifications is important.
@@ -788,7 +802,7 @@ export class Transaction extends Message<Transaction> {
   static readonly typeName = "audiotool.document.v1.Transaction";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "commit_index", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 2, name: "commit_index", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 3, name: "modifications", kind: "message", T: Modification, repeated: true },
   ]);
 
@@ -1482,33 +1496,32 @@ export class GetClientStatsResponse extends Message<GetClientStatsResponse> {
  */
 export class ClientInfo extends Message<ClientInfo> {
   /**
-   * the client's id
+   * the client's name. It is idempotent created from the Client message to identify the client.
    *
-   * @generated from field: string id = 1;
+   * @generated from field: string name = 1;
    */
-  id = "";
+  name = "";
+
+  /**
+   * The client.
+   *
+   * @generated from field: audiotool.document.v1.Client client = 2;
+   */
+  client?: Client;
 
   /**
    * the client's ping
    *
-   * @generated from field: uint32 ping_ms = 2;
+   * @generated from field: uint32 ping_ms = 3;
    */
   pingMs = 0;
 
   /**
    * set if client is offline
    *
-   * @generated from field: bool offline = 3;
+   * @generated from field: bool offline = 4;
    */
   offline = false;
-
-  /**
-   * The source name of the client. This can be a user name in the form of 'users/{id}' but is not
-   * guaranteed to be a user.
-   *
-   * @generated from field: string source_name = 4;
-   */
-  sourceName = "";
 
   constructor(data?: PartialMessage<ClientInfo>) {
     super();
@@ -1518,10 +1531,10 @@ export class ClientInfo extends Message<ClientInfo> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "audiotool.document.v1.ClientInfo";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "ping_ms", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
-    { no: 3, name: "offline", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
-    { no: 4, name: "source_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "client", kind: "message", T: Client },
+    { no: 3, name: "ping_ms", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 4, name: "offline", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClientInfo {
@@ -1686,6 +1699,57 @@ export class GetTimeResponse extends Message<GetTimeResponse> {
 
   static equals(a: GetTimeResponse | PlainMessage<GetTimeResponse> | undefined, b: GetTimeResponse | PlainMessage<GetTimeResponse> | undefined): boolean {
     return proto3.util.equals(GetTimeResponse, a, b);
+  }
+}
+
+/**
+ * Request for [RenderAudio][audiotool.document.v1.RenderAudio].
+ *
+ * @generated from message audiotool.document.v1.RenderAudioRequest
+ */
+export class RenderAudioRequest extends Message<RenderAudioRequest> {
+  /**
+   * The project name of the project to render audio for.
+   *
+   * @generated from field: string project_name = 1;
+   */
+  projectName = "";
+
+  /**
+   * The commit index of the project state to render.
+   *
+   * If 0, the latest state of the project will be used.
+   *
+   * @generated from field: uint64 commit_index = 2;
+   */
+  commitIndex = protoInt64.zero;
+
+  constructor(data?: PartialMessage<RenderAudioRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "audiotool.document.v1.RenderAudioRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "project_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "commit_index", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): RenderAudioRequest {
+    return new RenderAudioRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): RenderAudioRequest {
+    return new RenderAudioRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): RenderAudioRequest {
+    return new RenderAudioRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: RenderAudioRequest | PlainMessage<RenderAudioRequest> | undefined, b: RenderAudioRequest | PlainMessage<RenderAudioRequest> | undefined): boolean {
+    return proto3.util.equals(RenderAudioRequest, a, b);
   }
 }
 

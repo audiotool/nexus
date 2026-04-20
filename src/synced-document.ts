@@ -1,5 +1,7 @@
-import type { AudiotoolAPI } from "@api/audiotool-api"
-import { getWasmDocumentState } from "@document/backend/create-wasm-document-state"
+import {
+  getWasmDocumentState,
+  initWasmLoader,
+} from "@document/backend/create-wasm-document-state"
 import { createCollabGateway } from "@document/backend/document-service/gateway"
 import { createWasmNexusValidator } from "@document/backend/document-service/wasm-nexus-validator"
 import { NexusGateway } from "@document/backend/gateway"
@@ -14,10 +16,15 @@ import {
   TransactionBuilder,
 } from "@document/transaction-builder"
 import { DocumentService } from "@gen/document/v1/document_service_connect"
-import { createAuthorizedKeepaliveTransport } from "@utils/grpc/keepalive-transport"
-import { createRetryingPromiseClient } from "@utils/grpc/retrying-client"
+import {
+  createRetryingPromiseClient,
+  type RetryingClient,
+} from "@utils/grpc/retrying-client"
+import type { ProjectService } from "@gen/project/v1/project_service_connect"
 import { throw_ } from "@utils/lang"
 import { ValueNotifier } from "@utils/observable-notifier-value"
+import type { TransportFactory } from "./transport/types"
+import type { WasmLoader } from "./wasm/types"
 
 /**
  * An Audiotool project document that synchronizes in real-time with the backend.
@@ -27,42 +34,37 @@ import { ValueNotifier } from "@utils/observable-notifier-value"
  *
  * @example
  * ```typescript
- * // authorize
- * const status = await getLoginStatus({...})
- * if (!status.loggedIn){
- *    ...
- * }
+ * import { audiotool } from "@audiotool/nexus"
  *
- * // create client
- * const client = await createAudiotoolClient({authorization: status});
+ * const at = await audiotool({...})
  *
- * // create a document
- * const document = await client.createSyncedDocument({
- *   mode: "online",
- *   project: "https://beta.audiotool.com/studio?project=abc123"
- * });
+ * if (at.status === "authenticated") {
+ *   // create a document
+ *   const document = await at.open("https://beta.audiotool.com/studio?project=abc123");
  *
- * // Listen for entity creation - executes iff there's already a tonematrix in the project
- * document.events.onCreate("tonematrix", (tm) => {
- *   console.log("New tonematrix created");
- * });
- *
- * // Start syncing
- * await document.start();
- *
- * // Create entities in a transaction
- * const delay = await document.modify((t) => {
- *   return t.create("stompboxDelay", {
- *     delayTime: 0.5,
- *     feedback: 0.3
+ *   // Listen for entity creation
+ *   document.events.onCreate("tonematrix", (tm) => {
+ *     console.log("New tonematrix created");
  *   });
- * });
  *
- * // Stop syncing
- * await document.stop()
+ *   // Start syncing
+ *   await document.start();
+ *
+ *   // Create entities in a transaction
+ *   const delay = await document.modify((t) => {
+ *     return t.create("stompboxDelay", {
+ *       delayTime: 0.5,
+ *       feedback: 0.3
+ *     });
+ *   });
+ *
+ *   // Stop syncing
+ *   await document.stop()
+ * }
  * ```
  *
- * @see {@link createAudiotoolClient} for creating client instances
+ * @see {@link audiotool} for browser authentication
+ * @see {@link createAudiotoolClient} for Node.js usage
  */
 export type SyncedDocument = {
   /**
@@ -170,6 +172,18 @@ export type SyncedDocument = {
    *
    **/
   stop: () => Promise<void>
+
+  /**
+   * URL to open this project in the Audiotool studio.
+   *
+   * @example
+   * ```typescript
+   * const doc = await client.open(projectName)
+   * console.log(`Open in browser: ${doc.dawUrl}`)
+   * // => "https://beta.audiotool.com/studio?project=abc123-..."
+   * ```
+   */
+  dawUrl: string
 }
 
 /** Create a SyncedDocument wrapper from a NexusDocument. */
@@ -178,6 +192,7 @@ export const createSyncedDocument = (
   connected: ValueNotifier<boolean>,
   validator: NexusValidator,
   gateway: NexusGateway,
+  dawUrl: string,
 ): SyncedDocument => {
   return {
     connected,
@@ -188,6 +203,7 @@ export const createSyncedDocument = (
     events: document.events,
     start: async () => document.takeTransactions({ validator, gateway }),
     stop: async () => document.terminate(),
+    dawUrl,
   }
 }
 
@@ -198,19 +214,40 @@ export const createSyncedDocument = (
  *
  * Can be safely thrown away after usage.
  */
-export type OfflineDocument = Omit<SyncedDocument, "start" | "stop">
+export type OfflineDocument = Omit<SyncedDocument, "start" | "stop" | "dawUrl">
 
 /**
  * Create a nexus document that is not synced to the backend; all changes are discarded on reload/shutdown.
  *
  * The returned document is ready to be modified immediately and can be thrown away without calling start/stop.
  *
- * To create a document that is synced with a state from the backend/DAW, use {@link AudiotoolClient.createSyncedDocument}.
- * */
+ * To create a document that is synced with a state from the backend/DAW, use {@link AudiotoolClient.open}.
+ *
+ * @example
+ * ```typescript
+ * // Browser - uses fetch-based WASM loader by default
+ * const doc = await createOfflineDocument()
+ *
+ * // Node.js/Bun/Deno - use disk-based WASM loader
+ * import { createDiskWasmLoader } from "@audiotool/nexus/node"
+ * const doc = await createOfflineDocument({ wasm: createDiskWasmLoader() })
+ * ```
+ */
 export const createOfflineDocument = async (opts?: {
   /** Whether validation is enabled. Turning that off results in fewer transaction errors, but can lead to invalid states. */
   validated?: boolean
+  /**
+   * WASM loader to use for loading the validator.
+   * - Browser: uses fetch-based loader by default (no need to specify)
+   * - Node.js/Bun/Deno: use `createDiskWasmLoader()` from `@audiotool/nexus/node`
+   */
+  wasm?: WasmLoader
 }): Promise<OfflineDocument> => {
+  // Initialize WASM loader if provided
+  if (opts?.wasm) {
+    initWasmLoader(opts.wasm)
+  }
+
   const validator =
     (opts?.validated ?? true)
       ? await createWasmNexusValidator()
@@ -220,22 +257,29 @@ export const createOfflineDocument = async (opts?: {
   const document = new NexusDocument()
   const connected = new ValueNotifier(true)
 
-  const nexus = createSyncedDocument(document, connected, validator, gateway)
+  const nexus = createSyncedDocument(
+    document,
+    connected,
+    validator,
+    gateway,
+    "", // offline documents have no project URL
+  )
   await nexus.start()
   return nexus
 }
 
 /** Create a SyncedDocument wrapper that's connected to the backend. */
 export const createOnlineDocument = async (
-  api: AudiotoolAPI,
+  projectService: RetryingClient<typeof ProjectService>,
   projectName: string,
   getToken: () => Promise<string>,
+  transportFactory: TransportFactory,
 ): Promise<SyncedDocument> => {
   // start compiling validator
   let validatorPromise: Promise<NexusValidator> = createWasmNexusValidator()
 
   // get session from project service
-  const session = await api.projectService.openSession({
+  const session = await projectService.openSession({
     projectName,
   })
 
@@ -246,7 +290,7 @@ export const createOnlineDocument = async (
   // create document service using url contained in session
   const documentService = createRetryingPromiseClient(
     DocumentService,
-    await createAuthorizedKeepaliveTransport({
+    await transportFactory.createTransport({
       baseUrl:
         session.session?.documentServiceUrl ??
         throw_("backend returned no document service url"),
@@ -266,7 +310,11 @@ export const createOnlineDocument = async (
   const document = new NexusDocument()
   const connected = new ValueNotifier(false)
 
+  // Extract project ID from projectName (format: "projects/{uuid}")
+  const projectId = projectName.replace(/^projects\//, "")
+  const dawUrl = `https://beta.audiotool.com/studio?project=${projectId}`
+
   // make gateway.blocked update connected
   gateway.blocked.subscribe((v) => connected.setValue(!v), true)
-  return createSyncedDocument(document, connected, validator, gateway)
+  return createSyncedDocument(document, connected, validator, gateway, dawUrl)
 }

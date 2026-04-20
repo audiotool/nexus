@@ -1,5 +1,5 @@
 // THIS FILE IS GENERATED - DO NOT EDIT
-// Copyright 2025 Audiotool Inc.
+// Copyright 2026 Audiotool Inc.
 
 import { PrimitiveField } from "@document/fields"
 import { NexusObject } from "@document/object"
@@ -44,6 +44,11 @@ export type GraphicalEQ = {
    * default | 0
    * range | full*/
   positionY: PrimitiveField<number, "mut">
+  /**
+   *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   *  This is used for record-keeping only and has no effect on the sound of the device.
+   */
+  presetName: PrimitiveField<string, "mut">
   /**
    *  The first peak filter. In the DAW UI, parameters are shown to the left.
    */
@@ -125,6 +130,11 @@ export type GraphicalEQConstructor = {
    * range | full*/
   positionY?: number
   /**
+   *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   *  This is used for record-keeping only and has no effect on the sound of the device.
+   */
+  presetName?: string
+  /**
    *  The first peak filter. In the DAW UI, parameters are shown to the left.
    */
   filter1?: GraphicalEQFilterConstructor
@@ -204,8 +214,8 @@ export type GraphicalEQFilter = {
   q: PrimitiveField<number, "mut">
   /**
    *  Stereo separation of the filter. If 0, both filter gains are equal.
-   *  If 1, the left channel is fully boosted and the right channel is fully attenuated.
-   *  If -1, the right channel is fully boosted and the left channel is fully attenuated.
+   *  If -1, the left channel is fully boosted and the right channel is fully attenuated.
+   *  If 1, the right channel is fully boosted and the left channel is fully attenuated.
    *
    *
    * key | value
@@ -247,8 +257,8 @@ export type GraphicalEQFilterConstructor = {
   q?: number
   /**
    *  Stereo separation of the filter. If 0, both filter gains are equal.
-   *  If 1, the left channel is fully boosted and the right channel is fully attenuated.
-   *  If -1, the right channel is fully boosted and the left channel is fully attenuated.
+   *  If -1, the left channel is fully boosted and the right channel is fully attenuated.
+   *  If 1, the right channel is fully boosted and the left channel is fully attenuated.
    *
    *
    * key | value

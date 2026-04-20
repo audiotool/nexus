@@ -1,5 +1,5 @@
 // THIS FILE IS GENERATED - DO NOT EDIT
-// Copyright 2025 Audiotool Inc.
+// Copyright 2026 Audiotool Inc.
 
 import { ArrayField, PrimitiveField } from "@document/fields"
 
@@ -34,8 +34,12 @@ export type MicroTuningOctave = {
    * key | value
    * --- | ---
    * default | 0
-   * range | full*/
+   * range | [-1, 1]*/
   semitones: ArrayField<PrimitiveField<number, "mut">, 12>
+  /**
+   *  The name of this micro tuning octave.
+   */
+  displayName: PrimitiveField<string, "mut">
 }
 /** @internal */
 
@@ -55,7 +59,11 @@ export type MicroTuningOctaveConstructor = {
    * key | value
    * --- | ---
    * default | 0
-   * range | full*/
+   * range | [-1, 1]*/
   semitones?: number[] & { length: 12 }
+  /**
+   *  The name of this micro tuning octave.
+   */
+  displayName?: string
 }
 

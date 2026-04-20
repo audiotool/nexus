@@ -45,6 +45,14 @@ export class NoteSplitter extends Message<NoteSplitter> {
   positionY = 0;
 
   /**
+   * The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   * This is used for record-keeping only and has no effect on the sound of the device.
+   *
+   * @generated from field: string preset_name = 7;
+   */
+  presetName = "";
+
+  /**
    * Notes Input
    *
    * @generated from field: audiotool.document.v1.Empty notes_input = 5;
@@ -70,6 +78,7 @@ export class NoteSplitter extends Message<NoteSplitter> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "position_x", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "position_y", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 7, name: "preset_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "notes_input", kind: "message", T: Empty },
     { no: 6, name: "channels", kind: "message", T: NoteSplitterChannel, repeated: true },
   ]);

@@ -28,7 +28,7 @@ export class MixerCompressor extends Message<MixerCompressor> {
   releaseMs = 0;
 
   /**
-   * Makeup gain applied to the signal after compression. 
+   * Makeup gain applied to the signal after compression.
    *
    * @generated from field: float makeup_gain_db = 3;
    */

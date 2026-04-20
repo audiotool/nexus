@@ -1,126 +1,241 @@
-import type { getLoginStatus } from "src/login-status"
-import { AudiotoolAPI, createAudiotoolAPI } from "./api/audiotool-api"
+import { createRegistry } from "@bufbuild/protobuf"
+import { initWasmLoader } from "@document/backend/create-wasm-document-state"
+import { createPresetUtil, type PresetUtil } from "./api/preset-utils"
+import { createPATAuth } from "./auth/pat-auth"
+import type { AuthProvider } from "./auth/types"
+import { AudiographService } from "./gen/audiotool/audiograph/v1/audiograph_service_connect"
+import { Preset } from "./gen/audiotool/document/v1/preset/v1/preset_pb"
+import { ProjectRoleService } from "./gen/audiotool/project/v1/project_role_service_connect"
+import { ProjectService } from "./gen/audiotool/project/v1/project_service_connect"
+import { SampleService } from "./gen/audiotool/sample/v1/sample_service_connect"
+import { UserService } from "./gen/audiotool/user/v1/user_service_connect"
 import { createOnlineDocument, SyncedDocument } from "./synced-document"
+import { createBrowserTransportFactory } from "./transport/browser-transport"
+import type { TransportFactory } from "./transport/types"
 import { extractUuid } from "./utils/extract-uuid"
+import {
+  neverThrowingFetch,
+  type NeverThrowingFetch,
+} from "./utils/fetch/never-throwing-fetch"
+import {
+  createRetryingPromiseClient,
+  type RetryingClient,
+} from "./utils/grpc/retrying-client"
+import type { WasmLoader } from "./wasm/types"
 
 export type { SyncedDocument }
 
 /**
- * An instance of the client that's authorized to make calls on a use's behalf.
+ * An instance of the client that's authorized to make calls on a user's behalf.
  *
- * Lets you create synced documents and make API calls to the audiotool backend.
- *
- * Use {@link getLoginStatus} to get authorized to make calls on a user's behalf.
+ * Provides direct access to all Audiotool services and the ability to open projects
+ * for real-time collaboration.
  *
  * @example
  * ```typescript
- * const status = await getLoginStatus({...})
- * if (status.loggedIn){
- *   const client = await createAudiotoolClient({authorization: status});
- * } else {
- *   console.error("User is not logged in");
+ * // Browser app
+ * import { audiotool } from "@audiotool/nexus"
+ * const at = await audiotool({...})
+ * if (at.status === "authenticated") {
+ *   const projects = await at.projects.listProjects({})
+ *   const doc = await at.open(projects.projects[0].name)
  * }
+ *
+ * // Node.js app (with tokens from browser OAuth)
+ * import { createAudiotoolClient, createServerAuth } from "@audiotool/nexus"
+ * import { createNodeTransport, createDiskWasmLoader } from "@audiotool/nexus/node"
+ * const client = await createAudiotoolClient({
+ *   auth: createServerAuth({ accessToken, refreshToken, expiresAt, clientId }),
+ *   transport: createNodeTransport(),
+ *   wasm: createDiskWasmLoader(),
+ * })
+ * const projects = await client.projects.listProjects({})
  * ```
  */
 export type AudiotoolClient = {
   /**
-   * Create a synced document instance for real-time collaboration.
+   * Open a project for real-time collaboration.
    *
-   * Make sure to call {@link SyncedDocument.start} to start the synchronization process,
-   * and {@link SyncedDocument.stop} before throwing the document away.
+   * Returns a {@link SyncedDocument} that syncs with the Audiotool backend.
+   * Call {@link SyncedDocument.start} to begin syncing and {@link SyncedDocument.stop}
+   * when done.
    *
-   * @param opts Configuration for the document connection
-   * @returns Promise resolving to a SyncedDocument instance
+   * @param project - The project to open. Can be a project URL, UUID, or name.
+   *
+   * @example
+   * ```typescript
+   * const doc = await client.open("https://beta.audiotool.com/studio?project=abc123")
+   * await doc.start()
+   * // ... work with the document
+   * await doc.stop()
+   * ```
    */
-  createSyncedDocument: (opts: {
-    /** The project to sync to; this can be anything containing a project's UUID, e.g. the URL of the studio
-     * when the project is open in the browser.
-     */
-    project: string
-  }) => Promise<SyncedDocument>
+  open: (project: string) => Promise<SyncedDocument>
+
+  /** Lookup, create, and delete projects. */
+  projects: RetryingClient<typeof ProjectService>
+
+  /** Add collaborators to your projects. */
+  projectRoles: RetryingClient<typeof ProjectRoleService>
+
+  /** Lookup users. */
+  users: RetryingClient<typeof UserService>
+
+  /** Lookup and upload samples. */
+  samples: RetryingClient<typeof SampleService>
+
+  /** Work with presets - get, apply, and manage device presets. */
+  presets: PresetUtil
+
+  /** Manage audio graphs (waveform plots for samples). */
+  audioGraph: RetryingClient<typeof AudiographService>
 
   /**
-   * Collection of Audiotool API service clients.
-   *
-   * Provides access to all Audiotool services including projects, users, samples, presets, and more.
-   * All services use retrying clients that handle network issues gracefully.
+   * Fetch with authorization headers included.
+   * Never throws - returns Error on failure.
    */
-  api: AudiotoolAPI
+  authorizedFetch: NeverThrowingFetch
+
+  /**
+   * Fetch without authorization.
+   * Never throws - returns Error on failure.
+   */
+  fetch: NeverThrowingFetch
 }
 
 /**
- * Create the main Audiotool client instance.
- *
- * This is the primary entry point to interact with the audiotool backend.
- *
- * See {@link getLoginStatus} for how to authorize the client.
- *
- * @example
- * ```typescript
- * // Basic setup
- * import { createAudiotoolClient } from "@audiotool/nexus";
- *
- *
- * // create client
- * const client = await createAudiotoolClient({authorization: status});
- *
- * // Connect to an online project
- * const document = await client.createSyncedDocument({
- *   mode: "online",
- *   project: "https://beta.audiotool.com/studio?project=abc123"
- * });
- *
- * await document.start();
- * ```
- *
- * @example API usage
- * ```typescript
- * // Access API services
- * const client = await createAudiotoolClient({authorization: status});
- *
- * // List projects
- * const projects = await client.api.projectService.listProjects({});
- * ```
- *
- * @see {@link AudiotoolClient} for the client interface
- * @see {@link SyncedDocument} for document manipulation
- * @see {@link AudiotoolAPI} for available API services
+ * Internal client creation function used by both audiotool() and createAudiotoolClient().
+ * @internal
  */
-export const createAudiotoolClient = async ({
-  authorization: authorization,
+export const createAudiotoolClientInternal = async ({
+  getToken,
+  transportFactory,
 }: {
-  /**
-   * The token provider used to generate authorization tokens to authenticate against the API.
-   *
-   * This could be:
-   * * the return value of {@link getLoginStatus}, if it returns the user is logged in
-   * * a constant authorization token as a string (e.g. the PAT from https://developer.audiotool.com/personal-access-tokens)
-   * */
-  authorization: string | { getToken: () => Promise<string | Error> }
+  getToken: () => Promise<string>
+  transportFactory: TransportFactory
 }): Promise<AudiotoolClient> => {
-  // wrap the token provider in a function that adds the bearer prefix if needed
-  const getToken = async () => {
-    if (typeof authorization === "string") {
-      return addBearerPrefix(authorization)
-    }
-    const tokenValue = await authorization.getToken()
-    if (tokenValue instanceof Error) {
-      throw new Error("Failed to get authentication token", {
-        cause: tokenValue,
-      })
-    }
-    return addBearerPrefix(tokenValue)
+  // Create the RPC transport
+  const rpcTransport = await transportFactory.createTransport({
+    baseUrl: "https://rpc.audiotool.com/",
+    useBinaryFormat: false,
+    typeRegistry: createRegistry(Preset),
+    getToken,
+  })
+
+  // Create service clients
+  const projects = createRetryingPromiseClient(ProjectService, rpcTransport)
+  const projectRoles = createRetryingPromiseClient(
+    ProjectRoleService,
+    rpcTransport,
+  )
+  const users = createRetryingPromiseClient(UserService, rpcTransport)
+  const samples = createRetryingPromiseClient(SampleService, rpcTransport)
+  const presets = createPresetUtil(rpcTransport)
+  const audioGraph = createRetryingPromiseClient(
+    AudiographService,
+    rpcTransport,
+  )
+
+  const authorizedFetch = async (
+    input: RequestInfo | URL,
+    init?: RequestInit,
+  ): Promise<Response | Error> => {
+    return neverThrowingFetch(input, {
+      credentials: "omit",
+      ...init,
+    })
   }
 
-  const api = await createAudiotoolAPI(getToken)
   return {
-    api,
-    createSyncedDocument: async ({ project }) => {
+    projects,
+    projectRoles,
+    users,
+    samples,
+    presets,
+    audioGraph,
+    authorizedFetch,
+    fetch: neverThrowingFetch,
+
+    open: async (project) => {
       const projectName = extractProjectName(project)
-      const document = await createOnlineDocument(api, projectName, getToken)
+      const document = await createOnlineDocument(
+        projects,
+        projectName,
+        getToken,
+        transportFactory,
+      )
       return document
     },
   }
+}
+
+/**
+ * Create an Audiotool client with explicit auth and transport configuration.
+ *
+ * Use this for Node.js scripts, server-side code, or when you need manual control
+ * over authentication and transport.
+ *
+ * For browser apps with OAuth, use `audiotool()` instead - it's simpler and handles
+ * the OAuth flow automatically.
+ *
+ * @example
+ * ```typescript
+ * // Node.js with server auth (tokens from browser OAuth)
+ * import { createAudiotoolClient, createServerAuth } from "@audiotool/nexus"
+ * import { createNodeTransport, createDiskWasmLoader } from "@audiotool/nexus/node"
+ *
+ * const client = await createAudiotoolClient({
+ *   auth: createServerAuth({ accessToken, refreshToken, expiresAt, clientId }),
+ *   transport: createNodeTransport(),
+ *   wasm: createDiskWasmLoader(),
+ * })
+ *
+ * // List projects (flat API)
+ * const projects = await client.projects.listProjects({})
+ *
+ * // Open a project for editing
+ * const doc = await client.open(projects.projects[0].name)
+ * await doc.start()
+ * ```
+ *
+ * @see {@link audiotool} for browser apps with OAuth
+ */
+export const createAudiotoolClient = async ({
+  auth,
+  transport,
+  wasm,
+}: {
+  /**
+   * Authentication provider or PAT string.
+   * - String: treated as a Personal Access Token
+   * - AuthProvider: custom auth provider (e.g., from createPATAuth, createServerAuth)
+   */
+  auth: string | AuthProvider
+  /**
+   * Transport factory for making RPC calls.
+   * - For Node.js: use `createNodeTransport()` from `@audiotool/nexus/node`
+   * - For browser: can be omitted (defaults to browser transport)
+   */
+  transport?: TransportFactory
+  /**
+   * WASM loader for loading the document validator.
+   * - For Node.js/Bun/Deno: use `createDiskWasmLoader()` from `@audiotool/nexus/node`
+   * - For browser: can be omitted (defaults to fetch-based loader)
+   */
+  wasm?: WasmLoader
+}): Promise<AudiotoolClient> => {
+  const authProvider = typeof auth === "string" ? createPATAuth(auth) : auth
+  const transportFactory = transport ?? createBrowserTransportFactory()
+
+  // Initialize WASM loader if provided
+  if (wasm) {
+    initWasmLoader(wasm)
+  }
+
+  return createAudiotoolClientInternal({
+    getToken: () => authProvider.getToken(),
+    transportFactory,
+  })
 }
 
 export const extractProjectName = (project: string) => {
@@ -132,8 +247,4 @@ export const extractProjectName = (project: string) => {
   }
 
   return `projects/${projectId}`
-}
-
-const addBearerPrefix = (token: string) => {
-  return token.startsWith("Bearer") ? token : `Bearer ${token}`
 }

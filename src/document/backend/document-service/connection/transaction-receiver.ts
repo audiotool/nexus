@@ -54,7 +54,7 @@ export const createTransactionReceiver = (
   // If we can't continue where we left of, we throw an error that's propagated to the top
   // and shown as regular error screen, which will ask the user to reload the page. Once
   // reloaded, we start again with index 0, thus loading the whole document.
-  let commitIndex = 0
+  let commitIndex = 0n
 
   // If this one is aborted, we terminate the receiver logic entirely.
   const masterAbortController = new AbortController()

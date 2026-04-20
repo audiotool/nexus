@@ -47,6 +47,14 @@ export class Curve extends Message<Curve> {
   positionY = 0;
 
   /**
+   * The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   * This is used for record-keeping only and has no effect on the sound of the device.
+   *
+   * @generated from field: string preset_name = 17;
+   */
+  presetName = "";
+
+  /**
    * Gain applied to the signal after equalization.
    *
    * @generated from field: float gain_db = 5;
@@ -147,6 +155,7 @@ export class Curve extends Message<Curve> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "position_x", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "position_y", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 17, name: "preset_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "gain_db", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 6, name: "is_active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 7, name: "spectrum_mode_index", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },

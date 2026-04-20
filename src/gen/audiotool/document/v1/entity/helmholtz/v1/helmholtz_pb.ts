@@ -52,6 +52,14 @@ export class Helmholtz extends Message<Helmholtz> {
   positionY = 0;
 
   /**
+   * The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   * This is used for record-keeping only and has no effect on the sound of the device.
+   *
+   * @generated from field: string preset_name = 13;
+   */
+  presetName = "";
+
+  /**
    * Reference to the microtuning.
    *
    * @generated from field: audiotool.document.v1.Pointer micro_tuning = 5;
@@ -122,6 +130,7 @@ export class Helmholtz extends Message<Helmholtz> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "position_x", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "position_y", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 13, name: "preset_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "micro_tuning", kind: "message", T: Pointer },
     { no: 6, name: "gain", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 7, name: "decay_time", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },

@@ -18,7 +18,7 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Duration, Message, proto3, Timestamp } from "@bufbuild/protobuf";
+import { Duration, Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
 
 /**
  * TrackLicense is the license of the Track.
@@ -159,9 +159,9 @@ export class Project extends Message<Project> {
    * this value. If the value is not set, and `copy_of_project_name` is specified the latest commit
    * of the project will be used and set.
    *
-   * @generated from field: uint32 copy_of_project_commit_index = 7;
+   * @generated from field: uint64 copy_of_project_commit_index = 7;
    */
-  copyOfProjectCommitIndex = 0;
+  copyOfProjectCommitIndex = protoInt64.zero;
 
   /**
    * The Project name.
@@ -218,10 +218,21 @@ export class Project extends Message<Project> {
   /**
    * The cover art URL of the project.
    *
-   * `?width=256&height=256&fit=cover&format=webp` can be appended to the URL for resizing
-   * (current restriction - this is only able for for CDNs > 2)
+   * The cover_url will be in the form of:
    *
-   * The cover_url must be uploaded due ProjectService.UploadCover.
+   * "https://.../600x600.webp?{SHA}"
+   *
+   * The SHA can be used for cache busting.
+   *
+   * If you need another resolution you can replace 600x600.webp with:
+   *
+   * - 30x30.webp
+   * - 60x60.webp
+   * - 120x120.webp
+   * - 300x300.webp
+   * - 600x600.webp
+   *
+   * The cover_url must be uploaded via ImageUploadService.
    *
    * Refers to track.cover_url on sync.
    *
@@ -231,11 +242,6 @@ export class Project extends Message<Project> {
 
   /**
    * The snapshot of the DAW configuration of the project.
-   *
-   * `?width=256&height=256&fit=cover&format=webp` can be appended to the URL for resizing
-   * (current restriction - this is only able for for CDNs > 2)
-   *
-   * Refers to track.cover_url on sync.
    *
    * @generated from field: string snapshot_url = 15;
    */
@@ -289,6 +295,28 @@ export class Project extends Message<Project> {
    */
   license = TrackLicense.UNSPECIFIED;
 
+  /**
+   * The legacy project name of the project of the old audiotool platform.
+   *
+   * This value will be empty for new projects.
+   *
+   * @generated from field: string legacy_project_name = 21;
+   */
+  legacyProjectName = "";
+
+  /**
+   * The project_template name of the project template to initialize the project from.
+   *
+   * At create time providing this value will create a project with the data of the project
+   * template.
+   *
+   * If copy_of_project_name is set, this value is ignored.
+   * If project_template_name is se
+   *
+   * @generated from field: string project_template_name = 22;
+   */
+  projectTemplateName = "";
+
   constructor(data?: PartialMessage<Project>) {
     super();
     proto3.util.initPartial(data, this);
@@ -303,7 +331,7 @@ export class Project extends Message<Project> {
     { no: 4, name: "track_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "remix_of_track_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "copy_of_project_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 7, name: "copy_of_project_commit_index", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 7, name: "copy_of_project_commit_index", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 8, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 9, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 10, name: "create_time", kind: "message", T: Timestamp },
@@ -317,6 +345,8 @@ export class Project extends Message<Project> {
     { no: 18, name: "download_allowed", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 19, name: "copy_allowed", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 20, name: "license", kind: "enum", T: proto3.getEnumType(TrackLicense) },
+    { no: 21, name: "legacy_project_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 22, name: "project_template_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Project {

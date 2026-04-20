@@ -55,74 +55,89 @@ To do this, first register your app on [https://developer.audiotool.com/applicat
 - Redirect URIs: `http://127.0.0.1:5173/`
 - Scopes: `project:write`
 
-Then check the login status of your tab by calling {@link index.getLoginStatus | getLoginStatus}:
+Then initialize Audiotool with your app credentials using {@link index.audiotool | audiotool}:
 
 ```ts
-import { getLoginStatus } from "@audiotool/nexus"
+import { audiotool } from "@audiotool/nexus"
 
-const status = await getLoginStatus({
-  clientId: "<client-id of your app>",
+const at = await audiotool({
+  clientId: "<client-id of your app>", // hardcode this — it's not a secret
   redirectUrl: "http://127.0.0.1:5173/",
   scope: "project:write",
 })
 
-if (status.loggedIn) {
+if (at.status === "authenticated") {
   console.debug("Logged in!!")
-} else {
+} else if (at.status === "unauthenticated") {
+  if (at.error) {
+    console.error("Auth error:", at.error)
+  }
   console.debug("Not logged in.")
 }
 ```
 
 The first time you run this, this will print "Not logged in.". We now need to create a button that logs the user in. When they press it, they will be forwarded to accounts.audiotool.com, come back, and the function above will now say "Logged in!!".
 
-We'll create a button that says "Login" or "Logout" depending on whether the user is logged in. Clicking it will switch the state:
+We'll create a button that says "Login" or "Logout" depending on whether the user is logged in:
 
 ```ts
-const button = document.createElement("button")
-button.innerHTML = status.loggedIn ? "Logout" : "Login"
-button.addEventListener("click", () => {
-  if (status.loggedIn) {
-    status.logout()
-  } else {
-    status.login()
-  }
-})
-document.body.appendChild(button)
+if (at.status === "authenticated") {
+  const button = document.createElement("button")
+  button.innerHTML = "Logout"
+  button.addEventListener("click", () => at.logout())
+  document.body.appendChild(button)
+} else if (at.status === "unauthenticated") {
+  const button = document.createElement("button")
+  button.innerHTML = "Login"
+  button.addEventListener("click", () => at.login())
+  document.body.appendChild(button)
+}
 ```
 
 Read more on this process at [Login](./login.md).
 
-## Create the Audiotool client
+## Using `at`
 
-If and only if we have access to some user's account, we can continue by initializing an {@link index.AudiotoolClient | AudiotoolClient}. The client can be used to make API calls and attach to projects.
-
-You can pass in the `status` object you got above to authorize the client, like so:
+When `at.status === "authenticated"`, the `at` object has capabilities to interact with Audiotool.
 
 ```ts
-import { createAudiotoolClient } from "@audiotool/nexus"
+import { audiotool } from "@audiotool/nexus"
 
-if (!status.loggedIn) {
+const at = await audiotool({
+  clientId: "<client-id of your app>", // hardcode this — it's not a secret
+  redirectUrl: "http://127.0.0.1:5173/",
+  scope: "project:write",
+})
+
+if (at.status !== "authenticated") {
   console.log("User not logged in - stopping.")
   throw await new Promise(() => {})
 }
 
-const client = await createAudiotoolClient({
-  authorization: status,
-})
+// get username
+console.log(`Logged in as ${at.userName}`)
+// list projects
+console.log("projects:", await at.projects.listProjects({}))
+// sync to a document
+const nexus = await at.open("https://beta.audiotool.com/studio?project=....")
+await nexus.start()
+// list tone matrices
+console.debug(
+  "number of tonematrixes in the project:",
+  nexus.queryEntities.ofTypes("tonematrix").get().length,
+)
+// stop syncing before throwing away
+await nexus.stop()
 ```
 
 ## Setting up the project
 
 We can now start modifying a project from beta.audiotool.com. To keep things simple, we're just going to open one of your own projects: We assume that you, the developer, have granted your app access to your own account. If you deploy your app, and another user logs in, they won't have access to your project. In that case, you could let the user paste their project URL into your app, or create a project for them via the [API](./api.md).
 
-Go to beta.audiotool.com, create a new project, copy the URL, and paste it to the method {@link index.AudiotoolClient.createSyncedDocument | createSyncedDocument}:
+Go to beta.audiotool.com, create a new project, copy the URL, and paste it to the method {@link index.AudiotoolClient.open | open}:
 
 ```ts
-const nexus = await client.createSyncedDocument({
-  mode: "online",
-  // URL from the DAW
-  project: "https://beta.audiotool.com/studio?project=<project-id>",
-})
+const nexus = await at.open("https://beta.audiotool.com/studio?project=<project-id>")
 ```
 
 The returned object, `nexus`, represents the project you just opened. It contains the entire project state, and offers methods to modify that state.
@@ -212,42 +227,34 @@ After this, you can safely throw the document away.
 Putting all of this together:
 
 ```ts
-import { createAudiotoolClient, getLoginStatus } from "@audiotool/nexus"
+import { audiotool } from "@audiotool/nexus"
 
-// check if the current tab is logged in
-const status = await getLoginStatus({
-  clientId: "<client-id of your app>",
+const at = await audiotool({
+  clientId: "<client-id of your app>", // hardcode this — it's not a secret
   redirectUrl: "http://127.0.0.1:5173/",
   scope: "project:write",
 })
 
-// Create a login/logout button
-const button = document.createElement("button")
-button.innerHTML = status.loggedIn ? "Logout" : "Login"
-button.addEventListener("click", () => {
-  if (status.loggedIn) {
-    status.logout()
-  } else {
-    status.login()
-  }
-})
-document.body.appendChild(button)
-
-if (!status.loggedIn) {
+// Create a login/logout button based on status
+if (at.status === "authenticated") {
+  const button = document.createElement("button")
+  button.innerHTML = "Logout"
+  button.addEventListener("click", () => at.logout())
+  document.body.appendChild(button)
+} else if (at.status === "unauthenticated") {
+  const button = document.createElement("button")
+  button.innerHTML = "Login"
+  button.addEventListener("click", () => at.login())
+  document.body.appendChild(button)
   console.log("User not logged in - stopping.")
   throw await new Promise(() => {})
 }
 
-// create client
-const client = await createAudiotoolClient({
-  authorization: status,
-})
+// at IS the client when authenticated
+console.log(`Logged in as ${at.userName}`)
 
 // open project
-const nexus = await client.createSyncedDocument({
-  mode: "online",
-  project: "https://beta.audiotool.com/studio?project=<project-id>",
-})
+const nexus = await at.open("https://beta.audiotool.com/studio?project=<project-id>")
 
 // create event listeners
 nexus.events.onCreate("tonematrix", (tm) => {
@@ -273,11 +280,9 @@ await nexus.modify((t) => {
   t.update(tm.fields.positionX, 1000)
 })
 
-// terminate the document, if you want
-setTimeout(() => {
-  console.debug("syncing stopped!")
-  nexus.stop()
-}, 10_000)
+// stop syncing if you want, do this before throwing nexus away
+await nexus.stop()
+console.debug("syncing stopped!")
 ```
 
 Example output if creating a stompbox delay, updating it's mix knob, and removing the tonematrix:

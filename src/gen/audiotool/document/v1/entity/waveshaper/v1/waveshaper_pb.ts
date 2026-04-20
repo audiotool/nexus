@@ -60,6 +60,14 @@ export class Waveshaper extends Message<Waveshaper> {
   positionY = 0;
 
   /**
+   * The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   * This is used for record-keeping only and has no effect on the sound of the device.
+   *
+   * @generated from field: string preset_name = 20;
+   */
+  presetName = "";
+
+  /**
    * Allow adjustment of the volume of the signal before it is processed
    * Equivalent to a dB range of [-inf, 9.0].
    *
@@ -153,6 +161,14 @@ export class Waveshaper extends Message<Waveshaper> {
    */
   isActive = false;
 
+  /**
+   * If oversampling is disabled, the waveshaper will not oversample to 2x the sample rate, resulting in a different
+   * quality of sound.
+   *
+   * @generated from field: bool disable_oversampling = 19;
+   */
+  disableOversampling = false;
+
   constructor(data?: PartialMessage<Waveshaper>) {
     super();
     proto3.util.initPartial(data, this);
@@ -165,6 +181,7 @@ export class Waveshaper extends Message<Waveshaper> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "position_x", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "position_y", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 20, name: "preset_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "pre_gain", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 6, name: "mix", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 8, name: "auto_drive", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
@@ -178,6 +195,7 @@ export class Waveshaper extends Message<Waveshaper> {
     { no: 16, name: "side_chain_input", kind: "message", T: Empty },
     { no: 17, name: "audio_output", kind: "message", T: Empty },
     { no: 18, name: "is_active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 19, name: "disable_oversampling", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Waveshaper {

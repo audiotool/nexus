@@ -6,7 +6,7 @@ import { GetClientStatsResponse } from "@gen/document/v1/document_service_pb"
 import type { PartialMessage } from "@bufbuild/protobuf"
 import { ValueNotifier } from "@utils/observable-notifier-value"
 import { describe, expect, expectTypeOf, it, vi } from "vitest"
-import type { KeepaliveTransport } from "./keepalive-transport"
+import type { KeepaliveTransport } from "../../transport/types"
 import {
   createRetryingPromiseClient,
   type RetryingClient,
@@ -39,7 +39,7 @@ describe("RetryingPromiseClient", () => {
 
   it("should forward successful network calls", async () => {
     const response = new GetClientStatsResponse({
-      clientInfo: [{ id: "hello" }],
+      clientInfo: [{ name: "hello" }],
     })
     const transport = createRouterTransport(({ service }) => {
       service(DocumentService, {
@@ -56,7 +56,7 @@ describe("RetryingPromiseClient", () => {
 
   it("should retry on network unavailable errors", async () => {
     const response = new GetClientStatsResponse({
-      clientInfo: [{ id: "hello" }],
+      clientInfo: [{ name: "hello" }],
     })
     let threwError = false
     const transport = createRouterTransport(({ service }) => {
@@ -84,7 +84,7 @@ describe("RetryingPromiseClient", () => {
 
   it("should retry on network unknown errors", async () => {
     const response = new GetClientStatsResponse({
-      clientInfo: [{ id: "hello" }],
+      clientInfo: [{ name: "hello" }],
     })
     let threwError = false
     const transport = createRouterTransport(({ service }) => {
@@ -112,7 +112,7 @@ describe("RetryingPromiseClient", () => {
 
   it("should return an error on unknown errors", async () => {
     const response = new GetClientStatsResponse({
-      clientInfo: [{ id: "hello" }],
+      clientInfo: [{ name: "hello" }],
     })
     let threwError = false
     const transport = createRouterTransport(({ service }) => {
@@ -140,7 +140,7 @@ describe("RetryingPromiseClient", () => {
 
   it("on error, should wrap the original error as error cause", async () => {
     const response = new GetClientStatsResponse({
-      clientInfo: [{ id: "hello" }],
+      clientInfo: [{ name: "hello" }],
     })
     let threwError = false
     const transport = createRouterTransport(({ service }) => {

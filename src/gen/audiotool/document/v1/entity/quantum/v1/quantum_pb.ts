@@ -43,6 +43,14 @@ export class Quantum extends Message<Quantum> {
   positionY = 0;
 
   /**
+   * The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   * This is used for record-keeping only and has no effect on the sound of the device.
+   *
+   * @generated from field: string preset_name = 13;
+   */
+  presetName = "";
+
+  /**
    * Gain of the compressor.
    *
    * @generated from field: float gain_db = 5;
@@ -121,6 +129,7 @@ export class Quantum extends Message<Quantum> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "position_x", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "position_y", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 13, name: "preset_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "gain_db", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 6, name: "rms_window_ms", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 7, name: "is_active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
@@ -190,7 +199,7 @@ export class QuantumBand extends Message<QuantumBand> {
   releaseMs = 0;
 
   /**
-   * Makeup gain applied to the signal after compression. 
+   * Makeup gain applied to the signal after compression.
    *
    * @generated from field: float makeup_gain_db = 6;
    */

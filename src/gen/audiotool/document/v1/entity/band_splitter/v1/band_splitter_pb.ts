@@ -43,6 +43,14 @@ export class BandSplitter extends Message<BandSplitter> {
   positionY = 0;
 
   /**
+   * The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   * This is used for record-keeping only and has no effect on the sound of the device.
+   *
+   * @generated from field: string preset_name = 14;
+   */
+  presetName = "";
+
+  /**
    * Frequency where the low band stops, and the middle band starts.
    *
    * @generated from field: float filter_low_hz = 5;
@@ -120,6 +128,7 @@ export class BandSplitter extends Message<BandSplitter> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "position_x", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "position_y", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 14, name: "preset_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "filter_low_hz", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 6, name: "filter_high_hz", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 7, name: "high_gain", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },

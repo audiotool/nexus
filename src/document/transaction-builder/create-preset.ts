@@ -3,12 +3,12 @@ import { Preset } from "@gen/document/v1/preset/v1/preset_pb"
 import { throw_ } from "@utils/lang"
 import type { NexusEntity } from "../entity"
 import type { EntityQuery } from "../query/entity"
+import { visitPointers } from "./entity-message-utils"
 import { entityToPbMessage } from "./entity-to-pb"
 import {
   PRESET_TARGET_RELATIVE_TYPES,
   type DevicePresetEntityType,
 } from "./prepare-preset"
-import { visitPointers } from "./update-preset-pointers"
 
 export const createDevicePreset = (
   entity: NexusEntity<DevicePresetEntityType>,

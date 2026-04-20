@@ -42,6 +42,14 @@ export class StompboxCompressor extends Message<StompboxCompressor> {
   positionY = 0;
 
   /**
+   * The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   * This is used for record-keeping only and has no effect on the sound of the device.
+   *
+   * @generated from field: string preset_name = 15;
+   */
+  presetName = "";
+
+  /**
    * Attack speed of the compressor.
    *
    * @generated from field: float attack_ms = 5;
@@ -126,6 +134,7 @@ export class StompboxCompressor extends Message<StompboxCompressor> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "position_x", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "position_y", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 15, name: "preset_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "attack_ms", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 6, name: "release_ms", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 7, name: "makeup_gain_db", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },

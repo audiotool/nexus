@@ -36,6 +36,13 @@ export class MicroTuningOctave extends Message<MicroTuningOctave> {
    */
   semitones: number[] = [];
 
+  /**
+   * The name of this micro tuning octave.
+   *
+   * @generated from field: string display_name = 3;
+   */
+  displayName = "";
+
   constructor(data?: PartialMessage<MicroTuningOctave>) {
     super();
     proto3.util.initPartial(data, this);
@@ -46,6 +53,7 @@ export class MicroTuningOctave extends Message<MicroTuningOctave> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "semitones", kind: "scalar", T: 2 /* ScalarType.FLOAT */, repeated: true },
+    { no: 3, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): MicroTuningOctave {

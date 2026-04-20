@@ -18,7 +18,7 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
+import { Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
 import { Project } from "./project_pb.js";
 import { SyncTrackMode } from "./project_service_pb.js";
 
@@ -89,7 +89,8 @@ proto3.util.setEnumType(SyncTrackStatus, "audiotool.project.v1.SyncTrackStatus",
 ]);
 
 /**
- * SyncTrackStatus is used as google.longrunning.Operation.metadata message.
+ * SyncTrackInfo is used as the `metadata` field on [audiotool.longrunning.v1.Operation][audiotool.longrunning.v1.Operation]
+ * (same shape as Google's long-running operation pattern).
  *
  * This is used to track the status of the sync track process.
  *
@@ -113,9 +114,9 @@ export class SyncTrackInfo extends Message<SyncTrackInfo> {
   /**
    * The commit index of the project.
    *
-   * @generated from field: uint32 commit_index = 3;
+   * @generated from field: uint64 commit_index = 3;
    */
-  commitIndex = 0;
+  commitIndex = protoInt64.zero;
 
   /**
    * The desired track name.
@@ -155,7 +156,7 @@ export class SyncTrackInfo extends Message<SyncTrackInfo> {
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "project", kind: "message", T: Project },
     { no: 2, name: "mode", kind: "enum", T: proto3.getEnumType(SyncTrackMode) },
-    { no: 3, name: "commit_index", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 3, name: "commit_index", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 4, name: "track_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "user_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "create_time", kind: "message", T: Timestamp },

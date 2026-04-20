@@ -1,5 +1,5 @@
 ---
-title: Login
+title: Authentication
 ---
 
 This package allows you read and modify projects of other users. To do that, it has to be authorized to make API calls on that user's behalf. This user can be you, or other users that use your app.
@@ -14,7 +14,7 @@ For apps running in the browser, app authorization typically looks like this:
 ![Login Visual](./images/login-visual.png)
 
 > [!NOTE]
-> The login flow described here is intended for browser-based apps. For server-side apps, you can use [PAT-based authentication](./login.md#pat-based-authentication).
+> The login flow described here is intended for browser-based apps. For server-side apps, see [Node.js Usage](#nodejs-usage) or [PAT-based authentication](#pat-based-authentication).
 
 ## Registering your application
 
@@ -45,39 +45,37 @@ export default defineConfig({
 })
 ```
 
-## Checking if the user is logged in
+## Browser Authentication
 
-To start the login flow, call {@link index.getLoginStatus}, which reports whether a user is currently logged in or not. If there is,
-you can use the return value to authorize the {@link index.AudiotoolClient}, and modify projects on that user's behalf. If there is _not_,
-you can't create an {@link index.AudiotoolClient} yet. For this reason, you should call this function early
-and decide what you wan to show to the user if they're logged out.
-
-The very first time that {@link index.getLoginStatus} is called, it will always report that no user is logged in. In that case, the return value
-has a `login()` method that will start the login flow shown above: The user is forwarded to accounts.audiotool.com, where they can
-press "Allow", and then return to your app. Once they return, the same {@link index.getLoginStatus} is executed again, this time reporting that a user is
-logged in. Once a user is logged in, they stay logged in for days/weeks, until the `logout()` function is called again.
-
-{@link index.getLoginStatus} takes the authorization information we entered on developer.audiotool.com/applications:
+Use the `audiotool()` function to authenticate users in the browser. It handles the OAuth2 PKCE flow automatically and returns a client you can use directly.
 
 ```ts
-import { getLoginStatus } from "@audiotool/nexus"
+import { audiotool } from "@audiotool/nexus"
 
-const status = await getLoginStatus({
-  clientId: "<client-id of your app>",
+const at = await audiotool({
+  clientId: "<client-id of your app>", // hardcode this — it's not a secret
   redirectUrl: "http://127.0.0.1:5173/",
   scope: "project:write",
 })
 
-if (status.loggedIn) {
-  console.debug("Logged in!!")
-} else {
-  console.debug("Not logged in.")
+if (at.status === "authenticated") {
+  // at IS the client - use it directly
+  console.log(`Logged in as ${at.userName}`)
+  const projects = await at.projects.listProjects({})
+} else if (at.status === "unauthenticated") {
+  if (at.error) {
+    console.error("Auth error:", at.error)
+  }
+  console.log("Not logged in")
 }
 ```
 
-The return value has two variants - logged in and logged out. If it's logged in, you have a method `logout()`; if it's logged out, you have a method `login()`.
+The return value has two possible states:
 
-You should wire up these methods to buttons so the user can choose to login:
+- `authenticated`: User is logged in. The object IS the client - call `at.projects.listProjects({})` etc. directly on it.
+- `unauthenticated`: User is not logged in. Call `at.login()` to start the OAuth flow. If authentication failed previously, `at.error` will be set.
+
+Wire up login/logout buttons based on the status:
 
 ```ts
 const createButton = (text: string, onClick: () => void) => {
@@ -87,33 +85,18 @@ const createButton = (text: string, onClick: () => void) => {
   document.body.appendChild(button)
 }
 
-if (status.loggedIn) {
-  createButton("Logout", () => {
-    // will refresh the tab with authentication information removed
-    status.logout()
-  })
-  console.debug("Logged in as", await status.getUserName())
-} else {
-  createButton("Login", () => {
-    // will forward the user to accounts.audiotool.com
-    status.login()
-  })
+if (at.status === "authenticated") {
+  createButton("Logout", () => at.logout())
+  console.debug("Logged in as", at.userName)
+} else if (at.status === "unauthenticated") {
+  createButton("Login", () => at.login())
 }
 ```
 
-If (and only if) the status is `loggedIn`, you can forward it to the {@link index.AudiotoolClient} to create an authorized client:
+## Full Browser Example
 
 ```ts
-const client = createAudiotoolClient({
-  authorization: status,
-})
-```
-
-## Full example
-
-```ts
-import { createAudiotoolClient } from "@audiotool/nexus"
-import { getLoginStatus } from "@audiotool/nexus"
+import { audiotool } from "@audiotool/nexus"
 
 const createButton = (text: string, onClick: () => void) => {
   const button = document.createElement("button")
@@ -122,22 +105,25 @@ const createButton = (text: string, onClick: () => void) => {
   document.body.appendChild(button)
 }
 
-// get current login status
-const status = await getLoginStatus({
+const at = await audiotool({
   clientId: "bd496109-d9b4-4b6a-8519-8b6ce88b58c5",
   redirectUrl: "http://127.0.0.1:5173/",
   scope: "project:write",
 })
 
-//  Check if user if logged in, create login/logout buttons
-if (status.loggedIn) {
-  console.debug("Logged in as", await status.getUserName())
-  createButton("Logout", () => status.logout())
-  const client = createAudiotoolClient({authorization: status})
-  ...
-} else {
+if (at.status === "authenticated") {
+  console.debug("Logged in as", at.userName)
+  createButton("Logout", () => at.logout())
+  
+  // at IS the client - use it directly
+  const projects = await at.projects.listProjects({})
+  console.log("Projects:", projects)
+} else if (at.status === "unauthenticated") {
+  if (at.error) {
+    console.error("Auth error:", at.error)
+  }
   console.debug("Logged out.")
-  createButton("Login", () => status.login())
+  createButton("Login", () => at.login())
 }
 ```
 
@@ -146,15 +132,15 @@ if (status.loggedIn) {
 To deploy your app, you need to update the `redirectUrl` so that the user is redirected to your page's URL rather than `http://127.0.0.1:5173/`. To do this:
 
 - add that (entire) URL as "redirectURI" on your app at developer.audiotool.com/applications
-- when calling `getLoginStatus`, pass that URL as `redirectUrl`
+- when calling `audiotool`, pass that URL as `redirectUrl`
 
 ## Troubleshooting
 
 - make sure the `redirectURL` matches the `redirectURI` you specified on developer.audiotool.com/applications _exactly_ - pay attention in particular to the `/` character in the end.
-- if you get `insufficient_permissions` error even if logged in, the "Scopes" you set in your app & pass to {@link index.getLoginStatus} are likely insufficient for the API calls you're trying to make.
+- if you get `insufficient_permissions` error even if logged in, the "Scopes" you set in your app & pass to `audiotool` are likely insufficient for the API calls you're trying to make.
   The `projects:write` scope we use in the example above grants access to create and modify projects, but for other API calls, other scopes are needed. We're working on documentation in that regard.
 
-  If you need more scopes, update your app on developer.audiotool.com/applications, and then pass the scopes to {@link index.getLoginStatus}, separated by spaces. Already logged in users
+  If you need more scopes, update your app on developer.audiotool.com/applications, and then pass the scopes to `audiotool`, separated by spaces. Already logged in users
   have to be logged out & in again for the new scopes to take effect. If your app is already deployed and users are already logged in, consider creating a new application on developer.audiotool.com/applications
   so all users are automatically logged out again. We'll make this process smoother at some point.
 
@@ -170,38 +156,97 @@ To deploy your app, you need to update the `redirectUrl` so that the user is red
 >
 > Only websites at the redirect URIs you specify for your app on developer.audiotool.com can use it to authorize their apps.
 
+## Node.js Usage
+
+For Node.js, Bun, or Deno server-side apps, the recommended approach is to authenticate users in the browser and hand off their tokens to the server.
+
+### Server-side with User Tokens
+
+If you have a web app where users authenticate in the browser, you can use their tokens server-side (e.g., in Next.js API routes, Express handlers, etc.):
+
+**Browser side - export tokens:**
+```ts
+import { audiotool } from "@audiotool/nexus"
+
+const at = await audiotool({...})
+
+if (at.status === "authenticated") {
+  // Export tokens to send to your server
+  const tokens = at.exportTokens()
+  
+  // Store in your session (cookie, etc.)
+  await fetch("/api/store-session", {
+    method: "POST",
+    body: JSON.stringify(tokens),
+  })
+}
+```
+
+**Server side - use tokens:**
+```ts
+import { createAudiotoolClient, createServerAuth } from "@audiotool/nexus"
+import { createNodeTransport, createDiskWasmLoader } from "@audiotool/nexus/node"
+
+// In your API route handler
+export async function handler(req, res) {
+  const { accessToken, refreshToken, expiresAt } = req.session
+  
+  const client = await createAudiotoolClient({
+    auth: createServerAuth({
+      accessToken,
+      refreshToken,
+      expiresAt,
+      clientId: "your-client-id",
+      // Persist refreshed tokens back to session
+      onTokenRefresh: (newTokens) => {
+        req.session = { ...req.session, ...newTokens }
+      },
+    }),
+    transport: createNodeTransport(),
+    wasm: createDiskWasmLoader(),
+  })
+  
+  const projects = await client.projects.listProjects({})
+  res.json(projects)
+}
+```
+
 ## Advanced
 
 ### PAT-based authentication
 
-For server-side apps that you don't plan to ever share with other users, you can also use a [Personal Access Token](https://developer.audiotool.com/personal-access-tokens) and pass that into the audiotool client:
+For server-side apps that you don't plan to ever share with other users, you can use a [Personal Access Token](https://developer.audiotool.com/personal-access-tokens):
 
 ```ts
-const client = createAudiotoolClient({
-  authorization: "at_pat_238u098i23...",
+import { createAudiotoolClient } from "@audiotool/nexus"
+import { createNodeTransport, createDiskWasmLoader } from "@audiotool/nexus/node"
+
+const client = await createAudiotoolClient({
+  auth: "at_pat_238u098i23...",
+  transport: createNodeTransport(),
+  wasm: createDiskWasmLoader(),
 })
 ```
 
 > [!WARNING]
 > The PAT grants full access to your **entire audiotool account**. Never share it with others or check it into git!!
 
-### Rolling your own OAuth flow
-
-You can implement the token exchange with accounts.audiotool.com yourself. The `authorization` argument of {@link index.createAudiotoolClient} is `string | { getToken(): Promise<string | Error>}`. You can use the second variant to pass in your token, potentially refreshing it before it's used.
-
-We will publish the source code of {@link index.getLoginStatus} soon.
-
 ### Using credentials in your own network calls
 
-If you'd like to make your own calls to our API and just use the {@link index.getLoginStatus} mechanism to authorize the user, you can configure your {@link fetch} call as follows:
+If you'd like to make your own calls to our API and use `audiotool()` to handle authentication, you can extract the token:
 
 ```ts
-fetch(apiUrl, {
-  // must omit credentials, otherwise you get a CORS error
-  credentials: "omit",
-  headers: {
-    // pass the token through the authorization header
-    authorization: await status.getToken(),
-  },
-})
+const at = await audiotool({...})
+
+if (at.status === "authenticated") {
+  const tokens = at.exportTokens()
+  
+  fetch(apiUrl, {
+    credentials: "omit",
+    headers: {
+      authorization: `Bearer ${tokens.accessToken}`,
+    },
+  })
+}
 ```
+

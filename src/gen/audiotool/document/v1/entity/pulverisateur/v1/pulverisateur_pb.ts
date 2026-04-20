@@ -46,6 +46,14 @@ export class Pulverisateur extends Message<Pulverisateur> {
   positionY = 0;
 
   /**
+   * The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   * This is used for record-keeping only and has no effect on the sound of the device.
+   *
+   * @generated from field: string preset_name = 24;
+   */
+  presetName = "";
+
+  /**
    * Notes input
    *
    * @generated from field: audiotool.document.v1.Empty notes_input = 5;
@@ -188,6 +196,7 @@ export class Pulverisateur extends Message<Pulverisateur> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "position_x", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "position_y", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 24, name: "preset_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "notes_input", kind: "message", T: Empty },
     { no: 6, name: "audio_input", kind: "message", T: Empty },
     { no: 7, name: "audio_output", kind: "message", T: Empty },
@@ -605,7 +614,8 @@ export class PulverisateurLfo extends Message<PulverisateurLfo> {
   /**
    * The LFO's rate/frequency in normalized form. The exact rate depends
    * on the value of rate_is_synced:
-   * - if false, the value maps to milliseconds (1 .. 10_000.0)
+   * - if false, the value maps exponentially to Hz (0.01 .. 344.0) with formula:
+   *       hz = 0.01 * 34400^value
    * - if true, the value is quantized to the durations  8/1, 6/1, 4/1, 2/1, 1/1, 1/2, 1/4, 1/6, 1/8,
    *   1/12, 1/16, 1/24, 1/32, 1/48, 1/64, 1/96, 1/128.
    *

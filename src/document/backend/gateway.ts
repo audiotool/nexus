@@ -2,7 +2,7 @@ import { Modification, Transaction } from "@gen/document/v1/document_service_pb"
 import { ObservableValue } from "@utils/observable-notifier-value"
 import type { NexusDocument } from "../document"
 
-/** A read only variant of a transaction that is returned by {@link NexusGateway.synchronize}.
+/** A read only variant of a transaction that is returned by {@link NexusGateway["synchronize"]}.
  *
  * It's important that the gateway doesn't have to clone every transaction for performance reasons,
  * but the returned transactions must also never be modified by the caller. This type
@@ -10,7 +10,7 @@ import type { NexusDocument } from "../document"
  */
 export type ReadonlyTransaction = {
   readonly id: string
-  readonly commitIndex: number
+  readonly commitIndex: bigint
   readonly modifications: readonly Modification[]
 }
 

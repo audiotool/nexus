@@ -46,6 +46,14 @@ export class MatrixArpeggiator extends Message<MatrixArpeggiator> {
   positionY = 0;
 
   /**
+   * The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   * This is used for record-keeping only and has no effect on the sound of the device.
+   *
+   * @generated from field: string preset_name = 21;
+   */
+  presetName = "";
+
+  /**
    * Whether the arpeggio is active or not. If is_active=false, the notes are passed
    * through as chord without any arpeggio processing.
    *
@@ -205,6 +213,7 @@ export class MatrixArpeggiator extends Message<MatrixArpeggiator> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "position_x", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "position_y", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 21, name: "preset_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "is_active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 6, name: "velocity", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 7, name: "step_length_index", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },

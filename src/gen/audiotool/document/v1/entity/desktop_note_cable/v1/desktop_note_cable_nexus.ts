@@ -1,5 +1,5 @@
 // THIS FILE IS GENERATED - DO NOT EDIT
-// Copyright 2025 Audiotool Inc.
+// Copyright 2026 Audiotool Inc.
 
 import { PrimitiveField } from "@document/fields"
 import { type NexusLocation } from "@document/location"
@@ -36,7 +36,7 @@ export type DesktopNoteCable = {
    * --- | ---
    * default | no default, required
    * required | true
-   * targets | {@link api.TargetType.NotesInput}, meaning one of: <br />{@link entities.Beatbox8.notesInput}, <br />{@link entities.Beatbox9.notesInput}, <br />{@link entities.Gakki.notesInput}, <br />{@link entities.Heisenberg.notesInput}, <br />{@link entities.Machiniste.notesInput}, <br />{@link entities.MatrixArpeggiator.notesInput}, <br />{@link entities.NoteSplitter.notesInput}, <br />{@link entities.Pulverisateur.notesInput}, <br />{@link entities.Space.notesInput}, <br />{@link entities.SpitfireLabsVst3Plugin.notesInput}*/
+   * targets | {@link api.TargetType.NotesInput}, meaning one of: <br />{@link entities.Beatbox8.notesInput}, <br />{@link entities.Beatbox9.notesInput}, <br />{@link entities.Gakki.notesInput}, <br />{@link entities.GenericVst3PluginBeta.notesInput}, <br />{@link entities.Heisenberg.notesInput}, <br />{@link entities.Machiniste.notesInput}, <br />{@link entities.MatrixArpeggiator.notesInput}, <br />{@link entities.NoteSplitter.notesInput}, <br />{@link entities.Pulverisateur.notesInput}, <br />{@link entities.Space.notesInput}, <br />{@link entities.SpitfireLabsVst3Plugin.notesInput}*/
   toSocket: PrimitiveField<NexusLocation, "mut">
   /**
    *  Index of the color. The meaning of the color index is implementation-specific.

@@ -1,5 +1,5 @@
 // THIS FILE IS GENERATED - DO NOT EDIT
-// Copyright 2025 Audiotool Inc.
+// Copyright 2026 Audiotool Inc.
 
 /** @internal
  Array type, Arr<0 | 1> expands to [0] | [1] */
@@ -68,6 +68,7 @@ export type AutoFilterPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "thresholdGain"
   | "attackMs"
   | "sustainMs"
@@ -88,6 +89,7 @@ export type BandSplitterPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "filterLowHz"
   | "filterHighHz"
   | "highGain"
@@ -103,6 +105,7 @@ export type BasslinePath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "gain"
   | "tuneSemitones"
   | "cutoffFrequencyHz"
@@ -138,6 +141,7 @@ export type Beatbox8Path =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "gain"
   | "accentAmount"
   | "isActive"
@@ -236,6 +240,7 @@ export type Beatbox9Path =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "gain"
   | "accentAmount"
   | "isActive"
@@ -361,6 +366,7 @@ export type CrossfaderPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "postGain"
   | "crossfade"
   | "panning"
@@ -388,6 +394,7 @@ export type CurvePath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "gainDb"
   | "isActive"
   | "spectrumModeIndex"
@@ -425,6 +432,7 @@ export type ExciterPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "audioInput"
   | "audioOutput"
   | "toneFrequencyHz"
@@ -437,16 +445,30 @@ export type GakkiPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "soundfontId"
   | "gain"
   | "notesInput"
   | "audioOutput"
 
 /** @internal */
+export type GenericVst3PluginBetaPath =
+  | "displayName"
+  | "pluginPath"
+  | "positionX"
+  | "positionY"
+  | "audioInput"
+  | "audioOutput"
+  | "notesInput"
+  | "state"
+  | "isActive"
+
+/** @internal */
 export type GraphicalEQPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | Submessage<"filter1", GraphicalEQFilterPath>
   | Submessage<"filter2", GraphicalEQFilterPath>
   | "mix"
@@ -467,6 +489,7 @@ export type GravityPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "thresholdDb"
   | "ratio"
   | "kneeDbRange"
@@ -492,6 +515,7 @@ export type HeisenbergPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "microTuning"
   | "tuneSemitones"
   | "gain"
@@ -581,6 +605,7 @@ export type HelmholtzPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "microTuning"
   | "gain"
   | "decayTime"
@@ -615,6 +640,7 @@ export type MachinistePath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "mainOutputGain"
   | "mainOutput"
   | "globalModulationDepth"
@@ -673,6 +699,7 @@ export type MatrixArpeggiatorPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "isActive"
   | "velocity"
   | "stepLengthIndex"
@@ -709,10 +736,9 @@ export type MatrixArpeggiatorPatternStepPath =
   | "isChord"
 
 /** @internal */
-export type MicroTuningOctavePath = Submessage<
-  "semitones",
-  Arr<0 | 1 | 2 | 3 | 4>
->
+export type MicroTuningOctavePath =
+  | Submessage<"semitones", Arr<0 | 1 | 2 | 3 | 4>>
+  | "displayName"
 
 /** @internal */
 export type MinimixerPath =
@@ -864,6 +890,7 @@ export type NoteSplitterPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "notesInput"
   | Submessage<"channels", Submessage<Arr<number>, NoteSplitterChannelPath>>
 
@@ -878,6 +905,7 @@ export type PanoramaPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "leftFactor"
   | "rightFactor"
   | "leftPanning"
@@ -891,6 +919,7 @@ export type PulsarPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "preDelayLeftTimeSemibreveIndex"
   | "preDelayLeftTimeMs"
   | "preDelayLeftPanning"
@@ -916,6 +945,7 @@ export type PulverisateurPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "notesInput"
   | "audioInput"
   | "audioOutput"
@@ -1014,6 +1044,7 @@ export type QuantumPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "gainDb"
   | "rmsWindowMs"
   | "isActive"
@@ -1040,6 +1071,7 @@ export type QuasarPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "preDelayMs"
   | "lowPassFrequencyHz"
   | "highPassFrequencyHz"
@@ -1061,6 +1093,7 @@ export type RasselbockPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | Submessage<"patternSlots", Arr<0 | 1 | 2 | 3 | 4>>
   | "patternIndex"
   | Submessage<"channelConfigs", Submessage<Arr<number>, RasselbockChannelPath>>
@@ -1183,6 +1216,7 @@ export type SpacePath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "microTuning"
   | "gain"
   | "stereoDetuneShift"
@@ -1296,6 +1330,7 @@ export type StereoEnhancerPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "channelsAreInverted"
   | "frequencyHz"
   | "stereoWidth"
@@ -1308,6 +1343,7 @@ export type StompboxChorusPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "delayTimeMs"
   | "feedbackFactor"
   | "lfoFrequencyHz"
@@ -1322,6 +1358,7 @@ export type StompboxCompressorPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "attackMs"
   | "releaseMs"
   | "makeupGainDb"
@@ -1338,6 +1375,7 @@ export type StompboxCrusherPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "preGain"
   | "downsamplingFactor"
   | "postGain"
@@ -1352,6 +1390,7 @@ export type StompboxDelayPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "stepCount"
   | "stepLengthIndex"
   | "feedbackFactor"
@@ -1365,6 +1404,7 @@ export type StompboxFlangerPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "delayTimeMs"
   | "feedbackFactor"
   | "lfoFrequencyHz"
@@ -1378,6 +1418,7 @@ export type StompboxGatePath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "attackMs"
   | "releaseMs"
   | "postGain"
@@ -1394,6 +1435,7 @@ export type StompboxParametricEqualizerPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "frequencyHz"
   | "bandwidthFactor"
   | "postGainDb"
@@ -1406,6 +1448,7 @@ export type StompboxPhaserPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "minFrequencyHz"
   | "maxFrequencyHz"
   | "feedbackFactor"
@@ -1420,6 +1463,7 @@ export type StompboxPitchDelayPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "stepCount"
   | "stepLengthIndex"
   | "feedbackFactor"
@@ -1434,6 +1478,7 @@ export type StompboxReverbPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "roomSizeFactor"
   | "preDelayTimeMs"
   | "feedbackFactor"
@@ -1448,6 +1493,7 @@ export type StompboxSlopePath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "filterModeIndex"
   | "frequencyHz"
   | "resonanceFactor"
@@ -1462,6 +1508,7 @@ export type StompboxStereoDetunePath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "detuneSemitones"
   | "delayTimeMs"
   | "isActive"
@@ -1473,6 +1520,7 @@ export type StompboxTubePath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "drive"
   | "tone"
   | "postGain"
@@ -1511,6 +1559,7 @@ export type AutomationEventPath =
   | "value"
   | "slope"
   | "interpolation"
+  | "isSecond"
 
 /** @internal */
 export type AutomationRegionPath =
@@ -1578,6 +1627,7 @@ export type TonematrixPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "patternIndex"
   | Submessage<"patternSlots", Arr<0 | 1 | 2 | 3 | 4>>
   | "microTuning"
@@ -1599,6 +1649,7 @@ export type WaveshaperPath =
   | "displayName"
   | "positionX"
   | "positionY"
+  | "presetName"
   | "preGain"
   | "mix"
   | "autoDrive"
@@ -1612,6 +1663,7 @@ export type WaveshaperPath =
   | "sideChainInput"
   | "audioOutput"
   | "isActive"
+  | "disableOversampling"
 
 /** @internal */
 export type WaveshaperAnchorPath = "x" | "y" | "slope" | "waveshaper"
@@ -1655,6 +1707,7 @@ export type SchemaPath = `/${
   | Submessage<"desktopNoteCable", DesktopNoteCablePath>
   | Submessage<"exciter", ExciterPath>
   | Submessage<"gakki", GakkiPath>
+  | Submessage<"genericVst3PluginBeta", GenericVst3PluginBetaPath>
   | Submessage<"graphicalEQ", GraphicalEQPath>
   | Submessage<"gravity", GravityPath>
   | Submessage<"groove", GroovePath>

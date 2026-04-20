@@ -49,6 +49,14 @@ export class AutoFilter extends Message<AutoFilter> {
   positionY = 0;
 
   /**
+   * The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   * This is used for record-keeping only and has no effect on the sound of the device.
+   *
+   * @generated from field: string preset_name = 19;
+   */
+  presetName = "";
+
+  /**
    * The threshold gain above which the filter envelope is triggered. Equivalent to a dB range of [-inf, 0.0].
    *
    * @generated from field: float threshold_gain = 5;
@@ -111,8 +119,8 @@ export class AutoFilter extends Message<AutoFilter> {
   filterModulationDepth = 0;
 
   /**
-   * Filter resonance (Q factor). Higher values create more pronounced resonance peaks.
-   * Range: 0.01 (minimal resonance) to 1.4142 (maximum resonance, √2).
+   * Filter resonance (Q factor). Lower values create more pronounced resonance peaks.
+   * Range: 0.01 (maximum resonance) to 1.4142 (minimum resonance, √2).
    *
    * @generated from field: float filter_resonance = 12;
    */
@@ -177,6 +185,7 @@ export class AutoFilter extends Message<AutoFilter> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "position_x", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "position_y", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 19, name: "preset_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "threshold_gain", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 6, name: "attack_ms", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 7, name: "sustain_ms", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },

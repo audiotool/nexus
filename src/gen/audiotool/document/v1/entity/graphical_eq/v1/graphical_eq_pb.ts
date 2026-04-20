@@ -45,6 +45,14 @@ export class GraphicalEQ extends Message<GraphicalEQ> {
   positionY = 0;
 
   /**
+   * The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   * This is used for record-keeping only and has no effect on the sound of the device.
+   *
+   * @generated from field: string preset_name = 12;
+   */
+  presetName = "";
+
+  /**
    * The first peak filter. In the DAW UI, parameters are shown to the left.
    *
    * @generated from field: audiotool.document.v1.entity.graphical_eq.v1.GraphicalEQFilter filter_1 = 5;
@@ -106,6 +114,7 @@ export class GraphicalEQ extends Message<GraphicalEQ> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "position_x", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "position_y", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 12, name: "preset_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "filter_1", kind: "message", T: GraphicalEQFilter },
     { no: 6, name: "filter_2", kind: "message", T: GraphicalEQFilter },
     { no: 7, name: "mix", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
@@ -161,8 +170,8 @@ export class GraphicalEQFilter extends Message<GraphicalEQFilter> {
 
   /**
    * Stereo separation of the filter. If 0, both filter gains are equal.
-   * If 1, the left channel is fully boosted and the right channel is fully attenuated.
-   * If -1, the right channel is fully boosted and the left channel is fully attenuated.
+   * If -1, the left channel is fully boosted and the right channel is fully attenuated.
+   * If 1, the right channel is fully boosted and the left channel is fully attenuated.
    *
    * @generated from field: float stereo_separation = 4;
    */

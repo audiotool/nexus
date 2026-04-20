@@ -28,7 +28,7 @@ import { MethodKind } from "@bufbuild/protobuf";
  * Manages long-running operations with an API service.
  *
  * When an API method normally takes long time to complete, it can be designed
- * to return [Operation][google.longrunning.Operation] to the client, and the client can use this
+ * to return [Operation][audiotool.longrunning.v1.Operation] to the client, and the client can use this
  * interface to receive the real response asynchronously by polling the
  * operation resource, or pass the operation resource to another API (such as
  * Google Cloud Pub/Sub API) to receive the response.  Any API service that

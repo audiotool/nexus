@@ -1,5 +1,5 @@
 // THIS FILE IS GENERATED - DO NOT EDIT
-// Copyright 2025 Audiotool Inc.
+// Copyright 2026 Audiotool Inc.
 
 import { PrimitiveField } from "@document/fields"
 import { NexusObject } from "@document/object"
@@ -46,6 +46,11 @@ export type Gravity = {
    * default | 0
    * range | full*/
   positionY: PrimitiveField<number, "mut">
+  /**
+   *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   *  This is used for record-keeping only and has no effect on the sound of the device.
+   */
+  presetName: PrimitiveField<string, "mut">
   /**
    *  The level in dB on which the device starts compressing.
    *
@@ -109,7 +114,8 @@ export type Gravity = {
    *  The time for the compressor to release when the input level is dropping below the threshold.
    *
    *  The meaning of the value depends on the release_is_synced flag:
-   *  - if release_is_synced is false, the value maps linearly to milliseconds (0.0 .. 1_000.0).
+   *  - if release_is_synced is false, the value maps to milliseconds (0.0 .. 1_000.0) with formula:
+   *        millis = 1000.0 * value^4.3219281
    *  - if release_is_synced is true, then the value is quantized to one of 30 bar time durations.
    *    The bar time durations are:
    *    0, 1/256, 1/192, 1/128, 1/96, 1/64, 1/48, 1/32, 1/24, 1/16, 1/12, 1/8, 1/6,
@@ -194,6 +200,11 @@ export type GravityConstructor = {
    * range | full*/
   positionY?: number
   /**
+   *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   *  This is used for record-keeping only and has no effect on the sound of the device.
+   */
+  presetName?: string
+  /**
    *  The level in dB on which the device starts compressing.
    *
    *
@@ -250,7 +261,8 @@ export type GravityConstructor = {
    *  The time for the compressor to release when the input level is dropping below the threshold.
    *
    *  The meaning of the value depends on the release_is_synced flag:
-   *  - if release_is_synced is false, the value maps linearly to milliseconds (0.0 .. 1_000.0).
+   *  - if release_is_synced is false, the value maps to milliseconds (0.0 .. 1_000.0) with formula:
+   *        millis = 1000.0 * value^4.3219281
    *  - if release_is_synced is true, then the value is quantized to one of 30 bar time durations.
    *    The bar time durations are:
    *    0, 1/256, 1/192, 1/128, 1/96, 1/64, 1/48, 1/32, 1/24, 1/16, 1/12, 1/8, 1/6,

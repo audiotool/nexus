@@ -15,9 +15,9 @@ import { sleep } from "@utils/lang"
 import type { ValueNotifier } from "@utils/observable-notifier-value"
 import type { AnyMessage } from "node_modules/@bufbuild/protobuf/dist/cjs"
 import {
-  packRetryingOptions,
+  packKeepaliveOptions,
   type KeepaliveTransport,
-} from "./keepalive-transport"
+} from "../../transport/types"
 
 export type RetryOptions = CallOptions & {
   /** pass a value notifier that will turn to false if something goes wrong, and back to true
@@ -107,7 +107,7 @@ export const createRetryingPromiseClient = <S extends ServiceType>(
       request: unknown,
       options?: RetryOptions,
     ): Promise<Error | unknown> => {
-      options = packRetryingOptions(options)
+      options = packKeepaliveOptions(options)
 
       while (true) {
         try {

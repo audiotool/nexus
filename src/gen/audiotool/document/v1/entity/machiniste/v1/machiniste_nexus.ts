@@ -1,5 +1,5 @@
 // THIS FILE IS GENERATED - DO NOT EDIT
-// Copyright 2025 Audiotool Inc.
+// Copyright 2026 Audiotool Inc.
 
 import { ArrayField, PrimitiveField } from "@document/fields"
 import { type NexusLocation } from "@document/location"
@@ -42,6 +42,11 @@ export type Machiniste = {
    * default | 0
    * range | full*/
   positionY: PrimitiveField<number, "mut">
+  /**
+   *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   *  This is used for record-keeping only and has no effect on the sound of the device.
+   */
+  presetName: PrimitiveField<string, "mut">
   /**
    *  Output gain of the main output channel. This only affects the sum signal, not
    *  the individual channels. Equivalent to a dB range of [-inf, 0.0].
@@ -137,6 +142,11 @@ export type MachinisteConstructor = {
    * default | 0
    * range | full*/
   positionY?: number
+  /**
+   *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   *  This is used for record-keeping only and has no effect on the sound of the device.
+   */
+  presetName?: string
   /**
    *  Output gain of the main output channel. This only affects the sum signal, not
    *  the individual channels. Equivalent to a dB range of [-inf, 0.0].

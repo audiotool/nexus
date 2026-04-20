@@ -8,7 +8,7 @@ import {
 import type { Preset } from "@gen/document/v1/preset/v1/preset_pb"
 import { throw_ } from "@utils/lang"
 import toposort from "toposort"
-import { visitPointers } from "./update-preset-pointers"
+import { visitPointers } from "./entity-message-utils"
 
 /** Contains all infos needed to apply a preset. */
 export type PreparedPreset = {
@@ -165,6 +165,7 @@ export const PRESET_TARGET_RELATIVE_TYPES = {
   mixerSideChainCable: undefined,
   audioTrack: undefined,
   centroidChannel: undefined,
+  genericVst3PluginBeta: undefined,
   gakki: [],
 } as const satisfies Record<EntityTypeKey, EntityTypeKey[] | undefined>
 

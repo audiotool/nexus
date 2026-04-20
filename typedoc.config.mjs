@@ -16,6 +16,7 @@ const config = {
     "typedoc-plugin-mdn-links",
     "@8hobbies/typedoc-plugin-plausible",
     "./codegen/typedoc/qualified-link-text.mjs",
+    "./codegen/typedoc/llms-markdown-plugin.mjs",
   ],
   navigation: {
     includeCategories: false,

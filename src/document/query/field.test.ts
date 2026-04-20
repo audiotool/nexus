@@ -1,10 +1,10 @@
 import { NexusDocument } from "@document/document"
 import type { NexusEntity } from "@document/entity"
-import type { FieldQuery } from "@document/query/field"
 import { beforeEach, describe, expect, it } from "vitest"
 import type { NexusField } from "../fields"
 import type { TransactionBuilder } from "../transaction-builder"
 import { onlyTransactionBuilder } from "../transaction-builder/builder-test-utils"
+import type { FieldQuery } from "./field"
 
 interface QueryTestContext {
   t: TransactionBuilder
@@ -35,6 +35,7 @@ describe("FieldQuery", () => {
       context.flanger.fields.positionX,
       context.flanger.fields.positionY,
       context.flanger.fields.displayName,
+      context.flanger.fields.presetName,
       context.automationTrack.fields.automatedParameter,
       context.automationTrack.fields.orderAmongTracks,
       context.automationTrack.fields.isEnabled,
@@ -71,6 +72,7 @@ describe("FieldQuery", () => {
         context.flanger.fields.positionX,
         context.flanger.fields.positionY,
         context.flanger.fields.displayName,
+        context.flanger.fields.presetName,
       ])
     })
     it<QueryTestContext>("should return an empty map if no fields exist for the specified entity types", async () => {
@@ -118,6 +120,7 @@ describe("FieldQuery", () => {
         context.flanger.fields.positionX,
         context.flanger.fields.positionY,
         context.flanger.fields.displayName,
+        context.flanger.fields.presetName,
       ])
     })
   })

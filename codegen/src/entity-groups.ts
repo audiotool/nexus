@@ -222,6 +222,7 @@ export const ENTITY_GROUPS: Record<string, EntityGroupConfig> = {
   microTuningOctave: { category: "Utility Entities" },
   sample: { category: "Utility Entities" },
   spitfireLabsVst3Plugin: { category: "Utility Entities" },
+  genericVst3PluginBeta: { category: "Utility Entities" },
 
   // Non-entity types - Component parts and sub-structures
   empty: { category: "Utility Fields" },

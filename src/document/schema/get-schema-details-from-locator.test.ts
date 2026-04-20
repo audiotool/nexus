@@ -89,7 +89,7 @@ describe("_getSchemaLocatorDetails", () => {
           default: 3,
           range: {
             min: 1,
-            max: 3,
+            max: 4,
           },
         },
       })

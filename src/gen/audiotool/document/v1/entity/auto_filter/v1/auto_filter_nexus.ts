@@ -1,5 +1,5 @@
 // THIS FILE IS GENERATED - DO NOT EDIT
-// Copyright 2025 Audiotool Inc.
+// Copyright 2026 Audiotool Inc.
 
 import { PrimitiveField } from "@document/fields"
 import { NexusObject } from "@document/object"
@@ -48,6 +48,11 @@ export type AutoFilter = {
    * default | 0
    * range | full*/
   positionY: PrimitiveField<number, "mut">
+  /**
+   *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   *  This is used for record-keeping only and has no effect on the sound of the device.
+   */
+  presetName: PrimitiveField<string, "mut">
   /**
    *  The threshold gain above which the filter envelope is triggered. Equivalent to a dB range of [-inf, 0.0].
    *
@@ -132,8 +137,8 @@ export type AutoFilter = {
    * is | {@link api.TargetType.AutomatableParameter}*/
   filterModulationDepth: PrimitiveField<number, "mut">
   /**
-   *  Filter resonance (Q factor). Higher values create more pronounced resonance peaks.
-   *  Range: 0.01 (minimal resonance) to 1.4142 (maximum resonance, √2).
+   *  Filter resonance (Q factor). Lower values create more pronounced resonance peaks.
+   *  Range: 0.01 (maximum resonance) to 1.4142 (minimum resonance, √2).
    *
    *
    * key | value
@@ -227,6 +232,11 @@ export type AutoFilterConstructor = {
    * range | full*/
   positionY?: number
   /**
+   *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   *  This is used for record-keeping only and has no effect on the sound of the device.
+   */
+  presetName?: string
+  /**
    *  The threshold gain above which the filter envelope is triggered. Equivalent to a dB range of [-inf, 0.0].
    *
    *
@@ -303,8 +313,8 @@ export type AutoFilterConstructor = {
    * range | [-1, 1]*/
   filterModulationDepth?: number
   /**
-   *  Filter resonance (Q factor). Higher values create more pronounced resonance peaks.
-   *  Range: 0.01 (minimal resonance) to 1.4142 (maximum resonance, √2).
+   *  Filter resonance (Q factor). Lower values create more pronounced resonance peaks.
+   *  Range: 0.01 (maximum resonance) to 1.4142 (minimum resonance, √2).
    *
    *
    * key | value

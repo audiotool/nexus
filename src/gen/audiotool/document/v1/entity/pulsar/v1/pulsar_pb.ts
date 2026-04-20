@@ -48,6 +48,14 @@ export class Pulsar extends Message<Pulsar> {
   positionY = 0;
 
   /**
+   * The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   * This is used for record-keeping only and has no effect on the sound of the device.
+   *
+   * @generated from field: string preset_name = 24;
+   */
+  presetName = "";
+
+  /**
    * Semibreve (music time) duration of the pre-delay of the left channel.
    * Is added with the milliseconds delay time internally to calculate the actual pre-delay time.
    * - 0: invalid
@@ -239,6 +247,7 @@ export class Pulsar extends Message<Pulsar> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "position_x", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "position_y", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 24, name: "preset_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "pre_delay_left_time_semibreve_index", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
     { no: 6, name: "pre_delay_left_time_ms", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 7, name: "pre_delay_left_panning", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },

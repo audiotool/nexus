@@ -44,6 +44,14 @@ export class StompboxReverb extends Message<StompboxReverb> {
   positionY = 0;
 
   /**
+   * The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   * This is used for record-keeping only and has no effect on the sound of the device.
+   *
+   * @generated from field: string preset_name = 13;
+   */
+  presetName = "";
+
+  /**
    * Determines the size of the virtual enclosed space.
    *
    * @generated from field: float room_size_factor = 5;
@@ -112,6 +120,7 @@ export class StompboxReverb extends Message<StompboxReverb> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "position_x", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "position_y", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 13, name: "preset_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "room_size_factor", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 6, name: "pre_delay_time_ms", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 7, name: "feedback_factor", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },

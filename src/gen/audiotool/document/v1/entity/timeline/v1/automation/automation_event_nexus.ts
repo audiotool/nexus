@@ -1,5 +1,5 @@
 // THIS FILE IS GENERATED - DO NOT EDIT
-// Copyright 2025 Audiotool Inc.
+// Copyright 2026 Audiotool Inc.
 
 import { PrimitiveField } from "@document/fields"
 import { type NexusLocation } from "@document/location"
@@ -32,7 +32,8 @@ export type AutomationEvent = {
   /**
    *  The position of this event in ticks in the collection.
    *
-   *  position_ticks must be unique among all automation events pointing to the same automation collection.
+   *  There can be at most two automation events with the same position_ticks value
+   *  pointing to the same automation collection. Exactly one of them must have is_second set to true.
    *
    *
    * key | value
@@ -74,6 +75,16 @@ export type AutomationEvent = {
    * default | 1
    * range | [1, 2]*/
   interpolation: PrimitiveField<number, "mut">
+  /**
+   *  If two automation events lie on the same tick, exactly one of them must have is_second set to true.
+   *  This orders the automation events on the same tick. If no other automation event lies on the same tick,
+   *  is_second doesn't matter.
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | false*/
+  isSecond: PrimitiveField<boolean, "mut">
 }
 /** @internal */
 
@@ -91,7 +102,8 @@ export type AutomationEventConstructor = {
   /**
    *  The position of this event in ticks in the collection.
    *
-   *  position_ticks must be unique among all automation events pointing to the same automation collection.
+   *  There can be at most two automation events with the same position_ticks value
+   *  pointing to the same automation collection. Exactly one of them must have is_second set to true.
    *
    *
    * key | value
@@ -133,5 +145,15 @@ export type AutomationEventConstructor = {
    * default | 1
    * range | [1, 2]*/
   interpolation?: number
+  /**
+   *  If two automation events lie on the same tick, exactly one of them must have is_second set to true.
+   *  This orders the automation events on the same tick. If no other automation event lies on the same tick,
+   *  is_second doesn't matter.
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | false*/
+  isSecond?: boolean
 }
 

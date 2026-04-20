@@ -8,9 +8,9 @@ describe("audiotool client", () => {
     // skipped because it relied on env vars
     it.skip("should remove all document states on termination", async () => {
       const client = await createAudiotoolClient({
-        authorization: import.meta.env.AT_PAT ?? throw_("AT_PAT is not set"),
+        auth: import.meta.env.AT_PAT ?? throw_("AT_PAT is not set"),
       })
-      const nexus = await client.createSyncedDocument(
+      const nexus = await client.open(
         import.meta.env.PROJECT_ID ?? throw_("PROJECT_ID is not set"),
       )
       await nexus.start()

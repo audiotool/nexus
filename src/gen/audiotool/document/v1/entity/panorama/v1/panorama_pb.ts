@@ -44,6 +44,14 @@ export class Panorama extends Message<Panorama> {
   positionY = 0;
 
   /**
+   * The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   * This is used for record-keeping only and has no effect on the sound of the device.
+   *
+   * @generated from field: string preset_name = 12;
+   */
+  presetName = "";
+
+  /**
    * Gain factor applied to the left channel. Can go negative, which reverses the phase of the signal.
    *
    * @generated from field: float left_factor = 5;
@@ -104,6 +112,7 @@ export class Panorama extends Message<Panorama> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "position_x", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "position_y", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 12, name: "preset_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "left_factor", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 6, name: "right_factor", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 7, name: "left_panning", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },

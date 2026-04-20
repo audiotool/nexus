@@ -117,20 +117,12 @@ export enum SampleUsage {
    * @generated from enum value: SAMPLE_USAGE_UNLISTED = 2;
    */
   UNLISTED = 2,
-
-  /**
-   * The Sample is private and only visible to the owner.
-   *
-   * @generated from enum value: SAMPLE_USAGE_PRIVATE = 3;
-   */
-  PRIVATE = 3,
 }
 // Retrieve enum metadata with: proto3.getEnumType(SampleUsage)
 proto3.util.setEnumType(SampleUsage, "audiotool.sample.v1.SampleUsage", [
   { no: 0, name: "SAMPLE_USAGE_UNSPECIFIED" },
   { no: 1, name: "SAMPLE_USAGE_PUBLIC" },
   { no: 2, name: "SAMPLE_USAGE_UNLISTED" },
-  { no: 3, name: "SAMPLE_USAGE_PRIVATE" },
 ]);
 
 /**
@@ -277,6 +269,38 @@ export class Sample extends Message<Sample> {
    */
   flacUrl = "";
 
+  /**
+   * The waveform URL of the sample.
+   *
+   * The waveform_url will be in the form of:
+   *
+   * "https://.../waveforms/v1/samples/{sample}/3840_both.json.gz?{SHA}"
+   *
+   * The SHA can be used for cache busting.
+   *
+   * If you need another resolution/channel variant you can replace 3840_both.json.gz with:
+   *
+   * - 3840_both.json.gz
+   * - 3840_left.json.gz
+   * - 3840_right.json.gz
+   * - 1920_both.json.gz
+   * - 1920_left.json.gz
+   * - 1920_right.json.gz
+   * - 480_both.json.gz
+   * - 480_left.json.gz
+   * - 480_right.json.gz
+   *
+   * Artifact format: the response body is `Content-Encoding: gzip`; after decompression the payload
+   * is a single JSON array of non-negative numbers — one peak/envelope sample per time bin. The
+   * array has at most as many elements as the numeric resolution prefix in the filename (e.g.
+   * `3840_*.json.gz` is capped at 3840); the actual length is not guaranteed to match that cap.
+   * Each `*_both|left|right*.json.gz` file holds exactly one curve for that channel variant at
+   * that resolution (not a multi-key object).
+   *
+   * @generated from field: string waveform_url = 20;
+   */
+  waveformUrl = "";
+
   constructor(data?: PartialMessage<Sample>) {
     super();
     proto3.util.initPartial(data, this);
@@ -304,6 +328,7 @@ export class Sample extends Message<Sample> {
     { no: 17, name: "wav_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 18, name: "preview_mp3_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 19, name: "flac_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 20, name: "waveform_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Sample {

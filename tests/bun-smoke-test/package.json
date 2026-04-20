@@ -1,5 +1,5 @@
 {
-  "name": "bun",
+  "name": "bun-smoke-test",
   "module": "index.ts",
   "type": "module",
   "private": true,

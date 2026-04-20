@@ -44,6 +44,14 @@ export class Heisenberg extends Message<Heisenberg> {
   positionY = 0;
 
   /**
+   * The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   * This is used for record-keeping only and has no effect on the sound of the device.
+   *
+   * @generated from field: string preset_name = 29;
+   */
+  presetName = "";
+
+  /**
    * Micro tuning.
    *
    * @generated from field: audiotool.document.v1.Pointer micro_tuning = 5;
@@ -69,7 +77,8 @@ export class Heisenberg extends Message<Heisenberg> {
    * - 0: invalid
    * - 1: Mono
    * - 2: Legato
-   * - 3: Polyphone
+   * - 3: Polyphone Legato
+   * - 4: Polyphone
    *
    * Mono:
    * At most once note is played at once with slight overlap during release. An incoming note
@@ -77,9 +86,15 @@ export class Heisenberg extends Message<Heisenberg> {
    *
    * Legato:
    * Same as mono, but attack is omitted when a new incoming note cut off an already playing note.
+   * a note that is in release phase gets cut off.
    *
    * Polyphone:
    * Multiple notes/chords can be played simultaneously.
+   *
+   * PolyLegato:
+   * Similar to legato, but notes are allowed to ring out (i.e. if a note is in the release phase,
+   * legato would cut it off, while PolyLegato lets it ring out, that way achieving a somewhoat polyphonic
+   * effect)
    *
    * @generated from field: uint32 play_mode_index = 8;
    */
@@ -248,6 +263,7 @@ export class Heisenberg extends Message<Heisenberg> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "position_x", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "position_y", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 29, name: "preset_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "micro_tuning", kind: "message", T: Pointer },
     { no: 6, name: "tune_semitones", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 7, name: "gain", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
@@ -569,7 +585,8 @@ export class HeisenbergLFO extends Message<HeisenbergLFO> {
   /**
    * The rate of the LFO, expressed as a normalized value.
    * The meaning of the value depends on the is_synced flag:
-   * - if is_synced is false, the  value maps linearly to Hz (0.01 .. 500.0).
+   * - if is_synced is false, the value maps exponentially to Hz (0.01 .. 500.0) with formula:
+   *       hz = 0.01 * 50000^value
    * - if is_synced is true, then the value is quantized to one of 30 bar time durations.
    *   The bar time durations are:
    *      1/256, 1/192, 1/128, 1/96, 1/64, 1/48, 1/32, 1/24, 1/16,
@@ -592,7 +609,8 @@ export class HeisenbergLFO extends Message<HeisenbergLFO> {
    * During the delay phase, the LFO is not active.
    *
    * The meaning of the value depends on the is_synced flag:
-   * - if is_synced is false, the value maps linearly to milliseconds (0 .. 5000.0).
+   * - if is_synced is false, the value maps to milliseconds (1.0 .. 5000.0) with formula:
+   *       millis = 1.0 + 4999.0 * value^3.3245278
    * - if is_synced is true, then the value is quantized to one of 30 bar time durations.
    *   The bar time durations are:
    *      0, 1/256, 1/192, 1/128, 1/96, 1/64, 1/48, 1/32, 1/24, 1/16,
@@ -608,7 +626,8 @@ export class HeisenbergLFO extends Message<HeisenbergLFO> {
    * no offset to full offset, expressed as a normalized value.
    *
    * The meaning of the value depends on the is_synced flag:
-   * - if is_synced is false, the value maps linearly to milliseconds (0 .. 5000.0).
+   * - if is_synced is false, the value maps to milliseconds (1.0 .. 5000.0) with formula:
+   *       millis = 1.0 + 4999.0 * value^3.3245278
    * - if is_synced is true, then the value is quantized to one of 30 bar time durations.
    *   The bar time durations are:
    *      0, 1/256, 1/192, 1/128, 1/96, 1/64, 1/48, 1/32, 1/24, 1/16,
@@ -749,7 +768,8 @@ export class HeisenbergPitchEnvelope extends Message<HeisenbergPitchEnvelope> {
   /**
    * The attack time of the pitch envelope, expressed as a normalized value.
    * The meaning of the value depends on the is_synced flag:
-   * - if is_synced is false, the value maps linearly to milliseconds (1.0 .. 10_000.0).
+   * - if is_synced is false, the value maps to milliseconds (1.0 .. 10_000.0) with formula:
+   *       millis = 1.0 + 9999.0 * value^2.3225053
    * - if is_synced is true, then the value is quantized to one of 30 bar time durations.
    *   The bar time durations are:
    *      1/256, 1/192, 1/128, 1/96, 1/64, 1/48, 1/32, 1/24, 1/16,
@@ -778,7 +798,8 @@ export class HeisenbergPitchEnvelope extends Message<HeisenbergPitchEnvelope> {
   /**
    * The decay time of the pitch envelope, expressed as a normalized value.
    * The meaning of the value depends on the is_synced flag:
-   * - if is_synced is false, the value maps linearly to milliseconds (1.0 .. 10_000.0).
+   * - if is_synced is false, the value maps to milliseconds (1.0 .. 10_000.0) with formula:
+   *       millis = 1.0 + 9999.0 * value^2.3225053
    * - if is_synced is true, then the value is quantized to one of 30 bar time durations.
    *   The bar time durations are:
    *      1/256, 1/192, 1/128, 1/96, 1/64, 1/48, 1/32, 1/24, 1/16,
@@ -807,7 +828,8 @@ export class HeisenbergPitchEnvelope extends Message<HeisenbergPitchEnvelope> {
   /**
    * The release time of the pitch envelope, expressed as a normalized value.
    * The meaning of the value depends on the is_synced flag:
-   * - if is_synced is false, the value maps linearly to milliseconds (1.0 .. 10_000.0).
+   * - if is_synced is false, the value maps to milliseconds (1.0 .. 10_000.0) with formula:
+   *       millis = 1.0 + 9999.0 * value^2.3225053
    * - if is_synced is true, then the value is quantized to one of 30 bar time durations.
    *   The bar time durations are:
    *      1/256, 1/192, 1/128, 1/96, 1/64, 1/48, 1/32, 1/24, 1/16,

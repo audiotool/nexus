@@ -1,0 +1,47 @@
+# @audiotool/nexus
+
+> A JS/TS SDK for interacting with multiplayer projects of the Audiotool DAW in real time, by modifying it while the user works in the DAW.
+> The DAW runs in the browser at beta.audiotool.com and supports real-time collaboration; this package enables writing a bot that takes part
+> in a collaborative session in real time, reading and writing changes as they happen.
+
+The primary use case of this app is to write "companion" apps running on separate domains
+that can be used to enhance the creative workflow of users using the app, by letting them generate
+melodies, configuring devices, applying presets, exporting/converting project files, importing assets,
+and many other use cases - anything that reads or writes or both a DAW project file.
+
+- This SDK connects to Audiotool's multiplayer backend via WebSocket
+- It uses a real-time document model with entities, fields, and transactions
+- Authentication uses OAuth2 via accounts.audiotool.com
+- Compatible with browsers, Node.js, Bun, and Deno
+
+Markdown versions of all documentation pages are available by appending `.md` to any HTML URL.
+For example: `https://developer.audiotool.com/js-package-documentation/index.html` has a markdown version at `https://developer.audiotool.com/js-package-documentation/index.html.md`
+
+## Guides
+
+- [Getting Started](https://developer.audiotool.com/js-package-documentation/documents/Getting_Started.html.md): Install, authenticate, and open your first project
+- [Overview](https://developer.audiotool.com/js-package-documentation/documents/Overview.html.md): Architecture and concepts — how the multiplayer document model works
+- [Authentication](https://developer.audiotool.com/js-package-documentation/documents/Login.html.md): OAuth2 authentication flow for browser and server-side apps
+- [API](https://developer.audiotool.com/js-package-documentation/documents/API.html.md): REST API reference for server-side operations (projects, presets, samples, users)
+- [All Entities](https://developer.audiotool.com/js-package-documentation/documents/All_Entities.html.md): Complete list of audio devices, effects, and instruments
+- [Transaction Errors](https://developer.audiotool.com/js-package-documentation/documents/Transaction_Errors.html.md): Error handling for document mutations
+
+## Core API
+
+- [audiotool](https://developer.audiotool.com/js-package-documentation/functions/index.audiotool.html.md): Browser entry point — handles OAuth2 login and returns an authenticated client
+- [createAudiotoolClient](https://developer.audiotool.com/js-package-documentation/functions/index.createAudiotoolClient.html.md): Node.js/server entry point — creates an authenticated client with explicit auth and transport
+- [createOfflineDocument](https://developer.audiotool.com/js-package-documentation/functions/index.createOfflineDocument.html.md): Create a local document for testing without a server connection
+- [AudiotoolClient](https://developer.audiotool.com/js-package-documentation/types/index.AudiotoolClient.html.md): The client type for making API calls and attaching to projects
+- [SyncedDocument](https://developer.audiotool.com/js-package-documentation/types/index.SyncedDocument.html.md): Real-time synchronized project document
+- [OfflineDocument](https://developer.audiotool.com/js-package-documentation/types/index.OfflineDocument.html.md): Local project document for offline use and testing
+
+## Document Model
+
+- [TransactionBuilder](https://developer.audiotool.com/js-package-documentation/types/document.TransactionBuilder.html.md): Interface for creating, updating, and deleting entities in a transaction
+- [NexusEntity](https://developer.audiotool.com/js-package-documentation/interfaces/document.NexusEntity.html.md): Base interface for all entities in a document
+- [NexusField](https://developer.audiotool.com/js-package-documentation/interfaces/document.NexusField.html.md): Base interface for entity fields
+
+## Optional
+
+
+- [Changelog](https://developer.audiotool.com/js-package-documentation/documents/%F0%9F%93%9C_Changelog.html.md): Version history and breaking changes

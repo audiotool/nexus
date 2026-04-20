@@ -18,7 +18,7 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
+import { Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
 import { Project } from "./project_pb.js";
 
 /**
@@ -56,7 +56,8 @@ proto3.util.setEnumType(SyncTrackScreenshotStatus, "audiotool.project.v1.SyncTra
 ]);
 
 /**
- * SyncTrackScreenshotInfo is used as google.longrunning.Operation.metadata message.
+ * SyncTrackScreenshotInfo is used as the `metadata` field on [audiotool.longrunning.v1.Operation][audiotool.longrunning.v1.Operation]
+ * (same shape as Google's long-running operation pattern).
  *
  * This is used when a track is synced to a project. The screenshot is not in the main process
  * and will be pushed to the track when it is ready. The SyncTrackMode must contain audio to trigger
@@ -75,9 +76,9 @@ export class SyncTrackScreenshotInfo extends Message<SyncTrackScreenshotInfo> {
   /**
    * The commit index of the project.
    *
-   * @generated from field: uint32 commit_index = 2;
+   * @generated from field: uint64 commit_index = 2;
    */
-  commitIndex = 0;
+  commitIndex = protoInt64.zero;
 
   /**
    * The desired track name.
@@ -116,7 +117,7 @@ export class SyncTrackScreenshotInfo extends Message<SyncTrackScreenshotInfo> {
   static readonly typeName = "audiotool.project.v1.SyncTrackScreenshotInfo";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "project", kind: "message", T: Project },
-    { no: 2, name: "commit_index", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
+    { no: 2, name: "commit_index", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
     { no: 3, name: "track_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "user_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "create_time", kind: "message", T: Timestamp },

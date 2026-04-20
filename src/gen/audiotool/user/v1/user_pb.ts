@@ -92,8 +92,19 @@ export class User extends Message<User> {
   /**
    * The avatar URL of the user.
    *
-   * you can append `?width=256&height=256&fit=cover&format=webp` to the URL for resizing
-   * (current restriction - this is only able for for CDNs > 2)
+   * The avatar_url will be in the form of:
+   *
+   * "https://.../300x300.webp?{SHA}"
+   *
+   * The SHA can be used for cache busting.
+   *
+   * If you need another resolution you can replace 300x300.webp with:
+   *
+   * - 30x30.webp
+   * - 60x60.webp
+   * - 120x120.webp
+   * - 300x300.webp
+   * - 600x600.webp
    *
    * @generated from field: string avatar_url = 10;
    */
@@ -105,6 +116,24 @@ export class User extends Message<User> {
    * @generated from field: repeated string links = 11;
    */
   links: string[] = [];
+
+  /**
+   * The artist page header (banner) URL of the user.
+   *
+   * The artist_page_header_url will be in the form of:
+   *
+   * "https://.../1440x300.webp?{SHA}"
+   *
+   * The SHA can be used for cache busting.
+   *
+   * If you need another resolution you can replace 1440x300.webp with:
+   *
+   * - 2880x600.webp
+   * - 960x200.webp
+   *
+   * @generated from field: string artist_page_header_url = 12;
+   */
+  artistPageHeaderUrl = "";
 
   constructor(data?: PartialMessage<User>) {
     super();
@@ -125,6 +154,7 @@ export class User extends Message<User> {
     { no: 9, name: "tags", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 10, name: "avatar_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 11, name: "links", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+    { no: 12, name: "artist_page_header_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): User {

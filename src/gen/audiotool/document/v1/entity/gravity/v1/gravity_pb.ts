@@ -47,6 +47,14 @@ export class Gravity extends Message<Gravity> {
   positionY = 0;
 
   /**
+   * The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   * This is used for record-keeping only and has no effect on the sound of the device.
+   *
+   * @generated from field: string preset_name = 17;
+   */
+  presetName = "";
+
+  /**
    * The level in dB on which the device starts compressing.
    *
    * @generated from field: float threshold_db = 5;
@@ -68,7 +76,7 @@ export class Gravity extends Message<Gravity> {
   kneeDbRange = 0;
 
   /**
-   * Makeup gain apllied to the signal after compression. 
+   * Makeup gain apllied to the signal after compression.
    *
    * @generated from field: float makeup_gain_db = 8;
    */
@@ -92,7 +100,8 @@ export class Gravity extends Message<Gravity> {
    * The time for the compressor to release when the input level is dropping below the threshold.
    *
    * The meaning of the value depends on the release_is_synced flag:
-   * - if release_is_synced is false, the value maps linearly to milliseconds (0.0 .. 1_000.0).
+   * - if release_is_synced is false, the value maps to milliseconds (0.0 .. 1_000.0) with formula:
+   *       millis = 1000.0 * value^4.3219281
    * - if release_is_synced is true, then the value is quantized to one of 30 bar time durations.
    *   The bar time durations are:
    *   0, 1/256, 1/192, 1/128, 1/96, 1/64, 1/48, 1/32, 1/24, 1/16, 1/12, 1/8, 1/6,
@@ -151,6 +160,7 @@ export class Gravity extends Message<Gravity> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "position_x", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "position_y", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 17, name: "preset_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "threshold_db", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 6, name: "ratio", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 7, name: "knee_db_range", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },

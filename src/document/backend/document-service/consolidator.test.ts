@@ -41,7 +41,7 @@ type TestContext = {
 /** Reversing a transaction means changing its commit index from 0 to 1 */
 const reverse = (t: Transaction) => {
   t = t.clone()
-  t.commitIndex = t.commitIndex === 0 ? 1 : 0
+  t.commitIndex = t.commitIndex === 0n ? 1n : 0n
   return t
 }
 
@@ -55,7 +55,7 @@ describe("NexusStateConsolidator", () => {
 
     const mockState: WasmDocumentState = {
       applyTransaction: (t: Transaction): string | Transaction =>
-        invalid.has(`${t.id}-${t.commitIndex == 0 ? "f" : "r"}`)
+        invalid.has(`${t.id}-${t.commitIndex == 0n ? "f" : "r"}`)
           ? "rejected"
           : reverse(t),
       terminate: () => {},
@@ -63,7 +63,7 @@ describe("NexusStateConsolidator", () => {
 
     context.transactions = Array(20)
       .fill(0)
-      .map((_, i) => new Transaction({ id: i.toString(), commitIndex: 0 }))
+      .map((_, i) => new Transaction({ id: i.toString(), commitIndex: 0n }))
 
     const consolidator = new NexusStateConsolidator(mockState)
     context.runSynchronize = ({
@@ -82,7 +82,7 @@ describe("NexusStateConsolidator", () => {
           created ?? [],
         )
         .map((t) =>
-          t.commitIndex === 0 ? ["f", parseInt(t.id)] : ["r", parseInt(t.id)],
+          t.commitIndex === 0n ? ["f", parseInt(t.id)] : ["r", parseInt(t.id)],
         )
   })
 

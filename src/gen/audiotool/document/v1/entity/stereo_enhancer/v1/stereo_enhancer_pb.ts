@@ -43,6 +43,14 @@ export class StereoEnhancer extends Message<StereoEnhancer> {
   positionY = 0;
 
   /**
+   * The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   * This is used for record-keeping only and has no effect on the sound of the device.
+   *
+   * @generated from field: string preset_name = 11;
+   */
+  presetName = "";
+
+  /**
    * If this is true, the delay is applied to the right channel.
    *
    * @generated from field: bool channels_are_inverted = 5;
@@ -99,6 +107,7 @@ export class StereoEnhancer extends Message<StereoEnhancer> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "position_x", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "position_y", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 11, name: "preset_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "channels_are_inverted", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 6, name: "frequency_hz", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 7, name: "stereo_width", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },

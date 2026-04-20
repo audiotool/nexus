@@ -22,3 +22,7 @@ inputs:
       - audiotool/sample/
       - audiotool/audiograph/
       - audiotool/longrunning/
+    exclude_paths:
+      # engine messages (plugin_state, request, response, feedback) are internal
+      # DAW <-> engine communication and are not part of the SDK surface.
+      - audiotool/document/v1/engine/

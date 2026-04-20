@@ -681,3 +681,87 @@ export class UploadAvatarResponse extends Message<UploadAvatarResponse> {
   }
 }
 
+/**
+ * Request for UserService.BatchGetUsers.
+ * Used to fetch multiple users when using the filter in the ListUsers request
+ * is too laborious or the number of users you are fetching is quite large.
+ *
+ * @generated from message audiotool.user.v1.BatchGetUsersRequest
+ */
+export class BatchGetUsersRequest extends Message<BatchGetUsersRequest> {
+  /**
+   * Takes a list of users
+   *
+   * @generated from field: repeated string user_names = 1;
+   */
+  userNames: string[] = [];
+
+  constructor(data?: PartialMessage<BatchGetUsersRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "audiotool.user.v1.BatchGetUsersRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "user_names", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): BatchGetUsersRequest {
+    return new BatchGetUsersRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): BatchGetUsersRequest {
+    return new BatchGetUsersRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): BatchGetUsersRequest {
+    return new BatchGetUsersRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: BatchGetUsersRequest | PlainMessage<BatchGetUsersRequest> | undefined, b: BatchGetUsersRequest | PlainMessage<BatchGetUsersRequest> | undefined): boolean {
+    return proto3.util.equals(BatchGetUsersRequest, a, b);
+  }
+}
+
+/**
+ * Response for UserService.BatchGetUsers.
+ *
+ * @generated from message audiotool.user.v1.BatchGetUsersResponse
+ */
+export class BatchGetUsersResponse extends Message<BatchGetUsersResponse> {
+  /**
+   * The users that were requested.
+   *
+   * @generated from field: repeated audiotool.user.v1.User users = 1;
+   */
+  users: User[] = [];
+
+  constructor(data?: PartialMessage<BatchGetUsersResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "audiotool.user.v1.BatchGetUsersResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "users", kind: "message", T: User, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): BatchGetUsersResponse {
+    return new BatchGetUsersResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): BatchGetUsersResponse {
+    return new BatchGetUsersResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): BatchGetUsersResponse {
+    return new BatchGetUsersResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: BatchGetUsersResponse | PlainMessage<BatchGetUsersResponse> | undefined, b: BatchGetUsersResponse | PlainMessage<BatchGetUsersResponse> | undefined): boolean {
+    return proto3.util.equals(BatchGetUsersResponse, a, b);
+  }
+}
+

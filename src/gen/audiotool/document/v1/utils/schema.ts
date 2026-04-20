@@ -1,5 +1,5 @@
 // THIS FILE IS GENERATED - DO NOT EDIT
-// Copyright 2025 Audiotool Inc.
+// Copyright 2026 Audiotool Inc.
 
 import { ScalarType } from "@bufbuild/protobuf"
 import { type SchemaDetails } from "@document/schema/schema-details"
@@ -327,6 +327,17 @@ export const NEXUS_SCHEMA_INFO = {
     },
     fieldName: "positionY",
   },
+  "autoFilter:19": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
+  },
   "autoFilter:5": {
     type: "primitive",
     targetTypes: ["AutomatableParameter"],
@@ -513,6 +524,17 @@ export const NEXUS_SCHEMA_INFO = {
     },
     fieldName: "positionY",
   },
+  "bandSplitter:14": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
+  },
   "bandSplitter:5": {
     type: "primitive",
     targetTypes: ["AutomatableParameter"],
@@ -632,6 +654,17 @@ export const NEXUS_SCHEMA_INFO = {
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
+  },
+  "bassline:19": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
   },
   "bassline:5": {
     type: "primitive",
@@ -930,6 +963,17 @@ export const NEXUS_SCHEMA_INFO = {
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
+  },
+  "beatbox8:23": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
   },
   "beatbox8:5": {
     type: "primitive",
@@ -1654,6 +1698,17 @@ export const NEXUS_SCHEMA_INFO = {
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
+  },
+  "beatbox9:22": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
   },
   "beatbox9:5": {
     type: "primitive",
@@ -2753,6 +2808,17 @@ export const NEXUS_SCHEMA_INFO = {
     },
     fieldName: "positionY",
   },
+  "crossfader:12": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
+  },
   "crossfader:5": {
     type: "primitive",
     targetTypes: ["AutomatableParameter"],
@@ -2791,7 +2857,7 @@ export const NEXUS_SCHEMA_INFO = {
   },
   "crossfader:8": {
     type: "primitive",
-    targetTypes: [],
+    targetTypes: ["AutomatableParameter"],
     immutable: false,
     primitive: {
       type: "number",
@@ -3099,6 +3165,17 @@ export const NEXUS_SCHEMA_INFO = {
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
+  },
+  "curve:17": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
   },
   "curve:5": {
     type: "primitive",
@@ -3603,6 +3680,17 @@ export const NEXUS_SCHEMA_INFO = {
     },
     fieldName: "positionY",
   },
+  "exciter:11": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
+  },
   "exciter:5": {
     type: "object",
     targetTypes: ["AudioInput"],
@@ -3700,6 +3788,17 @@ export const NEXUS_SCHEMA_INFO = {
     },
     fieldName: "positionY",
   },
+  "gakki:9": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
+  },
   "gakki:5": {
     type: "primitive",
     targetTypes: [],
@@ -3732,6 +3831,93 @@ export const NEXUS_SCHEMA_INFO = {
     type: "object",
     targetTypes: ["AudioOutput"],
     fieldName: "audioOutput",
+  },
+  genericVst3PluginBeta: {
+    type: "entity",
+    targetTypes: ["NoteTrackPlayer"],
+    typeKey: "genericVst3PluginBeta",
+  },
+  "genericVst3PluginBeta:2": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 500,
+    },
+    fieldName: "displayName",
+  },
+  "genericVst3PluginBeta:3": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 500,
+    },
+    fieldName: "pluginPath",
+  },
+  "genericVst3PluginBeta:4": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "number",
+      scalarType: ScalarType.INT32,
+      default: 0,
+      range: { min: -2147483648, max: 2147483647 },
+    },
+    fieldName: "positionX",
+  },
+  "genericVst3PluginBeta:5": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "number",
+      scalarType: ScalarType.INT32,
+      default: 0,
+      range: { min: -2147483648, max: 2147483647 },
+    },
+    fieldName: "positionY",
+  },
+  "genericVst3PluginBeta:6": {
+    type: "object",
+    targetTypes: ["AudioInput"],
+    fieldName: "audioInput",
+  },
+  "genericVst3PluginBeta:7": {
+    type: "object",
+    targetTypes: ["AudioOutput"],
+    fieldName: "audioOutput",
+  },
+  "genericVst3PluginBeta:8": {
+    type: "object",
+    targetTypes: ["NotesInput"],
+    fieldName: "notesInput",
+  },
+  "genericVst3PluginBeta:9": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "bytes",
+      scalarType: ScalarType.BYTES,
+    },
+    fieldName: "state",
+  },
+  "genericVst3PluginBeta:10": {
+    type: "primitive",
+    targetTypes: ["AutomatableParameter"],
+    immutable: false,
+    primitive: {
+      type: "boolean",
+      scalarType: ScalarType.BOOL,
+      default: true,
+    },
+    fieldName: "isActive",
   },
   graphicalEQ: {
     type: "entity",
@@ -3772,6 +3958,17 @@ export const NEXUS_SCHEMA_INFO = {
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
+  },
+  "graphicalEQ:12": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
   },
   "graphicalEQ:5": {
     type: "object",
@@ -3963,6 +4160,17 @@ export const NEXUS_SCHEMA_INFO = {
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
+  },
+  "gravity:17": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
   },
   "gravity:5": {
     type: "primitive",
@@ -4177,6 +4385,17 @@ export const NEXUS_SCHEMA_INFO = {
     },
     fieldName: "positionY",
   },
+  "heisenberg:29": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
+  },
   "heisenberg:5": {
     type: "primitive",
     targetTypes: [],
@@ -4220,7 +4439,7 @@ export const NEXUS_SCHEMA_INFO = {
       type: "number",
       scalarType: ScalarType.UINT32,
       default: 3,
-      range: { min: 1, max: 3 },
+      range: { min: 1, max: 4 },
     },
     fieldName: "playModeIndex",
   },
@@ -5945,6 +6164,17 @@ export const NEXUS_SCHEMA_INFO = {
     },
     fieldName: "positionY",
   },
+  "helmholtz:13": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
+  },
   "helmholtz:5": {
     type: "primitive",
     targetTypes: [],
@@ -6219,6 +6449,17 @@ export const NEXUS_SCHEMA_INFO = {
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
+  },
+  "machiniste:14": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
   },
   "machiniste:5": {
     type: "primitive",
@@ -6701,6 +6942,17 @@ export const NEXUS_SCHEMA_INFO = {
     },
     fieldName: "positionY",
   },
+  "matrixArpeggiator:21": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
+  },
   "matrixArpeggiator:5": {
     type: "primitive",
     targetTypes: ["AutomatableParameter"],
@@ -6999,9 +7251,20 @@ export const NEXUS_SCHEMA_INFO = {
       type: "number",
       scalarType: ScalarType.FLOAT,
       default: 0,
-      range: { min: -Infinity, max: +Infinity },
+      range: { min: -1, max: 1 },
     },
     fieldName: "[]",
+  },
+  "microTuningOctave:3": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 500,
+    },
+    fieldName: "displayName",
   },
   minimixer: {
     type: "entity",
@@ -7849,7 +8112,7 @@ export const NEXUS_SCHEMA_INFO = {
       type: "number",
       scalarType: ScalarType.FLOAT,
       default: 500,
-      range: { min: 200, max: 700 },
+      range: { min: 200, max: 1600 },
     },
     fieldName: "lowMidFrequencyHz",
   },
@@ -7873,7 +8136,7 @@ export const NEXUS_SCHEMA_INFO = {
       type: "number",
       scalarType: ScalarType.FLOAT,
       default: 4800,
-      range: { min: 1600, max: 7200 },
+      range: { min: 1600, max: 10000 },
     },
     fieldName: "highMidFrequencyHz",
   },
@@ -8395,7 +8658,7 @@ export const NEXUS_SCHEMA_INFO = {
       type: "number",
       scalarType: ScalarType.FLOAT,
       default: 500,
-      range: { min: 200, max: 700 },
+      range: { min: 200, max: 1600 },
     },
     fieldName: "lowMidFrequencyHz",
   },
@@ -8419,7 +8682,7 @@ export const NEXUS_SCHEMA_INFO = {
       type: "number",
       scalarType: ScalarType.FLOAT,
       default: 4800,
-      range: { min: 1600, max: 7200 },
+      range: { min: 1600, max: 10000 },
     },
     fieldName: "highMidFrequencyHz",
   },
@@ -8926,6 +9189,17 @@ export const NEXUS_SCHEMA_INFO = {
     },
     fieldName: "positionY",
   },
+  "noteSplitter:7": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
+  },
   "noteSplitter:5": {
     type: "object",
     targetTypes: ["NotesInput"],
@@ -9009,6 +9283,17 @@ export const NEXUS_SCHEMA_INFO = {
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
+  },
+  "panorama:12": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
   },
   "panorama:5": {
     type: "primitive",
@@ -9118,6 +9403,17 @@ export const NEXUS_SCHEMA_INFO = {
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
+  },
+  "pulsar:24": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
   },
   "pulsar:5": {
     type: "primitive",
@@ -9371,6 +9667,17 @@ export const NEXUS_SCHEMA_INFO = {
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
+  },
+  "pulverisateur:24": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
   },
   "pulverisateur:5": {
     type: "object",
@@ -10214,6 +10521,17 @@ export const NEXUS_SCHEMA_INFO = {
     },
     fieldName: "positionY",
   },
+  "quantum:13": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
+  },
   "quantum:5": {
     type: "primitive",
     targetTypes: ["AutomatableParameter"],
@@ -10445,6 +10763,17 @@ export const NEXUS_SCHEMA_INFO = {
     },
     fieldName: "positionY",
   },
+  "quasar:20": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
+  },
   "quasar:5": {
     type: "primitive",
     targetTypes: ["AutomatableParameter"],
@@ -10649,6 +10978,17 @@ export const NEXUS_SCHEMA_INFO = {
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
+  },
+  "rasselbock:18": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
   },
   "rasselbock:5": {
     type: "array",
@@ -11426,6 +11766,17 @@ export const NEXUS_SCHEMA_INFO = {
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
+  },
+  "space:34": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
   },
   "space:5": {
     type: "primitive",
@@ -12897,6 +13248,17 @@ export const NEXUS_SCHEMA_INFO = {
     },
     fieldName: "positionY",
   },
+  "stereoEnhancer:11": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
+  },
   "stereoEnhancer:5": {
     type: "primitive",
     targetTypes: ["AutomatableParameter"],
@@ -12992,6 +13354,17 @@ export const NEXUS_SCHEMA_INFO = {
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
+  },
+  "stompboxChorus:13": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
   },
   "stompboxChorus:5": {
     type: "primitive",
@@ -13113,6 +13486,17 @@ export const NEXUS_SCHEMA_INFO = {
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
+  },
+  "stompboxCompressor:15": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
   },
   "stompboxCompressor:5": {
     type: "primitive",
@@ -13252,6 +13636,17 @@ export const NEXUS_SCHEMA_INFO = {
     },
     fieldName: "positionY",
   },
+  "stompboxCrusher:13": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
+  },
   "stompboxCrusher:5": {
     type: "primitive",
     targetTypes: ["AutomatableParameter"],
@@ -13373,6 +13768,17 @@ export const NEXUS_SCHEMA_INFO = {
     },
     fieldName: "positionY",
   },
+  "stompboxDelay:12": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
+  },
   "stompboxDelay:5": {
     type: "primitive",
     targetTypes: ["AutomatableParameter"],
@@ -13482,6 +13888,17 @@ export const NEXUS_SCHEMA_INFO = {
     },
     fieldName: "positionY",
   },
+  "stompboxFlanger:12": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
+  },
   "stompboxFlanger:5": {
     type: "primitive",
     targetTypes: ["AutomatableParameter"],
@@ -13590,6 +14007,17 @@ export const NEXUS_SCHEMA_INFO = {
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
+  },
+  "stompboxGate:15": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
   },
   "stompboxGate:5": {
     type: "primitive",
@@ -13728,6 +14156,17 @@ export const NEXUS_SCHEMA_INFO = {
     },
     fieldName: "positionY",
   },
+  "stompboxParametricEqualizer:11": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
+  },
   "stompboxParametricEqualizer:5": {
     type: "primitive",
     targetTypes: ["AutomatableParameter"],
@@ -13824,6 +14263,17 @@ export const NEXUS_SCHEMA_INFO = {
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
+  },
+  "stompboxPhaser:13": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
   },
   "stompboxPhaser:5": {
     type: "primitive",
@@ -13946,6 +14396,17 @@ export const NEXUS_SCHEMA_INFO = {
     },
     fieldName: "positionY",
   },
+  "stompboxPitchDelay:13": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
+  },
   "stompboxPitchDelay:5": {
     type: "primitive",
     targetTypes: ["AutomatableParameter"],
@@ -14066,6 +14527,17 @@ export const NEXUS_SCHEMA_INFO = {
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
+  },
+  "stompboxReverb:13": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
   },
   "stompboxReverb:5": {
     type: "primitive",
@@ -14188,6 +14660,17 @@ export const NEXUS_SCHEMA_INFO = {
     },
     fieldName: "positionY",
   },
+  "stompboxSlope:13": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
+  },
   "stompboxSlope:5": {
     type: "primitive",
     targetTypes: ["AutomatableParameter"],
@@ -14309,6 +14792,17 @@ export const NEXUS_SCHEMA_INFO = {
     },
     fieldName: "positionY",
   },
+  "stompboxStereoDetune:10": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
+  },
   "stompboxStereoDetune:5": {
     type: "primitive",
     targetTypes: ["AutomatableParameter"],
@@ -14393,6 +14887,17 @@ export const NEXUS_SCHEMA_INFO = {
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
+  },
+  "stompboxTube:11": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
   },
   "stompboxTube:5": {
     type: "primitive",
@@ -14790,6 +15295,17 @@ export const NEXUS_SCHEMA_INFO = {
       range: { min: 1, max: 2 },
     },
     fieldName: "interpolation",
+  },
+  "automationEvent:7": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "boolean",
+      scalarType: ScalarType.BOOL,
+      default: false,
+    },
+    fieldName: "isSecond",
   },
   automationRegion: {
     type: "entity",
@@ -15529,6 +16045,17 @@ export const NEXUS_SCHEMA_INFO = {
     },
     fieldName: "positionY",
   },
+  "tonematrix:11": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
+  },
   "tonematrix:5": {
     type: "primitive",
     targetTypes: [],
@@ -15679,6 +16206,17 @@ export const NEXUS_SCHEMA_INFO = {
     },
     fieldName: "positionY",
   },
+  "waveshaper:20": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "string",
+      scalarType: ScalarType.STRING,
+      maxByteLength: 60,
+    },
+    fieldName: "presetName",
+  },
   "waveshaper:5": {
     type: "primitive",
     targetTypes: ["AutomatableParameter"],
@@ -15811,6 +16349,17 @@ export const NEXUS_SCHEMA_INFO = {
       default: true,
     },
     fieldName: "isActive",
+  },
+  "waveshaper:19": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "boolean",
+      scalarType: ScalarType.BOOL,
+      default: false,
+    },
+    fieldName: "disableOversampling",
   },
   waveshaperAnchor: {
     type: "entity",

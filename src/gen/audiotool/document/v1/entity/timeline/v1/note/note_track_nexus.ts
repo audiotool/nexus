@@ -1,5 +1,5 @@
 // THIS FILE IS GENERATED - DO NOT EDIT
-// Copyright 2025 Audiotool Inc.
+// Copyright 2026 Audiotool Inc.
 
 import { PrimitiveField } from "@document/fields"
 import { type NexusLocation } from "@document/location"
@@ -55,7 +55,7 @@ export type NoteTrack = {
    * --- | ---
    * default | no default, required
    * required | true
-   * targets | {@link api.TargetType.NoteTrackPlayer}, meaning one of: <br />{@link entities.Bassline}, <br />{@link entities.Beatbox8}, <br />{@link entities.Beatbox9}, <br />{@link entities.Gakki}, <br />{@link entities.Heisenberg}, <br />{@link entities.Machiniste}, <br />{@link entities.MatrixArpeggiator}, <br />{@link entities.NoteSplitter}, <br />{@link entities.Pulverisateur}, <br />{@link entities.Space}, <br />{@link entities.SpitfireLabsVst3Plugin}, <br />{@link entities.Tonematrix}
+   * targets | {@link api.TargetType.NoteTrackPlayer}, meaning one of: <br />{@link entities.Bassline}, <br />{@link entities.Beatbox8}, <br />{@link entities.Beatbox9}, <br />{@link entities.Gakki}, <br />{@link entities.GenericVst3PluginBeta}, <br />{@link entities.Heisenberg}, <br />{@link entities.Machiniste}, <br />{@link entities.MatrixArpeggiator}, <br />{@link entities.NoteSplitter}, <br />{@link entities.Pulverisateur}, <br />{@link entities.Space}, <br />{@link entities.SpitfireLabsVst3Plugin}, <br />{@link entities.Tonematrix}
    * immutable | true*/
   player: PrimitiveField<NexusLocation, "immut">
 }

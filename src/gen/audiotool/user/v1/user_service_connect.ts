@@ -17,7 +17,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { DeleteUserRequest, DeleteUserResponse, GetSettingsRequest, GetSettingsResponse, GetUserRequest, GetUserResponse, ListUsersRequest, ListUsersResponse, UpdateSettingsRequest, UpdateSettingsResponse, UpdateUserRequest, UpdateUserResponse, UploadAvatarRequest, UploadAvatarResponse } from "./user_service_pb.js";
+import { BatchGetUsersRequest, BatchGetUsersResponse, DeleteUserRequest, DeleteUserResponse, GetSettingsRequest, GetSettingsResponse, GetUserRequest, GetUserResponse, ListUsersRequest, ListUsersResponse, UpdateSettingsRequest, UpdateSettingsResponse, UpdateUserRequest, UpdateUserResponse } from "./user_service_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -95,14 +95,14 @@ export const UserService = {
       kind: MethodKind.Unary,
     },
     /**
-     * Upload an avatar for the logged in user.
+     * Get multiple users with a single request.
      *
-     * @generated from rpc audiotool.user.v1.UserService.UploadAvatar
+     * @generated from rpc audiotool.user.v1.UserService.BatchGetUsers
      */
-    uploadAvatar: {
-      name: "UploadAvatar",
-      I: UploadAvatarRequest,
-      O: UploadAvatarResponse,
+    batchGetUsers: {
+      name: "BatchGetUsers",
+      I: BatchGetUsersRequest,
+      O: BatchGetUsersResponse,
       kind: MethodKind.Unary,
     },
   }

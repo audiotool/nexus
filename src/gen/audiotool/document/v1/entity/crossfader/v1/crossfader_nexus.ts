@@ -1,5 +1,5 @@
 // THIS FILE IS GENERATED - DO NOT EDIT
-// Copyright 2025 Audiotool Inc.
+// Copyright 2026 Audiotool Inc.
 
 import { PrimitiveField } from "@document/fields"
 import { NexusObject } from "@document/object"
@@ -42,6 +42,11 @@ export type Crossfader = {
    * range | full*/
   positionY: PrimitiveField<number, "mut">
   /**
+   *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   *  This is used for record-keeping only and has no effect on the sound of the device.
+   */
+  presetName: PrimitiveField<string, "mut">
+  /**
    *  The "master gain" crossfader. Equivalent to a dB range of [-inf, 0.0].
    *
    *
@@ -83,7 +88,8 @@ export type Crossfader = {
    * key | value
    * --- | ---
    * default | 1
-   * range | [1, 3]*/
+   * range | [1, 3]
+   * is | {@link api.TargetType.AutomatableParameter}*/
   blendModeIndex: PrimitiveField<number, "mut">
   /**
    *  The first input channel (channel "A") of the crossfader.
@@ -127,6 +133,11 @@ export type CrossfaderConstructor = {
    * default | 0
    * range | full*/
   positionY?: number
+  /**
+   *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   *  This is used for record-keeping only and has no effect on the sound of the device.
+   */
+  presetName?: string
   /**
    *  The "master gain" crossfader. Equivalent to a dB range of [-inf, 0.0].
    *

@@ -3,8 +3,9 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { ApplyTransactionsRequest, ApplyTransactionsResponse, AttachMetadataRequest, AttachMetadataResponse, AttachRequest, AttachResponse, GetClientStatsRequest, GetClientStatsResponse, GetEntitiesRequest, GetEntitiesResponse, GetTimeRequest, GetTimeResponse, GetVersionRequest, GetVersionResponse, GetWasmExecRequest, GetWasmExecResponse, GetWasmRequest, GetWasmResponse, ModifyRequest, ModifyResponse, PingRequest, PingResponse, PutMetadataRequest, PutMetadataResponse } from "./document_service_pb.js";
+import { ApplyTransactionsRequest, ApplyTransactionsResponse, AttachMetadataRequest, AttachMetadataResponse, AttachRequest, AttachResponse, GetClientStatsRequest, GetClientStatsResponse, GetCommitIndexRangeRequest, GetCommitIndexRangeResponse, GetEntitiesRequest, GetEntitiesResponse, GetTimeRequest, GetTimeResponse, GetVersionRequest, GetVersionResponse, GetWasmExecRequest, GetWasmExecResponse, GetWasmRequest, GetWasmResponse, PingRequest, PingResponse, PutMetadataRequest, PutMetadataResponse, RenderAudioRequest } from "./document_service_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
+import { Operation } from "../../longrunning/v1/operation_pb.js";
 
 /**
  * interaction with the backend
@@ -32,18 +33,6 @@ export const DocumentService = {
       I: AttachRequest,
       O: AttachResponse,
       kind: MethodKind.ServerStreaming,
-    },
-    /**
-     * Modify requests to apply the transaction to the document. Each ModifyRequest
-     * will result in a ModifyResponse, which might or might not contain an error message.
-     *
-     * @generated from rpc audiotool.document.v1.DocumentService.Modify
-     */
-    modify: {
-      name: "Modify",
-      I: ModifyRequest,
-      O: ModifyResponse,
-      kind: MethodKind.BiDiStreaming,
     },
     /**
      * ApplyTransactions is a non-streaming version of `Modify`. It takes multiple
@@ -173,6 +162,35 @@ export const DocumentService = {
       name: "PutMetadata",
       I: PutMetadataRequest,
       O: PutMetadataResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * GetCommitIndexRange returns the minimum and maximum commit_index currently held by the server
+     * for a given document.
+     *
+     * @generated from rpc audiotool.document.v1.DocumentService.GetCommitIndexRange
+     */
+    getCommitIndexRange: {
+      name: "GetCommitIndexRange",
+      I: GetCommitIndexRangeRequest,
+      O: GetCommitIndexRangeResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * RenderAudio starts rendering the project to audio files and caching them on the
+     * hermes instance for download via HTTP.
+     *
+     * Returns immediately with an [audiotool.longrunning.v1.Operation] where `done` is false.
+     * Poll [audiotool.longrunning.v1.OperationService.GetOperation] (or subscribe to operation
+     * updates via your client stack) until `done` is true. On success, `response` unpacks to
+     * [RenderAudioResponse]. Metadata, when set, uses [RenderAudioInfo].
+     *
+     * @generated from rpc audiotool.document.v1.DocumentService.RenderAudio
+     */
+    renderAudio: {
+      name: "RenderAudio",
+      I: RenderAudioRequest,
+      O: Operation,
       kind: MethodKind.Unary,
     },
   }

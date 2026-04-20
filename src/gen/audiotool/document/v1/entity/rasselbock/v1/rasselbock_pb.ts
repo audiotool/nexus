@@ -47,6 +47,14 @@ export class Rasselbock extends Message<Rasselbock> {
   positionY = 0;
 
   /**
+   * The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   * This is used for record-keeping only and has no effect on the sound of the device.
+   *
+   * @generated from field: string preset_name = 18;
+   */
+  presetName = "";
+
+  /**
    * Empty fields which RasselbockPatterns can point to. At most one pattern
    * can point to a specific element in this list.
    *
@@ -154,6 +162,7 @@ export class Rasselbock extends Message<Rasselbock> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "position_x", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "position_y", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 18, name: "preset_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "pattern_slots", kind: "message", T: Empty, repeated: true },
     { no: 6, name: "pattern_index", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
     { no: 7, name: "channel_configs", kind: "message", T: RasselbockChannel, repeated: true },

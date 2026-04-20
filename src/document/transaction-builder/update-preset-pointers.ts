@@ -1,11 +1,7 @@
-import {
-  packEntity,
-  unpackEntity,
-  type EntityMessage,
-} from "@document/entity-utils"
-import { Pointer } from "@gen/document/v1/pointer_pb"
+import { packEntity, unpackEntity } from "@document/entity-utils"
 import { Preset } from "@gen/document/v1/preset/v1/preset_pb"
 import { throw_ } from "@utils/lang"
+import { visitPointers } from "./entity-message-utils"
 
 /** This function prepares the pointers of a new preset. It does two things:
  * * the target entity id of the preset gets replaced with an existing  entity id
@@ -59,36 +55,4 @@ export const updatePresetPointers = (
     relatives: relatives.map((e) => packEntity(e)),
     target: packEntity(target),
   })
-}
-
-/** Visits all pointers of an entity message. Does _not_ work for `Entity` messages,
- * but the messages contained in the `Entity` messages.
- */
-export const visitPointers = (
-  of: EntityMessage | unknown,
-  callback: (pointer: Pointer) => void,
-) => {
-  if (of instanceof Pointer) {
-    callback(of)
-    return
-  }
-
-  if (of instanceof Array) {
-    of.forEach((element) => visitPointers(element, callback))
-    return
-  }
-
-  if (typeof of === "object") {
-    Object.values(of as Record<string, unknown>).forEach((value) =>
-      visitPointers(value, callback),
-    )
-    return
-  }
-
-  // ignore primitives
-  if (["string", "number", "boolean", "bigint"].includes(typeof of)) {
-    return
-  }
-
-  throw new Error(`unknown type ${typeof of}: ${of}`)
 }

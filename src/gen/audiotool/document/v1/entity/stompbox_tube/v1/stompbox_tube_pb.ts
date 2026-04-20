@@ -43,6 +43,14 @@ export class StompboxTube extends Message<StompboxTube> {
   positionY = 0;
 
   /**
+   * The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   * This is used for record-keeping only and has no effect on the sound of the device.
+   *
+   * @generated from field: string preset_name = 11;
+   */
+  presetName = "";
+
+  /**
    * Allows adjustment of the how much distortion is applied to the original signal.
    *
    * @generated from field: float drive = 5;
@@ -96,6 +104,7 @@ export class StompboxTube extends Message<StompboxTube> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "position_x", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "position_y", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 11, name: "preset_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "drive", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 6, name: "tone", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 7, name: "post_gain", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },

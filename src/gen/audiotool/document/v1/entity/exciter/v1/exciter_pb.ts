@@ -44,6 +44,14 @@ export class Exciter extends Message<Exciter> {
   positionY = 0;
 
   /**
+   * The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   * This is used for record-keeping only and has no effect on the sound of the device.
+   *
+   * @generated from field: string preset_name = 11;
+   */
+  presetName = "";
+
+  /**
    * Audio Input
    *
    * @generated from field: audiotool.document.v1.Empty audio_input = 5;
@@ -98,6 +106,7 @@ export class Exciter extends Message<Exciter> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "position_x", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 4, name: "position_y", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 11, name: "preset_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "audio_input", kind: "message", T: Empty },
     { no: 6, name: "audio_output", kind: "message", T: Empty },
     { no: 7, name: "tone_frequency_hz", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },

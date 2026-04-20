@@ -1,5 +1,5 @@
 // THIS FILE IS GENERATED - DO NOT EDIT
-// Copyright 2025 Audiotool Inc.
+// Copyright 2026 Audiotool Inc.
 
 import { PrimitiveField } from "@document/fields"
 import { type NexusLocation } from "@document/location"
@@ -45,6 +45,11 @@ export type Pulverisateur = {
    * default | 0
    * range | full*/
   positionY: PrimitiveField<number, "mut">
+  /**
+   *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   *  This is used for record-keeping only and has no effect on the sound of the device.
+   */
+  presetName: PrimitiveField<string, "mut">
   /**
    *  Notes input
    *
@@ -195,6 +200,11 @@ export type PulverisateurConstructor = {
    * default | 0
    * range | full*/
   positionY?: number
+  /**
+   *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
+   *  This is used for record-keeping only and has no effect on the sound of the device.
+   */
+  presetName?: string
   /**
    *  The main output gain of the device. Equivalent to a dB range of [-inf, 0.0].
    *
@@ -696,7 +706,8 @@ export type PulverisateurLfo = {
   /**
    *  The LFO's rate/frequency in normalized form. The exact rate depends
    *  on the value of rate_is_synced:
-   *  - if false, the value maps to milliseconds (1 .. 10_000.0)
+   *  - if false, the value maps exponentially to Hz (0.01 .. 344.0) with formula:
+   *        hz = 0.01 * 34400^value
    *  - if true, the value is quantized to the durations  8/1, 6/1, 4/1, 2/1, 1/1, 1/2, 1/4, 1/6, 1/8,
    *    1/12, 1/16, 1/24, 1/32, 1/48, 1/64, 1/96, 1/128.
    *
@@ -811,7 +822,8 @@ export type PulverisateurLfoConstructor = {
   /**
    *  The LFO's rate/frequency in normalized form. The exact rate depends
    *  on the value of rate_is_synced:
-   *  - if false, the value maps to milliseconds (1 .. 10_000.0)
+   *  - if false, the value maps exponentially to Hz (0.01 .. 344.0) with formula:
+   *        hz = 0.01 * 34400^value
    *  - if true, the value is quantized to the durations  8/1, 6/1, 4/1, 2/1, 1/1, 1/2, 1/4, 1/6, 1/8,
    *    1/12, 1/16, 1/24, 1/32, 1/48, 1/64, 1/96, 1/128.
    *

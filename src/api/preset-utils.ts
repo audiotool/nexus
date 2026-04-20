@@ -4,7 +4,7 @@ import { DevicePresetEntityType } from "@document/transaction-builder/prepare-pr
 import * as docpreset from "@gen/document/v1/preset/v1/preset_pb"
 import { Preset } from "@gen/preset/v1/preset_pb"
 import { PresetService } from "@gen/preset/v1/preset_service_connect"
-import type { KeepaliveTransport } from "@utils/grpc/keepalive-transport"
+import type { KeepaliveTransport } from "../transport/types"
 import { createRetryingPromiseClient } from "@utils/grpc/retrying-client"
 import { extractUuid } from "../utils/extract-uuid"
 
@@ -17,7 +17,7 @@ import { extractUuid } from "../utils/extract-uuid"
  * in the DAW and select "Copy Preset ID". Apply the preset as follows:
  * ```ts
  * // assuming we copied a gakki preset id
- * const gakkiPreset = await client.api.presets.get("presets/e7cbee0e-1499-4356-a3e5-f788e58ef910")
+ * const gakkiPreset = await client.presets.get("presets/e7cbee0e-1499-4356-a3e5-f788e58ef910")
  * await nexus.modify(t => {
  *   const gakki = t.create("gakki", {})
  *   t.applyPresetTo(gakki, gakkiPreset)

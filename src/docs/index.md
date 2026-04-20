@@ -10,11 +10,9 @@ Known supported platforms:
 
 - Chrome
 - Firefox
-- [Node.js](https://nodejs.org/)\*
-- [Bun](https://bun.com/)\*
-- [Deno](https://deno.com/)\*
-
-\* The Auth2 [Login](./login.md) flow will be a bit more work for these platforms. We're working on making that easier.
+- [Node.js](https://nodejs.org/)
+- [Bun](https://bun.com/)
+- [Deno](https://deno.com/)
 
 > [!NOTE]
 > The Nexus Platform and this package are under heavy development, and as a result might still break when we make changes
@@ -26,61 +24,58 @@ Known supported platforms:
 
 ### Installation
 
-Install the package from npm like this:
-
 ```bash
 npm install @audiotool/nexus
 ```
 
-### Authentication
+### Vite Config
 
-Create an application on [developer.audiotool.com/applications](https://developer.audiotool.com/applications) and enter details below:
+OAuth redirects require `127.0.0.1`, not `localhost`. Configure your dev server in `vite.config.ts`:
+
+```ts
+import { defineConfig } from "vite"
+
+export default defineConfig({
+  server: {
+    host: "127.0.0.1",
+    port: 5173,
+  },
+})
+```
+
+### Setup & Usage
+
+Register your app on [developer.audiotool.com/applications](https://developer.audiotool.com/applications) with redirect URI `http://127.0.0.1:5173/` and scope `project:write`.
+
+Then in your `main.ts`:
 
 ```typescript
-import { getLoginStatus } from "@audiotool/nexus"
+import { audiotool } from "@audiotool/nexus"
 
-// check if current tab is logged in for some user
-const status = await getLoginStatus({
-  clientId: "<client-id of your app>",
+// Authenticate — redirectUrl must match your vite.config.ts host and the URI registered for your app
+const at = await audiotool({
+  clientId: "<client-id of your app>", // hardcode this — it's not a secret
   redirectUrl: "http://127.0.0.1:5173/",
   scope: "project:write",
 })
 
-// if user isn't logged in, create a login button and wait
-if (!status.loggedIn) {
+if (at.status === "unauthenticated") {
   const button = document.createElement("button")
-  button.innerHTML = "Login"
-  button.addEventListener("click", () => status.login())
+  button.textContent = "Login"
+  button.onclick = () => at.login()
   document.body.appendChild(button)
-  await new Promise(() => {}) // wait forever
+  throw await new Promise(() => {}) // stop here until logged in
 }
-```
 
-For more detailed instructions on authorization, see [Getting Started](./getting-started.md) or [Managing User Login](./login.md).
+// Open a project — copy the URL from beta.audiotool.com
+const nexus = await at.open("https://beta.audiotool.com/studio?project=your-project-id")
 
-### Basic Usage
-
-```typescript
-import { createAudiotoolClient } from "@audiotool/nexus"
-
-// Create an audiotool client authorized with the current user
-const client = await createAudiotoolClient({
-  authorization: status,
-})
-
-// Connect to an existing project you created on beta.audiotool.com
-const nexus = await client.createSyncedDocument({
-  mode: "online",
-  // Open the project, copy the URL, paste here
-  project: "https://beta.audiotool.com/studio?project=your-project-id",
-})
-
-// Set up event listeners
+// Listen for changes
 nexus.events.onCreate("tonematrix", (tm) => {
   console.log("New tonematrix created!", tm.fields.patternIndex.value)
 })
 
-// Start syncing
+// Start syncing with the backend
 await nexus.start()
 
 // Create a tonematrix
@@ -92,16 +87,54 @@ await nexus.modify((t) =>
   }),
 )
 
-// stop the syncing process
+// Stop syncing when done
 await nexus.stop()
 ```
+
+For more detail, see [Getting Started](./getting-started.md) or [Authentication](./login.md).
+
+### Node.js Usage
+
+Authenticate users in the browser, export their tokens, and use them on the server:
+
+**Browser side:**
+```typescript
+const at = await audiotool({...})
+
+if (at.status === "authenticated") {
+  const tokens = at.exportTokens()
+  await fetch("/api/store-session", {
+    method: "POST",
+    body: JSON.stringify(tokens),
+  })
+}
+```
+
+**Server side (Node.js):**
+```typescript
+import { createAudiotoolClient, createServerAuth } from "@audiotool/nexus"
+import { createNodeTransport, createDiskWasmLoader } from "@audiotool/nexus/node"
+
+const client = await createAudiotoolClient({
+  auth: createServerAuth({
+    accessToken, refreshToken, expiresAt,
+    clientId: "your-client-id",
+  }),
+  transport: createNodeTransport(),
+  wasm: createDiskWasmLoader(),
+})
+
+const projects = await client.projects.listProjects({})
+```
+
+For personal scripts, see [PAT-based authentication](./login.md#pat-based-authentication).
 
 ## Documentation
 
 - [Overview](./overview.md) - to see what this is all about
 - [Getting Started](./getting-started.md) - an in-depth getting started for beginners
 - [API](./api.md) - other audiotool APis
-- [Login](./login.md) - setup your app for others to use
+- [Authentication](./login.md) - setup your app for others to use
 
 ### API Reference
 
@@ -195,7 +228,3 @@ This will result in fewer transaction errors being created, which can help durin
 ---
 
 Ready? Start with our [Getting Started](./getting-started.md) guide!
-
-```
-
-```
