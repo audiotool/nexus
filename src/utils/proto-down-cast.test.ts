@@ -7,33 +7,33 @@ import {
   i32min,
   i64maxN,
   i64minN,
-  protoPrecision,
+  protoDownCast,
   u32max,
   u64maxN,
-} from "./proto-precision"
+} from "./proto-down-cast"
 
 describe.concurrent("protoPrecision", () => {
   describe("identities", () => {
     it("string", () => {
-      expect(protoPrecision["string"]("test")).toBe("test")
+      expect(protoDownCast("string", "test")).toBe("test")
     })
     it("bool", () => {
-      expect(protoPrecision["bool"](true)).toBe(true)
+      expect(protoDownCast("bool", true)).toBe(true)
     })
     it("pointer", () => {
       const location = new NexusLocation("foo", "desktopAudioCable", [1, 2, 3])
-      expect(protoPrecision["pointer"](location)).toBe(location)
+      expect(protoDownCast("pointer", location)).toBe(location)
     })
   })
 
   describe("float", () => {
     it("identity", () => {
-      expect(protoPrecision["float"](2.25)).toBe(2.25)
+      expect(protoDownCast("float", 2.25)).toBe(2.25)
     })
     it("truncate", () => {
       const v = 1.23456789
       assert(Math.fround(v) !== v, "Math.fround should truncate the value")
-      expect(protoPrecision["float"](v)).toBe(Math.fround(v))
+      expect(protoDownCast("float", v)).toBe(Math.fround(v))
     })
   })
 
@@ -54,70 +54,70 @@ describe.concurrent("protoPrecision", () => {
 
 const int32Its = (variant: NonNullable<Update["value"]["case"]>) => {
   it("identity", () => {
-    expect(protoPrecision[variant](123456)).toBe(123456)
+    expect(protoDownCast(variant, 123456)).toBe(123456)
   })
 
   it("fractions", () => {
-    expect(protoPrecision[variant](123.7)).toBe(123)
-    expect(protoPrecision[variant](-123.7)).toBe(-123)
-    expect(protoPrecision[variant](123.2)).toBe(123)
+    expect(protoDownCast(variant, 123.7)).toBe(123)
+    expect(protoDownCast(variant, -123.7)).toBe(-123)
+    expect(protoDownCast(variant, 123.2)).toBe(123)
   })
 
   it("too high", () => {
-    expect(protoPrecision[variant](123123123123123)).toBe(i32max)
+    expect(protoDownCast(variant, 123123123123123)).toBe(i32max)
   })
 
   it("too low", () => {
-    expect(protoPrecision[variant](-99999999999999)).toBe(i32min)
+    expect(protoDownCast(variant, -99999999999999)).toBe(i32min)
   })
 }
 
 const uInt32Its = (variant: NonNullable<Update["value"]["case"]>) => {
   it("identity", () => {
-    expect(protoPrecision[variant](123456)).toBe(123456)
+    expect(protoDownCast(variant, 123456)).toBe(123456)
   })
 
   it("fractions", () => {
-    expect(protoPrecision[variant](123.7)).toBe(123)
-    expect(protoPrecision[variant](123.2)).toBe(123)
+    expect(protoDownCast(variant, 123.7)).toBe(123)
+    expect(protoDownCast(variant, 123.2)).toBe(123)
   })
 
   it("too high", () => {
-    expect(protoPrecision[variant](u32max + 2)).toBe(u32max)
+    expect(protoDownCast(variant, u32max + 2)).toBe(u32max)
   })
 
   it("too low", () => {
-    expect(protoPrecision[variant](-1000)).toBe(0)
+    expect(protoDownCast(variant, -1000)).toBe(0)
   })
 }
 
 const int64TestCases = (variant: NonNullable<Update["value"]["case"]>) => {
   it("identity", () => {
-    expect(protoPrecision[variant](123n)).toBe(123n)
+    expect(protoDownCast(variant, 123n)).toBe(123n)
   })
 
   it("negative", () => {
-    expect(protoPrecision[variant](-123n)).toBe(-123n)
+    expect(protoDownCast(variant, -123n)).toBe(-123n)
   })
 
   it("too high", () => {
-    expect(protoPrecision[variant](1234567890123456722890n)).toBe(i64maxN)
+    expect(protoDownCast(variant, 1234567890123456722890n)).toBe(i64maxN)
   })
 
   it("too low", () => {
-    expect(protoPrecision[variant](-1234567890123456782290n)).toBe(i64minN)
+    expect(protoDownCast(variant, -1234567890123456782290n)).toBe(i64minN)
   })
 }
 
 const uInt64TestCases = (variant: NonNullable<Update["value"]["case"]>) => {
   it("identity", () => {
-    expect(protoPrecision[variant](123n)).toBe(123n)
+    expect(protoDownCast(variant, 123n)).toBe(123n)
   })
 
   it("too high", () => {
-    expect(protoPrecision[variant](123456789012345678901234n)).toBe(u64maxN)
+    expect(protoDownCast(variant, 123456789012345678901234n)).toBe(u64maxN)
   })
   it("too low", () => {
-    expect(protoPrecision[variant](-2n)).toBe(0n)
+    expect(protoDownCast(variant, -2n)).toBe(0n)
   })
 }

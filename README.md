@@ -1,7 +1,11 @@
-# Audiotool Nexus SDK
+# Audiotool Nexus
 
-Th official Audiotool Nexus SDK, allowing you to connect to a multiplayer session on https://beta.audiotool.com/ and modify projects in real time.
+A JS package allowing you to programmatically control the Auditool DAW.
 
-See the documentation at https://developer.audiotool.com/js-package-documentation/.
+- `npm install @audiotool/nexus`
+- [Audiotool](https://beta.audiotool.com/)
+- [Docs](https://developer.audiotool.com/js-package-documentation/)
 
-This package is currently at version 0.0.x. Expect breaking changes between minor versions.
+---
+
+Expect breaking changes between minor versions - we're pre 1.0.

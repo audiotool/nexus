@@ -8,7 +8,7 @@ import {
 import type { Modification } from "@gen/document/v1/document_service_pb"
 import type { Preset } from "@gen/document/v1/preset/v1/preset_pb"
 import { assert, throw_ } from "@utils/lang"
-import { protoPrecision } from "@utils/proto-precision"
+import { protoDownCast } from "@utils/proto-down-cast"
 import type { SyncedDocument } from "src/synced-document"
 import type { DeepPartial } from "utility-types"
 import {
@@ -22,6 +22,7 @@ import {
   preparePreset,
 } from "."
 import type { PrimitiveField, PrimitiveType } from "../fields"
+import { primitiveEquals } from "../fields"
 import type { EntityQuery } from "../query/entity"
 import type { EntityWithOverwrites } from "./build-clone-linked-entities"
 import { createDevicePreset } from "./create-preset"
@@ -168,6 +169,29 @@ export type TransactionBuilder = {
     preset: NexusPreset,
   ): void
 
+  /** Create a new device of the preset's target type and immediately apply the
+   * preset to it.
+   *
+   * Equivalent to:
+   * ```ts
+   * const device = t.create(preset.entityType, {})
+   * t.applyPresetTo(device, preset)
+   * ```
+   *
+   * Useful together with {@link PresetUtil.getInstrument} /
+   * {@link PresetUtil.getDrums}:
+   * ```ts
+   * const frenchHorn = await client.presets.getInstrument("french-horn")
+   * await nexus.modify((t) => {
+   *   const gakki = t.createDeviceFromPreset(frenchHorn)
+   *   // ...
+   * })
+   * ```
+   */
+  createDeviceFromPreset<T extends DevicePresetEntityType>(
+    preset: NexusPreset<T>,
+  ): NexusEntityUnion<T>
+
   /** Create a preset of a given entity. This doesn't modify the nexus document.  */
   createPresetFor(entity: NexusEntity<DevicePresetEntityType>): Preset
 
@@ -215,7 +239,7 @@ export const transactionBuilder = (opts: {
   finish?: () => void
 }): TransactionBuilder => {
   let finished: boolean = false
-  return {
+  const builder: TransactionBuilder = {
     create: <T extends EntityTypeKey>(
       name: T,
       args: EntityConstructorType<T>,
@@ -267,8 +291,8 @@ export const transactionBuilder = (opts: {
         throw new CallAfterSendError("update")
       }
       // skip update if the value is the same as the current value
-      value = protoPrecision[field._protoType](value)
-      if (value === field.value) {
+      value = protoDownCast(field._protoType, value)
+      if (primitiveEquals(value, field.value)) {
         return
       }
       const modification = buildModificationForFieldUpdate(field, value)
@@ -327,8 +351,26 @@ export const transactionBuilder = (opts: {
         opts.query,
         presetInfo,
         applyTo,
+        preset._presetName,
       )
       mods.forEach((mod) => opts.applyModification(mod, true))
+    },
+
+    createDeviceFromPreset: <T extends DevicePresetEntityType>(
+      preset: NexusPreset<T>,
+    ): NexusEntityUnion<T> => {
+      if (finished) {
+        throw new CallAfterSendError("createDeviceFromPreset")
+      }
+      const entity = builder.create(
+        preset.entityType,
+        {} as EntityConstructorType<T>,
+      )
+      builder.applyPresetTo(
+        entity as NexusEntity<DevicePresetEntityType>,
+        preset,
+      )
+      return entity
     },
 
     createPresetFor: (entity: NexusEntity<DevicePresetEntityType>): Preset => {
@@ -356,6 +398,7 @@ export const transactionBuilder = (opts: {
 
     entities: opts.query,
   }
+  return builder
 }
 
 /** Thrown when a method of the builder is called after `send` has already been called. */

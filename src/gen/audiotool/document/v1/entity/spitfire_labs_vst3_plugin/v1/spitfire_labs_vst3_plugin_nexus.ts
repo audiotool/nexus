@@ -619,7 +619,7 @@ export type SpitfireLabsVst3Plugin = {
    *  the user won't hear any sound (the plugin UI shows some error), otherwise
    *  it will continue working as expected.
    */
-  state: PrimitiveField<boolean, "mut">
+  state: PrimitiveField<Uint8Array, "mut">
 }
 /** @internal */
 
@@ -1149,6 +1149,6 @@ export type SpitfireLabsVst3PluginConstructor = {
    *  the user won't hear any sound (the plugin UI shows some error), otherwise
    *  it will continue working as expected.
    */
-  state?: boolean
+  state?: Uint8Array
 }
 

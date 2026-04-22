@@ -1,8 +1,11 @@
-# Audiotool Nexus SDK
+# Audiotool Nexus
 
-The official TypeScript package from Audiotool allowing you read and write audiotool
-projects in real time.
+A JS package allowing you to programmatically control the Auditool DAW.
 
-See the documentation at https://developer.audiotool.com/js-package-documentation/.
+- `npm install @audiotool/nexus`
+- [Audiotool](https://beta.audiotool.com/)
+- [Docs](https://developer.audiotool.com/js-package-documentation/)
 
-This package is currently at version 0.0.x. Expect breaking changes between minor versions.
+---
+
+Expect breaking changes between minor versions - we're pre 1.0.

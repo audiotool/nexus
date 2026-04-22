@@ -1,5 +1,5 @@
 import { ScalarType } from "@bufbuild/protobuf"
-import { i32max, i32min, u32max } from "@utils/proto-precision"
+import { i32max, i32min, u32max } from "@utils/proto-down-cast"
 import { assert, describe, expect, it } from "vitest"
 import { _getSchemaLocatorDetails } from "./get-schema-details-from-locator"
 import type { SchemaDetails } from "./schema-details"

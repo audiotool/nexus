@@ -4,36 +4,70 @@ import { DevicePresetEntityType } from "@document/transaction-builder/prepare-pr
 import * as docpreset from "@gen/document/v1/preset/v1/preset_pb"
 import { Preset } from "@gen/preset/v1/preset_pb"
 import { PresetService } from "@gen/preset/v1/preset_service_connect"
-import type { KeepaliveTransport } from "../transport/types"
 import { createRetryingPromiseClient } from "@utils/grpc/retrying-client"
+import type { KeepaliveTransport } from "../transport/types"
 import { extractUuid } from "../utils/extract-uuid"
+import {
+  gmDrumPresetIdByProgram,
+  gmDrums,
+  gmInstrumentPresetIdByProgram,
+  gmInstruments,
+} from "./presets/generated"
+import {
+  gmDrumProgramBySlug,
+  gmInstrumentProgramBySlug,
+  type GmDrum,
+  type GmDrumProgram,
+  type GmDrumSlug,
+  type GmInstrument,
+  type GmInstrumentProgram,
+  type GmInstrumentSlug,
+} from "./presets/gm-slugs"
 
 /**
- * A wrapper for the presets API that's more convenient to use than the raw presets API.
+ * A wrapper for the presets API that's more convenient to use than the raw
+ * presets API.
  *
- * @example
+ * @example Apply a preset by id
  *
- * To get a preset id, you can right click the preset in the preset browser
- * in the DAW and select "Copy Preset ID". Apply the preset as follows:
+ * To get a preset id, right-click the preset in the preset browser in the
+ * DAW and select "Copy Preset ID":
  * ```ts
- * // assuming we copied a gakki preset id
  * const gakkiPreset = await client.presets.get("presets/e7cbee0e-1499-4356-a3e5-f788e58ef910")
- * await nexus.modify(t => {
- *   const gakki = t.create("gakki", {})
- *   t.applyPresetTo(gakki, gakkiPreset)
+ * await nexus.modify((t) => {
+ *   t.createDeviceFromPreset(gakkiPreset)
  * })
+ * ```
+ *
+ * @example Look up a GM instrument or drum kit by slug or program number
+ *
+ * ```ts
+ * const frenchHorn = await client.presets.getInstrument("french-horn")
+ * const jazzKit    = await client.presets.getDrums(32)
+ * ```
+ *
+ * @example Build a preset picker UI
+ *
+ * {@link gmInstruments} and {@link gmDrums} expose the full GM catalog
+ * synchronously, so pickers can render without a network round-trip:
+ * ```ts
+ * for (const instrument of client.presets.gmInstruments) {
+ *   renderRow(instrument.displayName, instrument.category, instrument.tags)
+ * }
+ * // when the user picks one:
+ * const preset = await client.presets.getInstrument(pickedInstrument)
  * ```
  *
  * See [API](../docs/api.md) for more information.
  */
 export type PresetUtil = {
   /**
-   * Lists presets with optional filtering by device type and text search
-   * @param deviceType The entity type of the device for which to list presets
+   * Search presets by device type, optionally filtering by a free-text query.
+   * @param deviceType The entity type of the device for which to search presets
    * @param textSearch Optional text to filter presets by name or description
    * @returns Promise resolving to an array of matching presets
    */
-  list: <T extends DevicePresetEntityType>(
+  search: <T extends DevicePresetEntityType>(
     deviceType: T,
     textSearch?: string,
   ) => Promise<NexusPreset<T>[]>
@@ -44,13 +78,84 @@ export type PresetUtil = {
    * @returns Promise resolving to the requested preset
    */
   get: (nameOrId: string) => Promise<NexusPreset>
+
+  /**
+   * Look up one of the 128 General MIDI melodic instrument presets on the
+   * gakki sampler. The GM program number is 0-indexed per the MIDI 1.0 spec
+   * (hardware commonly displays these as 1-128). Slugs mirror the DAW's
+   * preset display names.
+   *
+   * Accepts a slug, a program number, or one of the {@link GmInstrument}
+   * catalog entries exposed via {@link PresetUtil.gmInstruments} -- the
+   * latter is handy when building a preset picker from the metadata array.
+   *
+   * @example
+   * ```ts
+   * const frenchHorn = await client.presets.getInstrument("french-horn")
+   * const sameThing = await client.presets.getInstrument(60)
+   * const fromMeta = await client.presets.getInstrument(
+   *   client.presets.gmInstruments[60],
+   * )
+   * ```
+   */
+  getInstrument: (
+    instrument: GmInstrumentSlug | GmInstrumentProgram | GmInstrument,
+  ) => Promise<NexusPreset<"gakki">>
+
+  /**
+   * Look up one of the 8 General MIDI drum kits on the gakki sampler.
+   *
+   * GM reserves channel 10 for percussion. Unlike melodic instruments, drum
+   * kits are identified by a sparse program number: 0, 8, 16, 24, 25, 32,
+   * 40, 48 (Standard, Room, Power, Electronic, Analog, Jazz, Brush,
+   * Orchestra respectively). Other numbers don't exist on the gakki sampler.
+   *
+   * Accepts a slug, a program number, or one of the {@link GmDrum} catalog
+   * entries exposed via {@link PresetUtil.gmDrums}.
+   *
+   * @example
+   * ```ts
+   * const jazzKit = await client.presets.getDrums("jazz-kit")
+   * const sameKit = await client.presets.getDrums(32)
+   * ```
+   */
+  getDrums: (
+    drum: GmDrumSlug | GmDrumProgram | GmDrum,
+  ) => Promise<NexusPreset<"gakki">>
+
+  /**
+   * Static catalog of all 128 General MIDI melodic presets (display name,
+   * category, tags, description, preset id) sorted by GM program number.
+   * Available synchronously without a network round-trip -- intended for
+   * populating preset pickers and search UIs.
+   */
+  gmInstruments: readonly GmInstrument[]
+
+  /**
+   * Static catalog of all 8 General MIDI drum kits, sorted by GM program
+   * number. Available synchronously without a network round-trip.
+   */
+  gmDrums: readonly GmDrum[]
 }
 
 export const createPresetUtil = (transport: KeepaliveTransport) => {
   const client = createRetryingPromiseClient(PresetService, transport)
 
+  const get = async (nameOrId: string): Promise<NexusPreset> => {
+    const response = await client.getPreset({
+      name: `presets/${extractUuid(nameOrId)}`,
+    })
+    if (response instanceof Error) {
+      throw response
+    }
+    if (response.preset === undefined) {
+      throw new Error(`No preset found for UUID "${extractUuid(nameOrId)}"`)
+    }
+    return fetchPresetData(response.preset)
+  }
+
   return {
-    list: async <T extends DevicePresetEntityType>(
+    search: async <T extends DevicePresetEntityType>(
       deviceType: T,
       textSearch?: string,
     ) => {
@@ -75,18 +180,44 @@ export const createPresetUtil = (transport: KeepaliveTransport) => {
       )
     },
 
-    get: async (nameOrId: string) => {
-      const response = await client.getPreset({
-        name: `presets/${extractUuid(nameOrId)}`,
-      })
-      if (response instanceof Error) {
-        throw response
+    get,
+
+    getInstrument: async (
+      instrument: GmInstrumentSlug | GmInstrumentProgram | GmInstrument,
+    ) => {
+      const program =
+        typeof instrument === "number"
+          ? instrument
+          : typeof instrument === "string"
+            ? gmInstrumentProgramBySlug[instrument]
+            : instrument.program
+      const id = gmInstrumentPresetIdByProgram[program]
+      if (id === undefined) {
+        throw new Error(
+          `No GM instrument preset for program ${String(instrument)}. Expected 0..127, a GmInstrumentSlug, or a GmInstrument.`,
+        )
       }
-      if (response.preset === undefined) {
-        throw new Error(`No preset found for UUID "${extractUuid(nameOrId)}"`)
-      }
-      return fetchPresetData(response.preset)
+      return (await get(id)) as NexusPreset<"gakki">
     },
+
+    getDrums: async (drum: GmDrumSlug | GmDrumProgram | GmDrum) => {
+      const program =
+        typeof drum === "number"
+          ? drum
+          : typeof drum === "string"
+            ? gmDrumProgramBySlug[drum]
+            : drum.program
+      const id = gmDrumPresetIdByProgram[program]
+      if (id === undefined) {
+        throw new Error(
+          `No GM drum kit preset for program ${String(drum)}. Expected 0, 8, 16, 24, 25, 32, 40, 48, a GmDrumSlug, or a GmDrum.`,
+        )
+      }
+      return (await get(id)) as NexusPreset<"gakki">
+    },
+
+    gmInstruments,
+    gmDrums,
   } satisfies PresetUtil
 }
 
@@ -141,6 +272,14 @@ export type NexusPreset<
   meta: Preset
   data: docpreset.Preset
   entityType: T
+  /**
+   * @internal
+   * The backend preset identifier (format: `presets/<uuid>`). Stamped onto the
+   * device's `presetName` field when the preset is applied. Consumers of the SDK
+   * should not need to read or set this directly; it is populated when the preset
+   * is fetched and consumed internally by {@link TransactionBuilder.applyPresetTo}.
+   */
+  _presetName: string
 }
 
 const fetchPresetData = async (prismaPreset: Preset): Promise<NexusPreset> => {
@@ -165,5 +304,6 @@ const fetchPresetData = async (prismaPreset: Preset): Promise<NexusPreset> => {
     meta,
     data,
     entityType,
+    _presetName: prismaPreset.name,
   }
 }

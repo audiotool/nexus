@@ -2,7 +2,7 @@ import type { NexusLocation } from "@document/location"
 import type { Update } from "@gen/document/v1/document_service_pb"
 
 // for jsdoc comment
-import { protoPrecision } from "@utils/proto-precision"
+import { protoDownCast } from "@utils/proto-down-cast"
 import type { NexusDocument } from "./document"
 
 /** The interface shared by all fields in the document. */
@@ -28,7 +28,13 @@ export class ArrayField<
 }
 
 /** The type a primitive field can contain. */
-export type PrimitiveType = number | bigint | string | boolean | NexusLocation
+export type PrimitiveType =
+  | number
+  | bigint
+  | string
+  | boolean
+  | NexusLocation
+  | Uint8Array
 
 /**
  * A field that contains a primitive value of type `P`.
@@ -80,6 +86,24 @@ export class PrimitiveField<
    *
    * Set the value of this field. Used by {@link NexusDocument}, don't use directly! */
   _setValue(value: P) {
-    this.#value = protoPrecision[this._protoType](value)
+    this.#value = protoDownCast(this._protoType, value)
   }
+}
+
+/** Compare two {@link PrimitiveType} values for equality.
+ * Unlike `===`, this compares {@link Uint8Array} values by content. */
+export const primitiveEquals = (
+  a: PrimitiveType,
+  b: PrimitiveType,
+): boolean => {
+  if (a === b) {
+    return true
+  }
+  if (a instanceof Uint8Array && b instanceof Uint8Array) {
+    if (a.length !== b.length) {
+      return false
+    }
+    return a.every((byte, i) => byte === b[i])
+  }
+  return false
 }

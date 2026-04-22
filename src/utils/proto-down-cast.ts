@@ -4,18 +4,28 @@ import type { PrimitiveType } from "../document/fields"
 // note: scalar types are derived from the rust types on this https://protobuf.dev/programming-guides/proto3/#scalar
 // it's kinda annoying that they don't say: `sfixed32` is a signed 32 bit integer. Isn't that crucial info!?
 
-/**
- * These functions take values from JS and potentially reduce their precision to match the precision
- * they receive when serialized to protobuf messages.
+type ProtoType = NonNullable<Update["value"]["case"]>
+
+/** This funciton takes a value of type P and downcasts it to the precision of the protobuf type.
  *
  * For example, a `float` in protobuf is represented as `number` in JS, which is a 64-bit double-precision
  * floating point number. This function will reduce its precision to 32-bit single-precision.
  *
  * These functions will not check if the provided value is of the correct type, and might or
  * might not throw if not.
- *
  */
-export const protoPrecision: Record<
+export const protoDownCast = <P extends PrimitiveType>(
+  protobufType: ProtoType,
+  value: P,
+): P => {
+  return protoPrecision[protobufType](value)
+}
+
+/**
+ * These functions take values from JS and potentially reduce their precision to match the precision
+ * they receive when serialized to protobuf messages.
+ */
+const protoPrecision: Record<
   NonNullable<Update["value"]["case"]>,
   <P extends PrimitiveType>(v: P) => P
 > = {

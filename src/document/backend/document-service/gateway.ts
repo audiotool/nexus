@@ -1,18 +1,17 @@
 import type { Transaction } from "@gen/document/v1/document_service_pb"
 import { ValueNotifier } from "@utils/observable-notifier-value"
 import type { NexusGateway, ReadonlyTransaction } from "../gateway"
-import { NexusStateConsolidator } from "./consolidator"
 
 import type { DocumentService } from "@gen/document/v1/document_service_connect"
 import type { RetryingClient } from "@utils/grpc/retrying-client"
-import type { WasmDocumentState } from "../create-wasm-document-state"
+import type { WasmConsolidator } from "../create-wasm-document-state"
 import { createDocumentServiceConnection } from "./connection"
 
 /** Collab gateway returns a gateway that syncs with a document service.
  */
 export const createCollabGateway = (
   documentService: RetryingClient<typeof DocumentService>,
-  state: WasmDocumentState,
+  createConsolidator: () => WasmConsolidator,
   projectName: string,
   opts?: {
     logOutgoingTransactions?: boolean
@@ -26,18 +25,18 @@ export const createCollabGateway = (
     projectName,
   )
 
-  const consolidator = new NexusStateConsolidator(state)
+  const consolidator = createConsolidator()
 
   const receivedTransactions: Transaction[] = []
   const sentTransactions: Transaction[] = []
-  const rejectedTransactions: Set<string> = new Set()
+  const rejectedTransactions: string[] = []
 
   // continuously fill #received with new incoming transactions
   const loop = async () => {
     // this loop terminates automatically if receiveNextTransaction is terminated.
     for await (const t of studioServiceConnection.receiveNextTransaction) {
       receivedTransactions.push(t)
-      debugStatistics.numReceivedCtr++
+      DEBUG_consolidatorStats.numReceivedCtr++
       if (opts?.logIncomingTransactions ?? false) {
         console.debug("CollabGateway: received transaction", t.id)
       }
@@ -66,17 +65,17 @@ export const createCollabGateway = (
       t = t.clone()
       t.id = crypto.randomUUID()
       sentTransactions.push(t)
-      debugStatistics.numQueuedCtr++
+      DEBUG_consolidatorStats.numQueuedCtr++
 
       if (opts?.logOutgoingTransactions ?? false) {
         console.debug("CollabGateway: sending local transaction", t)
       }
 
       studioServiceConnection.sendNextTransaction(t).then((value) => {
-        debugStatistics.numConfirmedCtr++
+        DEBUG_consolidatorStats.numConfirmedCtr++
 
         if (value !== undefined) {
-          rejectedTransactions.add(t.id)
+          rejectedTransactions.push(t.id)
 
           if (opts?.logRejectedTransactions ?? false) {
             console.debug(
@@ -85,7 +84,7 @@ export const createCollabGateway = (
               value,
             )
           }
-          debugStatistics.numRejectedCtr++
+          DEBUG_consolidatorStats.numRejectedCtr++
         }
       })
     },
@@ -105,7 +104,7 @@ export const createCollabGateway = (
 
       // clear lists after consolidation
       receivedTransactions.length = 0
-      rejectedTransactions.clear()
+      rejectedTransactions.length = 0
       sentTransactions.length = 0
 
       // log consolidation result - but only if we received some from the server
@@ -123,13 +122,13 @@ export const createCollabGateway = (
 
       // clear everything to reduce memory
       receivedTransactions.length = 0
-      rejectedTransactions.clear()
+      rejectedTransactions.length = 0
       sentTransactions.length = 0
 
       blocked.terminate()
 
-      // clean up wasm state
-      state.terminate()
+      // clean up wasm consolidator (which in turn owns a wasm document state)
+      consolidator.terminate()
     },
   }
 }
@@ -137,7 +136,7 @@ export const createCollabGateway = (
 /** Statistics for debugging - global singleton for easy of access.
  * Won't be correct if multiple gateways are created.
  */
-export const debugStatistics = {
+export const DEBUG_consolidatorStats = {
   numReceivedCtr: 0,
   numConfirmedCtr: 0,
   numQueuedCtr: 0,

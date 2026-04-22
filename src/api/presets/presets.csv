@@ -1,0 +1,322 @@
+Curated?,Preset UUID,Preset displayName,Preset Category,Preset Tags,Preset Description,Preset deviceType,,sf uuid,sf Bank,sf Preset,sf Category
+TRUE,f8b506d4-5052-4b1c-a3f4-5195d16d1317,Grand Piano,Keys,"keys, piano, acoustic, warm, grand, classical",Classic full-bodied piano sound,gakki,,ce79731c-f100-4f54-9ccc-2d2c60269483,001,000,Piano
+TRUE,eb370147-2e4b-4c03-b50f-e151a99edd97,Bright Grand,Keys,"keys, piano, bright, pop, grand","Brighter, harder attack",gakki,,452ea348-3bb4-4843-8945-a1c274facaa1,001,004,Piano
+TRUE,c015d9e8-20af-4eab-99bb-27b89f2aa122,Concert Grand,Keys,"keys, piano, bright, pop, concert","Brighter, harder attack",gakki,,4a45520a-86cd-4a3f-8256-e17a9cb8ddcd,001,003,Piano
+TRUE,a0931d29-e023-4de4-9ff6-24adb6131a24,Acoustic Piano,Keys,"keys, piano, acoustic, warm, classical",Classic full-bodied piano sound,gakki,,56ada375-bc78-4912-b447-d80e06457a80,000,000,Piano
+TRUE,f55f071f-f797-406b-8eda-fcb9de26149f,Piano,Keys,"keys, piano, bright, pop",Classic piano,gakki,,7b1b7ebb-52e6-4269-bef9-b557eaaf2832,001,005,Piano
+TRUE,e7cbee0e-1499-4356-a3e5-f788e58ef910,E Piano,Keys,"keys, piano, bright, pop, electronic, electric, epiano",Classic epiano,gakki,,241f8918-97b7-4872-b4e9-27c5beb10f6a,001,008,Piano
+TRUE,36ef9001-51b1-4672-9754-4df245dce4ca,Electronic Piano 1,Keys,"keys, piano, electronic, electric, soft, jazz, rhodes, epiano",Rhodes-style smooth tone,gakki,,8e9b2cf9-a9b9-4f15-8857-b2f5e0cc41a6,000,004,Piano
+TRUE,ea4909a7-bf2d-40c9-9b87-7db810f227cb,Electronic Piano 2,Keys,"keys, piano, electronic, electric, bright, fm, pop, fm, bells, epiano",FM-type bell piano,gakki,,eeb2d20a-8af5-4878-8158-75ec56f22660,000,005,Piano
+TRUE,762c2879-51fb-432f-a6a4-c4493bfc656b,Rhodes,Keys,"keys, piano, electronic, electric, soft, jazz, rhodes",Classic Rhodes piano sound,gakki,,c76c4142-8df0-49d0-bad5-e114e117c754,001,006,Piano
+TRUE,17f1dfca-c022-4cf5-9137-68b9242403e7,Rhodes MKV,Keys,"keys, piano, electronic, electric, bells, jazz, rhodes",Bell-like Rhodes,gakki,,97b2c98e-e2fb-4034-9f85-f5b0081c2183,001,007,Piano
+TRUE,17518d91-29a3-4a1a-a395-5fab3d09722f,Intimate Piano,Keys,"keys, piano, electronic, electric, soft, dark, intimate, epiano",Dark electronic piano like keys,heisenberg,,,,,Piano
+TRUE,8eb18e52-69ab-44f5-b877-5d8843e08603,Mellow Keys,Keys,"keys, piano, fm, bright, pop, mellow",FM type piano,heisenberg,,,,,Piano
+TRUE,06675de4-8cbb-4a90-a72a-6a72533809c7,Honky-Tonk Piano,Keys,"keys, piano, detuned, vintage, honky-tonk",Detuned barroom piano,gakki,,9dd7b5fc-002f-4fd5-abe3-308cc8712d60,000,003,Piano
+TRUE,d6220705-1098-48bf-8285-c43c2ad6c518,Clavinet,Keys,"keys, piano, funk, clavinet, percussive, electronic, electric",Funky percussive electronic keyboard,gakki,,a5714a21-d404-4af1-a586-d0374c851105,000,007,Piano
+TRUE,1b089fa6-d037-4dd6-875f-b102e27a856c,Harpsichord,Keys,"keys, piano, baroque, plucked, plucky, classical, harpsichord",Plucked baroque keyboard,gakki,,983efc52-c87f-4e5a-ad98-5ea00003da69,000,006,Piano
+,,,,,,,,,,,
+TRUE,cdcdd0ae-132e-40c0-a8e2-ce16743fe458,Jazz Organ,Keys,"keys, organ, attack, bright, hammond, jazz",Hammond-style tonewheel,gakki,,82d3b2ef-dd31-41e1-9483-1bbcb0b851fd,000,016,Organ
+TRUE,7bb3404b-9059-4870-a3e4-3a5573b6287c,Hammond Organ,Keys,"keys, organ, jazz, rock, hammond",Hammond-style tonewheel,gakki,,1ce91f4e-33e4-4f3a-947c-ecd047a2d5f9,000,017,Organ
+TRUE,77494ec9-1e14-4dae-a34e-125dfc89e3b2,Rock Organ,Keys,"keys, organ, rock, gritty, hammond",Hammond-style tonewheel,gakki,,08bc285a-ddae-466b-b023-615fe8970670,000,018,Organ
+TRUE,639c481c-0ed7-4511-86dc-c3c2ed83f44c,Church Organ,Keys,"keys, organ, pipe, church, majestic, cathedral",Grand cathedral sound,gakki,,1e2a09b4-07b4-4fe9-8b67-b8ff7300f55c,000,019,Organ
+TRUE,a732efd9-408e-489e-8455-002696ea97e1,Reed Organ,Keys,"keys, organ, folk, reed, vintage",Harmonium / pump organ,gakki,,a0e4efa2-6716-42ae-ac0b-74ae4728ca7b,000,020,Organ
+TRUE,0776c70e-5bd9-4490-8de6-8a17d66629f7,Rhodes-like Organ,Keys,"keys, organ, clean, hard, rhodes",Rhodes-like organ,space,,,,,Organ
+TRUE,63d5e2ec-5869-447b-a751-04314d194106,Frigolito Drawbar Organ,Keys,"keys, organ, clean, aggressive, fm",FM-type organ,heisenberg,,,,,Organ
+TRUE,83582d5a-7d89-4ca0-978e-bb2eefa41a5a,Dry Organ Keys,Keys,"keys, organ, modulated, distorted, filtered, dry",Heavy filtered and modulated organ,heisenberg,,,,,Organ
+TRUE,d14efa5c-c860-4bfe-923b-aaad8b3c4791,Growling Organ,Keys,"keys, organ, synth, dark, growling",Organ with a synth attack,heisenberg,,,,,Organ
+TRUE,8f686369-56c3-490a-943a-5738bc150d37,Bright Hammond Organ,Keys,"keys, organ, rock, clean, hammond",Classic Hammond organ,gakki,,ae7678b5-26cd-4aea-8ed6-a045bd28602a,001,016,Organ
+TRUE,a195e650-794f-4fe6-ac7e-27f113454523,Jazzy Hammond Organ,Keys,"keys, organ, rock, leslie, hammond",Hammond organ with a fast leslie,gakki,,763e8dce-c38b-4fe4-b00a-cd57a7ed44d7,001,018,Organ
+,,,,,,,,,,,
+TRUE,479c325e-e2f1-4f12-98d6-27ddc6306216,Crystal,Keys,"keys, fx, bright, bells, glassy, crystal",Glassy sparkle,gakki,,7f29b0a4-b544-471b-a8ae-53be98cebc0a,000,098,Keys
+TRUE,15999c83-fb79-410e-8372-daa718124d52,Digital Keys,Keys,"keys, electronic, electric, bright, bells, digital",Bell type piano-like keys,heisenberg,,,,,Keys
+TRUE,65833359-73cb-49d6-9f60-32fb0146d846,8bit Lofi,Keys,"keys, electronic, electric, clav, hard, digital, rhodes, lofi",Rhodes-style digital piano ,heisenberg,,,,,Keys
+TRUE,1d0655e0-0ffe-4c66-81bb-7f0884da220b,Brittle Lofi Keys,Keys,"keys, synth, warm, plucked, plucky, harpsichord, lofi",Harpsichord-like synth,heisenberg,,,,,Keys
+TRUE,3f5ac434-c855-4ca7-979f-2d2cc0f869e9,Bell-like Keys,Keys,"keys, synth, airy, bright, bells",Bell-like airy keys,heisenberg,,,,,Keys
+TRUE,45fd7b78-def4-493e-9b32-05c262633e4c,Trance Keys,Keys,"keys, synth, clean, modulated, plucks, trance",Plucky keys with a pitch envelope,pulverisateur,,,,,Keys
+TRUE,d456f98e-5662-4b2d-bbc8-3dcd511a6b71,Don Arpeggio Keys,Keys,"keys, synth, analog, plucked, plucky, hard, arpeggio, arpeggiated",Fast attack synth for arpeggios,pulverisateur,,,,,Keys
+TRUE,707ad52b-3acb-4ffe-bc11-15e583ae76df,House Keys,Keys,"keys, bells, lead, bright, soft, glassy, house",Glass piano-like keys,heisenberg,,,,,Keys
+TRUE,38ed601d-bbfa-422f-804b-2dc0c3c89845,Deep Resonance Piano,Keys,"keys, digital, hard, keys, crunchy, deep, digital",Digital crunchy keys,heisenberg,,,,,Keys
+TRUE,9eac4dc9-084d-40e7-bc97-b9fede510c83,Wet Organ Keys,Keys,"keys, organ, filtered, distorted, bright, bells, wet",Crunchy bell like organ,heisenberg,,,,,Organ
+,,,,,,,,,,,
+TRUE,09186fea-c8d2-4f54-afe6-f49c450b4d74,Detroit Bass,Bass,"bass, synth, groove, clean, electronic, electric, detroit",Detroit-style bass,heisenberg,,,,,Bass
+TRUE,25269199-d095-4857-94a5-a456f809c8e4,Funky Bass,Bass,"bass, analog, warm, synth, crunchy, funk",Sustaining crunchy bass,pulverisateur,,,,,Bass
+TRUE,2c56c37a-8629-41d9-a557-f01fb1868584,Soft Bass,Bass,"bass, soft, dark, detuned, synth, slow",Slightly detuned slow bass,heisenberg,,,,,Bass
+TRUE,66dde6e6-9aa3-400d-a963-214a7b40b6e6,B$ Brass Shot,Bass,"bass, distorted, aggressive, detuned, synth, brass",Detuned synth brass bass,heisenberg,,,,,Bass
+TRUE,6e4b5822-bb79-4a69-ae66-818630461362,sb Detuned Bass,Bass,"bass, fm, bright, hard, synth, detuned",Bright FM-style bass,heisenberg,,,,,Bass
+TRUE,73b3b37b-d5f7-4275-8f69-d71af3e7a31d,Gliding 808,Bass,"bass, synth, dark, glide, 808, gliding",808 kick-style bass with glide,pulverisateur,,,,,Bass
+TRUE,77deba84-82eb-4771-bdb8-49ea80523e75,Melodic Bassy,Bass,"bass, electronic, electric, bright, warm, synth, melodic",Squelchy bass with sub octave,pulverisateur,,,,,Bass
+TRUE,9138bdfd-a99b-4750-b308-7c993760aa78,CY365 Lead-Bass,Bass,"bass, analog, synth, harmonics, warm, lead",Harmonic bass with sub octave,pulverisateur,,,,,Bass
+TRUE,cbf644a9-f01f-4207-9486-7526522ebd2d,Synthwave Bass,Bass,"bass, synth, aggressive, analog, clean, synthwave",Synthwave bass,pulverisateur,,,,,Bass
+TRUE,52e2e11e-ddb9-4785-9ffc-82dbf7af478a,Bass & Lead,Bass,"bass, synth, lead",Hybrid lead/bass,gakki,,b6d593bd-b8c4-4d2f-8cff-0558f16d51de,000,087,Bass
+TRUE,2afb483c-2aaf-4863-a512-bb3dabd64ae0,Acoustic Bass,Bass,"bass, jazz, acoustic, warm, upright",Upright double bass,gakki,,950dc9c2-e8d4-4046-8128-7be603355d2c,000,032,Bass
+TRUE,859c09db-c948-49ec-96cd-e639716128f6,Fingered Bass,Bass,"bass, pop, groove, soft, smooth, electronic, electric, fingered",Smooth electronic bass,gakki,,4291b98b-7f6b-469d-b370-eca0e2c72ee3,000,033,Bass
+TRUE,fe33dd5a-f585-4063-ad7b-d2ae964fc318,Picked Bass,Bass,"bass, rock, pick, bright, sharp, picked",Sharper bass tone,gakki,,63df3f68-599d-4dcb-9dec-445cf5ac08ab,000,034,Bass
+TRUE,7f29cd8a-8c0e-44f2-ba6f-a32ab255f5c3,Fretless Bass,Bass,"bass, jazz, smooth, expressive, slide, glide",Slides and glides,gakki,,274f338b-4f5d-47b5-88fe-32ae3decd2ac,000,035,Bass
+TRUE,4222d3d1-7df3-483a-a208-93614abab1c4,Slap Bass 1,Bass,"bass, funk, slap, bright",Funky thumb slap,gakki,,e69ae460-2fda-4c5a-9d0a-7002d14021db,000,036,Bass
+TRUE,7d3955b0-d0b8-4287-bfc8-db7f7c07ddef,Slap Bass 2,Bass,"bass, funk, aggressive, slap",Heavier slap sound,gakki,,e4d295ad-d05a-47ee-bef7-a5b92616613a,000,037,Bass
+TRUE,05a85051-355f-44e5-8ab6-ef9a64b69426,LFO Bass,Bass,"bass, synth, bright, fx, arpeggio, arpeggiated",FX-style arpeggiated bass,heisenberg,,,,,Bass
+,,,,,,,,,,,
+TRUE,6b49e6b6-09f1-43d0-b15d-adeccdb9eeab,Standard Drum Kit,Drums,"drums, clean, soft",,gakki,,ad27cbee-5278-4661-bcd7-7e590926c5ed,128,000,Drums
+TRUE,e3ce588c-f237-481d-9f87-be3d423b29ae,Power Drum Kit,Drums,"drums, hard, aggressive",,gakki,,9ae42130-077e-4a47-b3a1-7699fff20cdf,128,016,Drums
+TRUE,18aa38cd-5fc5-4855-b7a9-7b5fca4f2dcd,Electronic Drum Kit,Drums,"drums, electronic, hard",,gakki,,9c8fe89c-6e62-4e9a-b71a-e5ad7f428c33,128,024,Drums
+TRUE,d6c69f5f-8e34-424d-8927-1a9ffd68e06a,Analog Drum Kit,Drums,"drums, electronic, soft",,gakki,,4b8ca734-bebc-4066-a044-7ea96de58318,128,025,Drums
+TRUE,56f936cf-452d-4d5e-bf03-28da021f0025,Jazz Drum Kit,Drums,"drums, acoustic, soft, jazz",,gakki,,d8912726-754f-4985-8649-ff34790a4172,128,032,Drums
+TRUE,c9973261-780e-445f-b8da-c43fcc422574,Brush Drum Kit,Drums,"drums, acoustic, soft",,gakki,,7010e54e-2eaa-4153-87c0-698602cb9f09,128,040,Drums
+TRUE,42e00fe8-e6f0-41e2-8982-174ac70d5e7d,Orchestra Drum Kit,Drums,"drums, orchestral, clean, classical",,gakki,,5b531d6d-ce5a-4b85-80ee-09981e009683,128,048,Drums
+TRUE,007b4eaf-8d6c-480d-8ef4-3d720e510cfd,AVICII,Drums,"drums, electronic, hard",,machiniste,,,,,Drums
+TRUE,03c674e1-0f8f-49d2-8e2c-1c21e8c36df6,Techno,Drums,"drums, electronic, hard, techno",,machiniste,,,,,Drums
+TRUE,13bbc54f-fa8b-4dfd-9a97-7bfc97ce35a4,Ghost kit,Drums,"drums, electronic, soft",,machiniste,,,,,Drums
+TRUE,229fabf1-0fbc-49b2-ba27-33d2cc8e6685,Trance,Drums,"drums, electronic, clean, trance",,machiniste,,,,,Drums
+TRUE,23e7e7a9-75ce-4439-86bd-93a87487a100,Burial Archangel,Drums,"drums, electronic, effected, dark",,machiniste,,,,,Drums
+TRUE,27815a90-6cc7-48cc-830b-a4c9279a14fd,House - Sunny Day,Drums,"drums, acoustic, clean, house",,machiniste,,,,,Drums
+TRUE,2a264f93-7c26-4540-b834-805fab10087a,808-1 (ARC),Drums,"drums, electronic, warm, clean, 808",808 kit with long decaying bass drum,machiniste,,,,,Drums
+TRUE,39642e42-3b2f-43c8-89dd-8d0aee7667a0,House (ARC),Drums,"drums, house, dark, electronic",House drum kit with 3 patterns including a bass,machiniste,,,,,Drums
+TRUE,3ae51ddb-1b23-40d6-85f2-6d3016fc2e4e,Jazz/Funk,Drums,"drums, acoustic, clean, jazz, funk",,machiniste,,,,,Drums
+TRUE,3c1f89da-00f0-4429-b4d0-69dbde489972,Monotron 2 (ARC),Drums,"drums, electronic, clean, minimal",,machiniste,,,,,Drums
+,,,,,,,,,,,
+TRUE,8de5fc5e-6ee2-4566-90b3-b5b20cd74bce,Squeaky Saw,Lead,"lead, synth, aggressive, bright, sawtooth",High energy sawtooth synth ,heisenberg,,,,,Lead
+TRUE,c9a4e53b-df9c-4e25-8f54-4b1189415564,Trancey Glow,Lead,"lead, hard, bright, synth, uplifting, keys, trance",Uplifting synth keys,space,,,,,Lead
+TRUE,58c68dc7-288d-45aa-b036-42ae14f01110,80s Dream-Saw,Lead,"lead, synth, bright, space, scifi, sci-fi, 80s",Sci-fi lead synth,space,,,,,Lead
+TRUE,025764de-ff81-4362-8414-5aafe1926a43,Fifth Sawtooth,Lead,"lead, synth, harmonic, sawtooth",Dual oscillator lead,gakki,,604cc02c-4646-4e60-8fbb-86089314cdc4,000,086,Lead
+TRUE,f5a99d73-1ef3-4280-a64c-c99066c50a6f,Wet Buzz Synth,Lead,"lead, synth, bright, airy, analog, wet",Open analog synth ,pulverisateur,,,,,Lead
+TRUE,a8a64a7c-e0ac-4374-a202-221a100a15f5,Buzzy Saw,Lead,"lead, synth, clean, hard, synth, modulated, sawtooth",Synth keys with modulation,heisenberg,,,,,Keys
+TRUE,c90162a0-1d8a-4cf8-aee7-ca234fac1067,Phased Lead,Lead,"lead, synth, bright, aggressive, phased",Phased lead synth,heisenberg,,,,,Lead
+TRUE,4c9613e5-22cb-4342-aed2-7a3b06e36d07,Modulated on Mars,Lead,"lead, synth, bright, aggressive, modulated",Modulated synth keys,space,,,,,Lead
+TRUE,c97061f6-ccb2-439f-abd5-9449bc2642a8,The Buzz Saw,Lead,"lead, synth, aggressive, energy, energetic, sawtooth",High energy lead synth,heisenberg,,,,,Lead
+TRUE,c142593f-9494-4922-85cf-2ea5273e0533,Hybrid Tune,Lead,"lead, synth, aggressive, bright",Bright lead synth,heisenberg,,,,,Lead
+TRUE,b0c8ec1c-5f12-4ef4-b7b1-01a38fbad200,Chinese Harp Keys,Lead,"lead, clean, plucked, plucky, asian, detuned, harp, keys",Slightly detuned asian lead,heisenberg,,,,,Lead
+TRUE,75d2abca-25bc-4453-ae4b-fe219fd9549f,Scifi Chimes,Lead,"lead, synth, detuned, space, distorted, scifi, sci-fi",Sci-fi detuned lead,heisenberg,,,,,Lead
+TRUE,aeb6f5e8-289a-4c47-93a0-b86b20ed6823,Plucky Saw Keys,Lead,"lead, synth, bright, distorted, plucky, plucked, sawtooth",Plucky saw lead,heisenberg,,,,,Lead
+TRUE,ec9109e8-bae4-47b8-8fb2-63ed348ad533,Smooth Ride,Lead,"lead, synth, bright, airy, lush, smooth",Airy lush synth,heisenberg,,,,,Lead
+TRUE,bdb78d0b-d83d-43a3-8f79-b66a142c929f,Calliope Lead,Lead,"lead, synth, whimsical, organ",Organ-like synth,gakki,,03d554ac-79c6-45eb-8df3-011082662e81,000,082,Lead
+TRUE,7ce36f23-7b02-49fc-8bd1-ca7e12585eb8,Chiffer Lead,Lead,"lead, synth, airy, soft",Breath noise synth,gakki,,09c99562-db43-4d27-bb2a-ed75182b78ce,000,083,Lead
+TRUE,7e01138c-e98d-4f62-a03d-3a316d7d5305,Charang,Lead,"lead, synth, gritty, guitar",Guitar-like synth,gakki,,64345f2c-ed94-425a-a496-e7b5bbd8dfe9,000,084,Lead
+TRUE,a76b3b24-03fa-4873-970f-7557ffa88749,Solo Voice,Lead,"lead, synth, vocals, voices",Vocal-ish lead tone,gakki,,adac1a76-b93b-4d72-bf5f-63ebd76b8935,000,085,Lead
+TRUE,7ff4fd21-676c-45f6-85fe-a68416a96537,Game-like Buzzy Bells,Lead,"lead, synth, bright, airy, bells, video game",Airy buzzy bells,pulverisateur,,,,,Chromatic Percussion
+TRUE,bcd8fa5e-f8b2-4057-9229-b860b6ec9488,Warm Keys,Lead,"lead, synth, filtered, warm, detuned",Slightly detuned lead synth,heisenberg,,,,,Lead
+TRUE,b07836ce-aa40-463a-a106-9938c7ff0e9d,Angel Harp Lead,Lead,"lead, bright, harmonics, synth, harp",Harmonic lead synth,pulverisateur,,,,,Lead
+TRUE,863bac2c-255e-45ac-95b7-7ebf598c6607,Voices from Space,Lead,"lead, synth, soft, gliding, glide, scifi, sci-fi, vocals, voices",Gliding sci-fi lead synth,pulverisateur,,,,,Lead
+TRUE,d010c8ba-3d31-471f-b714-2c87a53d7924,Gliding Bell,Lead,"lead, synth, hard, bells, modulated, gliding",Modulated bell lead,heisenberg,,,,,Lead
+TRUE,139f8546-6f2d-4b2a-baa3-083375cbf384,Glooming Sub-Lead,Lead,"lead, synth, dark, lead, sub, filtered",Filtered sub lead synth,pulverisateur,,,,,Lead
+TRUE,53a2d258-42c0-470d-bc9b-1d69e000bfc7,Stabbing Arp,Lead,"keys, synth, hard, bright, rhythmic, arpeggio, arpeggiated",Arpeggiated bright synth,heisenberg,,,,,Keys
+TRUE,43cc62fe-180a-4af4-8381-30618050438c,Europe1 Arp,Lead,"keys, synth, soft, rhythmic, arpeggio, arpeggiated",Arpeggiated slow synth,heisenberg,,,,,Keys
+TRUE,2b8036dc-5fa0-45a8-a0cb-b9122334ba00,Washed Out Arp,Lead,"keys, synth, soft, rhythmic, arpeggio, arpeggiated",Arpeggiated modulated synth,heisenberg,,,,,Keys
+,,,,,,,,,,,
+TRUE,9461f9fa-472c-42a8-aa9e-0ff89cca8ba4,80s Pad,Pad,"pad, bright, filtered, rhythmic, 80s, slow, motion, evolving",Slow attack evolving 80s pad,pulverisateur,,,,,Pad
+TRUE,efd4e4ff-4399-46be-b258-b33615077189,ib Motion Pad        ,Pad,"pad, bright, modulated, rhythmic, evolving, motion",Evolving bright pad,heisenberg,,,,,Pad
+TRUE,fe519d90-3731-4821-bf1b-40a0f18fd767 ,Velcro Pad,Pad,"pad, bright, aggressive, digital, modulated",Bright modulated pad,heisenberg,,,,,Pad
+TRUE,c5b4e3ea-6b47-466c-bef9-b4467c42224e,Glowy Pad,Pad,"pad, fm, clean, keys, piano",FM piano-like pad,heisenberg,,,,,Pad
+TRUE,8b4aa233-9fe9-4279-a01b-eb4af9760c44,Reversed Pad,Pad,"pad, airy, soft, reversed",Reversed attack pad,heisenberg,,,,,Pad
+TRUE,7698d709-e21f-41a3-bb4c-ac965fc57514,Hitting Pad,Pad,"pad, hard, aggressive, short, fast, hit, staccato",Short attack pad,heisenberg,,,,,Pad
+TRUE,a94cfc29-0940-4aa0-8576-57f18e8475d3,Dark Pad,Pad,"pad, dark, modulated, crunchy, filtered, digital, texture",Crunchy filtered digital pad,heisenberg,,,,,Pad
+TRUE,53d103b1-630f-4e18-863b-474b6a59206c,Electro LFO Pad,Pad,"pad, bright, modulated, rhythmic, long, electronic",Bright long sustaining pad,heisenberg,,,,,Pad
+TRUE,99e2f967-0921-4d4b-bac5-c5e949ed65f5,Dreamy Pad,Pad,"pad, dark, soft, filtered, analog, dreamy",Filtered analog pad,pulverisateur,,,,,Pad
+TRUE,94a90f5f-0123-42d9-8e85-5a08302ce92f,Spooky Choir Pad,Pad,"pad, dark, modulated, detuned, spooky, texture, ambient",Spooky detuned pad,heisenberg,,,,,Pad
+TRUE,e0f8ae10-1886-4ed4-b8a7-0d17b66d9482,Eerie Choir Pad,Pad,"pad, dark, soft, detuned, choir, vocals, voices",Choir-like detuned pad,space,,,,,Pad
+TRUE,4050594b-7e01-4133-9718-5a9c531576f4,Organ Pad,Pad,"pad, dark, soft, rhythmic, filtered, organ",Organ-like filtered pad,pulverisateur,,,,,Pad
+TRUE,e21a1906-39e7-42c5-91db-61898caccf64 ,Lush Pad,Pad,"pad, dark, filtered, sustaining, accordion, lush, texture",Accordion-like filtered pad,pulverisateur,,,,,Pad
+TRUE,26057697-429b-4514-8f63-10ba0051ab78,Lost Woods Choir Pad,Pad,"pad, bright, soft, organ, choir, vocals, voices, texture, video game",Organ-like pad,space,,,,,Pad
+TRUE,3b5def96-36c2-4840-b6ac-511405705ded,Smooth Ambient Pad,Pad,"pad, analog, dark, bells, ambient, texture",Bell-like pad,pulverisateur,,,,,Pad
+TRUE,f8b7ff50-f2c4-4ede-98a7-241c20b0b9d7,ft Space1 Pad ,Pad,"pad, bright, modulated, soft, short",Bright short decay pad,space,,,,,Pad
+TRUE,e8aa31ef-6f38-4134-86b8-a9260c5c5e49,Ocean Pad,Pad,"pad, bright, soft, rhythmic, evolving, motion, texture",Bright evolving rhythmic pad,pulverisateur,,,,,Pad
+TRUE,aced7e58-7b34-4a9b-a8d1-82518baadd50,Soft Organ Pad,Pad,"pad, dark, filtered, organ, spooky, soft",Filtered spooky pad,pulverisateur,,,,,Pad
+TRUE,139cd854-1b20-4859-8df3-255fc586717f,Heisten Ensemble Pad,Pad,"pad, bright, modulated, organ, ensemble",Bright organ-like pad,space,,,,,Pad
+TRUE,3554fe75-5f1e-431f-aac8-9b8f1f657dbf,String-like Pad,Pad,"pad, bright, soft, strings",Bright string-like pad,pulverisateur,,,,,Pad
+TRUE,0409f236-80ba-4a36-aaf7-d886604ff39c,Fantasia Pad,Pad,"pad, synth, ambient, evolving, soft, motion, evolving",Soft evolving pad,gakki,,565b4eb8-a6f1-4347-b50c-898361d422b7,000,088,Pad
+TRUE,a7d023a7-43b1-4503-86ff-412cff0a0fc6,Space Voice,Pad,"pad, synth, choir, vocals, voices",Vocal-like pad,gakki,,da9e87f3-2424-4bfd-b879-6f51b364aff2,000,091,Pad
+TRUE,39811b37-507d-46a0-bc2f-8f127606e0d4,Bowed Glass,Pad,"pad, synth, strings, glassy",Bowed string pad,gakki,,06101d49-dc49-4429-84ba-ba5255f3e87c,000,092,Pad
+TRUE,c30af7a6-dca0-4948-8cd4-979ec0ee1b34,Metal,Pad,"pad, synth, metallic, bells",Bell-like pad,gakki,,931410a5-6718-4bbc-9af0-b8bb67db2f9a,000,093,Pad
+TRUE,95faa5c8-51ae-434b-b34c-2a9a4e2f2443,Halo,Pad,"pad, synth, bright, airy",Airy shimmering pad,gakki,,3dbe0bdd-1616-46bd-9ec3-7925ec43a980,000,094,Pad
+TRUE,cddab967-6a0c-4c2e-8a51-8e308e53ef99,Sweep,Pad,"pad, synth, motion, filtered, sweeping",Filter-sweep pad,gakki,,217c8f88-5353-4e29-ae21-5182794f600e,000,095,Pad
+TRUE,3ab7092d-a305-4d9c-8709-3359f74bf7a2,Igna's Wet Trumpet,Pad,"pad, bright, soft, synth, strings, brass, trumpet",String-like synth brass,heisenberg,,,,,Pad
+TRUE,16987293-10a7-4b8f-8426-ffa0dbadbf33,Choir Aahs,Pad,"pad, ensemble, choir, vocals, voices, classical",Vocal ensemble “Aah”,gakki,,589893d5-b979-4b5d-9ec6-e9aa29270b19,000,052,Ensemble
+TRUE,27605c9a-fc33-4eb8-982f-dafb209291f8,Choir Oohs,Pad,"pad, ensemble, choir, vocals, voices, soft, classical",Softer vocal “Ooh”,gakki,,53fa3b65-ec01-4a93-a0df-034c2c23877b,000,053,Ensemble
+TRUE,4e6448ba-7b02-47cf-9a79-11fbf75dbdf6,St.Choir Aahs,Pad,"pad, ensemble, choir, vocals, voices, classical",Vocal ensemble “Aah”,gakki,,7220a192-a08d-41f4-93b7-f737216e0c19,002,052,Ensemble
+TRUE,285a7dc1-cc01-4277-9dcd-a29a40bb5a60,Atmosphere,Pad,"keys, fx, space, ambient, pad, texture, motion",Evolving space pad,gakki,,abadd9c4-6952-458b-a7c3-7f87886693b3,000,099,Keys
+TRUE,127dca19-bbf4-4104-8e65-d20f8dbba0fd,Sci-Fi,Pad,"keys, fx, synth, space, pad, scifi, sci-fi",Sci-fi-style pad,gakki,,d0983630-fd0e-4842-bbea-bf79cf818092,000,103,Keys
+,,,,,,,,,,,
+TRUE,f502a142-5351-4e43-a667-67ed21b8aecb,Grand Pluck,Plucks,"plucks, hard, warm, muted, plucked, plucky",Warm muted plucks,heisenberg,,,,,Plucks
+TRUE,6119257e-f178-4890-a0c6-cb565d099040,Big Room Pluck,Plucks,"plucks, aggressive, hard, distorted, crunchy, muted, plucked, plucky",Crunchy muted plucks,heisenberg,,,,,Plucks
+TRUE,27352ab1-9b74-4fc1-8d1d-69f644cfca62,Big Pointy Pluck,Plucks,"plucks, bright, hard, muted, digital, plucked, plucky",Muted digital plucks,heisenberg,,,,,Plucks
+TRUE,c6a6d042-c58a-4cd8-a6f2-bf9bfc44d89f,Bright Bell Pluck,Plucks,"plucks, bright, bells, detuned, plucked, plucky",Detuned bell-like plucks,space,,,,,Plucks
+TRUE,c27cf6d9-6734-4bcb-8cda-a767cc27ca54,Cute Pluck,Plucks,"plucks, clean, bright, muted, bells, plucked, plucky",Muted bell-like plucks,space,,,,,Plucks
+TRUE,cc103cf2-419a-4989-aa90-4a921fb5584c,Hunter Big Future House Pluck,Plucks,"plucks, soft, clean, bells, plucked, plucky, house",Soft bell-like plucks ,heisenberg,,,,,Plucks
+TRUE,b2898b2f-1427-441e-b4f4-50e4d29b0a18,Luxior Pluck,Plucks,"plucks, soft, clean, filtered, plucked, plucky",Soft sustaining plucks,heisenberg,,,,,Plucks
+TRUE,433d1c48-aeba-4271-bcd5-e75319dddfbc,Xav Progressive Pluck,Plucks,"plucks, bright, clean, filtered, modulated, plucked, plucky",Modulated short plucks,heisenberg,,,,,Plucks
+TRUE,981d30a7-9f28-4ebf-b6b6-553e2f1beb7a,Hunter Dream Pluck,Plucks,"plucks, hard, clean, plucked, plucky",Hard attack plucks,heisenberg,,,,,Plucks
+TRUE,5de2285b-16dd-4ba7-8986-d7c1ee810798,Lofi Pluck,Plucks,"plucks, clean, filtered, arpeggio, arpeggiated, plucked, plucky, lofi",Long attack plucks,pulverisateur,,,,,Plucks
+TRUE,d57372b1-0998-4294-a8b6-b91226776e8a,Sparkly Pluck,Plucks,"plucks, bright, clean, hard, plucked, plucky",Short bright plugs,heisenberg,,,,,Plucks
+TRUE,a6ae784c-0010-4ec6-aaff-5393ffb72b09,Glassy Pluck,Plucks,"plucks, bells, bright, modulated, glassy, plucked, plucky",Bells with a pitch envelope,heisenberg,,,,,Keys
+TRUE,03786390-b1b9-4bab-80f3-58e2e6df5d54,Video Game Pluck,Plucks,"plucks, bright, clean, 8bit, arpeggio, arpeggiated, plucked, plucky, video game",8bit plucks,heisenberg,,,,,Plucks
+TRUE,974606e4-ad58-4ea4-aaeb-64fbdcfe1d53,Dark Bell Pluck,Plucks,"plucks, dark, bells, soft, plucked, plucky",Dark bell-like plucks,space,,,,,Plucks
+TRUE,afe3e706-be8a-416b-a332-4281c276a694,Hard Pluck,Plucks,"plucks, bright, hard, aggressive, plucked, plucky",Hard hitting plucks,heisenberg,,,,,Plucks
+TRUE,8ce154a9-c85e-446c-9b06-13f4a9ee7c38,Muted sb Pluck,Plucks,"plucks, drak, filtered, clean, muted, plucked, plucky",Muted plucks,heisenberg,,,,,Plucks
+,,,,,,,,,,,
+TRUE,1b0efe86-22e9-4d0c-8963-f1e00cc331c8,Violin,Strings,"strings, solo, classical, violin",Solo bowed string,gakki,,1284c4f4-2038-4a4c-adb4-1ab84396f70d,000,040,Strings
+TRUE,0b01cd16-56b3-4508-a193-1123410b9718,Viola,Strings,"strings, warm, ensemble, violin, viola, classical",Warm mid-range string,gakki,,76d26995-58b1-44ba-b27f-bb993639c275,000,041,Strings
+TRUE,351c16de-7f58-41f0-9995-a60ef48233f2,Cello,Strings,"strings, warm, solo, cello, deep, emotional, classical","Deep, emotional tone",gakki,,8f452e66-2712-4a22-9393-b12f87acb183,000,042,Strings
+TRUE,d74c0c4a-f5ee-429b-8274-b43f00643af9,Contrabass,Strings,"strings, bass, orchestral, contrabass, classical",Orchestral bass,gakki,,d563d59c-0edf-4f1a-a1eb-3b0ab6967450,000,043,Strings
+TRUE,f95280dd-2b04-48e9-a6b5-dabf9883209b,Tremolo Strings,Strings,"strings, tremolo, orchestral, tremolo, classical",Fast repeated bowing,gakki,,6aa91098-1f6f-46d8-83f1-86a43e2db228,000,044,Strings
+TRUE,689a975a-e0a9-448b-91b8-c4c6898e10eb,Pizzicato Strings,Strings,"strings, plucks, plucked, plucky, staccato, orchestral, pizzicato, classical",Plucked orchestral strings,gakki,,61ad8e5c-1fb8-4660-8c25-06ca55ec5711,000,045,Strings
+TRUE,8af7540d-5686-4467-bf83-eee081b1da43,Harp,Strings,"strings, harp, arpeggio, arpeggiated, sweeping",Sweeping harp sound,gakki,,c3b602c8-e2d0-49c7-99c5-3ac0d785943c,000,046,Strings
+TRUE,c4f798f8-d931-446b-ab7f-b4eaa75182b2,String Section,Strings,"strings, ensemble, attack, classical",Full string section,gakki,,e60a2f5c-e6e8-481a-ad24-0bd8f400da11,000,048,Ensemble
+TRUE,46ecb0fc-8c64-4a46-9150-386c16d6918e,String Ensemble,Strings,"strings, ensemble, lush, classical",Full string section with low attack,gakki,,7601032c-ff3c-4805-93d1-f448736fcb4d,000,049,Ensemble
+TRUE,05525c58-6d7d-49d4-9792-af8d160031c7,Zero Strings,Strings,"strings, synth, bright, clean, violin",Synth violin,heisenberg,,,,,Synth Strings
+TRUE,218eec97-d1b2-4422-8f88-c133c32ecb8a,Deep Violin Electronica,Strings,"strings, synth, warm, crunchy, brassy, violin, deep",Brassy synth strings,heisenberg,,,,,Synth Strings
+TRUE,64ca2a4e-99d5-4c05-9c4f-e171ea348761,Synth Vibrato Strings,Strings,"strings, synth, clean, bright, detuned",Detuned synth strings,heisenberg,,,,,Synth Strings
+TRUE,9808a4ac-cbcc-43b2-9f08-88068a131372,Zay Cinematic Strings,Strings,"strings, synth, warm, clean",Clean synth strings,space,,,,,Synth Strings
+TRUE,9d6d65aa-b10b-4ac5-b4cc-8e1047c17291,Space Orchestral Strings,Strings,"strings, synth, bright, distorted, detuned, glassy, space, scifi, sci-fi, orchestral",Bright glass-like synth strings,space,,,,,Synth Strings
+TRUE,a899ea82-3fc7-499d-a484-5a80baf857c6,Synth Piano Strings,Strings,"strings, synth, bright, detuned, piano",Piano-like synth strings,heisenberg,,,,,Synth Strings
+TRUE,bab457e0-b7e0-465e-9f7d-561c12e22db6,Boreas' Magical Strings,Strings,"strings, synth, warm, gliding",Long attack synth strings with pitch envelope,heisenberg,,,,,Synth Strings
+TRUE,9a349e09-f633-480d-a735-2c9faf5772b8,Dry Classical Strings,Strings,"strings, synth, clean, warm, choir, vocals, voices, classical, dry",Choir-like synth strings,heisenberg,,,,,Synth Strings
+TRUE,cd745528-f207-4e99-89bd-815204b3b28b,Dry Violin,Strings,"strings, synth, dark, distorted, modulated, violin, dry",Modulated deep strings,heisenberg,,,,,Synth Strings
+TRUE,7dfacbf9-e103-436b-a536-cbce32871101,Dry Cello,Strings,"strings, synth, dark, harmonics, filtered, cello, dry",Filtered cello-like strings,heisenberg,,,,,Synth Strings
+,,,,,,,,,,,
+TRUE,f43b259a-a743-4cb0-921f-44656833bb2a,Jazz Guitar,Guitar,"guitar, jazz, clean, electronic, electric, smooth",Smooth hollow-body tone,gakki,,91e7aa78-f4d6-4d06-b48e-6302e2060e51,000,026,Guitar
+TRUE,ebacba3a-ffbe-4515-b7b7-c2507e77a3ce,Clean Guitar,Guitar,"guitar, electronic, electric, pop, clean, balanced",Balanced clean tone,gakki,,229913cc-ee92-4919-9093-d33eddca8c2e,000,027,Guitar
+TRUE,b6c5ecf7-030e-4d0a-8297-09e0f0541c26,Nylon Guitar,Guitar,"guitar, acoustic, warm, classical, nylon",Classical guitar tone,gakki,,6e9d66dc-511d-4569-b9c3-d51c9c5d2448,000,024,Guitar
+TRUE,efee3365-0859-48a2-a731-26fa43886926,Bright Steel Guitar,Guitar,"guitar, folk, pop, bright, steel",Bright steel-string sound,gakki,,6fcfca5d-5fba-4385-9be8-a173f9783f5c,001,025,Guitar
+TRUE,f02ab80c-4f10-4f6e-9efc-2f1c72f0e60d,Dark Steel Guitar,Guitar,"guitar, folk, pop, bright, steel",Bright steel-string sound,gakki,,09751dbe-4b2b-4b2e-ab7f-7a69b0089afa,000,025,Guitar
+TRUE,f55c3487-726e-43b0-b2d9-890c3428ea09,Muted Guitar,Guitar,"guitar, funk, rhythm, tight, muted, plucky",Palm-muted pluck,gakki,,373467e1-59ed-4534-b36b-3a1c0d0f2801,000,028,Guitar
+TRUE,973a7754-aa3b-48b5-8e5c-7dcb04fae6d6,Guitar Harmonics,Guitar,"guitar, ambient, harmonic, bells",Bell-like guitar harmonics,gakki,,a1558d18-82da-4d6b-bf3e-a02dd360e176,000,031,Guitar
+TRUE,0632537e-74f0-4c74-8309-829cf8ed42fe,Electronic Guitar,Guitar,"guitar, distorted, soft, chords, electronic",Distorted chord guitar,heisenberg,,,,,Guitar
+TRUE,a0678df8-fa17-4e1a-b904-0bb42a14e519,High-Gain Guitar,Guitar,"guitar, distorted, aggressive, gliding, monophone, solo",Monophone distorted solo guitar,heisenberg,,,,,Guitar
+TRUE,e6d5a691-4c6f-40d7-89fa-d62a3ce292ef,Overdriven Guitar,Guitar,"guitar, rock, gritty, lead, crunchy, distorted, overdrive",Crunchy rock tone,gakki,,7acde8a6-df45-4bde-b88a-02444146af5d,000,029,Guitar
+TRUE,4dedadf7-39ef-47b8-8940-1a1c2625d5f1,Distortion Guitar,Guitar,"guitar, metal, aggressive, lead, distorted",Heavy metal tone,gakki,,9a2a787c-332d-4410-a07d-f985bf003f01,000,030,Guitar
+TRUE,3dfd5dea-0f2d-4d58-b731-943c2b725c1a,Saturated Guitar,Guitar,"guitar, distorted, warm, crunchy, saturated",Crunchy chord guitar,heisenberg,,,,,Guitar
+TRUE,0b0a5dc3-74c6-4aff-83ac-277ffa2c1f91,Bell-ish Acoustic Guitar,Guitar,"guitar, clean, filtered, bells, acoustic",Filtered guitar-like,heisenberg,,,,,Guitar
+TRUE,1fb49115-97d8-419b-a2c0-e7255273ed47,Acoustic Guitar,Guitar,"guitar, clean, warm, soft, acoustic",Acoustic guitar-like,heisenberg,,,,,Guitar
+TRUE,c4628018-c920-4cbb-a9de-32a8b3efa122,Mellow Guitar,Guitar,"guitar, clean, bright, electronic, electric, mellow",Clean electronic guitar like,heisenberg,,,,,Guitar
+TRUE,6114fb87-458c-4cb5-9065-c46fe35c7b03,Kepz' Mellow Guitar,Guitar,"guitar, clean, warm, soft, mellow",Clean guitar,pulverisateur,,,,,Guitar
+TRUE,b56d6b0c-64c2-4973-b8a5-249e19611733,Dark Crunch Guitar,Guitar,"guitar, dark, warm, distorted, modulated, crunchy",Warm modulated guitar,pulverisateur,,,,,Guitar
+TRUE,ee0a1762-da68-48d8-899c-3ee31d78cedd,The Brawl Guitar,Guitar,"guitar, distorted, warm, chords",Distorted chord guitar,heisenberg,,,,,Guitar
+,,,,,,,,,,,
+TRUE,b81332d8-6ce2-491e-b4d2-107d24ba8dc3,Trombone,Wind,"wind, brass, warm, orchestral, trombone",Warm low brass,gakki,,92294c68-a9fe-4b9e-8a9d-cd0046d40d99,000,057,Brass
+TRUE,a0e633c2-4979-42e5-b4f9-c16b3e5c3866,French Horn,Wind,"wind, brass, orchestral, warm, smooth, horn",Smooth orchestral horn,gakki,,7a159525-1cb1-486b-8aea-f4c2a1b47f32,000,060,Brass
+TRUE,c6006e20-496d-4625-b815-ee5831d14481,Brass Section,Wind,"wind, brass, ensemble, cinematic, powerful",Powerful ensemble,gakki,,4aef1f9a-c878-4fd4-84bc-e3dd29061587,000,061,Brass
+TRUE,51f8a3e0-fdeb-460b-8b65-9473f158058c,English Horn,Wind,"wind, reed, woodwind, warm, solo, mellow, oboe, horn",Mellow oboe variant,gakki,,0dd4260c-ba08-4883-be42-4d0473afedb7,000,069,Reed
+TRUE,66c5d885-b784-40f5-a134-451c7627a71d,Soprano Sax,Wind,"wind, reed, saxophone, bright, solo, high","Bright, high sax",gakki,,9c9f9281-6ccc-483e-a659-23f33aeb98f1,000,064,Reed
+TRUE,46af8d73-1844-4b27-af60-89f3407a4d50,Alto Sax,Wind,"wind, reed, saxophone, jazz, warm, smooth, middle",Smooth middle sax,gakki,,5c4931d2-5a47-4507-baa1-772e51ff8ccc,000,065,Reed
+TRUE,96533625-f1c1-4762-8209-b055f6f678b5,Tenor Sax,Wind,"wind, reed, saxophone, warm, jazz, deep",Deep expressive sax,gakki,,3d596e78-d0d1-4487-ac19-d52d87c014ff,000,066,Reed
+TRUE,11566846-86fd-48b6-b94f-562d4e53daf9,Baritone Sax,Wind,"wind, reed, saxophone, low, brass",Fat low sax sound,gakki,,9d00ca46-1399-42f5-8128-a8ed8c5704fa,000,067,Reed
+TRUE,c7dc2efa-90f3-4780-b326-d3e0374fc0eb,Trumpet,Wind,"wind, brass, solo, bright, trumpet",Bright brass solo,gakki,,403e767e-cf64-42a5-80fd-511eb58b1717,000,056,Brass
+TRUE,3aaba4d6-a63b-4cee-b9b3-c39e1b3dff10,Tuba,Wind,"wind, brass, bass, orchestral, tuba",Deep orchestral brass,gakki,,126de9e5-cfce-4663-ae15-fea3cde8ec26,000,058,Brass
+TRUE,40f254ea-2617-4949-be1f-2255cfa5edbd,Muted Trumpet,Wind,"wind, brass, jazz, muted, trumpet, muted",Jazz trumpet with mute,gakki,,a1eadb03-9e7d-426c-b64d-aac40b0e9368,000,059,Brass
+TRUE,dd0a0ca3-7449-4728-86c4-53c8fdae2384,Oboe,Wind,"wind, reed, woodwind, oboe, solo, nasal",Nasal woodwind tone,gakki,,6456ab69-2e96-4e90-ac32-1afb92ef963e,000,068,Reed
+TRUE,4232177f-ab6c-435c-b73d-3bfd6ae4f567,Bassoon,Wind,"wind, reed, woodwind, low, classical, deep",Deep reed woodwind,gakki,,1bb770bf-a84c-4575-b7f2-84693e1e256d,000,070,Reed
+TRUE,23b891f7-e80b-47d3-a861-2c97f6e5e4d9,Clarinet,Wind,"wind, reed, woodwind, clarinet, warm, smooth",Smooth woodwind,gakki,,402f039b-86b7-4008-bc80-761ba9e8369f,000,071,Reed
+TRUE,b532b371-6021-46dd-a4af-5588684ab77d,Piccolo,Wind,"wind, pipe, flute, bright, orchestral, high","Bright, high flute",gakki,,3ed86e9e-0911-46e9-afd8-091e6cc4976f,000,072,Pipe
+TRUE,defb2e3b-d2e0-4eb9-8d71-7df36d31ec3d,Flute,Wind,"wind, pipe, flute, woodwind, solo, breathy, clear",Clear breathy tone,gakki,,f734cefc-a80d-4816-9a10-e7f80efb2c6f,000,073,Pipe
+TRUE,f7ff13a4-a825-4bf4-a06e-ff5f081575ce,Recorder,Wind,"wind, pipe, folk, flute, soft, sweet",Sweet folk flute,gakki,,dd576bb9-5f6d-43a5-aa3b-8861a52a6d4e,000,074,Pipe
+TRUE,0316febc-3ff1-45ef-a369-8a95806f2646,Pan Flute,Wind,"wind, pipe, folk, panflute, world, airy, bamboo, flute",Airy bamboo pipes,gakki,,9a72f519-4150-499e-ada1-e43d95d29c3a,000,075,Pipe
+TRUE,82696cc3-5d04-44e7-a01d-0fbaa00bdb6e,Harmonica,Wind,"wind, organ, blues, harmonica, solo, reed",Breath-based reed tone,gakki,,c5632dfa-4005-4f6c-9fb8-16865cc2a155,000,022,Organ
+TRUE,be0b2d05-abbf-44c9-b403-c4ab921cfec0,Shakuhachi,Wind,"wind, pipe, world, asian, flute, japanese, bamboo",Japanese bamboo flute,gakki,,35f24767-f919-45ea-ad02-f51da74368d2,000,077,Pipe
+TRUE,4b1441fe-195a-445f-9814-b545980f8719,Big Wet Brass,Wind,"wind, warm, modulated, synth, brass, wet",Heavy modulated synth brass,heisenberg,,,,,Brass
+TRUE,7df469e3-6019-41a5-8b35-51f398fe6c69,Wet Orchestral Brass,Wind,"wind, bright, warm, synth, brass, wet",Warm synth brass,heisenberg,,,,,Brass
+TRUE,6c06d230-1bfe-4b3a-b6d0-55a2815822d7,Chinese Bamboo Flute,Wind,"wind, pipe, soft, warm, synth, asian, flute",Asian flute-like synth,heisenberg,,,,,Pipe
+TRUE,6bf68474-2d4d-4661-8d7e-6a9f928d4aa6,Link's Lost Flute,Wind,"wind, pipe, bright, synth, flute",Sustainable synth flute,space,,,,,Pipe
+TRUE,3a419341-ceef-4a7a-86ab-545572239ddf,Jazzy Organ Flute,Wind,"wind, pipe, soft, warm, synth, flute, analog",Flute-like analog synth,pulverisateur,,,,,Pipe
+TRUE,2f92ac5e-a2bf-49ce-946d-d4b0ffd2dc8a,Old Airy Flute,Wind,"wind, pipe, soft, warm, synth, fm, flute",FM-style flute,heisenberg,,,,,Pipe
+TRUE,86835efa-cc45-4579-b3df-a5000d08209b,Dry Trumpet,Wind,"wind, brass, bright, aggressive, synth, fm, modulated, trumpet",Modulated FM-style trumpet,heisenberg,,,,,Brass
+,,,,,,,,,,,
+TRUE,6642f9d9-22ba-4d38-ba8e-d143c31f5de1,Orchestra Hit,FX,"fx, ensemble, orchestral, hit, retro, classical, staccato",Classic staccato hit,gakki,,b38eb167-2897-49ce-bbd9-61a8a200a0e2,000,055,Ensemble
+TRUE,1066f124-3f40-4bf3-9c65-6227471724ac,Euro Hit,FX,"fx, ensemble, hit, fx, orchestral, eurodance, staccato",Classic eurodance hit,gakki,,21d587bf-3e7e-47da-b467-cd6de7311fd7,001,055,Ensemble
+TRUE,93d0cdee-3298-4a11-9990-418a4189fab3,Impact Hit,FX,"fx, ensemble, fx, hit, orchestral, staccato, classical",Single orchestral hit,gakki,,376a4104-6ec9-4522-ae73-bfe276d69e2a,002,055,Ensemble
+TRUE,4792e4fa-4be4-4c15-ae4e-a1a89238aa6f,Guitar Fret Noise,FX,"fx, guitar, noise, sliding, texture",Sliding fret sound,gakki,,89cfd117-f16e-4e03-8342-e28b9289c8f5,000,120,Guitar
+TRUE,7b993ed1-7075-41e3-b51c-adbf2674f3b9,Rain,FX,"fx, ambient, rain, nature, texture",Nature-like pad,gakki,,9d10811f-fbe9-46cf-82ce-cf25f8460ec4,000,096,Sound FX
+TRUE,03806e64-ba51-4474-8887-8e339f86985f,Stream,FX,"fx, nature, ambient, texture",Flowing water,gakki,,cb99ac71-feca-4a9a-bba7-a9791439edb0,002,122,Sound FX
+TRUE,dc2e0552-10d3-4609-94e9-9f2baa26d7e3,Wind & Rain,FX,"fx, ambient, rain, nature, texture",Rain FX sound,pulverisateur,,,,,Sound FX
+TRUE,23b0d7e1-b066-48a2-8f60-b041f72d4504,Windy Storm,FX,"fx, ambient, wind, nature, texture",Wind FX sound,heisenberg,,,,,Sound FX
+TRUE,b0163790-e8c1-4f46-848c-9cb5f5cb08b5,Seashore,FX,"fx, ambient, nature, texture",Ocean wave sound,gakki,,cfb8da6a-ff8c-4911-83ad-78577bc92e56,000,122,Sound FX
+TRUE,92268d79-b7af-4a4c-b67b-cc1545ceb45e,Windchimes,FX,"fx, percussion, percussive, metal",Shimmering metallic percussion,gakki,,1eec9215-7450-42e4-bacd-d36c55e63099,002,124,Sound FX
+TRUE,0bed8f0f-f854-4100-b003-7be900bbed8c,Bird Tweet,FX,"fx, nature, ambient, texture",Bird chirping,gakki,,b3d8a367-f41f-4961-bf88-a2a0eba2d655,000,123,Sound FX
+TRUE,de45f831-dca8-4bfe-b5d6-c7bf2a58c38b,Telephone Ring,FX,"fx, phone, retro",Old-style ring,gakki,,2574dc44-8695-45a8-be4a-61f5f5676cbd,000,124,Sound FX
+TRUE,7208226b-5271-4852-beb7-f0194bacb40d,Helicopter,FX,"fx, machine, transport",Rotor blade sound,gakki,,6807c4b2-9391-4e00-81cd-77efac11e9ca,000,125,Sound FX
+TRUE,d39b7b86-42a0-47fc-99ea-6b38a8d890a0,Applause,FX,"fx, crowd, human, texture",Audience clapping,gakki,,aee3d7bb-f2a5-44b5-bcd4-06cb3eb4bcd2,000,126,Sound FX
+TRUE,e859bb19-7e48-4831-8265-744446cef771,Gunshot,FX,"fx, weapon, impact",Pistol/bang sound,gakki,,b01c12f5-a876-47b3-8229-80f95eab631e,000,127,Sound FX
+TRUE,70235364-f340-4c72-9209-71543407c8af,Engine Startup,FX,"fx, space, bright, evolving, motion",Startup-like FX sound,heisenberg,,,,,Sound FX
+TRUE,f046f293-7dc5-442f-9e09-8d002a799b16,Slide and Glide,FX,"fx, distorted, gliding",Crushed FX sound,heisenberg,,,,,Sound FX
+TRUE,37d3e7e3-39d3-4e54-881d-480275e98ee2,Comix,FX,"fx, space, gliding, motion, evolving",Evolving FX sound with pitch envelope,heisenberg,,,,,Sound FX
+TRUE,008cc0fc-20a0-44bf-b6b2-832243dc6d15,Siren,FX,"fx, siren, alarm, motion, texture, evolving",Evolving siren FX sound,heisenberg,,,,,Sound FX
+TRUE,9bca4c04-f124-484d-8bdf-2110b3cab162,MK Ultra,FX,"fx, hit, detuned",Detuned spiral FX sound,heisenberg,,,,,Sound FX
+TRUE,143cabe8-1b67-4724-9bd2-68fc87997037,Noise Woosh,FX,"fx, noise, ",Decaying noise FX sound,pulverisateur,,,,,Sound FX
+TRUE,21fcb6d3-ce0a-49c9-a9f9-003078ffde26,Scifi Wobbles,FX,"fx, sci-fi, scifi, space, bright, wobbling",Wobbling sci-fi FX sound,heisenberg,,,,,Sound FX
+TRUE,201c9a1d-0dcc-4bc4-8b6e-68395164a64f,Lazer Machine Gun,FX,"fx, sci-fi, scifi, space, gun",Powering up space FX gun,heisenberg,,,,,Sound FX
+TRUE,8362b0fb-07c0-4494-85ae-7fa2a8d612c3,Lazer Gun,FX,"fx, sci-fi, scifi, gun, laser",Laser gun FX sound,pulverisateur,,,,,Sound FX
+TRUE,ada6fc43-432c-4126-84cd-c947a7f2ca85,Short Sweep,FX,"fx, noise, bright, short, sweeping",Short sweeping FX sound,heisenberg,,,,,Sound FX
+TRUE,120bcf75-eda3-444b-8622-07b09aff529e,Phono Noise,FX,"fx, noise, vintage, vinyl, texture",Vinyl record noise,gakki,,08c53b25-c9e9-49ca-8c8a-99e3947ef827,003,124,Sound FX
+TRUE,8ef100a5-5462-42bd-af07-5be8ff8b07ef,Breath Noise,FX,"fx, vocals, air, texture",Inhale/exhale effect,gakki,,597695ad-6b90-453c-b3c3-9ec85ff57b8a,000,121,Sound FX
+,,,,,,,,,,,
+TRUE,bf29be77-cda7-416d-b2dd-ef3c69651a8d,Glockenspiel,Mallets,"mallets, bells, metallic, bright, chromati, glockenspiel",High metallic chime,gakki,,8ee6041c-15f3-4b6a-906b-16e11ed6de78,000,009,Chromatic Percussion
+TRUE,8a174394-e0f2-4dff-9b7d-f7e9b896989d,Vibraphone,Mallets,"mallets, jazz, vibrato, chromatic, vibraphone",Jazz mallet instrument,gakki,,a0187242-9e79-49e0-878f-19796f9595e8,000,011,Chromatic Percussion
+TRUE,a3450aa2-5040-457e-9487-a691c5c65334,Marimba,Mallets,"mallets, warm, wood, chromatic, marimba",Wooden mallet percussion,gakki,,85f0d471-03ef-4355-95fa-3da51cda3697,000,012,Chromatic Percussion
+TRUE,55f01a34-9b08-4b56-a2c1-8f5b9addb79d,Xylophone,Mallets,"mallets, bright, wood, chromatic, xylophone",Bright wooden percussion,gakki,,fbb08254-dac7-404c-bdaf-cea4ed4932c3,000,013,Chromatic Percussion
+TRUE,d6f1683d-1e94-425e-b765-d65abe6b3936,Celesta,Mallets,"mallets, bright, bells, orchestral, chromati, celesta",Bell-like piano,gakki,,806c1d46-63e8-4ccf-9f44-b4991ad93921,000,008,Chromatic Percussion
+TRUE,f2884edc-36b2-4d70-b15c-85092d18198a,Music Box,Mallets,"mallets, toy, soft, bells, chromatic, musicbox",Wind-up toy box tone,gakki,,8092a119-681b-48ce-be5f-112167ed6cc0,000,010,Chromatic Percussion
+TRUE,fceba2ad-b349-453d-82bb-880fa5747e6f,Dreamy Musicbox,Mallets,"mallets, soft, bells, dark, fm, musicbox",FM bells with lonh sustain ,space,,,,,Chromatic Percussion
+TRUE,7051c4fc-c2f2-43a4-95ee-8b1f546317b5,Musicbox Bells,Mallets,"mallets, soft, bells, bright, glassy, piano, keys, musicbox",Glass piano keys,space,,,,,Chromatic Percussion
+TRUE,b2f74cf6-dafc-4470-8fa0-54f3777298d5,Tubular Bells,Mallets,"mallets, bells, metallic, cinematic, chromatic, church, cathedral",Church bell tone,gakki,,bb3e4d3c-c301-452a-ae8c-b20668529001,000,014,Chromatic Percussion
+TRUE,4fcfbfcf-0e96-4f20-a8ae-d0a106ab9193,Dulcimer,Mallets,"mallets, folk, string, plucked, plucky, chromatic",Hammered string tone,gakki,,9e0b3f02-5544-4713-a9bb-0b453e6b7f43,000,015,Chromatic Percussion
+TRUE,35d559fd-c22a-4a79-a4dd-76b7709f131b,Grand Bells,Mallets,"mallets, bells, clean, hard, chromatic",Clean bells with hard attack,space,,,,,Chromatic Percussion
+TRUE,9ae0e286-dd04-41f7-b1bb-fb899454f545,Savage All the Smoke,Mallets,"mallets, metallic, aggressive, bells, piano",Tubular piano,heisenberg,,,,,Chromatic Percussion
+TRUE,b9f9f700-a49d-454d-aeea-b3b7dae5ba06,Mellow Gentle Keys,Mallets,"mallets, keys, dark, soft, bells, filtered, mellow, gentle",Filtered sustaining bells,heisenberg,,,,,Chromatic Percussion
+TRUE,8b83bf2e-002e-4c7b-9b2d-e341f279d6b9,Jangly Keys,Mallets,"mallets, bells, synth, bright, soft, fm, modulated, glockenspiel",Modulated FM-type glockenspiel,heisenberg,,,,,Chromatic Percussion
+,,,,,,,,,,,
+TRUE,620eceac-f732-48f5-8afe-caf733dfa102,Forrest 1 (ARC),Perc,"percussion, percussive, clean, texture",,machiniste,,,,,Perc
+TRUE,1b76b801-0347-443a-a22e-7bb4ffbd4192,Forrest 2 (ARC),Perc,"percussion, percussive, clean, texture",,machiniste,,,,,Perc
+TRUE,0dda3c5b-a48d-49ce-8d59-f581dab404a7,Forrest 3 (ARC),Perc,"percussion, percussive, clean, texture",,machiniste,,,,,Perc
+TRUE,14b161f3-9526-49fd-a620-8d64a5b6d63f,Forrest 4 (ARC),Perc,"percussion, percussive, clean, texture",,machiniste,,,,,Perc
+TRUE,9160550d-99cc-4d5b-aa01-351670b5c6b7,Shaker+,Perc,"percussion, percussive, hand, clean, texture",,machiniste,,,,,Perc
+TRUE,730e4987-e49a-47f3-ae95-1716d6c3995d,Conga & Bongo,Perc,"percussion, percussive, hand, clean, misc",,machiniste,,,,,Perc
+TRUE,d5e0108a-c268-4f81-a001-be7e27994bf4,Clicks,Perc,"percussion, percussive, clean, texture",,machiniste,,,,,Perc
+TRUE,787eb00c-9454-41b9-8848-c1f171a29275,Salsa,Perc,"percussion, percussive, hand, latin, misc",,machiniste,,,,,Perc
+TRUE,d8e008d9-28a3-4352-8fcc-e47e5cf1b318,Tropical,Perc,"percussion, percussive, hand, clean, misc",,machiniste,,,,,Perc
+TRUE,9c4e8996-ee12-4377-9143-ee84be20dd77,Dark Perc Ensemble,Perc,"percussion, percussive, dark, effected",,machiniste,,,,,Perc
+TRUE,f9acd397-bff5-4af9-ba74-536ab3473102,Castanets,Perc,"percussion, percussive, hand, latin, sharp",Sharp wooden clicking percussion,gakki,,4e45c921-77ee-429f-9666-2392dfab6413,002,115,Percussive
+TRUE,677f0ef2-692b-4474-9d11-e1610918d0b0,Tinkle Bells,Perc,"percussion, percussive, bells, bright, fx",Bright chime,gakki,,1656ad3e-ee52-47c2-b147-9d7da346cf07,000,112,Percussive
+TRUE,47241bb4-9eff-463d-84b4-620b55d8297b,Agogo,Perc,"percussion, percussive, latin, bright, cowbell",Twin cowbell tones,gakki,,3c6ecd40-1196-48d0-88fa-977304b053ea,000,113,Percussive
+TRUE,84f0b350-e1b1-4ef3-a3a7-3dbee2a8e708,Steel Drums,Perc,"percussion, percussive, world, steel, tropical, drums, misc",Caribbean tone,gakki,,366ce0b1-f61d-41f7-8c1b-0c34635b2e57,000,114,Percussive
+TRUE,6023ccdc-fa78-495d-a22f-c9ac9ffabcf9,Woodblock,Perc,"percussion, percussive, wood, short, woodblock",Percussive wood click,gakki,,03829825-5127-4101-8fd5-01fd14953931,000,115,Percussive
+TRUE,04bd3b71-a9c8-44c9-8bfe-f2e7182514b2,Taiko Drum,Perc,"percussion, percussive, world, taiko, drums, japanese, asian",Deep Japanese drum,gakki,,0c1bf220-8422-4ce6-a911-06475e247cfa,000,116,Percussive
+TRUE,90ad8394-47cf-4089-88f8-3485d3d420c2,Melodic Drum,Perc,"percussion, percussive, drums, melodic",Tuned toms,gakki,,5cf4abf2-30b6-4e1b-914a-1a713aefb70c,000,117,Percussive
+TRUE,2ebebdf9-3d1d-42e2-95ea-b116de82b827,Timpani,Perc,"percussion, percussive, drums, orchestral",Tuned orchestral drum,gakki,,ef648c6a-2c30-416a-bbf5-01dc1c45ba6d,000,047,Strings
+TRUE,34c8332e-d188-4b08-8bab-989ab5027b35,Synth Tom,Perc,"percussion, percussive, synth, drums, electronic, electric",Electronic tom hit,gakki,,54c48d42-46cf-4288-96f3-5a2371717e0b,000,118,Percussive
+TRUE,92266fda-dfd3-4e16-88c7-1f0160d3b8d4,Reverse Cymbal,Perc,"percussion, percussive, fx, reverse, cymbal, drums",Reversed swell,gakki,,b0dd0044-6d2c-4a68-b101-89a43e11888c,000,119,Percussive
+,,,,,,,,,,,
+TRUE,05b6d94a-1a2e-4542-b3e9-da1bc534b975,Sitar,Misc,"misc, world, indian, plucked, plucky, sitar",Indian plucked string,gakki,,4bf128f6-4a94-42e2-80fe-1d5431882525,000,104,Ethnic
+TRUE,a458046c-59e9-49f6-a628-22876927c897,Banjo,Misc,"misc, folk, banjo, country, strings, bright",Bright folk string,gakki,,3f67a8f7-897c-4a16-bb76-183724b72e65,000,105,Ethnic
+TRUE,23145472-516d-4f9c-90b4-9f63ff8ce455,Shamisen,Misc,"misc, world, asian, plucked, plucky",Japanese 3-string lute,gakki,,3b74dad9-7338-442a-b7ed-dc62960899ea,000,106,Ethnic
+TRUE,02ca6de1-1a08-4994-a87c-23c261a43634,Koto,Misc,"misc, world, asian, string",Japanese zither,gakki,,f8f12b56-abb2-4150-a332-4ad20d9019c8,000,107,Ethnic
+TRUE,32779b50-653b-49c0-9f35-c5fa17570cbe,Kalimba,Misc,"misc, world, african, percussion, percussive, piano, kalimba",Thumb piano,gakki,,e8c8ade1-3bb1-4c03-a094-2714fa76356b,000,108,Ethnic
+TRUE,9880f830-5184-47ec-88bb-0b268613853b,Fiddle,Misc,"misc, folk, string, solo, violin, strings, fiddle",Folk violin,gakki,,ee1d9684-3fe2-49a7-b535-e021103f2382,000,110,Ethnic
+TRUE,4ecb6171-87fd-4f63-9adc-c4ccc765ffcc,Shanai,Misc,"misc, world, indian, wind, reed, pipe",Indian reed pipe,gakki,,c96ccc4d-9b77-436f-b1f8-892e33137470,000,111,Ethnic
+TRUE,46700c95-d85f-496c-8dfa-f0866d5467a3,Accordion,Misc,"misc, keys, organ, folk, accordion, world, traditional",Traditional accordion tone,gakki,,6841024f-c96d-41e8-86d8-6e40fe97e949,000,021,Organ
+,,,,,,,,,,,
+FALSE,0e6f20e6-9160-42a3-9509-fd4487223258,Synth Bass 1,Bass,"synth, bass, analog, bright",Analog-style bass bright,gakki,,49b42950-368e-4d1f-8a81-c254a45c186f,000,038,Bass
+FALSE,7748c722-018a-4219-9c53-b6949e634cd0,Synth Bass 2,Bass,"synth, bass, analog, dark",Analog-style bass dark,gakki,,58550231-79f0-4fbd-a953-183a9172c179,000,039,Bass
+FALSE,e15ce70a-e7ff-4532-b619-a30b17b97b57,Synth Strings 1,Strings,"synth, strings, pad, ensemble, analog",Classic analog pad,gakki,,e1dc7971-bf9e-431a-9496-9228bdaafe58,000,050,Ensemble
+FALSE,8b3de6e0-8e86-47ba-934d-014a604cf289,Synth Strings 2,Strings,"synth, strings, pad, bright, ensemble, digital",Bright digital pad,gakki,,9ada975a-0f0d-43f1-8076-2ebb6de7459d,000,051,Ensemble
+FALSE,1b01e9ba-2677-440e-a055-9616ddf0da58,Synth Voice,Pad,"synth, vocals, pad, ensemble, voices",Vocal-like synth tone,gakki,,722a7826-07ce-463b-80e4-39e1aee721b0,000,054,Ensemble
+FALSE,58bee540-5410-47eb-af97-e08c9d0b9f04,Synth Brass 1,Wind,"synth, brass, bright, wind, digital",Digital brass synth,gakki,,04266bf2-c01b-4cb9-9ef3-854372c1c218,000,062,Brass
+FALSE,b8d549b3-ca15-421e-bbbd-b449b876907a,Synth Brass 2,Wind,"synth, brass, analog, wind",Analog brass synth,gakki,,47fc70e9-d928-4b35-aa77-2b8ae9fb0385,000,063,Brass
+FALSE,edf04b25-728d-47ce-8a77-c455f6ae9cd4,Blown Bottle,Wind,"ambient, wind, fx, pipe, whistle, airy",Airy whistle tone,gakki,,2433b4b8-e12a-4690-b16f-190d6d4dfdc3,000,076,Pipe
+FALSE,98187def-976c-4650-85dc-02e0d8bcc092,Whistle,Wind,"fx, bright, high, pipe, wind, whistle, clear, sharp",Clear sharp whistle,gakki,,3cc5d9dd-7d3a-4fb9-bc38-94217626d3a7,000,078,Pipe
+FALSE,b8ccc37a-395b-4a5c-accf-88798594d34a,Ocarina,Wind,"folk, ocarina, world, pipe, wind, flute, soft",Soft clay flute,gakki,,c7dbc4f3-f2b3-4674-a5f2-40b4f63b90d6,000,079,Pipe
+FALSE,8d165833-0fb5-4538-b357-417e0d21a592,Square Lead,Lead,"synth, lead, retro, square",Basic square wave lead,gakki,,90720501-0206-4d34-8801-ef62944f4e1d,000,080,Synth Lead
+FALSE,1f7116dd-c242-43e1-9ab9-fc5f706a2158,Saw Lead,Lead,"synth, lead, bright, sawtooth",Classic saw lead,gakki,,5ebe1358-f451-4472-a951-bcc80817ce79,000,081,Synth Lead
+FALSE,060c37fe-4a10-4095-9530-3dc6c1c428c7,Warm Pad,Pad,"synth, pad, warm, gentle, analog",Gentle analog pad,gakki,,7a05ba4f-432a-48af-9870-8b34671c6429,000,089,Synth Pad
+FALSE,f951bad2-f378-4c1c-b5e5-f71e4105951f,Polysynth,Pad,"synth, pad, thick, layered",Rich layered pad,gakki,,204b38dd-a18e-468a-8181-a1fd9ae01909,000,090,Synth Pad
+FALSE,a22397a4-68be-4b16-8bd2-d58ce43d0c4d,Soundtrack,Pad,"fx, cinematic, pad, synth, texture",Cinematic pad,gakki,,65049663-58c2-4aa1-a84d-8da72a5b6ead,000,097,Synth FX
+FALSE,d96df2aa-9a77-40b7-a439-d720f2252618,Brightness,Pad,"fx, bright, synth, pad",High resonant pad,gakki,,fb7f5df8-5c47-4aea-b294-44b7482f2373,000,100,Synth FX
+FALSE,41f458e0-f696-4c03-b722-d52a20efced0,Goblins,FX,"fx, weird, creepy, synth, strange",Weird sound effect,gakki,,90e43deb-4dfc-4fc2-92eb-28bb8cfa45da,000,101,Synth FX
+FALSE,4ae465e7-8a9a-40a0-a066-13ccfb350ddf,Echo Drops,FX,"fx, echo, space, synth, delayed, texture",Delayed texture,gakki,,46749b3b-1f13-4080-aa49-e256f575099f,000,102,Synth FX
+FALSE,2732fbbe-faa0-42ce-89fe-5dfa550e6f77,Acoustic Bass,Bass,"jazz, acoustic, warm, bass, upright",Upright double bass,gakki,,94d74a2a-13f6-4339-9733-386babe5d8ec,001,032,Bass
+FALSE,f25899cf-2687-4489-b9aa-73ad85d63ecd,JP Strings,Strings,"strings, ensemble, lush",Full string section,gakki,,1c7add93-4da6-49d3-80ad-d39c96e2926d,001,050,Ensemble
+FALSE,d7c927e8-a3ba-4b70-8ce6-75d682a63f8b,Choirs Aahs,Pad,"choir, vocals, pad, ensemble, voices",Vocal ensemble “Aah”,gakki,,3f6a5aeb-fa9e-4c6e-afc4-8c595a3e2c57,001,052,Ensemble
+FALSE,6dbd7a6d-4198-4290-9542-219241c7827b,Octave Brass,Wind,"brass, warm, orchestral, wind",Octaved Brass,gakki,,679c6940-795b-4286-80ad-8115f1eb002e,001,061,Brass
+FALSE,5523fbe7-e907-4991-8d98-d6765730ad6e,Silky Pad,Pad,"bright, clean, pop, synth, pad, soft, bright",Soft bright pad sound,gakki,,cdb03784-bb70-4094-8388-d0af5a549d3c,001,103,Synth Pad
+FALSE,820a78bf-faae-4abd-8324-1bba1587e7b2,Bright Grand 2,Keys,"keys, piano, bright, pop, grand","Brighter, harder attack",gakki,,d0e729d6-6208-423b-accd-459f6b4e1c1c,000,001,Piano
+FALSE,14960b89-6d7b-4fa1-8d96-7980ed73411a,Piano 2,Keys,"keys, piano, bright, pop, classical",Classic piano,gakki,,66159296-536d-4fa7-b112-a52a42c09377,000,002,Piano
+FALSE,284daead-69b1-459d-83f6-1e08d6d8cee9,Room Drum Kit,Drums,"drums, clean, effected",,gakki,,83c98365-d5ff-43d7-b8d6-82e346bfc284,128,008,Drums
+FALSE,2aa96f1c-3c98-49c3-b4da-bc19d3ac64ac,Bagpipe,Misc,"misc, folk, bagpipe, wind, pipe",Drone pipe sound,gakki,,b350be32-13ed-46b2-be5b-92d56cd3af46,000,109,Ethnic
+FALSE,e26f1313-000d-4deb-8721-3fbfa43f5cb3,Bandoneon,Misc,"misc, keys, organ, latin, accordion, dance, reed",Reed-based button accordion,gakki,,e948dc7b-f2ac-49a2-97ac-b935b746757e,000,023,Organ

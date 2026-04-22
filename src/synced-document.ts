@@ -1,5 +1,5 @@
 import {
-  getWasmDocumentState,
+  getWasmConsolidator,
   initWasmLoader,
 } from "@document/backend/create-wasm-document-state"
 import { createCollabGateway } from "@document/backend/document-service/gateway"
@@ -301,9 +301,11 @@ export const createOnlineDocument = async (
 
   // await validator to make sure wasm is loaded before gateway is initialized
   const validator = await validatorPromise
+  // eagerly create the wasm consolidator so the wasm module is ready when the gateway is used.
+  const consolidator = await getWasmConsolidator()
   const gateway = createCollabGateway(
     documentService,
-    await getWasmDocumentState(),
+    () => consolidator,
     projectName,
   )
 

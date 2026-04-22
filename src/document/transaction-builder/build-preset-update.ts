@@ -3,27 +3,45 @@ import type { Modification } from "@gen/document/v1/document_service_pb"
 import type { EntityMessage } from "@document/entity-utils"
 import { Pointer } from "@gen/document/v1/pointer_pb"
 import { assert } from "@utils/lang"
+import { protoDownCast } from "@utils/proto-down-cast"
 import { buildModificationForFieldUpdate } from "."
 import type { NexusEntity } from "../entity"
 import {
   ArrayField,
   PrimitiveField,
+  primitiveEquals,
   type NexusField,
   type PrimitiveType,
 } from "../fields"
 import { NexusLocation } from "../location"
 import { NexusObject } from "../object"
 
+/** Fields that are part of a device's workspace/UI state rather than its sound
+ * and are preserved when a preset is applied to an existing device. */
+const DEVICE_WORKSPACE_FIELDS = ["positionX", "positionY", "displayName"]
+
 /** Takes an existing nexus entity, and a new entity message, that must be
  * of the same type as the existing entity.
  *
  * Then it builds modifications that update all fields of the existing entity
  * to the values in the new entites, except fields with identical values.
+ *
+ * If `presetName` is passed, the call is treated as the top-level of a preset
+ * application to a device entity:
+ * - the top-level `presetName` field is stamped with the passed `presetName`
+ *   (regardless of what `msg` carries)
+ * - the top-level `positionX`, `positionY` and `displayName` fields are left
+ *   untouched (these are workspace/UI state, not part of the preset's sound)
+ *
+ * Nested submessages are updated normally; the special handling only applies
+ * at the top level.
  */
 export const buildPresetUpdateModifications = (
   entity: NexusEntity,
   msg: EntityMessage,
-): Modification[] => buildModificationForObject(entity, msg)
+  presetName?: string,
+): Modification[] =>
+  buildModificationForObject(entity, msg, presetName !== undefined, presetName)
 
 /** Returns modifications needed to update an arbitrary nexus field */
 const buildModificationForField = (
@@ -45,15 +63,44 @@ const buildModificationForField = (
   throw new Error(`unknown field type`)
 }
 
-/** Returns modifications needed to update a nexus object */
+/** Returns modifications needed to update a nexus object.
+ *
+ * When `isPresetTargetEntity` is true, this call represents the top-level
+ * device entity being updated by a preset application. In that case:
+ * - `positionX`, `positionY` and `displayName` are skipped
+ * - `presetName` is stamped with the `presetName` argument (ignoring `msg`)
+ *
+ * These behaviors intentionally do not recurse into submessages.
+ */
 const buildModificationForObject = (
   object: NexusObject,
   msg: unknown,
+  isPresetTargetEntity: boolean = false,
+  presetName?: string,
 ): Modification[] => {
   assert(typeof msg === "object", `msg is not an object`)
-  return Object.entries(object.fields).flatMap(([key, field]) =>
-    buildModificationForField(field, (msg as Record<string, unknown>)[key]),
-  )
+  return Object.entries(object.fields).flatMap(([key, field]) => {
+    if (isPresetTargetEntity && DEVICE_WORKSPACE_FIELDS.includes(key)) {
+      return []
+    }
+
+    if (
+      isPresetTargetEntity &&
+      key === "presetName" &&
+      field instanceof PrimitiveField &&
+      field._protoType === "string"
+    ) {
+      const nextValue = presetName ?? ""
+      return field.value !== nextValue
+        ? [buildModificationForFieldUpdate(field, nextValue)]
+        : []
+    }
+
+    return buildModificationForField(
+      field,
+      (msg as Record<string, unknown>)[key],
+    )
+  })
 }
 
 /** Returns modifications needed to update an array field */
@@ -90,9 +137,10 @@ const buildUpdateForPrimitiveField = (
     return [buildModificationForFieldUpdate(field, msgValue)]
   }
 
-  // else, field is a non-pointer primitive type - check for equality again
-  if (field.value === msgValue) {
+  // else, field is a non-pointer primitive type - downcast and check for equality
+  const downCasted = protoDownCast(field._protoType, msgValue as PrimitiveType)
+  if (primitiveEquals(field.value, downCasted)) {
     return []
   }
-  return [buildModificationForFieldUpdate(field, msgValue as PrimitiveType)]
+  return [buildModificationForFieldUpdate(field, downCasted)]
 }

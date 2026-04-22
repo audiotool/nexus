@@ -7,6 +7,7 @@
 
 export { buildModificationForEntityClone } from "./build-clone-entity"
 export { buildModificationsForCloneLinkedEntities } from "./build-clone-linked-entities"
+export { buildModificationForFieldReset } from "./build-field-reset"
 export { buildModificationForFieldUpdate } from "./build-field-update"
 export { buildModificationForNewEntity } from "./build-new-entity"
 export { buildModificationForRemove } from "./build-remove"

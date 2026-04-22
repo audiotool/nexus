@@ -97,7 +97,7 @@ const createField = (
     case "scalar": {
       return new PrimitiveField<PrimitiveType>(
         location,
-        value as number | string | boolean,
+        value as PrimitiveType,
         scalarTypes[field.T],
         !mustExtractMutability(entityType, location.fieldIndex),
       )

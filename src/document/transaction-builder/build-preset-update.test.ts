@@ -82,7 +82,7 @@ describe("buildPresetUpdateModifications", () => {
               "/beatbox9/accentAmount",
             ),
             "float",
-            0.6,
+            Math.fround(0.6),
           ),
         ])
       })
@@ -110,7 +110,7 @@ describe("buildPresetUpdateModifications", () => {
               "/beatbox9/bassdrum/attack",
             ),
             "float",
-            0.2,
+            Math.fround(0.2),
           ),
         ])
       })
@@ -134,7 +134,7 @@ describe("buildPresetUpdateModifications", () => {
           buildUpdateModification(
             NexusLocation.fromSchemaPath(bb9Entity.id, "/beatbox9/tomLow/gain"),
             "float",
-            0.2,
+            Math.fround(0.2),
           ),
         ])
       })
@@ -167,6 +167,119 @@ describe("buildPresetUpdateModifications", () => {
           ),
         ])
       })
+    })
+  })
+
+  describe("presetName", () => {
+    it<TestContext>("should stamp presetName onto the top-level entity when passed", (context) => {
+      const stompboxDelay = context.t.create("stompboxDelay", {})
+      const updateWith = createDefaultEntityMessage("stompboxDelay")
+
+      const modifications = buildPresetUpdateModifications(
+        stompboxDelay,
+        updateWith,
+        "presets/abc-123",
+      )
+
+      expect(modifications).toMatchObject([
+        buildUpdateModification(
+          NexusLocation.fromSchemaPath(
+            stompboxDelay.id,
+            "/stompboxDelay/presetName",
+          ),
+          "string",
+          "presets/abc-123",
+        ),
+      ])
+    })
+
+    it<TestContext>("should emit no modification when presetName already matches", (context) => {
+      const stompboxDelay = context.t.create("stompboxDelay", {})
+      const updateWith = createDefaultEntityMessage("stompboxDelay")
+
+      // stamp once
+      buildPresetUpdateModifications(
+        stompboxDelay,
+        updateWith,
+        "presets/abc-123",
+      ).forEach((mod) => context.t._addModification(mod))
+
+      // stamping again with the same value should be a no-op
+      const modifications = buildPresetUpdateModifications(
+        stompboxDelay,
+        updateWith,
+        "presets/abc-123",
+      )
+      expect(modifications.length).toBe(0)
+    })
+
+    it<TestContext>("should leave presetName untouched when no presetName is passed", (context) => {
+      const stompboxDelay = context.t.create("stompboxDelay", {})
+      const updateWith = createDefaultEntityMessage("stompboxDelay")
+
+      const modifications = buildPresetUpdateModifications(
+        stompboxDelay,
+        updateWith,
+      )
+
+      expect(modifications.length).toBe(0)
+    })
+  })
+
+  describe("workspace fields", () => {
+    it<TestContext>("should skip positionX, positionY and displayName when applying a preset", (context) => {
+      // existing device has been moved and renamed by the user
+      const stompboxDelay = context.t.create("stompboxDelay", {
+        positionX: 100,
+        positionY: 200,
+        displayName: "my cool delay",
+      })
+
+      // preset carries the default (0, 0, "Delay")
+      const updateWith = createDefaultEntityMessage("stompboxDelay")
+
+      const modifications = buildPresetUpdateModifications(
+        stompboxDelay,
+        updateWith,
+        "presets/abc-123",
+      )
+
+      // only the presetName stamp should be emitted; positionX/Y/displayName
+      // remain untouched
+      expect(modifications).toMatchObject([
+        buildUpdateModification(
+          NexusLocation.fromSchemaPath(
+            stompboxDelay.id,
+            "/stompboxDelay/presetName",
+          ),
+          "string",
+          "presets/abc-123",
+        ),
+      ])
+    })
+
+    it<TestContext>("should still update positionX, positionY, displayName when no preset is being applied", (context) => {
+      // no presetName -> plain update, workspace fields are fair game
+      const stompboxDelay = context.t.create("stompboxDelay", {
+        positionX: 100,
+      })
+      const updateWith = createDefaultEntityMessage("stompboxDelay")
+
+      const modifications = buildPresetUpdateModifications(
+        stompboxDelay,
+        updateWith,
+      )
+
+      expect(modifications).toMatchObject([
+        buildUpdateModification(
+          NexusLocation.fromSchemaPath(
+            stompboxDelay.id,
+            "/stompboxDelay/positionX",
+          ),
+          "int32",
+          0,
+        ),
+      ])
     })
   })
 })

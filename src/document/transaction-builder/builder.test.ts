@@ -7,8 +7,11 @@ import type { NexusEntity } from "../entity"
 import { Any } from "@bufbuild/protobuf"
 import { anyEntityToTypeKey, mustUnpackEntity } from "@document/entity-utils"
 import { StompboxCrusher } from "@gen/document/v1/entity/stompbox_crusher/v1/stompbox_crusher_pb"
+import * as docpreset from "@gen/document/v1/preset/v1/preset_pb"
+import { Preset } from "@gen/preset/v1/preset_pb"
 
 import { NexusPreset } from "@api/preset-utils"
+import { packedEntity } from "@document/entity-utils"
 import {
   nexusDocumentState,
   type NexusDocumentState,
@@ -20,6 +23,7 @@ import {
   transactionBuilder,
   type TransactionBuilder,
 } from "./builder"
+import { createDefaultEntityMessage } from "./create-default-entity"
 import { type DevicePresetEntityType } from "./prepare-preset"
 
 type TestContext = {
@@ -81,6 +85,12 @@ describe("transaction builder", () => {
           null as unknown as NexusEntity<DevicePresetEntityType>,
           null as unknown as NexusPreset,
         ),
+      ).toThrowError(CallAfterSendError)
+    })
+
+    it<TestContext>("should throw for createDeviceFromPreset", (ctx) => {
+      expect(() =>
+        ctx.builder.createDeviceFromPreset(null as unknown as NexusPreset),
       ).toThrowError(CallAfterSendError)
     })
 
@@ -146,12 +156,14 @@ describe("transaction builder", () => {
                     id: crusher.id,
                     audioInput: {},
                     audioOutput: {},
+                    displayName: "Crusher",
                     preGain: 1,
                     downsamplingFactor: 0,
                     postGain: 1,
                     bits: 8,
                     mix: 1,
                     isActive: true,
+                    presetName: "",
                   }),
                 ),
               },
@@ -178,6 +190,37 @@ describe("transaction builder", () => {
             toSocket: crusher.fields.audioInput.location,
           }).fields.fromSocket.value.entityType,
         ).toBe("stompboxCrusher")
+      })
+    })
+
+    describe("createDeviceFromPreset", () => {
+      it<TestContext>("should create an entity of the preset's type and stamp its preset name", (ctx) => {
+        const presetName = "presets/test-crusher"
+        const target = createDefaultEntityMessage("stompboxCrusher")
+        target.preGain = 0.25
+        target.bits = 4
+
+        const preset: NexusPreset<"stompboxCrusher"> = {
+          meta: new Preset({ name: presetName }),
+          data: new docpreset.Preset({
+            target: packedEntity("stompboxCrusher", target),
+            relatives: [],
+          }),
+          entityType: "stompboxCrusher",
+          _presetName: presetName,
+        }
+
+        const device = ctx.builder.createDeviceFromPreset(preset)
+
+        expect(device.entityType).toBe("stompboxCrusher")
+        expect(device.fields.preGain.value).toBeCloseTo(0.25)
+        expect(device.fields.bits.value).toBe(4)
+        expect(device.fields.presetName.value).toBe(presetName)
+
+        // first modification is the create, rest are the preset application updates
+        const [firstMod, ...rest] = ctx.appliedModifications
+        expect(firstMod?.modification.case).toBe("create")
+        expect(rest.length).toBeGreaterThan(0)
       })
     })
 

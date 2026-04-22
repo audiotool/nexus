@@ -7,6 +7,30 @@ title: 📜 Changelog
 
 To get more background on the changes we make, join our [Discord](https://discord.gg/5Cde4Zvret).
 
+## 0.0.15:
+
+- **Updated Consolidation Logic** - for a more robust experience modifying projects alongside other participants
+- **Updated defaults** - newly created entities now match the DAW
+- **New Goodies in {@link api.PresetUtil}**:
+  - use `at.presets.getInstrument("marimba")` to get the marimba instrument
+  - use `at.presets.getDrums("jazz-kit")` to get the jazz drum kit
+  - use `at.presets.getInstrument(8)` to use instrument with GM Program number `8` (see [1])
+  - use `at.presets.getDrums(8)` to get the Room Kit (available programs: 0, 8, 16, 24, 25, 32, 40, 48)
+  - use `at.presets.gmInstruments` to get a list of all GM instruments, incl. `.displayName`, `.description`, and `.program` to get the GM number.
+  - use `at.presets.gmDrums` to get a list of all GM drums, like the other one
+  - usage:
+  ```ts
+  const preset = await at.presets.getInstrument("pan-flute")
+  await nexus.modify((t) => {
+    // all GM instruments are gakki devices
+    const gakki = t.createDeviceFromPreset(preset)
+  })
+  ```
+
+See a list of all available instruments at {@link api.GmInstrumentSlug}, drums at {@link api.GmDrumSlug}.
+
+[1]: For background on GM program numbers, see [General MIDI on Wikipedia](https://en.wikipedia.org/wiki/General_MIDI). Many listings show programs as 1–128; in this SDK they are 0-indexed per MIDI 1.0.
+
 ## 0.0.13 & 0.0.14
 
 ### Breaking Changes

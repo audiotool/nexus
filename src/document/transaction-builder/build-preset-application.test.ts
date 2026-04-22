@@ -31,6 +31,7 @@ describe("build modifications for preset application", () => {
         nexus.queryEntitiesWithoutLock,
         preset,
         bb9,
+        "",
       ),
     ).toMatchObject([
       // delete existing patterns

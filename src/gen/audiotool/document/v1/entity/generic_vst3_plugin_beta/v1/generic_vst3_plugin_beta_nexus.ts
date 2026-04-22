@@ -92,7 +92,7 @@ export type GenericVst3PluginBeta = {
    *  the user won't hear any sound (the plugin UI shows some error), otherwise
    *  it will continue working as expected.
    */
-  state: PrimitiveField<boolean, "mut">
+  state: PrimitiveField<Uint8Array, "mut">
   /**
    *  Whether the device is active  or not. When is_active=false, audio signal bypasses the device
    *
@@ -145,7 +145,7 @@ export type GenericVst3PluginBetaConstructor = {
    *  the user won't hear any sound (the plugin UI shows some error), otherwise
    *  it will continue working as expected.
    */
-  state?: boolean
+  state?: Uint8Array
   /**
    *  Whether the device is active  or not. When is_active=false, audio signal bypasses the device
    *

@@ -9,11 +9,17 @@ import { buildPresetUpdateModifications } from "./build-preset-update"
 import type { PreparedPreset } from "./prepare-preset"
 import { updatePresetPointers } from "./update-preset-pointers"
 
-/** @internal Builds a list of modifications that apply a preset to a main entity. */
+/** @internal Builds a list of modifications that apply a preset to a main entity.
+ *
+ * `presetName` is the backend identifier of the applied preset (format
+ * `presets/<uuid>`). It is stamped onto `mainEntity.presetName` so the document
+ * records which preset is currently loaded. Pass an empty string to clear it.
+ */
 export const buildModificationsForPresetApplication = (
   entities: EntityQuery,
   presetInfo: PreparedPreset,
   mainEntity: NexusEntity,
+  presetName: string,
 ): Modification[] => {
   // update `target` and `relative` entities in the preset to point to the existing
   // main entity, and hand our fresh uuids for all `secondary` entities
@@ -36,6 +42,7 @@ export const buildModificationsForPresetApplication = (
     ...buildPresetUpdateModifications(
       mainEntity,
       unpackEntity(presetInfo.preset.target) ?? throw_(),
+      presetName,
     ),
   ]
 }

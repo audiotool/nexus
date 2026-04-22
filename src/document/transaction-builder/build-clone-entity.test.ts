@@ -22,6 +22,7 @@ describe("test modification builder for entity clones", () => {
             entity: packedEntity("tinyGain", {
               audioInput: {},
               audioOutput: {},
+              displayName: "Tiny Gain",
               gain: 1,
               id: entityId,
               isActive: true,
@@ -53,6 +54,7 @@ describe("test modification builder for entity clones", () => {
             entity: packedEntity("tinyGain", {
               audioInput: {},
               audioOutput: {},
+              displayName: "Tiny Gain",
               gain: 0.6,
               id: entityId,
               isActive: false,

@@ -2,10 +2,16 @@ import { Modification, Transaction } from "@gen/document/v1/document_service_pb"
 import { assert, throw_ } from "@utils/lang"
 import type { WasmLoader } from "../../wasm/types"
 
-// caches past initializations of the wasm document state builder
-let wasmDocumentStateBuilderCache:
-  | Promise<() => WasmDocumentState>
-  | undefined = undefined
+/** Shared wasm builders - exposes factories for both document states and consolidators,
+ * initialized from a single loaded wasm instance.
+ */
+type WasmBuilders = {
+  createWasmDocumentState: () => WasmDocumentState
+  createWasmConsolidator: () => WasmConsolidator
+}
+
+// caches past initializations of the wasm builders
+let wasmBuildersCache: Promise<WasmBuilders> | undefined = undefined
 
 // stores the wasm loader to use - set via initWasmLoader
 let currentWasmLoader: WasmLoader | undefined = undefined
@@ -18,7 +24,7 @@ let currentWasmLoader: WasmLoader | undefined = undefined
  * @internal
  */
 export const initWasmLoader = (loader: WasmLoader): void => {
-  if (wasmDocumentStateBuilderCache !== undefined) {
+  if (wasmBuildersCache !== undefined) {
     return
   }
   currentWasmLoader = loader
@@ -29,16 +35,29 @@ export const initWasmLoader = (loader: WasmLoader): void => {
  * Subsequent calls return {@link WasmDocumentState}s from the same wasm instance.
  */
 export const getWasmDocumentState = async (): Promise<WasmDocumentState> => {
-  if (wasmDocumentStateBuilderCache !== undefined) {
-    const builder = await wasmDocumentStateBuilderCache
-    return builder()
+  const builders = await getWasmBuilders()
+  return builders.createWasmDocumentState()
+}
+
+/**
+ * Get a new {@link WasmConsolidator} instance. On first run, this fetches and initializes the wasm module.
+ * Subsequent calls return {@link WasmConsolidator}s from the same wasm instance.
+ */
+export const getWasmConsolidator = async (): Promise<WasmConsolidator> => {
+  const builders = await getWasmBuilders()
+  return builders.createWasmConsolidator()
+}
+
+const getWasmBuilders = async (): Promise<WasmBuilders> => {
+  if (wasmBuildersCache !== undefined) {
+    return await wasmBuildersCache
   }
 
   // Get the loader - use browser loader by default
   const loader = currentWasmLoader ?? (await getDefaultWasmLoader())
 
-  const { promise, resolve } = Promise.withResolvers<() => WasmDocumentState>()
-  wasmDocumentStateBuilderCache = promise
+  const { promise, resolve } = Promise.withResolvers<WasmBuilders>()
+  wasmBuildersCache = promise
 
   // start importing the js wrapper
   const wrapperImportPromise: Promise<void> = loader.executeRuntime()
@@ -72,40 +91,87 @@ export const getWasmDocumentState = async (): Promise<WasmDocumentState> => {
     globalThis.createDocumentState ??
     throw_("wasm initialization failed: createDocumentState not defined")
 
+  const createConsolidator =
+    // createConsolidator is attached to globalThis by the executed wasm code
+    globalThis.createConsolidator ??
+    throw_("wasm initialization failed: createConsolidator not defined")
+
   // cleanup globalThis namespace
   delete globalThis.createDocumentState
+  delete globalThis.createConsolidator
 
-  resolve((): WasmDocumentState => {
-    // here we just wrap the wasm state lightly, deserializing and serializing the transactions
-    const state = createDocumentState()
-    let terminated = false
-    DEBUG_totalOpenWasmDocuments++
-    return {
-      applyTransaction(transaction: Transaction): Transaction | string {
-        assert(
-          !terminated,
-          "tried applying a transaction after document state was terminated",
-        )
+  resolve({
+    createWasmDocumentState: (): WasmDocumentState => {
+      // here we just wrap the wasm state lightly, deserializing and serializing the transactions
+      const state = createDocumentState()
+      let terminated = false
+      DEBUG_totalOpenWasmDocuments++
+      return {
+        applyTransaction(transaction: Transaction): Transaction | string {
+          assert(
+            !terminated,
+            "tried applying a transaction after document state was terminated",
+          )
 
-        const mods = state.applyTransaction(transaction.toBinary())
+          const mods = state.applyTransaction(transaction.toBinary())
 
-        if (mods instanceof Object && "error" in mods) {
-          return mods.error
-        }
+          if (mods instanceof Object && "error" in mods) {
+            return mods.error
+          }
 
-        return new Transaction({
-          modifications: mods.rollbacks.map((m) => Modification.fromBinary(m)),
-        })
-      },
-      terminate(): void {
-        terminated = true
-        DEBUG_totalOpenWasmDocuments--
-        state.delete()
-      },
-    }
+          return new Transaction({
+            modifications: mods.rollbacks.map((m) => Modification.fromBinary(m)),
+          })
+        },
+        terminate(): void {
+          if (terminated) {
+            return
+          }
+          terminated = true
+          DEBUG_totalOpenWasmDocuments--
+          state.delete()
+        },
+      }
+    },
+    createWasmConsolidator: (): WasmConsolidator => {
+      const consolidator = createConsolidator()
+      let terminated = false
+      DEBUG_totalOpenWasmDocuments++
+      return {
+        consolidate(
+          incoming: Transaction[],
+          rejected: string[],
+          created: Transaction[],
+        ): Transaction[] {
+          assert(
+            !terminated,
+            "tried consolidating after consolidator was terminated",
+          )
+          const res = consolidator.consolidate(
+            incoming.map((t) => t.toBinary()),
+            rejected,
+            created.map((t) => t.toBinary()),
+          )
+          if (Array.isArray(res)) {
+            return res.map((t) => Transaction.fromBinary(t))
+          }
+          throw new Error("wasm consolidator returned an error", {
+            cause: res?.error ?? "no error string provided by wasm",
+          })
+        },
+        terminate(): void {
+          if (terminated) {
+            return
+          }
+          terminated = true
+          DEBUG_totalOpenWasmDocuments--
+          consolidator.delete()
+        },
+      }
+    },
   })
-  const builder = await promise
-  return builder()
+
+  return await promise
 }
 
 /** The document state implemented by the wasm module.. */
@@ -118,6 +184,23 @@ export type WasmDocumentState = {
 
   /** Causes {@link applyTransaction} to throw. Used to clean up memory in the wasm. */
   terminate(): void
+}
+
+/** A consolidator that reconciles local & remote transaction histories using the wasm module.
+ *
+ * Given newly-received transactions from the server, rejected transaction ids, and newly
+ * created local transactions, returns the list of transactions needed to bring the local
+ * document in sync with the remote document (plus any still-pending local transactions).
+ */
+export type WasmConsolidator = {
+  consolidate: (
+    incoming: Transaction[],
+    rejected: string[],
+    created: Transaction[],
+  ) => Transaction[]
+
+  /** Causes {@link consolidate} to throw. Used to clean up memory in the wasm. */
+  terminate: () => void
 }
 
 /** Type of object returned by the wasm module if an error happens. */
@@ -137,10 +220,21 @@ type WasmState = {
   delete: () => void
 }
 
+/** Type of consolidator object returned by the wasm module. */
+type WasmConsolidatorInstance = {
+  consolidate: (
+    incoming: Uint8Array[],
+    rejected: string[],
+    created: Uint8Array[],
+  ) => Uint8Array[] | WasmError
+
+  delete: () => void
+}
+
 /** The go wasm unfortunately communicates with the remainder of the world using globalThis.
  *
- * In the creation function above, we delete the globalThis.Go and globalThis.createDocumentState after they're moved
- * into a local namespace.
+ * In the creation function above, we delete the globalThis.Go, globalThis.createDocumentState
+ * and globalThis.createConsolidator after they're moved into a local namespace.
  */
 declare global {
   // eslint-disable-next-line no-var
@@ -155,6 +249,8 @@ declare global {
 
   // eslint-disable-next-line no-var
   var createDocumentState: (() => WasmState) | undefined
+  // eslint-disable-next-line no-var
+  var createConsolidator: (() => WasmConsolidatorInstance) | undefined
 }
 
 /**

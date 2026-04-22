@@ -233,11 +233,7 @@ export const scalarTypeToTsType = (
     case ScalarType.BOOL:
       return "boolean"
     case ScalarType.BYTES:
-      /*
-       * NOTE: We have decided against supporting bytes as nexus primitive fields
-       * for now. Will return boolean as a placeholder.
-       */
-      return "boolean"
+      return "Uint8Array"
     default:
       throw new Error(`${type} unhandled`)
   }

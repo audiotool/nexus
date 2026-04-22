@@ -1,0 +1,102 @@
+import { NexusLocation } from "@document/location"
+import type { HeisenbergConstructor } from "@gen/document/v1/entity/heisenberg/v1/heisenberg_nexus"
+import type { Defaults } from "./default-type"
+import { defaultDisplayParams } from "./shared"
+
+const operatorDefaults = {
+  gain: 0,
+  panning: 0,
+  detuneFactor: 1,
+  frequencyOffsetHz: 0,
+  waveformIndex: 1,
+  usePitchEnvelope: false,
+  modulationFactorA: 0,
+  modulationFactorB: 0,
+  modulationFactorC: 0,
+  modulationFactorD: 0,
+  velocityAmplitudeModulationDepth: 0,
+  envelopeMainAmplitudeModulationDepth: 0,
+  envelope2AmplitudeModulationDepth: 0,
+  envelope3AmplitudeModulationDepth: 0,
+  lfo1AmplitudeModulationDepth: 0,
+  lfo2AmplitudeModulationDepth: 0,
+}
+
+const envelopeDefaults = {
+  isSynced: false,
+  attackTimeNormalized: 0,
+  attackSlopeFactor: -0.5,
+  decayTimeNormalized: 0.25,
+  decaySlopeFactor: 0.5,
+  decayIsLooped: false,
+  sustainFactor: 0.5,
+  releaseTimeNormalized: 0.25,
+  releaseSlopeFactor: 0.5,
+}
+
+const lfoDefaults = {
+  isSynced: true,
+  doesRestart: false,
+  rateNormalized: 0.5,
+  offsetFactor: 0,
+  delayTimeNormalized: 0,
+  blendTimeNormalized: 0,
+  waveformIndex: 1,
+}
+
+export const heisenbergDefaults: Defaults<HeisenbergConstructor> = {
+  ...defaultDisplayParams,
+  displayName: "Heisenberg",
+  isActive: true,
+  microTuning: new NexusLocation(),
+  tuneSemitones: 0,
+  gain: 0.7079460024833679,
+  playModeIndex: 3,
+  glideMs: 0,
+  velocityFactor: 1,
+  unisonoCount: 1,
+  unisonoDetuneSemitones: Math.fround(0.001),
+  unisonoStereoSpreadFactor: 0.5,
+  operatorDetuneModeIndex: 1,
+  operatorA: {
+    ...operatorDefaults,
+    gain: 1,
+  },
+  operatorB: operatorDefaults,
+  operatorC: operatorDefaults,
+  operatorD: operatorDefaults,
+  envelopeMain: envelopeDefaults,
+  envelope2: envelopeDefaults,
+  envelope3: envelopeDefaults,
+  pitchEnvelope: {
+    isSynced: false,
+    loopDecayIndex: 1,
+    attackRangeFactor: 1,
+    attackTimeNormalized: 0.5,
+    attackSlopeFactor: 0,
+    decayRangeFactor: 0,
+    decayTimeNormalized: 0.5,
+    decaySlopeFactor: 0,
+    sustainRangeFactor: 0,
+    releaseTimeNormalized: 0.5,
+    releaseSlopeFactor: 0,
+    releaseRangeFactor: 0,
+    semitoneRange: 12,
+  },
+  lfo1: lfoDefaults,
+  lfo2: lfoDefaults,
+  filter: {
+    cutoffFrequencyHz: 11025,
+    resonance: 0.7071067690849304,
+    filterType: -1,
+    orderIndex: 1,
+    velocityCutoffModulationDepth: 0,
+    envelopeMainCutoffModulationDepth: 0,
+    envelope2CutoffModulationDepth: 0,
+    envelope3CutoffModulationDepth: 0,
+    lfo1CutoffModulationDepth: 0,
+    lfo2CutoffModulationDepth: 0,
+    keyboardTrackingAmount: 0,
+  },
+  presetName: "",
+}
