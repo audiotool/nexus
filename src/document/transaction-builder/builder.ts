@@ -1,4 +1,5 @@
-import { NexusPreset } from "@api/preset-utils"
+import { NexusPreset } from "@api/preset-api"
+import type { SampleMeta, SampleUpload } from "@api/sample-api"
 import type { NexusEntityUnion } from "@document/entity"
 import { NexusEntity } from "@document/entity"
 import {
@@ -9,6 +10,14 @@ import type { Modification } from "@gen/document/v1/document_service_pb"
 import type { Preset } from "@gen/document/v1/preset/v1/preset_pb"
 import { assert, throw_ } from "@utils/lang"
 import { protoDownCast } from "@utils/proto-down-cast"
+import type { SamplesAPI } from "src/api"
+import type {
+  AudioDevice,
+  AudioRegion,
+  AudioTrack,
+  AutomationCollection,
+  Sample,
+} from "src/exports/entities"
 import type { SyncedDocument } from "src/synced-document"
 import type { DeepPartial } from "utility-types"
 import {
@@ -25,6 +34,10 @@ import type { PrimitiveField, PrimitiveType } from "../fields"
 import { primitiveEquals } from "../fields"
 import type { EntityQuery } from "../query/entity"
 import type { EntityWithOverwrites } from "./build-clone-linked-entities"
+import {
+  buildInsertSampleModifications,
+  type InsertSampleOptions,
+} from "./build-insert-sample"
 import { createDevicePreset } from "./create-preset"
 import type { DevicePresetEntityType } from "./prepare-preset"
 
@@ -68,7 +81,9 @@ export type TransactionBuilder = {
     value: P,
   ): string | undefined
 
-  /** Delete an entity with id `id` from the document  */
+  /** Delete an entity with id `id` from the document.
+   * Throws if another entity references it; use {@link removeWithDependencies} instead.
+   */
   remove(idOrEntity: string | NexusEntity): void
 
   /** Delete an entity with `id`, after all entities with pointers to it, transitively,
@@ -178,8 +193,8 @@ export type TransactionBuilder = {
    * t.applyPresetTo(device, preset)
    * ```
    *
-   * Useful together with {@link PresetUtil.getInstrument} /
-   * {@link PresetUtil.getDrums}:
+   * Useful together with {@link PresetsAPI.getInstrument} /
+   * {@link PresetsAPI.getDrums}:
    * ```ts
    * const frenchHorn = await client.presets.getInstrument("french-horn")
    * await nexus.modify((t) => {
@@ -194,6 +209,163 @@ export type TransactionBuilder = {
 
   /** Create a preset of a given entity. This doesn't modify the nexus document.  */
   createPresetFor(entity: NexusEntity<DevicePresetEntityType>): Preset
+  /**
+   * Insert a sample into the timeline, creating all required entities; {@link AudioDevice}
+   * {@link AudioTrack},{@link AutomationCollection}, {@link Sample} and {@link AudioRegion}.
+   *
+   * @param sample - The sample to insert. Anything with `name` /
+   * `durationSeconds` / optional `bpm` is accepted — typically:
+   * - a {@link SampleMeta} returned by {@link SamplesAPI.get} or
+   *   {@link SamplesAPI.list}
+   * - the resolved value of {@link SampleUpload.ready} (also a
+   *   {@link SampleMeta}), returned by {@link SamplesAPI.upload}
+   * - a plain object `{ name, durationSeconds, bpm? }` when you already
+   *   know the duration locally (e.g. right after `upload.uploaded`
+   *   resolves but before processing completes — see the last example
+   *   below).
+   * @param options - Insertion options like where in time, how long, how to loop, which track to attach to, etc.
+   * @returns The created {@link AudioRegion} entity
+   *
+   * # Examples:
+   *
+   * ### Insert a sample retrieved from the backend
+   * You can use sample objects returned by {@link SamplesAPI.get}, {@link SamplesAPI.list}, or {@link SamplesAPI.download}:
+   *
+   * ```typescript
+   * // fetch some sample
+   * const sample = await at.samples.get("samples/abc-123")
+   * if (sample instanceof Error) throw sample
+   * ```
+   *
+   * After the method completes, get the transaction builder to start modifying:
+   * ```ts
+   * const t = await nexus.createTransaction()
+   * ```
+   *
+   * #### Insert at time 0
+   *
+   * Create track, region, cable, mixer channel, etc:
+   * ```ts
+   * t.insertSample(sample)
+   * ```
+   *
+   * #### Insert into existing audio track:
+   * ```ts
+   * const track: NexusEntity<"audioTrack"> = ...
+   * t.insertSample(sample, { attachTo: track })
+   * ```
+   *
+   * #### Insert into new track on existing audio device:
+   * ```ts
+   * const device: NexusEntity<"audioDevice"> = ...
+   * t.insertSample(sample, { attachTo: device })
+   * ```
+   *
+   * #### Make it play in sync with the metronome
+   * To make it play in sync with the metronome, you have to tell audiotool
+   * how fast your sample should play relative to the metronome. You can do this
+   * by passing in either the sample's own BPM, or by the sample's duration in music time (bars).
+   *
+   *
+   * ```ts
+   * t.insertSample(sample, {
+   *    sample: { bpm: 120 }
+   *  })
+   * ```
+   * ```ts
+   * t.insertSample(sample, {
+   *  sample: { musicDurationTicks: Ticks.Bars(3) }
+   *  })
+   * ```
+   * #### Position the sample
+   *
+   * Position at bar 1, duration 3 bars, loop if sample is shorter:
+   * ```ts
+   * t.insertSample(sample, {
+   *   sample: { bpm: 120 },
+   *   region: { positionTicks: Ticks.Bars(1), durationTicks: Ticks.Bars(3) },
+   *   loop: true,
+   * })
+   * ```
+   * #### Loop specific sections of the sample
+   * ```ts
+   * t.insertSample(sample, {
+   *   sample: { bpm: 120 },
+   *   region: { positionTicks: Ticks.Bars(1), durationTicks: Ticks.Bars(9) },
+   *   loop: { startTicks: Ticks.Bars(2), durationTicks: Ticks.Bars(2) },
+   * })
+   * ```
+   *
+   * ### Upload and insert a new sample
+   *
+   * If you have a local sample, you have to upload it first. See the
+   * "Insert before processing completes" example below if you want to insert
+   * earlier, before the backend has finished transcoding.
+   *
+   * ```typescript
+   * const file: File = ...
+   * const upload = await at.samples.upload({ file, displayName: "My Sample", bpm: 120 })
+   * if (upload instanceof Error){
+   *   throw upload
+   * }
+   *
+   * // wait for the bytes to be on the server - after this point the user
+   * // can safely close the tab.
+   * const uploaded = await upload.uploaded
+   * if (uploaded instanceof Error){
+   *   throw uploaded
+   * }
+   *
+   * // wait for backend processing (transcoding, duration, waveform).
+   * const sample = await upload.ready
+   * if (sample instanceof Error){
+   *   throw sample
+   * }
+   *
+   * // `sample` is a SampleMeta — pass it directly.
+   * await nexus.modify(t => {
+   *   t.insertSample(sample)
+   * })
+   * ```
+   *
+   * ### Insert before processing completes
+   *
+   * ```typescript
+   * const upload = await at.samples.upload({ file, displayName: "My Sample", bpm: 120 })
+   * if (upload instanceof Error){
+   *   throw upload
+   * }
+   *
+   * // you should wait for this point - if the user leaves before upload completes, the project will contain a broken sample.
+   * const uploaded = await upload.uploaded
+   * if (uploaded instanceof Error){
+   *   throw uploaded
+   * }
+   *
+   * // The sample is uploaded, we can insert into the project, but we need the sample's duration.
+   * // In the web, you can do this as follows. Node.js/Bun/Deno may differ:
+   * const context = new AudioContext()
+   * const decoded = await context.decodeAudioData(await file.arrayBuffer()) // throws if decoding fails!
+   * await context.close()
+   *
+   * await nexus.modify(t => {
+   *   t.insertSample(
+   *     {
+   *       name: upload.name,
+   *       durationSeconds: decoded.duration,
+   *     },
+   *     {
+   *       sample: { bpm: 120 }
+   *     }
+   *   )
+   * })
+   * ```
+   *
+   */
+  insertSample(
+    sample: { name: string; durationSeconds: number; bpm?: number },
+    options?: InsertSampleOptions,
+  ): NexusEntity<"audioRegion">
 
   /**
    * Release the transaction lock and send the modifications to the backend. After this method
@@ -381,6 +553,27 @@ export const transactionBuilder = (opts: {
       return createDevicePreset(entity, opts.query)
     },
 
+    insertSample: (
+      sample: Pick<SampleMeta, "name" | "durationSeconds"> & { bpm?: number },
+      options?: InsertSampleOptions,
+    ): NexusEntity<"audioRegion"> => {
+      if (finished) {
+        throw new CallAfterSendError("insertSample")
+      }
+
+      const { modifications, regionId } = buildInsertSampleModifications(
+        sample,
+        {
+          nextTrackOrder: getNextTrackOrder(opts.query),
+          nextMixerChannelOrder: getNextStripOrder(opts.query),
+          bpm: opts.query.ofTypes("config").getOne()?.fields.tempoBpm.value,
+        },
+        options,
+      )
+      modifications.forEach((mod) => opts.applyModification(mod, true))
+      return opts.query.mustGetEntityAs(regionId, "audioRegion")
+    },
+
     _addModification: (mod: Modification) => {
       if (finished) {
         throw new CallAfterSendError("_addModification")
@@ -409,3 +602,31 @@ export class CallAfterSendError extends Error {
     )
   }
 }
+
+const getNextTrackOrder = (query: EntityQuery): number =>
+  query
+    .ofTypes("audioTrack", "patternTrack", "noteTrack", "automationTrack")
+    .get()
+    .reduce(
+      (max, track) => Math.max(max, track.fields.orderAmongTracks.value),
+      -1, // could be lower but doesn't matter
+    ) + 1
+
+const getNextStripOrder = (query: EntityQuery): number =>
+  query
+    .ofTypes(
+      "mixerChannel",
+      "mixerAux",
+      "mixerDelayAux",
+      "mixerGroup",
+      "mixerReverbAux",
+    )
+    .get()
+    .reduce(
+      (max, strip) =>
+        Math.max(
+          max,
+          strip.fields.displayParameters.fields.orderAmongStrips.value,
+        ),
+      -1,
+    ) + 1

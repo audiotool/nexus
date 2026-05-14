@@ -10,7 +10,7 @@ import { StompboxCrusher } from "@gen/document/v1/entity/stompbox_crusher/v1/sto
 import * as docpreset from "@gen/document/v1/preset/v1/preset_pb"
 import { Preset } from "@gen/preset/v1/preset_pb"
 
-import { NexusPreset } from "@api/preset-utils"
+import { NexusPreset } from "@api/preset-api"
 import { packedEntity } from "@document/entity-utils"
 import {
   nexusDocumentState,
@@ -242,6 +242,61 @@ describe("transaction builder", () => {
     })
     describe("removeWithDependencies", () => {
       it("should create the correct modifications", () => {})
+    })
+
+    describe("insertSample", () => {
+      it<TestContext>("creates audioDevice + mixerChannel + cable + audioTrack + sample + automation + region with no options", (ctx) => {
+        const region = ctx.builder.insertSample({
+          name: "samples/test-loop",
+          durationSeconds: 2,
+          bpm: 120,
+        })
+
+        const creates = ctx.appliedModifications
+          .map(extractCreate)
+          .filter((c): c is NonNullable<typeof c> => c !== undefined)
+        expect(creates.map((c) => c.entityType)).toEqual([
+          "audioDevice",
+          "audioTrack",
+          "mixerChannel",
+          "desktopAudioCable",
+          "sample",
+          "automationCollection",
+          "automationEvent",
+          "automationEvent",
+          "audioRegion",
+        ])
+        expect(region.entityType).toBe("audioRegion")
+        expect(region.id).toBe(creates[creates.length - 1]?.entityId)
+      })
+
+      it<TestContext>("reuses an existing audioTrack via attachTo and skips device + track creation", (ctx) => {
+        const audioDevice = ctx.builder.create("audioDevice", {
+          displayName: "Existing",
+        })
+        const audioTrack = ctx.builder.create("audioTrack", {
+          player: audioDevice.location,
+          orderAmongTracks: 0,
+        })
+
+        ctx.appliedModifications = []
+
+        ctx.builder.insertSample(
+          { name: "samples/test-loop", durationSeconds: 2, bpm: 120 },
+          { attachTo: audioTrack },
+        )
+
+        const creates = ctx.appliedModifications
+          .map(extractCreate)
+          .filter((c): c is NonNullable<typeof c> => c !== undefined)
+        expect(creates.map((c) => c.entityType)).toEqual([
+          "sample",
+          "automationCollection",
+          "automationEvent",
+          "automationEvent",
+          "audioRegion",
+        ])
+      })
     })
   })
 

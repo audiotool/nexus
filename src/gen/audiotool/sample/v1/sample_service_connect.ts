@@ -17,8 +17,9 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { CreateSampleRequest, CreateSampleResponse, DeleteSampleRequest, DeleteSampleResponse, GetSampleRequest, GetSampleResponse, ListenRequest, ListenResponse, ListSamplesRequest, ListSamplesResponse, UpdateSampleRequest, UpdateSampleResponse, UploadSampleFinishedRequest, UploadSampleFinishedResponse } from "./sample_service_pb.js";
+import { CancelSampleUploadRequest, CancelSampleUploadResponse, CreateSampleRequest, CreateSampleResponse, DeleteSampleRequest, DeleteSampleResponse, GetSampleRequest, GetSampleResponse, ListenRequest, ListenResponse, ListSampleProcessesRequest, ListSampleProcessesResponse, ListSamplesRequest, ListSamplesResponse, UpdateSampleRequest, UpdateSampleResponse, UploadSampleFinishedRequest } from "./sample_service_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
+import { Operation } from "../../longrunning/v1/operation_pb.js";
 
 /**
  * The samples service definition.
@@ -59,7 +60,31 @@ export const SampleService = {
     uploadSampleFinished: {
       name: "UploadSampleFinished",
       I: UploadSampleFinishedRequest,
-      O: UploadSampleFinishedResponse,
+      O: Operation,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * Cancels a sample upload.
+     *
+     * @generated from rpc audiotool.sample.v1.SampleService.CancelSampleUpload
+     */
+    cancelSampleUpload: {
+      name: "CancelSampleUpload",
+      I: CancelSampleUploadRequest,
+      O: CancelSampleUploadResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * Lists the sample processes containung uploads and conversions.
+     *
+     * There is a rate-limit for each user. Uses will receive an error if they exceed the limit.
+     *
+     * @generated from rpc audiotool.sample.v1.SampleService.ListSampleProcesses
+     */
+    listSampleProcesses: {
+      name: "ListSampleProcesses",
+      I: ListSampleProcessesRequest,
+      O: ListSampleProcessesResponse,
       kind: MethodKind.Unary,
     },
     /**

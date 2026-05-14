@@ -329,9 +329,9 @@ export type GmDrumProgram = (typeof gmDrumProgramBySlug)[GmDrumSlug]
  * from the backend first.
  */
 export type GmInstrument = {
-  /** GM program number, 0-127. Pass to {@link PresetUtil.getInstrument}. */
+  /** GM program number, 0-127. Pass to {@link PresetsAPI.getInstrument}. */
   program: GmInstrumentProgram
-  /** Stable kebab-case slug, also accepted by {@link PresetUtil.getInstrument}. */
+  /** Stable kebab-case slug, also accepted by {@link PresetsAPI.getInstrument}. */
   slug: GmInstrumentSlug
   /** User-facing name as shown in the DAW preset browser. */
   displayName: string
@@ -341,7 +341,7 @@ export type GmInstrument = {
   tags: readonly string[]
   /** Short human-readable description, when available. */
   description?: string
-  /** Backend preset id (`presets/<uuid>`); also usable with {@link PresetUtil.get}. */
+  /** Backend preset id (`presets/<uuid>`); also usable with {@link PresetsAPI.get}. */
   id: string
 }
 
@@ -352,9 +352,9 @@ export type GmInstrument = {
  * 32, 40, 48).
  */
 export type GmDrum = {
-  /** GM program number. Pass to {@link PresetUtil.getDrums}. */
+  /** GM program number. Pass to {@link PresetsAPI.getDrums}. */
   program: GmDrumProgram
-  /** Stable kebab-case slug, also accepted by {@link PresetUtil.getDrums}. */
+  /** Stable kebab-case slug, also accepted by {@link PresetsAPI.getDrums}. */
   slug: GmDrumSlug
   /** User-facing name as shown in the DAW preset browser. */
   displayName: string
@@ -364,6 +364,6 @@ export type GmDrum = {
   tags: readonly string[]
   /** Short human-readable description, when available. */
   description?: string
-  /** Backend preset id (`presets/<uuid>`); also usable with {@link PresetUtil.get}. */
+  /** Backend preset id (`presets/<uuid>`); also usable with {@link PresetsAPI.get}. */
   id: string
 }

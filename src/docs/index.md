@@ -18,7 +18,7 @@ Known supported platforms:
 > The Nexus Platform and this package are under heavy development, and as a result might still break when we make changes
 > to the backend.
 
-[Join our Discord Server](https://discord.gg/5Cde4Zvret) to receive updates, submit bug reports, ask questions, show what you've done!
+[Join our Discord Server](https://developer.audiotool.com/discord) to receive updates, submit bug reports, ask questions, show what you've done!
 
 ## Quick Start
 

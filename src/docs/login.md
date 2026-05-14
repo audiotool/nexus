@@ -144,7 +144,7 @@ To deploy your app, you need to update the `redirectUrl` so that the user is red
   have to be logged out & in again for the new scopes to take effect. If your app is already deployed and users are already logged in, consider creating a new application on developer.audiotool.com/applications
   so all users are automatically logged out again. We'll make this process smoother at some point.
 
-- for more issues and questions, join our discord: https://discord.gg/5Cde4Zvret
+- for more issues and questions, join our discord: https://developer.audiotool.com/discord
 
 > [!NOTE]
 > Client ID, scopes, and redirect URIs can safely be:

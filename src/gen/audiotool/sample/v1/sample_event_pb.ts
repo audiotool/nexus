@@ -18,8 +18,9 @@
 // @ts-nocheck
 
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
-import { Message, proto3, Timestamp } from "@bufbuild/protobuf";
+import { Message, proto3 } from "@bufbuild/protobuf";
 import { Sample } from "./sample_pb.js";
+import { SampleUploadEndpoint } from "./sample_service_pb.js";
 
 /**
  * The type of error that happened during the conversion if any.
@@ -64,116 +65,117 @@ proto3.util.setEnumType(SampleConvertDoneErrorType, "audiotool.sample.v1.SampleC
 ]);
 
 /**
- * An event that is sent to a channel.
+ * SampleConvertInfo is used as audiotool.longrunning.v1.Operation.metadata message.
  *
- * @generated from message audiotool.sample.v1.SampleEvent
+ * @generated from message audiotool.sample.v1.SampleConvertInfo
  */
-export class SampleEvent extends Message<SampleEvent> {
+export class SampleConvertInfo extends Message<SampleConvertInfo> {
   /**
-   * The ID of the event.
-   *
-   * @generated from field: string id = 1;
-   */
-  id = "";
-
-  /**
-   * The time the event was created.
-   *
-   * @generated from field: google.protobuf.Timestamp create_time = 2;
-   */
-  createTime?: Timestamp;
-
-  /**
-   * The type of the event.
-   *
-   * @generated from oneof audiotool.sample.v1.SampleEvent.event
-   */
-  event: {
-    /**
-     * The conversion of a sample is done.
-     *
-     * @generated from field: audiotool.sample.v1.SampleConvertDone sample_convert_done = 3;
-     */
-    value: SampleConvertDone;
-    case: "sampleConvertDone";
-  } | { case: undefined; value?: undefined } = { case: undefined };
-
-  constructor(data?: PartialMessage<SampleEvent>) {
-    super();
-    proto3.util.initPartial(data, this);
-  }
-
-  static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "audiotool.sample.v1.SampleEvent";
-  static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "id", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 2, name: "create_time", kind: "message", T: Timestamp },
-    { no: 3, name: "sample_convert_done", kind: "message", T: SampleConvertDone, oneof: "event" },
-  ]);
-
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SampleEvent {
-    return new SampleEvent().fromBinary(bytes, options);
-  }
-
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SampleEvent {
-    return new SampleEvent().fromJson(jsonValue, options);
-  }
-
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SampleEvent {
-    return new SampleEvent().fromJsonString(jsonString, options);
-  }
-
-  static equals(a: SampleEvent | PlainMessage<SampleEvent> | undefined, b: SampleEvent | PlainMessage<SampleEvent> | undefined): boolean {
-    return proto3.util.equals(SampleEvent, a, b);
-  }
-}
-
-/**
- * Triggered when a sample is converted.
- *
- * @generated from message audiotool.sample.v1.SampleConvertDone
- */
-export class SampleConvertDone extends Message<SampleConvertDone> {
-  /**
-   * The user_name who uploaded the sample.
+   * The sample that is being converted.
    *
    * @generated from field: audiotool.sample.v1.Sample sample = 1;
    */
   sample?: Sample;
 
   /**
-   * The type of error that happened during the conversion if any.
+   * The user who triggered the conversion.
    *
-   * @generated from field: audiotool.sample.v1.SampleConvertDoneErrorType error = 2;
+   * @generated from field: string user_name = 2;
+   */
+  userName = "";
+
+  /**
+   * The error that happened during the conversion if any.
+   *
+   * @generated from field: audiotool.sample.v1.SampleConvertDoneErrorType error = 3;
    */
   error = SampleConvertDoneErrorType.UNSPECIFIED;
 
-  constructor(data?: PartialMessage<SampleConvertDone>) {
+  constructor(data?: PartialMessage<SampleConvertInfo>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "audiotool.sample.v1.SampleConvertDone";
+  static readonly typeName = "audiotool.sample.v1.SampleConvertInfo";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
     { no: 1, name: "sample", kind: "message", T: Sample },
-    { no: 2, name: "error", kind: "enum", T: proto3.getEnumType(SampleConvertDoneErrorType) },
+    { no: 2, name: "user_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "error", kind: "enum", T: proto3.getEnumType(SampleConvertDoneErrorType) },
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SampleConvertDone {
-    return new SampleConvertDone().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SampleConvertInfo {
+    return new SampleConvertInfo().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SampleConvertDone {
-    return new SampleConvertDone().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SampleConvertInfo {
+    return new SampleConvertInfo().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SampleConvertDone {
-    return new SampleConvertDone().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SampleConvertInfo {
+    return new SampleConvertInfo().fromJsonString(jsonString, options);
   }
 
-  static equals(a: SampleConvertDone | PlainMessage<SampleConvertDone> | undefined, b: SampleConvertDone | PlainMessage<SampleConvertDone> | undefined): boolean {
-    return proto3.util.equals(SampleConvertDone, a, b);
+  static equals(a: SampleConvertInfo | PlainMessage<SampleConvertInfo> | undefined, b: SampleConvertInfo | PlainMessage<SampleConvertInfo> | undefined): boolean {
+    return proto3.util.equals(SampleConvertInfo, a, b);
+  }
+}
+
+/**
+ * SampleUploadInfo is used as audiotool.longrunning.v1.Operation.metadata message.
+ *
+ * @generated from message audiotool.sample.v1.SampleUploadInfo
+ */
+export class SampleUploadInfo extends Message<SampleUploadInfo> {
+  /**
+   * SampleUploadInfo is used as audiotool.longrunning.v1.Operation.metadata message.
+   * The sample that is being uploaded.
+   *
+   * @generated from field: audiotool.sample.v1.Sample sample = 1;
+   */
+  sample?: Sample;
+
+  /**
+   * The user who triggered the conversion.
+   *
+   * @generated from field: string user_name = 2;
+   */
+  userName = "";
+
+  /**
+   * The upload_endpoint used for uploading the sample
+   *
+   * @generated from field: audiotool.sample.v1.SampleUploadEndpoint upload_endpoint = 3;
+   */
+  uploadEndpoint?: SampleUploadEndpoint;
+
+  constructor(data?: PartialMessage<SampleUploadInfo>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "audiotool.sample.v1.SampleUploadInfo";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "sample", kind: "message", T: Sample },
+    { no: 2, name: "user_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 3, name: "upload_endpoint", kind: "message", T: SampleUploadEndpoint },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SampleUploadInfo {
+    return new SampleUploadInfo().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SampleUploadInfo {
+    return new SampleUploadInfo().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SampleUploadInfo {
+    return new SampleUploadInfo().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: SampleUploadInfo | PlainMessage<SampleUploadInfo> | undefined, b: SampleUploadInfo | PlainMessage<SampleUploadInfo> | undefined): boolean {
+    return proto3.util.equals(SampleUploadInfo, a, b);
   }
 }
 

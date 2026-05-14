@@ -92,7 +92,7 @@ export class GenericVst3PluginBeta extends Message<GenericVst3PluginBeta> {
    * the user won't hear any sound (the plugin UI shows some error), otherwise
    * it will continue working as expected.
    *
-   * 100KB limit
+   * 2MB limit
    *
    * @generated from field: bytes state = 9;
    */

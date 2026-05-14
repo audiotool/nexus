@@ -20,7 +20,147 @@
 import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialMessage, PlainMessage } from "@bufbuild/protobuf";
 import { FieldMask, Message, proto3 } from "@bufbuild/protobuf";
 import { Sample } from "./sample_pb.js";
-import { SampleEvent } from "./sample_event_pb.js";
+import { Operation } from "../../longrunning/v1/operation_pb.js";
+
+/**
+ * Request for SampleService.ListSampleProcesses.
+ *
+ * @generated from message audiotool.sample.v1.ListSampleProcessesRequest
+ */
+export class ListSampleProcessesRequest extends Message<ListSampleProcessesRequest> {
+  constructor(data?: PartialMessage<ListSampleProcessesRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "audiotool.sample.v1.ListSampleProcessesRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListSampleProcessesRequest {
+    return new ListSampleProcessesRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ListSampleProcessesRequest {
+    return new ListSampleProcessesRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ListSampleProcessesRequest {
+    return new ListSampleProcessesRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ListSampleProcessesRequest | PlainMessage<ListSampleProcessesRequest> | undefined, b: ListSampleProcessesRequest | PlainMessage<ListSampleProcessesRequest> | undefined): boolean {
+    return proto3.util.equals(ListSampleProcessesRequest, a, b);
+  }
+}
+
+/**
+ * A sample process is a sample that is being uploaded or processed.
+ *
+ * @generated from message audiotool.sample.v1.SampleProcess
+ */
+export class SampleProcess extends Message<SampleProcess> {
+  /**
+   * The sample that is being uploaded or processed.
+   *
+   * @generated from field: audiotool.sample.v1.Sample sample = 1;
+   */
+  sample?: Sample;
+
+  /**
+   * The process of the sample.
+   *
+   * @generated from oneof audiotool.sample.v1.SampleProcess.process
+   */
+  process: {
+    /**
+     * The upload endpoint for the sample if the upload is not finished.
+     *
+     * @generated from field: audiotool.sample.v1.SampleUploadEndpoint upload_endpoint = 2;
+     */
+    value: SampleUploadEndpoint;
+    case: "uploadEndpoint";
+  } | {
+    /**
+     * The operation for the sample if upload is finished and processing.
+     *
+     * @generated from field: audiotool.longrunning.v1.Operation operation = 3;
+     */
+    value: Operation;
+    case: "operation";
+  } | { case: undefined; value?: undefined } = { case: undefined };
+
+  constructor(data?: PartialMessage<SampleProcess>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "audiotool.sample.v1.SampleProcess";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "sample", kind: "message", T: Sample },
+    { no: 2, name: "upload_endpoint", kind: "message", T: SampleUploadEndpoint, oneof: "process" },
+    { no: 3, name: "operation", kind: "message", T: Operation, oneof: "process" },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SampleProcess {
+    return new SampleProcess().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): SampleProcess {
+    return new SampleProcess().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): SampleProcess {
+    return new SampleProcess().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: SampleProcess | PlainMessage<SampleProcess> | undefined, b: SampleProcess | PlainMessage<SampleProcess> | undefined): boolean {
+    return proto3.util.equals(SampleProcess, a, b);
+  }
+}
+
+/**
+ * Response for SampleService.ListSampleProcesses.
+ *
+ * @generated from message audiotool.sample.v1.ListSampleProcessesResponse
+ */
+export class ListSampleProcessesResponse extends Message<ListSampleProcessesResponse> {
+  /**
+   * The list of sample processes.
+   *
+   * @generated from field: repeated audiotool.sample.v1.SampleProcess processes = 1;
+   */
+  processes: SampleProcess[] = [];
+
+  constructor(data?: PartialMessage<ListSampleProcessesResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "audiotool.sample.v1.ListSampleProcessesResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "processes", kind: "message", T: SampleProcess, repeated: true },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListSampleProcessesResponse {
+    return new ListSampleProcessesResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ListSampleProcessesResponse {
+    return new ListSampleProcessesResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ListSampleProcessesResponse {
+    return new ListSampleProcessesResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ListSampleProcessesResponse | PlainMessage<ListSampleProcessesResponse> | undefined, b: ListSampleProcessesResponse | PlainMessage<ListSampleProcessesResponse> | undefined): boolean {
+    return proto3.util.equals(ListSampleProcessesResponse, a, b);
+  }
+}
 
 /**
  * Request for SampleService.ListSamples.
@@ -387,35 +527,78 @@ export class UploadSampleFinishedRequest extends Message<UploadSampleFinishedReq
 }
 
 /**
- * Response for SampleService.UploadSampleFinished.
+ * Request for SampleService.CancelSampleUpload.
  *
- * @generated from message audiotool.sample.v1.UploadSampleFinishedResponse
+ * @generated from message audiotool.sample.v1.CancelSampleUploadRequest
  */
-export class UploadSampleFinishedResponse extends Message<UploadSampleFinishedResponse> {
-  constructor(data?: PartialMessage<UploadSampleFinishedResponse>) {
+export class CancelSampleUploadRequest extends Message<CancelSampleUploadRequest> {
+  /**
+   * The name of the sample to be cancelled, in the form `samples/{name}`.
+   *
+   * longrunning.Operation which represent conversion of the sample are not cancellable.
+   *
+   * @generated from field: string name = 1;
+   */
+  name = "";
+
+  constructor(data?: PartialMessage<CancelSampleUploadRequest>) {
     super();
     proto3.util.initPartial(data, this);
   }
 
   static readonly runtime: typeof proto3 = proto3;
-  static readonly typeName = "audiotool.sample.v1.UploadSampleFinishedResponse";
+  static readonly typeName = "audiotool.sample.v1.CancelSampleUploadRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): CancelSampleUploadRequest {
+    return new CancelSampleUploadRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): CancelSampleUploadRequest {
+    return new CancelSampleUploadRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): CancelSampleUploadRequest {
+    return new CancelSampleUploadRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: CancelSampleUploadRequest | PlainMessage<CancelSampleUploadRequest> | undefined, b: CancelSampleUploadRequest | PlainMessage<CancelSampleUploadRequest> | undefined): boolean {
+    return proto3.util.equals(CancelSampleUploadRequest, a, b);
+  }
+}
+
+/**
+ * Response for SampleService.CancelSampleUpload.
+ *
+ * @generated from message audiotool.sample.v1.CancelSampleUploadResponse
+ */
+export class CancelSampleUploadResponse extends Message<CancelSampleUploadResponse> {
+  constructor(data?: PartialMessage<CancelSampleUploadResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "audiotool.sample.v1.CancelSampleUploadResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
   ]);
 
-  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): UploadSampleFinishedResponse {
-    return new UploadSampleFinishedResponse().fromBinary(bytes, options);
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): CancelSampleUploadResponse {
+    return new CancelSampleUploadResponse().fromBinary(bytes, options);
   }
 
-  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): UploadSampleFinishedResponse {
-    return new UploadSampleFinishedResponse().fromJson(jsonValue, options);
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): CancelSampleUploadResponse {
+    return new CancelSampleUploadResponse().fromJson(jsonValue, options);
   }
 
-  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): UploadSampleFinishedResponse {
-    return new UploadSampleFinishedResponse().fromJsonString(jsonString, options);
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): CancelSampleUploadResponse {
+    return new CancelSampleUploadResponse().fromJsonString(jsonString, options);
   }
 
-  static equals(a: UploadSampleFinishedResponse | PlainMessage<UploadSampleFinishedResponse> | undefined, b: UploadSampleFinishedResponse | PlainMessage<UploadSampleFinishedResponse> | undefined): boolean {
-    return proto3.util.equals(UploadSampleFinishedResponse, a, b);
+  static equals(a: CancelSampleUploadResponse | PlainMessage<CancelSampleUploadResponse> | undefined, b: CancelSampleUploadResponse | PlainMessage<CancelSampleUploadResponse> | undefined): boolean {
+    return proto3.util.equals(CancelSampleUploadResponse, a, b);
   }
 }
 
@@ -715,9 +898,9 @@ export class ListenResponse extends Message<ListenResponse> {
   /**
    * The sample.
    *
-   * @generated from field: audiotool.sample.v1.SampleEvent event = 1;
+   * @generated from field: audiotool.longrunning.v1.Operation operation = 1;
    */
-  event?: SampleEvent;
+  operation?: Operation;
 
   constructor(data?: PartialMessage<ListenResponse>) {
     super();
@@ -727,7 +910,7 @@ export class ListenResponse extends Message<ListenResponse> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "audiotool.sample.v1.ListenResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "event", kind: "message", T: SampleEvent },
+    { no: 1, name: "operation", kind: "message", T: Operation },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListenResponse {

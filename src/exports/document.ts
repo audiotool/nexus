@@ -36,6 +36,7 @@ export type { SchemaLocation } from "@document/schema/schema-location"
 export type { SchemaLocationDetails } from "@document/schema/schema-location-details"
 
 export type {
+  InsertSampleOptions,
   SafeTransactionBuilder,
   TransactionBuilder,
 } from "@document/transaction-builder"

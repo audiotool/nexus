@@ -32,8 +32,8 @@ denotes a method taking {@link api.CreateProjectRequest} and returning {@link ap
 | `client.projects` | {@link api.ProjectService} | List, create, update, delete projects |
 | `client.projectRoles` | {@link api.ProjectRoleService} | Manage collaborators on projects |
 | `client.users` | {@link api.UserService} | List, delete, update users |
-| `client.samples` | {@link api.SampleService} | Upload, download, manage samples |
-| `client.presets` | {@link api.PresetUtil} | Get and apply device presets |
+| `client.samples` | {@link api.SamplesAPI} | Upload, download, manage samples |
+| `client.presets` | {@link api.PresetsAPI} | Get and apply device presets |
 | `client.audioGraph` | {@link api.AudiographService} | Get audio graphs (waveforms) |
 
 ## Cheat sheet
@@ -44,11 +44,27 @@ denotes a method taking {@link api.CreateProjectRequest} and returning {@link ap
 - create, update and delete projects
 - list "collab sessions" (i.e. DAW clients) connected to a project
 
-**`client.samples`** ({@link api.SampleService}):
+**`client.samples`** ({@link api.SamplesAPI}):
 
-- create, update, delete sample objects (sample metadata)
-- download a sample using the name in the {@link entities.Sample} entity
-- upload new samples to the backend
+A high-level wrapper around the underlying {@link api.SampleService} that takes care of the multi-step upload/processing flow:
+
+- `upload({ file, displayName, ... })` — upload an audio file. Returns a {@link api.SampleUpload} immediately. `await upload.uploaded` for the bytes to be safely on the server, `await upload.ready` for the full {@link api.SampleMeta} with download URLs.
+- `get(sample)` — fetch {@link api.SampleMeta} by name or UUID.
+- `list({ filter, textSearch, orderBy, pageSize, pageToken })` — paginated search over the sample library.
+- `download(sample, { format })` — fetch the audio bytes back as a `Blob` (formats: `flac` / `wav` / `mp3` / `preview`). Waits for processing if the sample is still being transcoded.
+- `delete(sample)` — delete a sample you own (only allowed if no project uses it).
+
+```ts
+const upload = await client.samples.upload({ file, displayName: "My Kick" })
+if (upload instanceof Error) throw upload
+
+const sample = await upload.ready // wait for transcoding
+if (sample instanceof Error) throw sample
+
+await nexus.modify((t) => t.insertSample(sample))
+```
+
+Pass an {@link api.SampleMeta} (or a plain `{ name, durationSeconds, bpm? }`) to {@link document.TransactionBuilder.insertSample} to drop it on the project timeline. {@link api.SampleUpload} on its own is not enough — it doesn't carry `durationSeconds` until `upload.ready` resolves.
 
 **`client.projectRoles`** ({@link api.ProjectRoleService}):
 
@@ -63,7 +79,7 @@ denotes a method taking {@link api.CreateProjectRequest} and returning {@link ap
 
 - get audio graphs (vector graphics used in the sample browser)
 
-**`client.presets`** ({@link api.PresetUtil}):
+**`client.presets`** ({@link api.PresetsAPI}):
 
 A wrapper around the preset's API. Presets are device configurations that can be applied to existing devices to create a specific sound/effect. You can copy preset ids in the preset browser in the DAW:
 

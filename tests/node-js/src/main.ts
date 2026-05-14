@@ -1,5 +1,6 @@
-import { createAudiotoolClient } from "@audiotool/nexus"
+import { createAudiotoolClient, createPATAuth } from "@audiotool/nexus"
 import { throw_ } from "@audiotool/nexus/utils"
+import { createDiskWasmLoader, createNodeTransport } from "../../../dist/node"
 
 const PAT = process.env.AT_PAT ?? throw_("AT_PAT is required")
 const projectId = `projects/${
@@ -9,35 +10,48 @@ const projectId = `projects/${
   )
 }`
 
+import { readFileSync } from "fs"
+
 const client = await createAudiotoolClient({
-  authorization: PAT,
+  auth: createPATAuth(PAT),
+  transport: createNodeTransport(),
+  wasm: createDiskWasmLoader(),
 })
 
-const nexus = await client.createSyncedDocument({
-  project: projectId,
+console.debug(process.cwd())
+
+const groove = readFileSync("./groovy-120bpm.mp3")
+console.debug("starting upload...")
+
+const upload = await client.samples.upload({
+  displayName: "groove",
+  file: new Blob([groove], { type: "audio/mpeg" }),
+  visibility: "unlisted",
 })
 
-await nexus.start()
+if (upload instanceof Error) {
+  console.error("failed to upload:", upload.message)
+  process.exit(1)
+}
 
-console.debug(
-  "connected and started nexus - waiting for connection to be established",
-)
+console.debug("upload phase 1:", upload)
 
-let c = 0
-await new Promise((resolve) => {
-  const interval = setInterval(() => {
-    const connected = nexus.connected.getValue()
-    console.debug("connected: ", connected)
-    c++
-    if (connected) {
-      clearInterval(interval)
-      resolve(true)
-    } else if (c > 10) {
-      console.error("connection not established after 10 seconds")
-      process.exit(1)
-    }
-  }, 1000)
-})
+const uploaded = await upload.uploaded
 
-await nexus.stop()
+if (uploaded instanceof Error) {
+  console.error("failed to upload:", uploaded.message)
+  process.exit(1)
+}
+
+console.debug("upload phase 2:", uploaded)
+
+const ready = await upload.ready
+if (ready instanceof Error) {
+  console.error("failed to upload:", ready.message)
+  process.exit(1)
+}
+
+console.debug("upload phase 3:", ready)
+
 console.debug("done, shutting down")
+process.exit(0)

@@ -60,7 +60,7 @@ import {
  *
  * See [API](../docs/api.md) for more information.
  */
-export type PresetUtil = {
+export type PresetsAPI = {
   /**
    * Search presets by device type, optionally filtering by a free-text query.
    * @param deviceType The entity type of the device for which to search presets
@@ -86,7 +86,7 @@ export type PresetUtil = {
    * preset display names.
    *
    * Accepts a slug, a program number, or one of the {@link GmInstrument}
-   * catalog entries exposed via {@link PresetUtil.gmInstruments} -- the
+   * catalog entries exposed via {@link PresetsAPI.gmInstruments} -- the
    * latter is handy when building a preset picker from the metadata array.
    *
    * @example
@@ -111,7 +111,7 @@ export type PresetUtil = {
    * Orchestra respectively). Other numbers don't exist on the gakki sampler.
    *
    * Accepts a slug, a program number, or one of the {@link GmDrum} catalog
-   * entries exposed via {@link PresetUtil.gmDrums}.
+   * entries exposed via {@link PresetsAPI.gmDrums}.
    *
    * @example
    * ```ts
@@ -138,7 +138,12 @@ export type PresetUtil = {
   gmDrums: readonly GmDrum[]
 }
 
-export const createPresetUtil = (transport: KeepaliveTransport) => {
+/** @deprecated Use `PresetsAPI` instead */
+export type Presets = PresetsAPI
+/** @deprecated Use `PresetsAPI` instead */
+export type PresetUtil = PresetsAPI
+
+export const createPresetUtil = (transport: KeepaliveTransport): PresetsAPI => {
   const client = createRetryingPromiseClient(PresetService, transport)
 
   const get = async (nameOrId: string): Promise<NexusPreset> => {
@@ -218,7 +223,7 @@ export const createPresetUtil = (transport: KeepaliveTransport) => {
 
     gmInstruments,
     gmDrums,
-  } satisfies PresetUtil
+  } satisfies PresetsAPI
 }
 
 export const presetDeviceTypeToDeviceKey: {

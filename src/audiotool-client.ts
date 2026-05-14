@@ -1,13 +1,14 @@
 import { createRegistry } from "@bufbuild/protobuf"
 import { initWasmLoader } from "@document/backend/create-wasm-document-state"
-import { createPresetUtil, type PresetUtil } from "./api/preset-utils"
+import { createPresetUtil, type PresetsAPI } from "./api/preset-api"
+import { createSampleUtil, type SamplesAPI } from "./api/sample-api"
 import { createPATAuth } from "./auth/pat-auth"
 import type { AuthProvider } from "./auth/types"
 import { AudiographService } from "./gen/audiotool/audiograph/v1/audiograph_service_connect"
 import { Preset } from "./gen/audiotool/document/v1/preset/v1/preset_pb"
 import { ProjectRoleService } from "./gen/audiotool/project/v1/project_role_service_connect"
 import { ProjectService } from "./gen/audiotool/project/v1/project_service_connect"
-import { SampleService } from "./gen/audiotool/sample/v1/sample_service_connect"
+import { SampleConvertInfo } from "./gen/audiotool/sample/v1/sample_event_pb"
 import { UserService } from "./gen/audiotool/user/v1/user_service_connect"
 import { createOnlineDocument, SyncedDocument } from "./synced-document"
 import { createBrowserTransportFactory } from "./transport/browser-transport"
@@ -81,11 +82,27 @@ export type AudiotoolClient = {
   /** Lookup users. */
   users: RetryingClient<typeof UserService>
 
-  /** Lookup and upload samples. */
-  samples: RetryingClient<typeof SampleService>
+  /**
+   * Upload, download, and manage audio samples.
+   *
+   * @example Upload a sample
+   * ```typescript
+   * const upload = await at.samples.upload({
+   *   file: audioFile,
+   *   displayName: "My Kick",
+   * })
+   * await upload.uploaded // bytes are safely on the server
+   * ```
+   *
+   * @example Download a sample
+   * ```typescript
+   * const blob = await at.samples.download("samples/abc-123", { format: "wav" })
+   * ```
+   */
+  samples: SamplesAPI
 
   /** Work with presets - get, apply, and manage device presets. */
-  presets: PresetUtil
+  presets: PresetsAPI
 
   /** Manage audio graphs (waveform plots for samples). */
   audioGraph: RetryingClient<typeof AudiographService>
@@ -114,11 +131,10 @@ export const createAudiotoolClientInternal = async ({
   getToken: () => Promise<string>
   transportFactory: TransportFactory
 }): Promise<AudiotoolClient> => {
-  // Create the RPC transport
   const rpcTransport = await transportFactory.createTransport({
     baseUrl: "https://rpc.audiotool.com/",
     useBinaryFormat: false,
-    typeRegistry: createRegistry(Preset),
+    typeRegistry: createRegistry(Preset, SampleConvertInfo),
     getToken,
   })
 
@@ -129,7 +145,7 @@ export const createAudiotoolClientInternal = async ({
     rpcTransport,
   )
   const users = createRetryingPromiseClient(UserService, rpcTransport)
-  const samples = createRetryingPromiseClient(SampleService, rpcTransport)
+  const samples = createSampleUtil(rpcTransport)
   const presets = createPresetUtil(rpcTransport)
   const audioGraph = createRetryingPromiseClient(
     AudiographService,

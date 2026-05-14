@@ -14,5 +14,12 @@ export { buildModificationForRemove } from "./build-remove"
 export { buildModificationForRemoveWithDependencies } from "./build-remove-with-dependencies"
 
 export { buildModificationsForPresetApplication } from "./build-preset-application"
-export type { SafeTransactionBuilder, TransactionBuilder } from "./builder"
+export {
+  buildRegionConstructorForInsertSample,
+  type InsertSampleOptions,
+} from "./build-insert-sample"
+export type {
+  SafeTransactionBuilder,
+  TransactionBuilder,
+} from "./builder"
 export { preparePreset } from "./prepare-preset"

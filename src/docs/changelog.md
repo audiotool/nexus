@@ -5,13 +5,24 @@ title: 📜 Changelog
 > [!WARNING]
 > The package should be considered "early alpha" and can change **significantly** between releases, even between minor version numbers.
 
-To get more background on the changes we make, join our [Discord](https://discord.gg/5Cde4Zvret).
+To get more background on the changes we make, join our [Discord](https://developer.audiotool.com/discord).
+
+## 0.0.16 & 0.0.17
+
+New sample API, helper methods to:
+
+- download a sample
+- upload a sample
+- insert a sample into a project
+
+Check {@link api.SamplesAPI} and {@link document.TransactionBuilder.insertSample} for more infos.
+If you're working with samples, we think it's much easer to use - give it a look!
 
 ## 0.0.15:
 
 - **Updated Consolidation Logic** - for a more robust experience modifying projects alongside other participants
 - **Updated defaults** - newly created entities now match the DAW
-- **New Goodies in {@link api.PresetUtil}**:
+- **New Goodies in {@link api.PresetsAPI}**:
   - use `at.presets.getInstrument("marimba")` to get the marimba instrument
   - use `at.presets.getDrums("jazz-kit")` to get the jazz drum kit
   - use `at.presets.getInstrument(8)` to use instrument with GM Program number `8` (see [1])

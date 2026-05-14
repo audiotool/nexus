@@ -45,7 +45,9 @@
 // Main browser entry point
 export {
   audiotool,
+  audiotoolPopup,
   type BrowserAuthResult,
+  type PopupAuthResult,
   type AuthenticatedClient,
   type UnauthenticatedResult,
 } from "../browser-auth"
