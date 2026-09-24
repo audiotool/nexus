@@ -5,7 +5,7 @@ import { defaultDisplayParams } from "./shared"
 export const audioSplitterDefaults: Defaults<AudioSplitterConstructor> = {
   ...defaultDisplayParams,
   displayName: "Audio Splitter",
-  blendModeIndex: 1,
+  blendModeIndex: 2,
   splitCoords: {
     x: 0.6666666865348816,
     y: 0,

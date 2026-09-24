@@ -21,7 +21,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type Gakki = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Gakki"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -44,11 +48,19 @@ export type Gakki = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  ID of the soundfont used by this Gakki device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"56ada375-bc78-4912-b447-d80e06457a80"`*/
   soundfontId: PrimitiveField<string, "mut">
   /**
    *  Gain factor that is applied to the output of the soundfont player. Equivalent to a dB range of [-inf, 0.0].
@@ -56,7 +68,7 @@ export type Gakki = {
    *
    * key | value
    * --- | ---
-   * default | 0.6000000238418579
+   * default | 1
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   gain: PrimitiveField<number, "mut">
@@ -82,7 +94,11 @@ export type Gakki = {
 export type GakkiConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Gakki"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -105,11 +121,19 @@ export type GakkiConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  ID of the soundfont used by this Gakki device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"56ada375-bc78-4912-b447-d80e06457a80"`*/
   soundfontId?: string
   /**
    *  Gain factor that is applied to the output of the soundfont player. Equivalent to a dB range of [-inf, 0.0].
@@ -117,7 +141,7 @@ export type GakkiConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.6000000238418579
+   * default | 1
    * range | [0, 1]*/
   gain?: number
 }

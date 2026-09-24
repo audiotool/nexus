@@ -23,7 +23,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type Panorama = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Panorama"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -46,7 +50,11 @@ export type Panorama = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  Gain factor applied to the left channel. Can go negative, which reverses the phase of the signal.
@@ -119,7 +127,11 @@ export type Panorama = {
 export type PanoramaConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Panorama"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -142,7 +154,11 @@ export type PanoramaConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  Gain factor applied to the left channel. Can go negative, which reverses the phase of the signal.

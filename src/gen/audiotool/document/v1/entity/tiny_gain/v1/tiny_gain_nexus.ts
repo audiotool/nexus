@@ -21,7 +21,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type TinyGain = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Tiny Gain"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -91,7 +95,11 @@ export type TinyGain = {
 export type TinyGainConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Tiny Gain"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.

@@ -176,7 +176,6 @@ describe("schema converters", () => {
           immutable: false,
           primitive: {
             type: "boolean",
-            default: false,
             scalarType: ScalarType.BOOL,
           },
         },

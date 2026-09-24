@@ -9,6 +9,7 @@ pnpm-debug.log*
 lerna-debug.log*
 
 node_modules
+codegen/.image.binpb
 dist
 dist-ssr
 *.local

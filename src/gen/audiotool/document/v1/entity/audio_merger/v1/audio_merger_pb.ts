@@ -51,20 +51,20 @@ export class AudioMerger extends Message<AudioMerger> {
    * A, B and C in the AudioMergerCoordinates below.
    *
    * - 0: invalid
-   * - 1: full-power
-   * - 2: equal-power
+   * - 1: equal-power
+   * - 2: full-power
    *
    * The difference between algorithms is best understood when considering
    * the situation where all 3 input signals receive an identical sine wave
    * peak value 1.
    *
+   * - equal-power:
+   *    The output gain of the signal will be near-constant when moving the knob.
+   *
    * - full-power:
    *    Means the output will become louder when the knob is in the
    *    center - you will basically add all 3 signals, resulting in a sine wave
    *    with peak 3. If the knob is at e.g. point A, the signal will get gain 1.
-   *
-   * - equal-power:
-   *    The output gain of the signal will be near-constant when moving the knob.
    *
    * @generated from field: uint32 blend_mode_index = 5;
    */

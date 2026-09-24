@@ -23,7 +23,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type StompboxStereoDetune = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Stereo Detune"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -46,7 +50,11 @@ export type StompboxStereoDetune = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  The amount of detune in semitones.
@@ -78,6 +86,17 @@ export type StompboxStereoDetune = {
    * is | {@link api.TargetType.AutomatableParameter}*/
   isActive: PrimitiveField<boolean, "mut">
   /**
+   *  Controls the mix between the incoming and the effect signal. -1.0 ("dry") means 0% effect
+   *  applied, 0.0 ("wet") means 100% effect applied; values between mixes the two linearly.
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | 0
+   * range | [-1, 0]
+   * is | {@link api.TargetType.AutomatableParameter}*/
+  mix: PrimitiveField<number, "mut">
+  /**
    *  Single Input.
    *
    *
@@ -99,7 +118,11 @@ export type StompboxStereoDetune = {
 export type StompboxStereoDetuneConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Stereo Detune"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -122,7 +145,11 @@ export type StompboxStereoDetuneConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  The amount of detune in semitones.
@@ -150,5 +177,15 @@ export type StompboxStereoDetuneConstructor = {
    * --- | ---
    * default | true*/
   isActive?: boolean
+  /**
+   *  Controls the mix between the incoming and the effect signal. -1.0 ("dry") means 0% effect
+   *  applied, 0.0 ("wet") means 100% effect applied; values between mixes the two linearly.
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | 0
+   * range | [-1, 0]*/
+  mix?: number
 }
 

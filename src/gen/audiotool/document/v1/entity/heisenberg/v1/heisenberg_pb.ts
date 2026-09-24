@@ -911,7 +911,42 @@ export class HeisenbergPitchEnvelope extends Message<HeisenbergPitchEnvelope> {
  */
 export class HeisenbergFilter extends Message<HeisenbergFilter> {
   /**
-   * Filter cutoff frequency in Hz.
+   * Filter cutoff, as a position on the 33..22050 Hz range below.
+   *
+   * This field does not hold a frequency, despite its name and its unit. It is a
+   * percentage of its own range wearing a Hz label. The engine normalizes it
+   * linearly and hands the result to the filter, which spreads it linearly over
+   * octaves. So the frequency is exponential in the percentage:
+   *
+   *   percent = (cutoff_frequency_hz - 33) / (22050 - 33)
+   *   octaves = 1 + percent * 6.897131
+   *   peak_hz = 261.625565301 * 2^(octaves - 4)
+   *
+   * The band the filter can reach is 32.70 Hz to 3897.93 Hz, which is about two and
+   * a half octaves narrower than the range suggests. Nothing in the range is wasted:
+   * the whole range maps onto the whole band. But the number is roughly five octaves
+   * above the frequency it produces at mid travel.
+   *
+   * Three other fields move the audible corner. filter_type shifts the filter's
+   * center by up to 2.5 octaves, and resonance and order_index move the -3 dB point
+   * by up to about 7 semitones. Measured at order_index = 4 (48 dB) and minimum
+   * resonance:
+   *
+   * This value | percent | peak at filter_type = 0 | lowpass -3 dB | highpass -3 dB
+   * ---------- | ------- | ----------------------- | ------------- | --------------
+   * 33         |      0% | 32.70 Hz                | 35 Hz         | 31 Hz
+   * 5537.25    |     25% | 108.06 Hz               | 113 Hz        | 104 Hz
+   * 11041.5    |     50% | 357.04 Hz               | 365 Hz        | 351 Hz
+   * 16545.75   |     75% | 1179.70 Hz              | 1259 Hz       | 1188 Hz
+   * 19848.3    |     90% | 2416.62 Hz              | 3436 Hz       | 2399 Hz
+   * 22050      |    100% | 3897.93 Hz              | open          | 3842 Hz
+   *
+   * At filter_type = 0 the response is flat and the percentage only places the
+   * resonance peak. At full travel the lowpass keeps no corner below Nyquist, which
+   * is why that cell reads "open".
+   *
+   * Automation lanes on this parameter carry the percentage itself, from 0 to 1.
+   * They are not in this field's range.
    *
    * @generated from field: float cutoff_frequency_hz = 1;
    */

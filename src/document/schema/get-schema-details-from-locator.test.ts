@@ -31,7 +31,6 @@ describe("_getSchemaLocatorDetails", () => {
         primitive: {
           type: "number",
           scalarType: ScalarType.FLOAT,
-          default: 0,
           range: { min: -12, max: 12 },
         },
       })
@@ -53,7 +52,6 @@ describe("_getSchemaLocatorDetails", () => {
         primitive: {
           type: "number",
           scalarType: ScalarType.FLOAT,
-          default: Math.fround(expectedDefaultF64),
           range: { min: 0.0, max: 1 },
         },
       })
@@ -86,7 +84,6 @@ describe("_getSchemaLocatorDetails", () => {
         primitive: {
           type: "number",
           scalarType: ScalarType.UINT32,
-          default: 3,
           range: {
             min: 1,
             max: 4,
@@ -106,7 +103,6 @@ describe("_getSchemaLocatorDetails", () => {
         primitive: {
           type: "boolean",
           scalarType: ScalarType.BOOL,
-          default: true,
         },
       })
     })
@@ -141,7 +137,6 @@ describe("_getSchemaLocatorDetails", () => {
         fieldName: "[]",
         primitive: {
           type: "number",
-          default: 20,
           range: {
             min: 20,
             max: 20_000,
@@ -178,7 +173,6 @@ describe("_getSchemaLocatorDetails", () => {
             primitive: {
               type: "number",
               scalarType: ScalarType.INT32,
-              default: 0,
               range: {
                 min: i32min,
                 max: i32max,
@@ -199,7 +193,6 @@ describe("_getSchemaLocatorDetails", () => {
           primitive: {
             type: "number",
             scalarType: ScalarType.FLOAT,
-            default: 0,
             range: {
               min: -Infinity,
               max: +Infinity,
@@ -219,7 +212,6 @@ describe("_getSchemaLocatorDetails", () => {
             primitive: {
               type: "number",
               scalarType: ScalarType.UINT32,
-              default: 960,
               range: {
                 min: 0,
                 max: u32max,
@@ -263,7 +255,6 @@ describe("_getSchemaLocatorDetails", () => {
         primitive: {
           type: "number",
           scalarType: ScalarType.FLOAT,
-          default: Math.fround(20),
           range: {
             min: Math.fround(20),
             max: Math.fround(20_000),

@@ -22,7 +22,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type Centroid = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Centroid"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -84,7 +88,11 @@ export type Centroid = {
 export type CentroidConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Centroid"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -221,7 +229,11 @@ export type CentroidChannel = {
   orderAmongChannels: PrimitiveField<number, "mut">
   /**
    *  The user-assigned name of this channel.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Channel"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  The channel's audio input.
@@ -375,7 +387,11 @@ export type CentroidChannelConstructor = {
   orderAmongChannels?: number
   /**
    *  The user-assigned name of this channel.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Channel"`*/
   displayName?: string
   /**
    *  Pre gain. This is the gain before the EQ. Equivalent to a dB range of [-inf, 18.0].

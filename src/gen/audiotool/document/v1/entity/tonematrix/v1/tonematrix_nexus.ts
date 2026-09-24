@@ -26,7 +26,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type Tonematrix = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Tone Matrix"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -49,7 +53,11 @@ export type Tonematrix = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  The currently selected and displayed pattern index. Results in the device playing that pattern, unless
@@ -111,7 +119,11 @@ export type Tonematrix = {
 export type TonematrixConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Tone Matrix"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -134,7 +146,11 @@ export type TonematrixConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  The currently selected and displayed pattern index. Results in the device playing that pattern, unless
@@ -252,7 +268,7 @@ export type TonematrixStep = {
    *
    * key | value
    * --- | ---
-   * default | false*/
+   * default | false (every element)*/
   notes: ArrayField<PrimitiveField<boolean, "mut">, 16>
 }
 /** @internal */
@@ -266,7 +282,7 @@ export type TonematrixStepConstructor = {
    *
    * key | value
    * --- | ---
-   * default | false*/
+   * default | false (every element)*/
   notes?: boolean[] & { length: 16 }
 }
 

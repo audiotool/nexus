@@ -21,7 +21,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type Minimixer = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Minimixer"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -122,7 +126,11 @@ export type Minimixer = {
 export type MinimixerConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Minimixer"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.

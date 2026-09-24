@@ -17,7 +17,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { BatchGetUsersRequest, BatchGetUsersResponse, DeleteUserRequest, DeleteUserResponse, GetSettingsRequest, GetSettingsResponse, GetUserRequest, GetUserResponse, ListUsersRequest, ListUsersResponse, UpdateSettingsRequest, UpdateSettingsResponse, UpdateUserRequest, UpdateUserResponse } from "./user_service_pb.js";
+import { BatchGetUsersRequest, BatchGetUsersResponse, DeleteUserRequest, DeleteUserResponse, GetSettingsRequest, GetSettingsResponse, GetUserRequest, GetUserResponse, ListMutualUsersRequest, ListMutualUsersResponse, ListUsersRequest, ListUsersResponse, UpdateSettingsRequest, UpdateSettingsResponse, UpdateUserRequest, UpdateUserResponse } from "./user_service_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -37,6 +37,25 @@ export const UserService = {
       name: "ListUsers",
       I: ListUsersRequest,
       O: ListUsersResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * Lists the caller's mutual connections (bidirectional follows / friends).
+     *
+     * A mutual is a user with whom the caller has a bidirectional follow
+     * relationship: the caller follows them and they follow the caller back.
+     * Users the caller only follows, or who only follow the caller, are
+     * intentionally not included. Same mutual definition as
+     * PresenceService.ListMutualPresences.
+     *
+     * Requires authentication. Only the caller's own mutuals can be listed.
+     *
+     * @generated from rpc audiotool.user.v1.UserService.ListMutualUsers
+     */
+    listMutualUsers: {
+      name: "ListMutualUsers",
+      I: ListMutualUsersRequest,
+      O: ListMutualUsersResponse,
       kind: MethodKind.Unary,
     },
     /**

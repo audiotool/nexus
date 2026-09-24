@@ -22,7 +22,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type Machiniste = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Machiniste"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -45,7 +49,11 @@ export type Machiniste = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  Output gain of the main output channel. This only affects the sum signal, not
@@ -54,7 +62,7 @@ export type Machiniste = {
    *
    * key | value
    * --- | ---
-   * default | 0.7079399824142456
+   * default | 0.70794
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   mainOutputGain: PrimitiveField<number, "mut">
@@ -122,7 +130,11 @@ export type Machiniste = {
 export type MachinisteConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Machiniste"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -145,7 +157,11 @@ export type MachinisteConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  Output gain of the main output channel. This only affects the sum signal, not
@@ -154,7 +170,7 @@ export type MachinisteConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.7079399824142456
+   * default | 0.70794
    * range | [0, 1]*/
   mainOutputGain?: number
   /**
@@ -544,7 +560,7 @@ export type MachinisteChannel = {
    *
    * key | value
    * --- | ---
-   * default | 6000
+   * default | 575.5615
    * range | [28, 12000]
    * is | {@link api.TargetType.AutomatableParameter}*/
   cutoffFrequencyHz: PrimitiveField<number, "mut">
@@ -644,7 +660,7 @@ export type MachinisteChannel = {
    *
    * key | value
    * --- | ---
-   * default | 0.10000000149011612
+   * default | 0.1
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   gain: PrimitiveField<number, "mut">
@@ -762,7 +778,7 @@ export type MachinisteChannelConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 6000
+   * default | 575.5615
    * range | [28, 12000]*/
   cutoffFrequencyHz?: number
   /**
@@ -852,7 +868,7 @@ export type MachinisteChannelConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.10000000149011612
+   * default | 0.1
    * range | [0, 1]*/
   gain?: number
   /**

@@ -173,6 +173,17 @@ export class AutoFilter extends Message<AutoFilter> {
    */
   isActive = false;
 
+  /**
+   * Selects the spectrum mode of the equalizer. This only affects the visual representation
+   * in the DAW.
+   * - 0: Off   - no spectrum is displayed
+   * - 1: Pre   - the spectrum is displayed before the equalizer is applied
+   * - 2: Post  - the spectrum is displayed after the equalizer is applied
+   *
+   * @generated from field: uint32 spectrum_mode_index = 20;
+   */
+  spectrumModeIndex = 0;
+
   constructor(data?: PartialMessage<AutoFilter>) {
     super();
     proto3.util.initPartial(data, this);
@@ -200,6 +211,7 @@ export class AutoFilter extends Message<AutoFilter> {
     { no: 16, name: "side_chain_input", kind: "message", T: Empty },
     { no: 17, name: "audio_output", kind: "message", T: Empty },
     { no: 18, name: "is_active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 20, name: "spectrum_mode_index", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): AutoFilter {

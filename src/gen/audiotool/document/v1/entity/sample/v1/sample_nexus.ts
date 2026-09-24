@@ -24,10 +24,11 @@ export type Sample = {
    *
    * key | value
    * --- | ---
+   * default | `""`
    * immutable | true*/
   sampleName: PrimitiveField<string, "immut">
   /**
-   *  The approximate number of seconds passed since the Unix epoch for the hermes server at the time the upload
+   *  The approximate number of milliseconds passed since the Unix epoch for the hermes server at the time the upload
    *  of this sample was started. The hermes server can be queried for its current time.
    *  This can be used to estimate whether a sample might still become available or is missing forever
    *  if the API returns 404 for a sample. If the sample is already available, this can be set to 0.
@@ -35,6 +36,7 @@ export type Sample = {
    *
    * key | value
    * --- | ---
+   * default | 0
    * immutable | true*/
   uploadStartTime: PrimitiveField<bigint, "immut">
 }
@@ -47,10 +49,11 @@ export type SampleConstructor = {
    *
    * key | value
    * --- | ---
+   * default | `""`
    * immutable | true*/
   sampleName?: string
   /**
-   *  The approximate number of seconds passed since the Unix epoch for the hermes server at the time the upload
+   *  The approximate number of milliseconds passed since the Unix epoch for the hermes server at the time the upload
    *  of this sample was started. The hermes server can be queried for its current time.
    *  This can be used to estimate whether a sample might still become available or is missing forever
    *  if the API returns 404 for a sample. If the sample is already available, this can be set to 0.
@@ -58,6 +61,7 @@ export type SampleConstructor = {
    *
    * key | value
    * --- | ---
+   * default | 0
    * immutable | true*/
   uploadStartTime?: bigint
 }

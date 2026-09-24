@@ -1,6 +1,6 @@
 # Audiotool Nexus
 
-A JS package allowing you to programmatically control the Auditool DAW.
+A JS package allowing you to programmatically control the Audiotool DAW.
 
 - `npm install @audiotool/nexus`
 - [Audiotool](https://beta.audiotool.com/)

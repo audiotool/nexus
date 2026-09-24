@@ -1,6 +1,7 @@
 export * from "../gen/audiotool/audiograph/v1/audiograph_pb"
 export * from "../gen/audiotool/audiograph/v1/audiograph_service_connect"
 export * from "../gen/audiotool/audiograph/v1/audiograph_service_pb"
+export * from "../gen/audiotool/document/v1/metadata/v1/document_metadata_pb"
 export * from "../gen/audiotool/document/v1/opt/opt_pb"
 export * from "../gen/audiotool/longrunning/v1/operation_pb"
 export * from "../gen/audiotool/preset/v1/preset_pb"

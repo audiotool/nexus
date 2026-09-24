@@ -21,7 +21,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type StompboxCrusher = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Crusher"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -44,7 +48,11 @@ export type StompboxCrusher = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  Allows for adjustment of the volume of the signal before it is processed.
@@ -53,7 +61,7 @@ export type StompboxCrusher = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 1.166015
    * range | [0, 22.387210845947266]
    * is | {@link api.TargetType.AutomatableParameter}*/
   preGain: PrimitiveField<number, "mut">
@@ -63,7 +71,7 @@ export type StompboxCrusher = {
    *
    * key | value
    * --- | ---
-   * default | 0
+   * default | 0.017537583
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   downsamplingFactor: PrimitiveField<number, "mut">
@@ -74,7 +82,7 @@ export type StompboxCrusher = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 2.3091726
    * range | [0, 2.818382978439331]
    * is | {@link api.TargetType.AutomatableParameter}*/
   postGain: PrimitiveField<number, "mut">
@@ -84,7 +92,7 @@ export type StompboxCrusher = {
    *
    * key | value
    * --- | ---
-   * default | 8
+   * default | 22
    * range | [1, 24]
    * is | {@link api.TargetType.AutomatableParameter}*/
   bits: PrimitiveField<number, "mut">
@@ -95,7 +103,7 @@ export type StompboxCrusher = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 0.6602628
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   mix: PrimitiveField<number, "mut">
@@ -130,7 +138,11 @@ export type StompboxCrusher = {
 export type StompboxCrusherConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Crusher"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -153,7 +165,11 @@ export type StompboxCrusherConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  Allows for adjustment of the volume of the signal before it is processed.
@@ -162,7 +178,7 @@ export type StompboxCrusherConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 1.166015
    * range | [0, 22.387210845947266]*/
   preGain?: number
   /**
@@ -171,7 +187,7 @@ export type StompboxCrusherConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0
+   * default | 0.017537583
    * range | [0, 1]*/
   downsamplingFactor?: number
   /**
@@ -181,7 +197,7 @@ export type StompboxCrusherConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 2.3091726
    * range | [0, 2.818382978439331]*/
   postGain?: number
   /**
@@ -190,7 +206,7 @@ export type StompboxCrusherConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 8
+   * default | 22
    * range | [1, 24]*/
   bits?: number
   /**
@@ -200,7 +216,7 @@ export type StompboxCrusherConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 0.6602628
    * range | [0, 1]*/
   mix?: number
   /**

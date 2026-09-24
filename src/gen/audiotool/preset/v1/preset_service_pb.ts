@@ -42,7 +42,6 @@ export class ListPresetsRequest extends Message<ListPresetsRequest> {
    * - preset.clearance
    * - preset.tags
    * - preset.device_type
-   * - preset.favorited_by_user
    *
    * @generated from field: string filter = 1;
    */

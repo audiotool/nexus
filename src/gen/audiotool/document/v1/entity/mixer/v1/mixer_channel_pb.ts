@@ -95,6 +95,13 @@ export class MixerChannel extends Message<MixerChannel> {
   auxSendsAreActive = false;
 
   /**
+   * true if aux sends are branched off before post fain fader (default: they aren't)
+   *
+   * @generated from field: bool aux_sends_are_pre_gain = 13;
+   */
+  auxSendsArePreGain = false;
+
+  /**
    * Sends to the aux strip.
    *
    * @generated from field: audiotool.document.v1.Empty aux_send = 10;
@@ -132,6 +139,7 @@ export class MixerChannel extends Message<MixerChannel> {
     { no: 7, name: "compressor", kind: "message", T: MixerCompressor },
     { no: 8, name: "eq", kind: "message", T: MixerEq },
     { no: 9, name: "aux_sends_are_active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 13, name: "aux_sends_are_pre_gain", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 10, name: "aux_send", kind: "message", T: Empty },
     { no: 11, name: "side_chain_output", kind: "message", T: Empty },
     { no: 12, name: "fader_parameters", kind: "message", T: MixerStripFaderParameters },

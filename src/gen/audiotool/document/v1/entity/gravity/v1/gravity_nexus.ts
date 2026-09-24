@@ -26,7 +26,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type Gravity = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Gravity"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -49,7 +53,11 @@ export type Gravity = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  The level in dB on which the device starts compressing.
@@ -179,7 +187,11 @@ export type Gravity = {
 export type GravityConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Gravity"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -202,7 +214,11 @@ export type GravityConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  The level in dB on which the device starts compressing.

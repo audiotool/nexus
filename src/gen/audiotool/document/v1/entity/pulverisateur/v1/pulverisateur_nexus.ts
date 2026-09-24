@@ -25,7 +25,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type Pulverisateur = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Pulverisateur"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -48,7 +52,11 @@ export type Pulverisateur = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  Notes input
@@ -80,7 +88,7 @@ export type Pulverisateur = {
    *
    * key | value
    * --- | ---
-   * default | 0.7079460024833679
+   * default | 1
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   gain: PrimitiveField<number, "mut">
@@ -180,7 +188,11 @@ export type Pulverisateur = {
 export type PulverisateurConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Pulverisateur"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -203,7 +215,11 @@ export type PulverisateurConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  The main output gain of the device. Equivalent to a dB range of [-inf, 0.0].
@@ -211,7 +227,7 @@ export type PulverisateurConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.7079460024833679
+   * default | 1
    * range | [0, 1]*/
   gain?: number
   /**
@@ -690,7 +706,7 @@ export type PulverisateurLfo = {
    *
    * key | value
    * --- | ---
-   * default | 0
+   * default | 0.25
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   waveform: PrimitiveField<number, "mut">
@@ -808,7 +824,7 @@ export type PulverisateurLfoConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0
+   * default | 0.25
    * range | [0, 1]*/
   waveform?: number
   /**
@@ -949,7 +965,7 @@ export type PulverisateurFilterEnvelope = {
    *
    * key | value
    * --- | ---
-   * default | 0
+   * default | 0.2
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   sustainFactor: PrimitiveField<number, "mut">
@@ -1010,7 +1026,7 @@ export type PulverisateurFilterEnvelopeConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0
+   * default | 0.2
    * range | [0, 1]*/
   sustainFactor?: number
   /**
@@ -1080,7 +1096,7 @@ export type PulverisateurAmplitudeEnvelope = {
    *
    * key | value
    * --- | ---
-   * default | 0
+   * default | 0.2
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   sustainFactor: PrimitiveField<number, "mut">
@@ -1131,7 +1147,7 @@ export type PulverisateurAmplitudeEnvelopeConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0
+   * default | 0.2
    * range | [0, 1]*/
   sustainFactor?: number
   /**
@@ -1163,7 +1179,6 @@ export type PulverisateurChannel = {
    *
    * key | value
    * --- | ---
-   * default | true
    * is | {@link api.TargetType.AutomatableParameter}*/
   isActive: PrimitiveField<boolean, "mut">
   /**
@@ -1192,11 +1207,7 @@ export type PulverisateurChannel = {
 export type PulverisateurChannelConstructor = {
   /**
    *  If is_active=false, the channel does not produce any sound.
-   *
-   *
-   * key | value
-   * --- | ---
-   * default | true*/
+   */
   isActive?: boolean
   /**
    *  Panning of the oscillator

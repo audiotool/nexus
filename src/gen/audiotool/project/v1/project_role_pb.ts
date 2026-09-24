@@ -41,13 +41,6 @@ export enum ProjectRoleType {
   OWNER = 1,
 
   /**
-   * Will not be synced as a contributor to a track.
-   *
-   * @generated from enum value: PROJECT_ROLE_TYPE_OWNER_UNPUBLISHED = 2;
-   */
-  OWNER_UNPUBLISHED = 2,
-
-  /**
    * Editor can edit the project.
    *
    * @generated from enum value: PROJECT_ROLE_TYPE_EDITOR = 3;
@@ -74,7 +67,6 @@ export enum ProjectRoleType {
 proto3.util.setEnumType(ProjectRoleType, "audiotool.project.v1.ProjectRoleType", [
   { no: 0, name: "PROJECT_ROLE_TYPE_UNSPECIFIED" },
   { no: 1, name: "PROJECT_ROLE_TYPE_OWNER" },
-  { no: 2, name: "PROJECT_ROLE_TYPE_OWNER_UNPUBLISHED" },
   { no: 3, name: "PROJECT_ROLE_TYPE_EDITOR" },
   { no: 4, name: "PROJECT_ROLE_TYPE_EDITOR_UNPUBLISHED" },
   { no: 5, name: "PROJECT_ROLE_TYPE_VIEWER" },

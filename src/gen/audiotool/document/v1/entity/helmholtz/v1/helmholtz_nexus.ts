@@ -31,7 +31,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type Helmholtz = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Helmholtz"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -54,7 +58,11 @@ export type Helmholtz = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  Reference to the microtuning.
@@ -72,7 +80,7 @@ export type Helmholtz = {
    *
    * key | value
    * --- | ---
-   * default | 0.7079399824142456
+   * default | 1
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   gain: PrimitiveField<number, "mut">
@@ -134,7 +142,11 @@ export type Helmholtz = {
 export type HelmholtzConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Helmholtz"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -157,7 +169,11 @@ export type HelmholtzConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  Reference to the microtuning.
@@ -174,7 +190,7 @@ export type HelmholtzConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.7079399824142456
+   * default | 1
    * range | [0, 1]*/
   gain?: number
   /**
@@ -229,7 +245,6 @@ export type HelmholtzFilter = {
    *
    * key | value
    * --- | ---
-   * default | false
    * is | {@link api.TargetType.AutomatableParameter}*/
   isActive: PrimitiveField<boolean, "mut">
   /**
@@ -258,7 +273,6 @@ export type HelmholtzFilter = {
    *
    * key | value
    * --- | ---
-   * default | 60
    * range | [0, 127]
    * is | {@link api.TargetType.AutomatableParameter}*/
   frequencyNote: PrimitiveField<number, "mut">
@@ -281,11 +295,7 @@ export type HelmholtzFilter = {
 export type HelmholtzFilterConstructor = {
   /**
    *  Whether the filter is active or not. When is_active=false, the filter doesn't produce any sound.
-   *
-   *
-   * key | value
-   * --- | ---
-   * default | false*/
+   */
   isActive?: boolean
   /**
    *  Gain applied to the signal after the filter. Equivalent to a dB range of [-inf, 0.0].
@@ -311,7 +321,6 @@ export type HelmholtzFilterConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 60
    * range | [0, 127]*/
   frequencyNote?: number
   /**

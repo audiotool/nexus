@@ -50,20 +50,20 @@ export class AudioSplitter extends Message<AudioSplitter> {
    * A, B and C in the AudioSplitterCoordinates below.
    *
    * - 0: invalid
-   * - 1: full-power
-   * - 2: equal-power
+   * - 1: equal-power
+   * - 2: full-power
    *
    * The difference between algorithms is best understood when considering
    * the situation where the input signal is a simple sine wave of gain 1.
+   *
+   * - equal-power:
+   *    The gain of the SUM of the output signals will always match the whole incoming
+   *    signal.
    *
    * - full-power:
    *    Means each output will have the full gain of the input signal, i.e.
    *    a sine wave with peak 1. Moving to any point A, B, C will keep a sine wave
    *    with gain 1.
-   *
-   * - equal-power:
-   *    The gain of the SUM of the output signals will always match the whole incoming
-   *    signal.
    *
    * @generated from field: uint32 blend_mode_index = 5;
    */

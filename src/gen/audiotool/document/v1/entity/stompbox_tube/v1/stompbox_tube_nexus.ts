@@ -22,7 +22,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type StompboxTube = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Tube"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -45,7 +49,11 @@ export type StompboxTube = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  Allows adjustment of the how much distortion is applied to the original signal.
@@ -53,7 +61,7 @@ export type StompboxTube = {
    *
    * key | value
    * --- | ---
-   * default | 12
+   * default | 10.81
    * range | [0.10000000149011612, 12]
    * is | {@link api.TargetType.AutomatableParameter}*/
   drive: PrimitiveField<number, "mut">
@@ -63,7 +71,7 @@ export type StompboxTube = {
    *
    * key | value
    * --- | ---
-   * default | 0
+   * default | 8
    * range | [-10, 10]
    * is | {@link api.TargetType.AutomatableParameter}*/
   tone: PrimitiveField<number, "mut">
@@ -108,7 +116,11 @@ export type StompboxTube = {
 export type StompboxTubeConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Tube"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -131,7 +143,11 @@ export type StompboxTubeConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  Allows adjustment of the how much distortion is applied to the original signal.
@@ -139,7 +155,7 @@ export type StompboxTubeConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 12
+   * default | 10.81
    * range | [0.10000000149011612, 12]*/
   drive?: number
   /**
@@ -148,7 +164,7 @@ export type StompboxTubeConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0
+   * default | 8
    * range | [-10, 10]*/
   tone?: number
   /**

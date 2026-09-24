@@ -63,7 +63,7 @@ export type MixerDelayAux = {
    *
    * key | value
    * --- | ---
-   * default | 0.30000001192092896
+   * default | 0.3
    * range | [0, 0.800000011920929]
    * is | {@link api.TargetType.AutomatableParameter}*/
   feedbackFactor: PrimitiveField<number, "mut">
@@ -123,7 +123,7 @@ export type MixerDelayAuxConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.30000001192092896
+   * default | 0.3
    * range | [0, 0.800000011920929]*/
   feedbackFactor?: number
   /**

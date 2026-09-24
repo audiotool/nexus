@@ -1,0 +1,25 @@
+{
+  "name": "nexus-showroom",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Nexus SDK Showcase - demonstrating the full capabilities of the Audiotool Nexus SDK",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview --port 5173"
+  },
+  "devDependencies": {
+    "@types/node": "^24.3.0",
+    "@types/prismjs": "^1.26.6",
+    "typescript": "~5.9.3",
+    "vite": "npm:rolldown-vite@7.2.5"
+  },
+  "overrides": {
+    "vite": "npm:rolldown-vite@7.2.5"
+  },
+  "dependencies": {
+    "@audiotool/nexus": "file:../..",
+    "prismjs": "^1.30.0"
+  }
+}

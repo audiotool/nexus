@@ -29,6 +29,7 @@ describe("FieldQuery", () => {
       context.flanger.fields.delayTimeMs,
       context.flanger.fields.lfoModulationDepth,
       context.flanger.fields.lfoFrequencyHz,
+      context.flanger.fields.mix,
       context.flanger.fields.isActive,
       context.flanger.fields.audioOutput,
       context.flanger.fields.audioInput,
@@ -66,6 +67,7 @@ describe("FieldQuery", () => {
         context.flanger.fields.delayTimeMs,
         context.flanger.fields.lfoModulationDepth,
         context.flanger.fields.lfoFrequencyHz,
+        context.flanger.fields.mix,
         context.flanger.fields.isActive,
         context.flanger.fields.audioInput,
         context.flanger.fields.audioOutput,
@@ -95,6 +97,7 @@ describe("FieldQuery", () => {
         context.flanger.fields.delayTimeMs,
         context.flanger.fields.lfoModulationDepth,
         context.flanger.fields.lfoFrequencyHz,
+        context.flanger.fields.mix,
         context.flanger.fields.isActive,
       ])
     })
@@ -114,6 +117,7 @@ describe("FieldQuery", () => {
         context.flanger.fields.delayTimeMs,
         context.flanger.fields.lfoModulationDepth,
         context.flanger.fields.lfoFrequencyHz,
+        context.flanger.fields.mix,
         context.flanger.fields.isActive,
         context.flanger.fields.audioInput,
         context.flanger.fields.audioOutput,
@@ -152,6 +156,7 @@ describe("FieldQuery", () => {
         context.flanger.fields.delayTimeMs,
         context.flanger.fields.lfoModulationDepth,
         context.flanger.fields.lfoFrequencyHz,
+        context.flanger.fields.mix,
         context.flanger.fields.isActive,
       ])
     })
@@ -167,6 +172,7 @@ describe("FieldQuery", () => {
         context.flanger.fields.delayTimeMs,
         context.flanger.fields.lfoModulationDepth,
         context.flanger.fields.lfoFrequencyHz,
+        context.flanger.fields.mix,
         context.flanger.fields.isActive,
       ])
     })

@@ -162,6 +162,145 @@ export class ListUsersResponse extends Message<ListUsersResponse> {
 }
 
 /**
+ * Request for UserService.ListMutualUsers.
+ *
+ * @generated from message audiotool.user.v1.ListMutualUsersRequest
+ */
+export class ListMutualUsersRequest extends Message<ListMutualUsersRequest> {
+  /**
+   * The standard CEL filter.
+   *
+   * Supported fields:
+   * - user.name
+   * - user.display_name
+   * - user.create_time
+   * - user.description
+   * - user.tags
+   * - user.links
+   * - user.num_tracks
+   * - user.num_albums
+   * - user.num_followers
+   * - user.num_following
+   *
+   * @generated from field: string filter = 1;
+   */
+  filter = "";
+
+  /**
+   * The maximum number of items to return.
+   *
+   * @generated from field: int32 page_size = 2;
+   */
+  pageSize = 0;
+
+  /**
+   * The next_page_token value returned from a previous List request, if any.
+   *
+   * @generated from field: string page_token = 3;
+   */
+  pageToken = "";
+
+  /**
+   * The order to list results by.
+   *
+   * Supported fields:
+   * - user.name
+   * - user.display_name
+   * - user.create_time
+   * - user.description
+   * - user.tags
+   * - user.links
+   * - user.num_tracks
+   * - user.num_albums
+   * - user.num_followers
+   * - user.num_following
+   *
+   * @generated from field: string order_by = 4;
+   */
+  orderBy = "";
+
+  constructor(data?: PartialMessage<ListMutualUsersRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "audiotool.user.v1.ListMutualUsersRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "filter", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 2, name: "page_size", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
+    { no: 3, name: "page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 4, name: "order_by", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListMutualUsersRequest {
+    return new ListMutualUsersRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ListMutualUsersRequest {
+    return new ListMutualUsersRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ListMutualUsersRequest {
+    return new ListMutualUsersRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ListMutualUsersRequest | PlainMessage<ListMutualUsersRequest> | undefined, b: ListMutualUsersRequest | PlainMessage<ListMutualUsersRequest> | undefined): boolean {
+    return proto3.util.equals(ListMutualUsersRequest, a, b);
+  }
+}
+
+/**
+ * Response for UserService.ListMutualUsers.
+ *
+ * @generated from message audiotool.user.v1.ListMutualUsersResponse
+ */
+export class ListMutualUsersResponse extends Message<ListMutualUsersResponse> {
+  /**
+   * The caller's mutual connections.
+   *
+   * @generated from field: repeated audiotool.user.v1.User users = 1;
+   */
+  users: User[] = [];
+
+  /**
+   * Token to retrieve the next page of results, or empty if there are no more results in the
+   * list.
+   *
+   * @generated from field: string next_page_token = 2;
+   */
+  nextPageToken = "";
+
+  constructor(data?: PartialMessage<ListMutualUsersResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "audiotool.user.v1.ListMutualUsersResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "users", kind: "message", T: User, repeated: true },
+    { no: 2, name: "next_page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListMutualUsersResponse {
+    return new ListMutualUsersResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ListMutualUsersResponse {
+    return new ListMutualUsersResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ListMutualUsersResponse {
+    return new ListMutualUsersResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ListMutualUsersResponse | PlainMessage<ListMutualUsersResponse> | undefined, b: ListMutualUsersResponse | PlainMessage<ListMutualUsersResponse> | undefined): boolean {
+    return proto3.util.equals(ListMutualUsersResponse, a, b);
+  }
+}
+
+/**
  * Request for UserService.GetUser.
  *
  * @generated from message audiotool.user.v1.GetUserRequest

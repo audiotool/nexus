@@ -10,6 +10,6 @@ export const gakkiDefaults: Defaults<GakkiConstructor> = {
   ...defaultDisplayParams,
   displayName: "Gakki",
   soundfontId: DEFAULT_GAKKI_SOUND_FONT_ID,
-  gain: 0.6,
+  gain: 1,
   presetName: "",
 }

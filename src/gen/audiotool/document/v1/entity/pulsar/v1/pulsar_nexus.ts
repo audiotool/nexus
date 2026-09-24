@@ -27,7 +27,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type Pulsar = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Pulsar Delay"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -50,7 +54,11 @@ export type Pulsar = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  Semibreve (music time) duration of the pre-delay of the left channel.
@@ -72,7 +80,7 @@ export type Pulsar = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 6
    * range | [1, 12]
    * is | {@link api.TargetType.AutomatableParameter}*/
   preDelayLeftTimeSemibreveIndex: PrimitiveField<number, "mut">
@@ -117,7 +125,7 @@ export type Pulsar = {
    *
    * key | value
    * --- | ---
-   * default | 3
+   * default | 1
    * range | [1, 12]
    * is | {@link api.TargetType.AutomatableParameter}*/
   preDelayRightTimeSemibreveIndex: PrimitiveField<number, "mut">
@@ -162,7 +170,7 @@ export type Pulsar = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 6
    * range | [1, 12]
    * is | {@link api.TargetType.AutomatableParameter}*/
   feedbackDelayTimeSemibreveIndex: PrimitiveField<number, "mut">
@@ -202,7 +210,7 @@ export type Pulsar = {
    *
    * key | value
    * --- | ---
-   * default | 0.699999988079071
+   * default | 0.624
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   feedbackFactor: PrimitiveField<number, "mut">
@@ -215,7 +223,7 @@ export type Pulsar = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 0.801
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   stereoCrossFactor: PrimitiveField<number, "mut">
@@ -255,7 +263,7 @@ export type Pulsar = {
    *
    * key | value
    * --- | ---
-   * default | 0.699999988079071
+   * default | 0.336
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   wetGain: PrimitiveField<number, "mut">
@@ -290,7 +298,11 @@ export type Pulsar = {
 export type PulsarConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Pulsar Delay"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -313,7 +325,11 @@ export type PulsarConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  Semibreve (music time) duration of the pre-delay of the left channel.
@@ -335,7 +351,7 @@ export type PulsarConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 6
    * range | [1, 12]*/
   preDelayLeftTimeSemibreveIndex?: number
   /**
@@ -377,7 +393,7 @@ export type PulsarConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 3
+   * default | 1
    * range | [1, 12]*/
   preDelayRightTimeSemibreveIndex?: number
   /**
@@ -419,7 +435,7 @@ export type PulsarConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 6
    * range | [1, 12]*/
   feedbackDelayTimeSemibreveIndex?: number
   /**
@@ -455,7 +471,7 @@ export type PulsarConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.699999988079071
+   * default | 0.624
    * range | [0, 1]*/
   feedbackFactor?: number
   /**
@@ -467,7 +483,7 @@ export type PulsarConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 0.801
    * range | [0, 1]*/
   stereoCrossFactor?: number
   /**
@@ -503,7 +519,7 @@ export type PulsarConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.699999988079071
+   * default | 0.336
    * range | [0, 1]*/
   wetGain?: number
   /**

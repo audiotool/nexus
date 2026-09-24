@@ -5,8 +5,8 @@ import { defaultDisplayParams } from "./shared"
 export const stompboxTubeDefaults: Defaults<StompboxTubeConstructor> = {
   ...defaultDisplayParams,
   displayName: "Tube",
-  drive: 12,
-  tone: 0,
+  drive: 10.8100004196167,
+  tone: 8,
   postGain: 1,
   isActive: true,
   presetName: "",

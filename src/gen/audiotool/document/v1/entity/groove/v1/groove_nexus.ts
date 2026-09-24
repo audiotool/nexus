@@ -74,7 +74,11 @@ export type Groove = {
   impact: PrimitiveField<number, "mut">
   /**
    *  The user-assigned name of the groove.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   displayName: PrimitiveField<string, "mut">
 }
 /** @internal */
@@ -123,7 +127,11 @@ export type GrooveConstructor = {
   impact?: number
   /**
    *  The user-assigned name of the groove.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   displayName?: string
 }
 

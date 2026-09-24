@@ -63,7 +63,7 @@ export type Note = {
    *
    * key | value
    * --- | ---
-   * default | 0.699999988079071
+   * default | 0.7
    * range | [0, 1]*/
   velocity: PrimitiveField<number, "mut">
   /**
@@ -124,7 +124,7 @@ export type NoteConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.699999988079071
+   * default | 0.7
    * range | [0, 1]*/
   velocity?: number
   /**

@@ -25,7 +25,11 @@ export type MixerStripDisplayParameters = {
   orderAmongStrips: PrimitiveField<number, "mut">
   /**
    *  Strip display name. If left empty, the DAW will use other relevant information to show a name.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  Color of the strip.
@@ -51,7 +55,11 @@ export type MixerStripDisplayParametersConstructor = {
   orderAmongStrips?: number
   /**
    *  Strip display name. If left empty, the DAW will use other relevant information to show a name.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   displayName?: string
   /**
    *  Color of the strip.

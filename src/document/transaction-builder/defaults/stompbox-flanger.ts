@@ -5,10 +5,11 @@ import { defaultDisplayParams } from "./shared"
 export const stompboxFlangerDefaults: Defaults<StompboxFlangerConstructor> = {
   ...defaultDisplayParams,
   displayName: "Flanger",
-  delayTimeMs: 3,
-  feedbackFactor: 1,
-  lfoFrequencyHz: 0.03999999910593033,
-  lfoModulationDepth: 1,
+  delayTimeMs: 1,
+  feedbackFactor: 0,
+  lfoFrequencyHz: 0.13232196867465973,
+  lfoModulationDepth: 0.740399956703186,
   isActive: true,
   presetName: "",
+  mix: 0,
 }

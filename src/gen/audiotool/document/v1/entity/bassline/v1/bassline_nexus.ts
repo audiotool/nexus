@@ -22,7 +22,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type Bassline = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Bassline"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -45,7 +49,11 @@ export type Bassline = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  This device's output gain. Equivalent to a dB range of [-inf, 0.0].
@@ -53,7 +61,7 @@ export type Bassline = {
    *
    * key | value
    * --- | ---
-   * default | 0.7079399824142456
+   * default | 1
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   gain: PrimitiveField<number, "mut">
@@ -94,7 +102,7 @@ export type Bassline = {
    *
    * key | value
    * --- | ---
-   * default | 0.10000000149011612
+   * default | 0.1
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   filterEnvelopeModulationDepth: PrimitiveField<number, "mut">
@@ -194,7 +202,11 @@ export type Bassline = {
 export type BasslineConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Bassline"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -217,7 +229,11 @@ export type BasslineConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  This device's output gain. Equivalent to a dB range of [-inf, 0.0].
@@ -225,7 +241,7 @@ export type BasslineConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.7079399824142456
+   * default | 1
    * range | [0, 1]*/
   gain?: number
   /**
@@ -262,7 +278,7 @@ export type BasslineConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.10000000149011612
+   * default | 0.1
    * range | [0, 1]*/
   filterEnvelopeModulationDepth?: number
   /**

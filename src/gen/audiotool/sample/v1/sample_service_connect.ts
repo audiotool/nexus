@@ -112,8 +112,11 @@ export const SampleService = {
     /**
      * Deletes a sample.
      *
-     * A sample can be deleted if it is not used by a project (document-service) and if the user has
-     * the correct permissions.
+     * Always succeeds for the sample owner. If the sample is not used by any project
+     * (document-service), the resource is fully removed. If it is still in use, it is taken down
+     * instead: the resource is kept so existing references stay valid, usage is forced to
+     * SAMPLE_USAGE_UNLISTED, all audio and waveform URL fields are cleared, and takedown_reason is
+     * set to SAMPLE_TAKEDOWN_REASON_BY_USER. The response tells both cases apart.
      *
      * @generated from rpc audiotool.sample.v1.SampleService.DeleteSample
      */

@@ -29,8 +29,8 @@ const defaultTrimFilter = {
 }
 
 const defaultCompressor = {
-  attackMs: 15,
-  releaseMs: 100,
+  attackMs: 5,
+  releaseMs: 50,
   makeupGainDb: 0,
   detectionModeIndex: 1,
   ratio: 2,
@@ -69,6 +69,7 @@ export const mixerChannelDefaults: Defaults<MixerChannelConstructor> = {
   compressor: defaultCompressor,
   eq: defaultEq,
   auxSendsAreActive: true,
+  auxSendsArePreGain: false,
   faderParameters: defaultFaderParameters,
 }
 
@@ -88,6 +89,7 @@ export const mixerGroupDefaults: Defaults<MixerGroupConstructor> = {
   compressor: defaultCompressor,
   eq: defaultEq,
   auxSendsAreActive: true,
+  auxSendsArePreGain: false,
   faderParameters: defaultFaderParameters,
 }
 

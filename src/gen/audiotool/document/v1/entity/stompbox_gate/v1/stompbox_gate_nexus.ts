@@ -21,7 +21,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type StompboxGate = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Gate"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -44,7 +48,11 @@ export type StompboxGate = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  Sets the amount of time for the Gate to change from open to closed, can give the effect of the sound fading in.
@@ -105,7 +113,7 @@ export type StompboxGate = {
    *
    * key | value
    * --- | ---
-   * default | 0.6665999889373779
+   * default | 0.1
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   thresholdGain: PrimitiveField<number, "mut">
@@ -148,7 +156,11 @@ export type StompboxGate = {
 export type StompboxGateConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Gate"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -171,7 +183,11 @@ export type StompboxGateConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  Sets the amount of time for the Gate to change from open to closed, can give the effect of the sound fading in.
@@ -227,7 +243,7 @@ export type StompboxGateConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.6665999889373779
+   * default | 0.1
    * range | [0, 1]*/
   thresholdGain?: number
   /**

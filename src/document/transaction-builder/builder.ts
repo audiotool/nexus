@@ -193,8 +193,8 @@ export type TransactionBuilder = {
    * t.applyPresetTo(device, preset)
    * ```
    *
-   * Useful together with {@link PresetsAPI.getInstrument} /
-   * {@link PresetsAPI.getDrums}:
+   * Useful together with {@link api.PresetsAPI.getInstrument} /
+   * {@link api.PresetsAPI.getDrums}:
    * ```ts
    * const frenchHorn = await client.presets.getInstrument("french-horn")
    * await nexus.modify((t) => {

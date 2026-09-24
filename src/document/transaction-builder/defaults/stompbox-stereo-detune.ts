@@ -10,4 +10,5 @@ export const stompboxStereoDetuneDefaults: Defaults<StompboxStereoDetuneConstruc
     delayTimeMs: 14,
     isActive: true,
     presetName: "",
+    mix: 0,
   }

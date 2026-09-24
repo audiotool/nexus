@@ -21,7 +21,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type StompboxParametricEqualizer = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Parametric EQ"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -44,7 +48,11 @@ export type StompboxParametricEqualizer = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  The center frequency of the range being EQ'd.
@@ -62,7 +70,7 @@ export type StompboxParametricEqualizer = {
    *
    * key | value
    * --- | ---
-   * default | 0.15000000596046448
+   * default | 0.15
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   bandwidthFactor: PrimitiveField<number, "mut">
@@ -107,7 +115,11 @@ export type StompboxParametricEqualizer = {
 export type StompboxParametricEqualizerConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Parametric EQ"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -130,7 +142,11 @@ export type StompboxParametricEqualizerConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  The center frequency of the range being EQ'd.
@@ -147,7 +163,7 @@ export type StompboxParametricEqualizerConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.15000000596046448
+   * default | 0.15
    * range | [0, 1]*/
   bandwidthFactor?: number
   /**

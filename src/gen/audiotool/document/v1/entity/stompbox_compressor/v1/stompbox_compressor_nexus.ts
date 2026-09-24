@@ -21,7 +21,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type StompboxCompressor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Compressor"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -44,7 +48,11 @@ export type StompboxCompressor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  Attack speed of the compressor.
@@ -52,7 +60,7 @@ export type StompboxCompressor = {
    *
    * key | value
    * --- | ---
-   * default | 5
+   * default | 10
    * range | [1, 100]
    * is | {@link api.TargetType.AutomatableParameter}*/
   attackMs: PrimitiveField<number, "mut">
@@ -62,7 +70,7 @@ export type StompboxCompressor = {
    *
    * key | value
    * --- | ---
-   * default | 25
+   * default | 50
    * range | [1, 600]
    * is | {@link api.TargetType.AutomatableParameter}*/
   releaseMs: PrimitiveField<number, "mut">
@@ -72,7 +80,7 @@ export type StompboxCompressor = {
    *
    * key | value
    * --- | ---
-   * default | 0
+   * default | 1.4838909
    * range | [-12, 12]
    * is | {@link api.TargetType.AutomatableParameter}*/
   makeupGainDb: PrimitiveField<number, "mut">
@@ -85,7 +93,7 @@ export type StompboxCompressor = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 2
    * range | [1, 2]
    * is | {@link api.TargetType.AutomatableParameter}*/
   detectionModeIndex: PrimitiveField<number, "mut">
@@ -95,7 +103,7 @@ export type StompboxCompressor = {
    *
    * key | value
    * --- | ---
-   * default | 0.4000000059604645
+   * default | 0.6015
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   ratio: PrimitiveField<number, "mut">
@@ -105,7 +113,7 @@ export type StompboxCompressor = {
    *
    * key | value
    * --- | ---
-   * default | -15
+   * default | -24
    * range | [-24, 0]
    * is | {@link api.TargetType.AutomatableParameter}*/
   thresholdDb: PrimitiveField<number, "mut">
@@ -148,7 +156,11 @@ export type StompboxCompressor = {
 export type StompboxCompressorConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Compressor"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -171,7 +183,11 @@ export type StompboxCompressorConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  Attack speed of the compressor.
@@ -179,7 +195,7 @@ export type StompboxCompressorConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 5
+   * default | 10
    * range | [1, 100]*/
   attackMs?: number
   /**
@@ -188,7 +204,7 @@ export type StompboxCompressorConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 25
+   * default | 50
    * range | [1, 600]*/
   releaseMs?: number
   /**
@@ -197,7 +213,7 @@ export type StompboxCompressorConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0
+   * default | 1.4838909
    * range | [-12, 12]*/
   makeupGainDb?: number
   /**
@@ -209,7 +225,7 @@ export type StompboxCompressorConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 2
    * range | [1, 2]*/
   detectionModeIndex?: number
   /**
@@ -218,7 +234,7 @@ export type StompboxCompressorConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.4000000059604645
+   * default | 0.6015
    * range | [0, 1]*/
   ratio?: number
   /**
@@ -227,7 +243,7 @@ export type StompboxCompressorConstructor = {
    *
    * key | value
    * --- | ---
-   * default | -15
+   * default | -24
    * range | [-24, 0]*/
   thresholdDb?: number
   /**

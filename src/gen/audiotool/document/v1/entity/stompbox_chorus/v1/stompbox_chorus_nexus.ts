@@ -21,7 +21,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type StompboxChorus = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Chorus"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -44,7 +48,11 @@ export type StompboxChorus = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  Allows control of the Chorus' short delay. Higher values results in a more
@@ -74,7 +82,7 @@ export type StompboxChorus = {
    *
    * key | value
    * --- | ---
-   * default | 0.33329999446868896
+   * default | 0.1
    * range | [0.10000000149011612, 5]
    * is | {@link api.TargetType.AutomatableParameter}*/
   lfoFrequencyHz: PrimitiveField<number, "mut">
@@ -84,7 +92,7 @@ export type StompboxChorus = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 0.49
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   lfoModulationDepth: PrimitiveField<number, "mut">
@@ -94,10 +102,21 @@ export type StompboxChorus = {
    *
    * key | value
    * --- | ---
-   * default | 0
+   * default | 0.505
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   spreadFactor: PrimitiveField<number, "mut">
+  /**
+   *  Controls the mix between the incoming and the effect signal. -1.0 ("dry") means 0% effect
+   *  applied, 0.0 ("wet") means 100% effect applied; values between mixes the two linearly.
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | 0
+   * range | [-1, 0]
+   * is | {@link api.TargetType.AutomatableParameter}*/
+  mix: PrimitiveField<number, "mut">
   /**
    *  Whether the stompbox is active or not. When is_active=false, audio signal bypasses the device
    *
@@ -129,7 +148,11 @@ export type StompboxChorus = {
 export type StompboxChorusConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Chorus"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -152,7 +175,11 @@ export type StompboxChorusConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  Allows control of the Chorus' short delay. Higher values results in a more
@@ -180,7 +207,7 @@ export type StompboxChorusConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.33329999446868896
+   * default | 0.1
    * range | [0.10000000149011612, 5]*/
   lfoFrequencyHz?: number
   /**
@@ -189,7 +216,7 @@ export type StompboxChorusConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 0.49
    * range | [0, 1]*/
   lfoModulationDepth?: number
   /**
@@ -198,9 +225,19 @@ export type StompboxChorusConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0
+   * default | 0.505
    * range | [0, 1]*/
   spreadFactor?: number
+  /**
+   *  Controls the mix between the incoming and the effect signal. -1.0 ("dry") means 0% effect
+   *  applied, 0.0 ("wet") means 100% effect applied; values between mixes the two linearly.
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | 0
+   * range | [-1, 0]*/
+  mix?: number
   /**
    *  Whether the stompbox is active or not. When is_active=false, audio signal bypasses the device
    *

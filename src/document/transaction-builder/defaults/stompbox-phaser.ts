@@ -5,11 +5,11 @@ import { defaultDisplayParams } from "./shared"
 export const stompboxPhaserDefaults: Defaults<StompboxPhaserConstructor> = {
   ...defaultDisplayParams,
   displayName: "Phaser",
-  minFrequencyHz: 240,
-  maxFrequencyHz: 3000,
-  feedbackFactor: 0.7,
-  lfoFrequencyHz: 0.6,
-  mix: 1,
+  minFrequencyHz: 30,
+  maxFrequencyHz: 378.484375,
+  feedbackFactor: 0.7291666865348816,
+  lfoFrequencyHz: 0.3618587553501129,
+  mix: 0.2695000171661377,
   isActive: true,
   presetName: "",
 }

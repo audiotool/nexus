@@ -70,7 +70,7 @@ export type MixerChannel = {
    *
    * key | value
    * --- | ---
-   * default | 0.39810699224472046
+   * default | 0.398107
    * range | [0, 7.943282127380371]
    * is | {@link api.TargetType.AutomatableParameter}*/
   preGain: PrimitiveField<number, "mut">
@@ -103,6 +103,14 @@ export type MixerChannel = {
    * --- | ---
    * default | true*/
   auxSendsAreActive: PrimitiveField<boolean, "mut">
+  /**
+   *  true if aux sends are branched off before post fain fader (default: they aren't)
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | false*/
+  auxSendsArePreGain: PrimitiveField<boolean, "mut">
   /**
    *  Sends to the aux strip.
    *
@@ -137,7 +145,7 @@ export type MixerChannelConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.39810699224472046
+   * default | 0.398107
    * range | [0, 7.943282127380371]*/
   preGain?: number
   /**
@@ -168,6 +176,14 @@ export type MixerChannelConstructor = {
    * --- | ---
    * default | true*/
   auxSendsAreActive?: boolean
+  /**
+   *  true if aux sends are branched off before post fain fader (default: they aren't)
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | false*/
+  auxSendsArePreGain?: boolean
   /**
    *  Fader parameters of this strip.
    */

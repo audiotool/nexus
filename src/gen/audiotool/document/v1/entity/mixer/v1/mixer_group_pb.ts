@@ -89,6 +89,13 @@ export class MixerGroup extends Message<MixerGroup> {
   auxSendsAreActive = false;
 
   /**
+   * true if aux sends are branched off before post fain fader (default: they aren't)
+   *
+   * @generated from field: bool aux_sends_are_pre_gain = 12;
+   */
+  auxSendsArePreGain = false;
+
+  /**
    * Sends to the aux strip.
    *
    * @generated from field: audiotool.document.v1.Empty aux_send = 9;
@@ -125,6 +132,7 @@ export class MixerGroup extends Message<MixerGroup> {
     { no: 6, name: "insert_output", kind: "message", T: Empty },
     { no: 7, name: "insert_input", kind: "message", T: Empty },
     { no: 8, name: "aux_sends_are_active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 12, name: "aux_sends_are_pre_gain", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 9, name: "aux_send", kind: "message", T: Empty },
     { no: 10, name: "side_chain_output", kind: "message", T: Empty },
     { no: 11, name: "fader_parameters", kind: "message", T: MixerStripFaderParameters },

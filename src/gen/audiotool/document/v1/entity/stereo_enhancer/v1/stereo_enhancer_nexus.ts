@@ -22,7 +22,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type StereoEnhancer = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Stereo Enhancer"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -45,7 +49,11 @@ export type StereoEnhancer = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  If this is true, the delay is applied to the right channel.
@@ -62,7 +70,7 @@ export type StereoEnhancer = {
    *
    * key | value
    * --- | ---
-   * default | 11000
+   * default | 5678.9253
    * range | [32.70000076293945, 16744.0390625]
    * is | {@link api.TargetType.AutomatableParameter}*/
   frequencyHz: PrimitiveField<number, "mut">
@@ -75,7 +83,7 @@ export type StereoEnhancer = {
    *
    * key | value
    * --- | ---
-   * default | 0.25
+   * default | 1
    * range | [-1, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   stereoWidth: PrimitiveField<number, "mut">
@@ -110,7 +118,11 @@ export type StereoEnhancer = {
 export type StereoEnhancerConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Stereo Enhancer"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -133,7 +145,11 @@ export type StereoEnhancerConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  If this is true, the delay is applied to the right channel.
@@ -149,7 +165,7 @@ export type StereoEnhancerConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 11000
+   * default | 5678.9253
    * range | [32.70000076293945, 16744.0390625]*/
   frequencyHz?: number
   /**
@@ -161,7 +177,7 @@ export type StereoEnhancerConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.25
+   * default | 1
    * range | [-1, 1]*/
   stereoWidth?: number
   /**

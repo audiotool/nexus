@@ -22,7 +22,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type Beatbox9 = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Beatbox 9"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -45,7 +49,11 @@ export type Beatbox9 = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  This device's output gain. Equivalent to a dB range of [-inf, 0.0].
@@ -53,7 +61,7 @@ export type Beatbox9 = {
    *
    * key | value
    * --- | ---
-   * default | 0.7079457640647888
+   * default | 0.70794
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   gain: PrimitiveField<number, "mut">
@@ -155,7 +163,11 @@ export type Beatbox9 = {
 export type Beatbox9Constructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Beatbox 9"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -178,7 +190,11 @@ export type Beatbox9Constructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  This device's output gain. Equivalent to a dB range of [-inf, 0.0].
@@ -186,7 +202,7 @@ export type Beatbox9Constructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.7079457640647888
+   * default | 0.70794
    * range | [0, 1]*/
   gain?: number
   /**
@@ -681,7 +697,7 @@ export type Beatbox9Bassdrum = {
    *
    * key | value
    * --- | ---
-   * default | 0.6000000238418579
+   * default | 0.6
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   tone: PrimitiveField<number, "mut">
@@ -701,7 +717,7 @@ export type Beatbox9Bassdrum = {
    *
    * key | value
    * --- | ---
-   * default | 0.3149999976158142
+   * default | 0.315
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   decay: PrimitiveField<number, "mut">
@@ -732,7 +748,7 @@ export type Beatbox9BassdrumConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.6000000238418579
+   * default | 0.6
    * range | [0, 1]*/
   tone?: number
   /**
@@ -750,7 +766,7 @@ export type Beatbox9BassdrumConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.3149999976158142
+   * default | 0.315
    * range | [0, 1]*/
   decay?: number
 }
@@ -782,7 +798,7 @@ export type Beatbox9Snaredrum = {
    *
    * key | value
    * --- | ---
-   * default | 0.699999988079071
+   * default | 0.7
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   tune: PrimitiveField<number, "mut">
@@ -793,7 +809,7 @@ export type Beatbox9Snaredrum = {
    *
    * key | value
    * --- | ---
-   * default | 0.1837099939584732
+   * default | 0.18371
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   tone: PrimitiveField<number, "mut">
@@ -835,7 +851,7 @@ export type Beatbox9SnaredrumConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.699999988079071
+   * default | 0.7
    * range | [0, 1]*/
   tune?: number
   /**
@@ -845,7 +861,7 @@ export type Beatbox9SnaredrumConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.1837099939584732
+   * default | 0.18371
    * range | [0, 1]*/
   tone?: number
   /**
@@ -897,7 +913,7 @@ export type Beatbox9Tom = {
    *
    * key | value
    * --- | ---
-   * default | 0.6710000038146973
+   * default | 0.671
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   decay: PrimitiveField<number, "mut">
@@ -937,7 +953,7 @@ export type Beatbox9TomConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.6710000038146973
+   * default | 0.671
    * range | [0, 1]*/
   decay?: number
 }

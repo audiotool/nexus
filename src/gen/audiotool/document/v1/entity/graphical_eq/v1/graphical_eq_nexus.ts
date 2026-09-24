@@ -24,7 +24,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type GraphicalEQ = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Graphical EQ"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -47,7 +51,11 @@ export type GraphicalEQ = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  The first peak filter. In the DAW UI, parameters are shown to the left.
@@ -109,7 +117,11 @@ export type GraphicalEQ = {
 export type GraphicalEQConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Graphical EQ"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -132,7 +144,11 @@ export type GraphicalEQConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  The first peak filter. In the DAW UI, parameters are shown to the left.
@@ -198,7 +214,6 @@ export type GraphicalEQFilter = {
    *
    * key | value
    * --- | ---
-   * default | 3800
    * range | [32, 17000]
    * is | {@link api.TargetType.AutomatableParameter}*/
   frequencyHz: PrimitiveField<number, "mut">
@@ -208,7 +223,7 @@ export type GraphicalEQFilter = {
    *
    * key | value
    * --- | ---
-   * default | 0.07000000029802322
+   * default | 0.7386
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   q: PrimitiveField<number, "mut">
@@ -243,7 +258,6 @@ export type GraphicalEQFilterConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 3800
    * range | [32, 17000]*/
   frequencyHz?: number
   /**
@@ -252,7 +266,7 @@ export type GraphicalEQFilterConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.07000000029802322
+   * default | 0.7386
    * range | [0, 1]*/
   q?: number
   /**

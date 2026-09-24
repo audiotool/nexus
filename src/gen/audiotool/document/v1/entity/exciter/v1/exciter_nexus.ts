@@ -23,7 +23,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type Exciter = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Exciter"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -46,7 +50,11 @@ export type Exciter = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  Audio Input
@@ -70,7 +78,7 @@ export type Exciter = {
    *
    * key | value
    * --- | ---
-   * default | 3500
+   * default | 1266.0203
    * range | [20, 13000]
    * is | {@link api.TargetType.AutomatableParameter}*/
   toneFrequencyHz: PrimitiveField<number, "mut">
@@ -80,7 +88,7 @@ export type Exciter = {
    *
    * key | value
    * --- | ---
-   * default | 0.5
+   * default | 0.622
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   powerFactor: PrimitiveField<number, "mut">
@@ -91,7 +99,7 @@ export type Exciter = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 0.215296
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   mix: PrimitiveField<number, "mut">
@@ -110,7 +118,11 @@ export type Exciter = {
 export type ExciterConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Exciter"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -133,7 +145,11 @@ export type ExciterConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  The "tone" frequency is the frequency above which the exciter will add distortion to the signal.
@@ -141,7 +157,7 @@ export type ExciterConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 3500
+   * default | 1266.0203
    * range | [20, 13000]*/
   toneFrequencyHz?: number
   /**
@@ -150,7 +166,7 @@ export type ExciterConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.5
+   * default | 0.622
    * range | [0, 1]*/
   powerFactor?: number
   /**
@@ -160,7 +176,7 @@ export type ExciterConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 0.215296
    * range | [0, 1]*/
   mix?: number
   /**

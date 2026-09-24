@@ -1,4 +1,3 @@
-import { throw_ } from "@utils/lang"
 import type { NexusEntity } from "../entity"
 import { ArrayField, PrimitiveField, type PrimitiveType } from "../fields"
 import { NexusLocation } from "../location"
@@ -87,6 +86,8 @@ export const visitPointers = (
 
 /** Update a nexus field. Resolves the field and calls start/stop pointing
  * to at the right time if the value is a NexusLocation.
+ *
+ * Returns false and does nothing if the SDK doesn't know the field.
  */
 export const applyUpdate = <P extends PrimitiveType>(
   entity: NexusEntity,
@@ -98,17 +99,18 @@ export const applyUpdate = <P extends PrimitiveType>(
     /** Called if the update is on a NexusLocation & causes a pointer field to stop pointing to something */
     onStopPointingTo(from: NexusLocation, to: NexusLocation): void
   },
-) => {
-  const field =
-    entity._resolveField(location.fieldIndex) ??
-    throw_(`can't find updated field ${location}`)
+): boolean => {
+  const field = entity._resolveField(location.fieldIndex)
+  if (field === undefined) {
+    return false
+  }
   if (!(field instanceof PrimitiveField)) {
     throw "received update on non-primitive field"
   }
 
   if (!(value instanceof NexusLocation)) {
     field._setValue(value)
-    return
+    return true
   }
 
   const oldTarget = field.value as NexusLocation
@@ -124,4 +126,5 @@ export const applyUpdate = <P extends PrimitiveType>(
   if (!newTarget.isEmpty()) {
     callbacks?.onStartPointingTo(field.location, newTarget)
   }
+  return true
 }

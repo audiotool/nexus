@@ -26,8 +26,7 @@ describe("Create entity", () => {
         waveformIndex: 1,
         isActive: true,
       } satisfies PartialMessage<Bassline>)
-      // floating point error
-      expect(entity.gain).toBeCloseTo(0.70794)
+      expect(entity.gain).toBe(1)
 
       expect(isValidUUID(entity.id)).toBeTruthy()
     }

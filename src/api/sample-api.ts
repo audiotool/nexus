@@ -84,9 +84,6 @@ export type SamplePending = {
   /** Owner identifier in the form `users/{uuid}`. */
   readonly ownerName: string
 
-  /** Whether the authenticated user has favorited this sample. */
-  readonly favoritedByUser: boolean
-
   /** Number of users who have favorited this sample. */
   readonly numFavorites: number
 
@@ -562,7 +559,6 @@ const protoToSamplePending = (sample: Sample): SamplePending => ({
   displayName: sample.displayName,
   description: sample.description,
   ownerName: sample.ownerName,
-  favoritedByUser: sample.favoritedByUser,
   numFavorites: sample.numFavorites,
   numUsages: sample.numUsages,
   bpm: sample.bpm,

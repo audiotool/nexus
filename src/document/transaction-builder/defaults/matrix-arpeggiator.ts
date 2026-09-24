@@ -9,7 +9,7 @@ import { defaultDisplayParams } from "./shared"
 
 export const matrixArpeggiatorPatternStepDefaults: Defaults<MatrixArpeggiatorPatternStepConstructor> =
   {
-    overrideVelocity: false,
+    overrideVelocity: true,
     stepVelocity: 1,
     isMuted: false,
     isTied: false,

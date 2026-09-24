@@ -92,6 +92,10 @@ export const ProjectService = {
      *
      * Another optimistic approach is to trigger GetTrack with the returned track_name.
      *
+     * IMPORTANT: If mode is set to SYNC_TRACK_MODE_AUDIO or SYNC_TRACK_MODE_ALL, the
+     * returned operation will stall until DocumentService.RenderSyncTrackAudio is called
+     * which will trigger the actual rendering of the track.
+     *
      * @generated from rpc audiotool.project.v1.ProjectService.SyncTrack
      */
     syncTrack: {

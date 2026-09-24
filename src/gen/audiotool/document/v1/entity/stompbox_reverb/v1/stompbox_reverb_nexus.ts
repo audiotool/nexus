@@ -23,7 +23,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type StompboxReverb = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Reverb"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -46,7 +50,11 @@ export type StompboxReverb = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  Determines the size of the virtual enclosed space.
@@ -54,7 +62,7 @@ export type StompboxReverb = {
    *
    * key | value
    * --- | ---
-   * default | 0.800000011920929
+   * default | 0.42782173
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   roomSizeFactor: PrimitiveField<number, "mut">
@@ -74,7 +82,7 @@ export type StompboxReverb = {
    *
    * key | value
    * --- | ---
-   * default | 0.6669999957084656
+   * default | 0.58166295
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   feedbackFactor: PrimitiveField<number, "mut">
@@ -84,7 +92,7 @@ export type StompboxReverb = {
    *
    * key | value
    * --- | ---
-   * default | 0.10000000149011612
+   * default | 0.1
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   dampFactor: PrimitiveField<number, "mut">
@@ -95,7 +103,7 @@ export type StompboxReverb = {
    *
    * key | value
    * --- | ---
-   * default | 0.20000000298023224
+   * default | 0.08155759
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   mix: PrimitiveField<number, "mut">
@@ -130,7 +138,11 @@ export type StompboxReverb = {
 export type StompboxReverbConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Reverb"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -153,7 +165,11 @@ export type StompboxReverbConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  Determines the size of the virtual enclosed space.
@@ -161,7 +177,7 @@ export type StompboxReverbConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.800000011920929
+   * default | 0.42782173
    * range | [0, 1]*/
   roomSizeFactor?: number
   /**
@@ -179,7 +195,7 @@ export type StompboxReverbConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.6669999957084656
+   * default | 0.58166295
    * range | [0, 1]*/
   feedbackFactor?: number
   /**
@@ -188,7 +204,7 @@ export type StompboxReverbConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.10000000149011612
+   * default | 0.1
    * range | [0, 1]*/
   dampFactor?: number
   /**
@@ -198,7 +214,7 @@ export type StompboxReverbConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.20000000298023224
+   * default | 0.08155759
    * range | [0, 1]*/
   mix?: number
   /**

@@ -28,7 +28,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -40,7 +39,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -52,7 +50,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.7079399824142456,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -64,7 +61,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -76,7 +72,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -108,7 +103,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -120,7 +114,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -132,7 +125,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 2 },
     },
     fieldName: "blendModeIndex",
@@ -169,7 +161,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.6666666865348816,
       range: { min: 0, max: 1 },
     },
     fieldName: "x",
@@ -181,7 +172,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -0.5, max: 0.5 },
     },
     fieldName: "y",
@@ -209,7 +199,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -221,7 +210,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -233,7 +221,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 2 },
     },
     fieldName: "blendModeIndex",
@@ -270,7 +257,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.6666666865348816,
       range: { min: 0, max: 1 },
     },
     fieldName: "x",
@@ -282,7 +268,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -0.5, max: 0.5 },
     },
     fieldName: "y",
@@ -310,7 +295,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -322,7 +306,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -345,7 +328,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: 0, max: 1 },
     },
     fieldName: "thresholdGain",
@@ -357,7 +339,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 62.5,
       range: { min: 1, max: 2000 },
     },
     fieldName: "attackMs",
@@ -369,7 +350,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 62.5,
       range: { min: 1, max: 2000 },
     },
     fieldName: "sustainMs",
@@ -381,7 +361,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 62.5,
       range: { min: 1, max: 2000 },
     },
     fieldName: "releaseMs",
@@ -393,7 +372,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 0, max: 4 },
     },
     fieldName: "filterModeIndex",
@@ -405,7 +383,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 300,
       range: { min: 18, max: 10000 },
     },
     fieldName: "cutoffFrequencyHz",
@@ -417,7 +394,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: -1, max: 1 },
     },
     fieldName: "filterModulationDepth",
@@ -429,7 +405,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1.4142135381698608,
       range: { min: 0.009999999776482582, max: 1.4142135381698608 },
     },
     fieldName: "filterResonance",
@@ -441,7 +416,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 2.818382978439331 },
     },
     fieldName: "gain",
@@ -453,7 +427,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "mix",
@@ -480,9 +453,19 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
+  },
+  "autoFilter:20": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "number",
+      scalarType: ScalarType.UINT32,
+      range: { min: 0, max: 2 },
+    },
+    fieldName: "spectrumModeIndex",
   },
   bandSplitter: {
     type: "entity",
@@ -507,7 +490,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -519,7 +501,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -542,7 +523,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 360,
       range: { min: 20, max: 20000 },
     },
     fieldName: "filterLowHz",
@@ -554,7 +534,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 3600,
       range: { min: 20, max: 20000 },
     },
     fieldName: "filterHighHz",
@@ -566,7 +545,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 7.943282127380371 },
     },
     fieldName: "highGain",
@@ -583,7 +561,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 7.943282127380371 },
     },
     fieldName: "midGain",
@@ -600,7 +577,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 7.943282127380371 },
     },
     fieldName: "lowGain",
@@ -638,7 +614,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -650,7 +625,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -673,7 +647,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.7079399824142456,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -685,7 +658,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -12, max: 12 },
     },
     fieldName: "tuneSemitones",
@@ -697,7 +669,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 220,
       range: { min: 220, max: 12000 },
     },
     fieldName: "cutoffFrequencyHz",
@@ -709,7 +680,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "filterResonance",
@@ -721,7 +691,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.10000000149011612,
       range: { min: 0, max: 1 },
     },
     fieldName: "filterEnvelopeModulationDepth",
@@ -733,7 +702,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "filterDecay",
@@ -745,7 +713,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "accent",
@@ -757,7 +724,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 2 },
     },
     fieldName: "waveformIndex",
@@ -769,7 +735,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 27 },
     },
     fieldName: "patternIndex",
@@ -813,7 +778,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -851,7 +815,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 16,
       range: { min: 1, max: 99 },
     },
     fieldName: "length",
@@ -874,7 +837,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 36,
       range: { min: 36, max: 48 },
     },
     fieldName: "key",
@@ -886,7 +848,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "transposeOctaves",
@@ -898,7 +859,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -909,7 +869,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "doesSlide",
   },
@@ -920,7 +879,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isAccented",
   },
@@ -947,7 +905,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -959,7 +916,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -982,7 +938,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.7079457640647888,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -994,7 +949,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: 0, max: 1 },
     },
     fieldName: "accentAmount",
@@ -1006,7 +960,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -1028,7 +981,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: 0, max: 27 },
     },
     fieldName: "patternIndex",
@@ -1045,7 +997,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -1057,7 +1008,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.6000000238418579,
       range: { min: 0, max: 1 },
     },
     fieldName: "tone",
@@ -1069,7 +1019,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.2750000059604645,
       range: { min: 0, max: 1 },
     },
     fieldName: "decay",
@@ -1091,7 +1040,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -1103,7 +1051,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: 0, max: 1 },
     },
     fieldName: "tone",
@@ -1115,7 +1062,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "snappy",
@@ -1137,7 +1083,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -1149,7 +1094,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "tuning",
@@ -1161,7 +1105,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 2 },
     },
     fieldName: "instrumentTypeIndex",
@@ -1183,7 +1126,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -1195,7 +1137,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "tuning",
@@ -1207,7 +1148,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 2 },
     },
     fieldName: "instrumentTypeIndex",
@@ -1229,7 +1169,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -1241,7 +1180,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.6000000238418579,
       range: { min: 0, max: 1 },
     },
     fieldName: "tuning",
@@ -1253,7 +1191,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 2 },
     },
     fieldName: "instrumentTypeIndex",
@@ -1275,7 +1212,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -1287,7 +1223,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 2 },
     },
     fieldName: "instrumentTypeIndex",
@@ -1309,7 +1244,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -1321,7 +1255,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 2 },
     },
     fieldName: "instrumentTypeIndex",
@@ -1343,7 +1276,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -1365,7 +1297,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -1377,7 +1308,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "tone",
@@ -1389,7 +1319,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "decay",
@@ -1411,7 +1340,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -1423,7 +1351,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.8220000267028809,
       range: { min: 0, max: 1 },
     },
     fieldName: "decay",
@@ -1445,7 +1372,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -1499,7 +1425,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 16,
       range: { min: 1, max: 64 },
     },
     fieldName: "length",
@@ -1511,7 +1436,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 3,
       range: { min: 1, max: 4 },
     },
     fieldName: "stepScaleIndex",
@@ -1534,7 +1458,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "bassdrumIsActive",
   },
@@ -1545,7 +1468,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "snaredrumIsActive",
   },
@@ -1556,7 +1478,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "tomCongaLowIsActive",
   },
@@ -1567,7 +1488,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "tomCongaMidIsActive",
   },
@@ -1578,7 +1498,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "tomCongaHighIsActive",
   },
@@ -1589,7 +1508,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "rimClavesIsActive",
   },
@@ -1600,7 +1518,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "clapMaracasIsActive",
   },
@@ -1611,7 +1528,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "cowbellIsActive",
   },
@@ -1622,7 +1538,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "cymbalIsActive",
   },
@@ -1633,7 +1548,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "openHihatIsActive",
   },
@@ -1644,7 +1558,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "closedHihatIsActive",
   },
@@ -1655,7 +1568,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isAccented",
   },
@@ -1682,7 +1594,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -1694,7 +1605,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -1717,7 +1627,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.7079457640647888,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -1729,7 +1638,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: 0, max: 1 },
     },
     fieldName: "accentAmount",
@@ -1741,7 +1649,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -1763,7 +1670,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: 0, max: 27 },
     },
     fieldName: "patternIndex",
@@ -1780,7 +1686,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -1792,7 +1697,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.6000000238418579,
       range: { min: 0, max: 1 },
     },
     fieldName: "tone",
@@ -1804,7 +1708,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "attack",
@@ -1816,7 +1719,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.3149999976158142,
       range: { min: 0, max: 1 },
     },
     fieldName: "decay",
@@ -1838,7 +1740,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -1850,7 +1751,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.699999988079071,
       range: { min: 0, max: 1 },
     },
     fieldName: "tune",
@@ -1862,7 +1762,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.1837099939584732,
       range: { min: 0, max: 1 },
     },
     fieldName: "tone",
@@ -1874,7 +1773,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "snappy",
@@ -1896,7 +1794,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -1908,7 +1805,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "tune",
@@ -1920,7 +1816,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.6710000038146973,
       range: { min: 0, max: 1 },
     },
     fieldName: "decay",
@@ -1942,7 +1837,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -1954,7 +1848,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "tune",
@@ -1966,7 +1859,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.6710000038146973,
       range: { min: 0, max: 1 },
     },
     fieldName: "decay",
@@ -1988,7 +1880,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -2000,7 +1891,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "tune",
@@ -2012,7 +1902,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.6710000038146973,
       range: { min: 0, max: 1 },
     },
     fieldName: "decay",
@@ -2034,7 +1923,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -2056,7 +1944,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -2078,7 +1965,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -2090,7 +1976,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: 0, max: 1 },
     },
     fieldName: "closedDecay",
@@ -2102,7 +1987,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: 0, max: 1 },
     },
     fieldName: "openDecay",
@@ -2124,7 +2008,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -2136,7 +2019,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: 0, max: 1 },
     },
     fieldName: "tune",
@@ -2158,7 +2040,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -2170,7 +2051,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: 0, max: 1 },
     },
     fieldName: "tune",
@@ -2224,7 +2104,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 16,
       range: { min: 1, max: 64 },
     },
     fieldName: "length",
@@ -2236,7 +2115,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 3,
       range: { min: 1, max: 4 },
     },
     fieldName: "stepScaleIndex",
@@ -2259,7 +2137,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 2 },
     },
     fieldName: "bassdrumStepIndex",
@@ -2271,7 +2148,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 2 },
     },
     fieldName: "snaredrumStepIndex",
@@ -2283,7 +2159,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 2 },
     },
     fieldName: "tomLowStepIndex",
@@ -2295,7 +2170,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 2 },
     },
     fieldName: "tomMidStepIndex",
@@ -2307,7 +2181,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 2 },
     },
     fieldName: "tomHighStepIndex",
@@ -2319,7 +2192,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 2 },
     },
     fieldName: "rimStepIndex",
@@ -2331,7 +2203,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 2 },
     },
     fieldName: "clapStepIndex",
@@ -2343,7 +2214,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 2 },
     },
     fieldName: "closedHihatStepIndex",
@@ -2355,7 +2225,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 2 },
     },
     fieldName: "openHihatStepIndex",
@@ -2367,7 +2236,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 2 },
     },
     fieldName: "crashStepIndex",
@@ -2379,7 +2247,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 2 },
     },
     fieldName: "rideStepIndex",
@@ -2407,7 +2274,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -2419,7 +2285,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -2431,7 +2296,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "postGain",
@@ -2443,7 +2307,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -2460,7 +2323,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "sendGain",
@@ -2487,7 +2349,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "sendGain",
@@ -2530,7 +2391,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -Infinity, max: +Infinity },
     },
     fieldName: "orderAmongChannels",
@@ -2558,7 +2418,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 7.943282127380371 },
     },
     fieldName: "preGain",
@@ -2570,7 +2429,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -24, max: 24 },
     },
     fieldName: "eqHighGainDb",
@@ -2582,7 +2440,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1000,
       range: { min: 240, max: 4200 },
     },
     fieldName: "eqMidFrequency",
@@ -2594,7 +2451,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -24, max: 24 },
     },
     fieldName: "eqMidGainDb",
@@ -2606,7 +2462,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -24, max: 24 },
     },
     fieldName: "eqLowGainDb",
@@ -2618,7 +2473,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "aux1SendGain",
@@ -2630,7 +2484,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "aux2SendGain",
@@ -2642,7 +2495,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "useAuxPreMode",
   },
@@ -2653,7 +2505,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -2665,7 +2516,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "postGain",
@@ -2677,7 +2527,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -2688,7 +2537,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSoloed",
   },
@@ -2704,7 +2552,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 125,
       range: { min: 30, max: 1000 },
     },
     fieldName: "tempoBpm",
@@ -2716,8 +2563,7 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 440,
-      range: { min: 400, max: 800 },
+      range: { min: 300, max: 800 },
     },
     fieldName: "baseFrequencyHz",
   },
@@ -2728,7 +2574,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 4,
       range: { min: 1, max: 32 },
     },
     fieldName: "signatureNumerator",
@@ -2740,7 +2585,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 4,
       range: { min: 1, max: 32 },
     },
     fieldName: "signatureDenominator",
@@ -2752,7 +2596,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 1966080,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "durationTicks",
@@ -2791,7 +2634,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -2803,7 +2645,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -2826,7 +2667,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "postGain",
@@ -2838,7 +2678,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "crossfade",
@@ -2850,7 +2689,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -2862,7 +2700,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 3 },
     },
     fieldName: "blendModeIndex",
@@ -2879,7 +2716,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1.4125380516052246 },
     },
     fieldName: "preGain",
@@ -2891,7 +2727,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 260,
       range: { min: 20, max: 260 },
     },
     fieldName: "eqLowFrequencyHz",
@@ -2903,7 +2738,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -24, max: 12 },
     },
     fieldName: "eqLowGainDb",
@@ -2915,7 +2749,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "lowKillEnabled",
   },
@@ -2926,7 +2759,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1500,
       range: { min: 260, max: 4200 },
     },
     fieldName: "eqMidFrequencyHz",
@@ -2938,7 +2770,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -24, max: 12 },
     },
     fieldName: "eqMidGainDb",
@@ -2950,7 +2781,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "midKillEnabled",
   },
@@ -2961,7 +2791,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 4200,
       range: { min: 4200, max: 14000 },
     },
     fieldName: "eqHighFrequencyHz",
@@ -2973,7 +2802,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -24, max: 12 },
     },
     fieldName: "eqHighGainDb",
@@ -2985,7 +2813,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "highKillEnabled",
   },
@@ -3006,7 +2833,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1.4125380516052246 },
     },
     fieldName: "preGain",
@@ -3018,7 +2844,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 260,
       range: { min: 20, max: 260 },
     },
     fieldName: "eqLowFrequencyHz",
@@ -3030,7 +2855,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -24, max: 12 },
     },
     fieldName: "eqLowGainDb",
@@ -3042,7 +2866,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "lowKillEnabled",
   },
@@ -3053,7 +2876,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1500,
       range: { min: 260, max: 4200 },
     },
     fieldName: "eqMidFrequencyHz",
@@ -3065,7 +2887,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -24, max: 12 },
     },
     fieldName: "eqMidGainDb",
@@ -3077,7 +2898,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "midKillEnabled",
   },
@@ -3088,7 +2908,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 4200,
       range: { min: 4200, max: 14000 },
     },
     fieldName: "eqHighFrequencyHz",
@@ -3100,7 +2919,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -24, max: 12 },
     },
     fieldName: "eqHighGainDb",
@@ -3112,7 +2930,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "highKillEnabled",
   },
@@ -3149,7 +2966,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -3161,7 +2977,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -3184,7 +2999,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -24, max: 24 },
     },
     fieldName: "gainDb",
@@ -3196,7 +3010,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -3207,7 +3020,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 3 },
     },
     fieldName: "spectrumModeIndex",
@@ -3224,19 +3036,17 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 40,
       range: { min: 20, max: 20000 },
     },
     fieldName: "cutoffFrequencyHz",
   },
   "curve:8:2": {
     type: "primitive",
-    targetTypes: [],
+    targetTypes: ["AutomatableParameter"],
     immutable: false,
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 4 },
     },
     fieldName: "filterSlopeIndex",
@@ -3248,7 +3058,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.7099999785423279,
       range: { min: 0.009999999776482582, max: 10 },
     },
     fieldName: "q",
@@ -3260,7 +3069,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isEnabled",
   },
@@ -3276,19 +3084,17 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 40,
       range: { min: 20, max: 20000 },
     },
     fieldName: "cutoffFrequencyHz",
   },
   "curve:9:2": {
     type: "primitive",
-    targetTypes: [],
+    targetTypes: ["AutomatableParameter"],
     immutable: false,
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 4 },
     },
     fieldName: "filterSlopeIndex",
@@ -3300,7 +3106,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.7099999785423279,
       range: { min: 0.009999999776482582, max: 10 },
     },
     fieldName: "q",
@@ -3312,7 +3117,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isEnabled",
   },
@@ -3328,7 +3132,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 10000,
       range: { min: 20, max: 20000 },
     },
     fieldName: "centerFrequencyHz",
@@ -3340,7 +3143,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -40, max: 40 },
     },
     fieldName: "gainDb",
@@ -3352,7 +3154,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isEnabled",
   },
@@ -3368,7 +3169,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 10000,
       range: { min: 20, max: 20000 },
     },
     fieldName: "centerFrequencyHz",
@@ -3380,7 +3180,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -40, max: 40 },
     },
     fieldName: "gainDb",
@@ -3392,7 +3191,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isEnabled",
   },
@@ -3408,7 +3206,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 4000,
       range: { min: 20, max: 20000 },
     },
     fieldName: "centerFrequencyHz",
@@ -3420,7 +3217,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -40, max: 40 },
     },
     fieldName: "gainDb",
@@ -3432,7 +3228,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0.009999999776482582, max: 10 },
     },
     fieldName: "q",
@@ -3444,7 +3239,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isEnabled",
   },
@@ -3460,7 +3254,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 4000,
       range: { min: 20, max: 20000 },
     },
     fieldName: "centerFrequencyHz",
@@ -3472,7 +3265,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -40, max: 40 },
     },
     fieldName: "gainDb",
@@ -3484,7 +3276,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0.009999999776482582, max: 10 },
     },
     fieldName: "q",
@@ -3496,7 +3287,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isEnabled",
   },
@@ -3512,7 +3302,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 4000,
       range: { min: 20, max: 20000 },
     },
     fieldName: "centerFrequencyHz",
@@ -3524,7 +3313,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -40, max: 40 },
     },
     fieldName: "gainDb",
@@ -3536,7 +3324,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0.009999999776482582, max: 10 },
     },
     fieldName: "q",
@@ -3548,7 +3335,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isEnabled",
   },
@@ -3596,7 +3382,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 41 },
     },
     fieldName: "colorIndex",
@@ -3635,7 +3420,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 41 },
     },
     fieldName: "colorIndex",
@@ -3663,7 +3447,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -3675,7 +3458,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -3708,7 +3490,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 3500,
       range: { min: 20, max: 13000 },
     },
     fieldName: "toneFrequencyHz",
@@ -3720,7 +3501,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: 0, max: 1 },
     },
     fieldName: "powerFactor",
@@ -3732,7 +3512,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "mix",
@@ -3744,7 +3523,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -3771,7 +3549,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -3783,7 +3560,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -3817,7 +3593,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.6000000238418579,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -3866,7 +3641,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -3878,7 +3652,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -3915,7 +3688,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -3942,7 +3714,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -3954,7 +3725,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -3982,7 +3752,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -18, max: 18 },
     },
     fieldName: "gainDb",
@@ -3994,7 +3763,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 3800,
       range: { min: 32, max: 17000 },
     },
     fieldName: "frequencyHz",
@@ -4006,7 +3774,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.07000000029802322,
       range: { min: 0, max: 1 },
     },
     fieldName: "q",
@@ -4018,7 +3785,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "stereoSeparation",
@@ -4035,7 +3801,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -18, max: 18 },
     },
     fieldName: "gainDb",
@@ -4047,7 +3812,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 3800,
       range: { min: 32, max: 17000 },
     },
     fieldName: "frequencyHz",
@@ -4059,7 +3823,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.07000000029802322,
       range: { min: 0, max: 1 },
     },
     fieldName: "q",
@@ -4071,7 +3834,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "stereoSeparation",
@@ -4083,7 +3845,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "mix",
@@ -4095,7 +3856,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -18, max: 18 },
     },
     fieldName: "gainDb",
@@ -4117,7 +3877,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -4144,7 +3903,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -4156,7 +3914,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -4179,7 +3936,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: -10,
       range: { min: -40, max: 0 },
     },
     fieldName: "thresholdDb",
@@ -4191,7 +3947,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 4,
       range: { min: 1, max: 50 },
     },
     fieldName: "ratio",
@@ -4203,7 +3958,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 3,
       range: { min: 0, max: 24 },
     },
     fieldName: "kneeDbRange",
@@ -4215,7 +3969,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -24, max: 24 },
     },
     fieldName: "makeupGainDb",
@@ -4227,7 +3980,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 5,
       range: { min: 0, max: 1000 },
     },
     fieldName: "attackMs",
@@ -4239,7 +3991,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "releaseIsSynced",
   },
@@ -4250,7 +4001,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: 0, max: 1 },
     },
     fieldName: "releaseTimeNormalized",
@@ -4262,7 +4012,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 5,
       range: { min: 0, max: 30 },
     },
     fieldName: "rmsWindowMs",
@@ -4274,7 +4023,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -4305,7 +4053,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 3 },
     },
     fieldName: "functionIndex",
@@ -4317,7 +4064,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 1920,
       range: { min: 960, max: 15360 },
     },
     fieldName: "durationTicks",
@@ -4329,7 +4075,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "impact",
@@ -4368,7 +4113,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -4380,7 +4124,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -4414,7 +4157,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -12, max: 12 },
     },
     fieldName: "tuneSemitones",
@@ -4426,7 +4168,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.7079460024833679,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -4438,7 +4179,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 3,
       range: { min: 1, max: 4 },
     },
     fieldName: "playModeIndex",
@@ -4450,7 +4190,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 5000 },
     },
     fieldName: "glideMs",
@@ -4462,7 +4201,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "velocityFactor",
@@ -4474,7 +4212,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 1,
       range: { min: 1, max: 4 },
     },
     fieldName: "unisonoCount",
@@ -4486,7 +4223,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.0010000000474974513,
       range: { min: 0, max: 1 },
     },
     fieldName: "unisonoDetuneSemitones",
@@ -4498,7 +4234,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: -1, max: 1 },
     },
     fieldName: "unisonoStereoSpreadFactor",
@@ -4510,7 +4245,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 2 },
     },
     fieldName: "operatorDetuneModeIndex",
@@ -4527,7 +4261,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -4539,7 +4272,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -4551,7 +4283,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 64 },
     },
     fieldName: "detuneFactor",
@@ -4563,7 +4294,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -9999.990234375, max: 9999.990234375 },
     },
     fieldName: "frequencyOffsetHz",
@@ -4575,7 +4305,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 49 },
     },
     fieldName: "waveformIndex",
@@ -4587,7 +4316,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "usePitchEnvelope",
   },
@@ -4598,7 +4326,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "modulationFactorA",
@@ -4610,7 +4337,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "modulationFactorB",
@@ -4622,7 +4348,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "modulationFactorC",
@@ -4634,7 +4359,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "modulationFactorD",
@@ -4646,7 +4370,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "velocityAmplitudeModulationDepth",
@@ -4658,7 +4381,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "envelopeMainAmplitudeModulationDepth",
@@ -4670,7 +4392,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "envelope2AmplitudeModulationDepth",
@@ -4682,7 +4403,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "envelope3AmplitudeModulationDepth",
@@ -4694,7 +4414,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "lfo1AmplitudeModulationDepth",
@@ -4706,7 +4425,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "lfo2AmplitudeModulationDepth",
@@ -4723,7 +4441,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -4735,7 +4452,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -4747,7 +4463,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 64 },
     },
     fieldName: "detuneFactor",
@@ -4759,7 +4474,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -9999.990234375, max: 9999.990234375 },
     },
     fieldName: "frequencyOffsetHz",
@@ -4771,7 +4485,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 49 },
     },
     fieldName: "waveformIndex",
@@ -4783,7 +4496,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "usePitchEnvelope",
   },
@@ -4794,7 +4506,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "modulationFactorA",
@@ -4806,7 +4517,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "modulationFactorB",
@@ -4818,7 +4528,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "modulationFactorC",
@@ -4830,7 +4539,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "modulationFactorD",
@@ -4842,7 +4550,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "velocityAmplitudeModulationDepth",
@@ -4854,7 +4561,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "envelopeMainAmplitudeModulationDepth",
@@ -4866,7 +4572,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "envelope2AmplitudeModulationDepth",
@@ -4878,7 +4583,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "envelope3AmplitudeModulationDepth",
@@ -4890,7 +4594,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "lfo1AmplitudeModulationDepth",
@@ -4902,7 +4605,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "lfo2AmplitudeModulationDepth",
@@ -4919,7 +4621,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -4931,7 +4632,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -4943,7 +4643,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 64 },
     },
     fieldName: "detuneFactor",
@@ -4955,7 +4654,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -9999.990234375, max: 9999.990234375 },
     },
     fieldName: "frequencyOffsetHz",
@@ -4967,7 +4665,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 49 },
     },
     fieldName: "waveformIndex",
@@ -4979,7 +4676,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "usePitchEnvelope",
   },
@@ -4990,7 +4686,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "modulationFactorA",
@@ -5002,7 +4697,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "modulationFactorB",
@@ -5014,7 +4708,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "modulationFactorC",
@@ -5026,7 +4719,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "modulationFactorD",
@@ -5038,7 +4730,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "velocityAmplitudeModulationDepth",
@@ -5050,7 +4741,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "envelopeMainAmplitudeModulationDepth",
@@ -5062,7 +4752,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "envelope2AmplitudeModulationDepth",
@@ -5074,7 +4763,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "envelope3AmplitudeModulationDepth",
@@ -5086,7 +4774,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "lfo1AmplitudeModulationDepth",
@@ -5098,7 +4785,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "lfo2AmplitudeModulationDepth",
@@ -5115,7 +4801,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -5127,7 +4812,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -5139,7 +4823,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 64 },
     },
     fieldName: "detuneFactor",
@@ -5151,7 +4834,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -9999.990234375, max: 9999.990234375 },
     },
     fieldName: "frequencyOffsetHz",
@@ -5163,7 +4845,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 49 },
     },
     fieldName: "waveformIndex",
@@ -5175,7 +4856,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "usePitchEnvelope",
   },
@@ -5186,7 +4866,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "modulationFactorA",
@@ -5198,7 +4877,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "modulationFactorB",
@@ -5210,7 +4888,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "modulationFactorC",
@@ -5222,7 +4899,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "modulationFactorD",
@@ -5234,7 +4910,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "velocityAmplitudeModulationDepth",
@@ -5246,7 +4921,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "envelopeMainAmplitudeModulationDepth",
@@ -5258,7 +4932,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "envelope2AmplitudeModulationDepth",
@@ -5270,7 +4943,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "envelope3AmplitudeModulationDepth",
@@ -5282,7 +4954,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "lfo1AmplitudeModulationDepth",
@@ -5294,7 +4965,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "lfo2AmplitudeModulationDepth",
@@ -5311,7 +4981,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSynced",
   },
@@ -5322,7 +4991,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "attackTimeNormalized",
@@ -5334,7 +5002,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: -0.5,
       range: { min: -1, max: 1 },
     },
     fieldName: "attackSlopeFactor",
@@ -5346,7 +5013,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.25,
       range: { min: 0, max: 1 },
     },
     fieldName: "decayTimeNormalized",
@@ -5358,7 +5024,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: -1, max: 1 },
     },
     fieldName: "decaySlopeFactor",
@@ -5370,7 +5035,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "decayIsLooped",
   },
@@ -5381,7 +5045,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: 0, max: 1 },
     },
     fieldName: "sustainFactor",
@@ -5393,7 +5056,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.25,
       range: { min: 0, max: 1 },
     },
     fieldName: "releaseTimeNormalized",
@@ -5405,7 +5067,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: -1, max: 1 },
     },
     fieldName: "releaseSlopeFactor",
@@ -5422,7 +5083,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSynced",
   },
@@ -5433,7 +5093,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "attackTimeNormalized",
@@ -5445,7 +5104,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: -0.5,
       range: { min: -1, max: 1 },
     },
     fieldName: "attackSlopeFactor",
@@ -5457,7 +5115,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.25,
       range: { min: 0, max: 1 },
     },
     fieldName: "decayTimeNormalized",
@@ -5469,7 +5126,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: -1, max: 1 },
     },
     fieldName: "decaySlopeFactor",
@@ -5481,7 +5137,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "decayIsLooped",
   },
@@ -5492,7 +5147,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: 0, max: 1 },
     },
     fieldName: "sustainFactor",
@@ -5504,7 +5158,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.25,
       range: { min: 0, max: 1 },
     },
     fieldName: "releaseTimeNormalized",
@@ -5516,7 +5169,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: -1, max: 1 },
     },
     fieldName: "releaseSlopeFactor",
@@ -5533,7 +5185,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSynced",
   },
@@ -5544,7 +5195,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "attackTimeNormalized",
@@ -5556,7 +5206,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: -0.5,
       range: { min: -1, max: 1 },
     },
     fieldName: "attackSlopeFactor",
@@ -5568,7 +5217,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.25,
       range: { min: 0, max: 1 },
     },
     fieldName: "decayTimeNormalized",
@@ -5580,7 +5228,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: -1, max: 1 },
     },
     fieldName: "decaySlopeFactor",
@@ -5592,7 +5239,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "decayIsLooped",
   },
@@ -5603,7 +5249,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: 0, max: 1 },
     },
     fieldName: "sustainFactor",
@@ -5615,7 +5260,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.25,
       range: { min: 0, max: 1 },
     },
     fieldName: "releaseTimeNormalized",
@@ -5627,7 +5271,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: -1, max: 1 },
     },
     fieldName: "releaseSlopeFactor",
@@ -5644,7 +5287,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSynced",
   },
@@ -5655,7 +5297,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 3 },
     },
     fieldName: "loopDecayIndex",
@@ -5667,7 +5308,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: -1, max: 1 },
     },
     fieldName: "attackRangeFactor",
@@ -5679,7 +5319,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: 0, max: 1 },
     },
     fieldName: "attackTimeNormalized",
@@ -5691,7 +5330,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "attackSlopeFactor",
@@ -5703,7 +5341,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "decayRangeFactor",
@@ -5715,7 +5352,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: 0, max: 1 },
     },
     fieldName: "decayTimeNormalized",
@@ -5727,7 +5363,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "decaySlopeFactor",
@@ -5739,7 +5374,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "sustainRangeFactor",
@@ -5751,7 +5385,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: 0, max: 1 },
     },
     fieldName: "releaseTimeNormalized",
@@ -5763,7 +5396,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "releaseSlopeFactor",
@@ -5775,7 +5407,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "releaseRangeFactor",
@@ -5787,7 +5418,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 12,
       range: { min: 1, max: 36 },
     },
     fieldName: "semitoneRange",
@@ -5804,7 +5434,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isSynced",
   },
@@ -5815,7 +5444,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "doesRestart",
   },
@@ -5826,7 +5454,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: 0, max: 1 },
     },
     fieldName: "rateNormalized",
@@ -5838,7 +5465,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "offsetFactor",
@@ -5850,7 +5476,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "delayTimeNormalized",
@@ -5862,7 +5487,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "blendTimeNormalized",
@@ -5874,7 +5498,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 49 },
     },
     fieldName: "waveformIndex",
@@ -5891,7 +5514,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isSynced",
   },
@@ -5902,7 +5524,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "doesRestart",
   },
@@ -5913,7 +5534,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: 0, max: 1 },
     },
     fieldName: "rateNormalized",
@@ -5925,7 +5545,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "offsetFactor",
@@ -5937,7 +5556,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "delayTimeNormalized",
@@ -5949,7 +5567,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "blendTimeNormalized",
@@ -5961,7 +5578,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 49 },
     },
     fieldName: "waveformIndex",
@@ -5978,7 +5594,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 11025,
       range: { min: 33, max: 22050 },
     },
     fieldName: "cutoffFrequencyHz",
@@ -5990,7 +5605,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.7071067690849304,
       range: { min: 0.7071067690849304, max: 60 },
     },
     fieldName: "resonance",
@@ -6002,7 +5616,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: -1,
       range: { min: -1, max: 1 },
     },
     fieldName: "filterType",
@@ -6014,7 +5627,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 4 },
     },
     fieldName: "orderIndex",
@@ -6026,7 +5638,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "velocityCutoffModulationDepth",
@@ -6038,7 +5649,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "envelopeMainCutoffModulationDepth",
@@ -6050,7 +5660,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "envelope2CutoffModulationDepth",
@@ -6062,7 +5671,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "envelope3CutoffModulationDepth",
@@ -6074,7 +5682,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "lfo1CutoffModulationDepth",
@@ -6086,7 +5693,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "lfo2CutoffModulationDepth",
@@ -6098,7 +5704,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "keyboardTrackingAmount",
@@ -6120,7 +5725,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -6147,7 +5751,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -6159,7 +5762,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -6193,7 +5795,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.7079399824142456,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -6205,7 +5806,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.75,
       range: { min: 0, max: 1 },
     },
     fieldName: "decayTime",
@@ -6217,7 +5817,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "mix",
@@ -6229,7 +5828,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -6251,7 +5849,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isActive",
   },
@@ -6262,7 +5859,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -6274,7 +5870,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -6286,7 +5881,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 60,
       range: { min: 0, max: 127 },
     },
     fieldName: "frequencyNote",
@@ -6298,7 +5892,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -7, max: 7 },
     },
     fieldName: "frequencyTuneSemitones",
@@ -6336,7 +5929,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -6348,7 +5940,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -6360,7 +5951,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "postGain",
@@ -6388,7 +5978,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -6400,7 +5989,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -6433,7 +6021,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -6445,7 +6032,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -6468,7 +6054,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.7079399824142456,
       range: { min: 0, max: 1 },
     },
     fieldName: "mainOutputGain",
@@ -6485,7 +6070,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: -1, max: 1 },
     },
     fieldName: "globalModulationDepth",
@@ -6508,7 +6092,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 31 },
     },
     fieldName: "patternIndex",
@@ -6542,7 +6125,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "startTrimFactor",
@@ -6554,7 +6136,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "startTrimModulationDepth",
@@ -6566,7 +6147,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "endTrimFactor",
@@ -6578,7 +6158,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "endTrimModulationDepth",
@@ -6590,7 +6169,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -24, max: 24 },
     },
     fieldName: "pitchSemitones",
@@ -6602,7 +6180,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "pitchModulationDepth",
@@ -6614,7 +6191,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 3 },
     },
     fieldName: "filterTypeIndex",
@@ -6626,7 +6202,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 6000,
       range: { min: 28, max: 12000 },
     },
     fieldName: "cutoffFrequencyHz",
@@ -6638,7 +6213,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "cutoffModulationDepth",
@@ -6650,7 +6224,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "resonance",
@@ -6662,7 +6235,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "resonanceModulationDepth",
@@ -6674,7 +6246,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "envelopePeakRatio",
@@ -6686,7 +6257,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "envelopeRatioModulationDepth",
@@ -6698,7 +6268,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: -1, max: 1 },
     },
     fieldName: "envelopeSlope",
@@ -6710,7 +6279,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "envelopeSlopeModulationDepth",
@@ -6722,7 +6290,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -6734,7 +6301,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panningModulationDepth",
@@ -6746,7 +6312,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.10000000149011612,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -6758,7 +6323,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: -1, max: 1 },
     },
     fieldName: "gainModulationDepth",
@@ -6780,7 +6344,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -6818,7 +6381,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 4 },
     },
     fieldName: "stepScaleIndex",
@@ -6830,7 +6392,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 16,
       range: { min: 1, max: 128 },
     },
     fieldName: "length",
@@ -6853,7 +6414,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isExclusive",
   },
@@ -6864,7 +6424,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -6886,7 +6445,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isActive",
   },
@@ -6897,7 +6455,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "modulationDepth",
@@ -6925,7 +6482,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -6937,7 +6493,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -6960,7 +6515,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -6971,7 +6525,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: -1, max: 1 },
     },
     fieldName: "velocity",
@@ -6983,7 +6536,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 7,
       range: { min: 1, max: 11 },
     },
     fieldName: "stepLengthIndex",
@@ -6995,7 +6547,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 1,
       range: { min: 1, max: 8 },
     },
     fieldName: "repeat",
@@ -7007,7 +6558,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 2 },
     },
     fieldName: "gateRatio",
@@ -7019,7 +6569,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 6 },
     },
     fieldName: "arpeggiationModeIndex",
@@ -7031,7 +6580,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 1000,
       range: { min: 0, max: 9999 },
     },
     fieldName: "randomSeed",
@@ -7043,7 +6591,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 1,
       range: { min: 1, max: 4 },
     },
     fieldName: "octaves",
@@ -7055,7 +6602,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "holdNotes",
   },
@@ -7066,7 +6612,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: 0, max: 127 },
     },
     fieldName: "holdNotesUntilNote",
@@ -7078,7 +6623,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "ignorePatternStepParameters",
   },
@@ -7089,7 +6633,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "patternIsSynced",
   },
@@ -7111,7 +6654,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 3 },
     },
     fieldName: "patternIndex",
@@ -7160,7 +6702,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 16,
       range: { min: 1, max: 64 },
     },
     fieldName: "length",
@@ -7183,7 +6724,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "overrideVelocity",
   },
@@ -7194,7 +6734,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "stepVelocity",
@@ -7206,7 +6745,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -7217,7 +6755,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isTied",
   },
@@ -7228,7 +6765,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isChord",
   },
@@ -7250,7 +6786,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "[]",
@@ -7289,7 +6824,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -7301,7 +6835,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -7313,7 +6846,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -7325,7 +6857,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "auxSendGain",
@@ -7337,7 +6868,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "auxIsPreGain",
   },
@@ -7353,7 +6883,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -7365,7 +6894,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -7377,7 +6905,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "auxSendGain",
@@ -7389,7 +6916,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "auxIsPreGain",
   },
@@ -7400,7 +6926,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -7411,7 +6936,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSoloed",
   },
@@ -7432,7 +6956,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -7444,7 +6967,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -7456,7 +6978,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "auxSendGain",
@@ -7468,7 +6989,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "auxIsPreGain",
   },
@@ -7479,7 +6999,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -7490,7 +7009,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSoloed",
   },
@@ -7511,7 +7029,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -7523,7 +7040,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -7535,7 +7051,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "auxSendGain",
@@ -7547,7 +7062,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "auxIsPreGain",
   },
@@ -7558,7 +7072,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -7569,7 +7082,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSoloed",
   },
@@ -7590,7 +7102,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -7602,7 +7113,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -7614,7 +7124,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "auxSendGain",
@@ -7626,7 +7135,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "auxIsPreGain",
   },
@@ -7637,7 +7145,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -7648,7 +7155,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSoloed",
   },
@@ -7689,7 +7195,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -Infinity, max: +Infinity },
     },
     fieldName: "orderAmongStrips",
@@ -7712,7 +7217,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 41 },
     },
     fieldName: "colorIndex",
@@ -7724,7 +7228,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 7.943282127380371 },
     },
     fieldName: "preGain",
@@ -7741,7 +7244,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 20,
       range: { min: 20, max: 20000 },
     },
     fieldName: "highPassCutoffFrequencyHz",
@@ -7753,7 +7255,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 20000,
       range: { min: 20, max: 20000 },
     },
     fieldName: "lowPassCutoffFrequencyHz",
@@ -7765,7 +7266,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -7791,7 +7291,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -7803,7 +7302,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1.9952620267868042 },
     },
     fieldName: "postGain",
@@ -7815,7 +7313,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -7826,7 +7323,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSoloed",
   },
@@ -7842,7 +7338,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -7891,7 +7386,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -Infinity, max: +Infinity },
     },
     fieldName: "orderAmongStrips",
@@ -7914,7 +7408,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 41 },
     },
     fieldName: "colorIndex",
@@ -7926,7 +7419,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.39810699224472046,
       range: { min: 0, max: 7.943282127380371 },
     },
     fieldName: "preGain",
@@ -7938,7 +7430,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "doesPhaseReverse",
   },
@@ -7954,7 +7445,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 20,
       range: { min: 20, max: 20000 },
     },
     fieldName: "highPassCutoffFrequencyHz",
@@ -7966,7 +7456,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 20000,
       range: { min: 20, max: 20000 },
     },
     fieldName: "lowPassCutoffFrequencyHz",
@@ -7978,7 +7467,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -7994,7 +7482,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 15,
       range: { min: 0.0010000000474974513, max: 200 },
     },
     fieldName: "attackMs",
@@ -8006,7 +7493,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 100,
       range: { min: 0.0010000000474974513, max: 2000 },
     },
     fieldName: "releaseMs",
@@ -8018,7 +7504,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -24, max: 24 },
     },
     fieldName: "makeupGainDb",
@@ -8030,7 +7515,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 2 },
     },
     fieldName: "detectionModeIndex",
@@ -8042,7 +7526,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 2,
       range: { min: 1, max: 50 },
     },
     fieldName: "ratio",
@@ -8054,7 +7537,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: -10,
       range: { min: -48, max: 0 },
     },
     fieldName: "thresholdDb",
@@ -8066,7 +7548,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isActive",
   },
@@ -8087,7 +7568,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 60,
       range: { min: 35, max: 220 },
     },
     fieldName: "lowShelfFrequencyHz",
@@ -8099,7 +7579,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -18, max: 18 },
     },
     fieldName: "lowShelfGainDb",
@@ -8111,7 +7590,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 500,
       range: { min: 200, max: 1600 },
     },
     fieldName: "lowMidFrequencyHz",
@@ -8123,7 +7601,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -18, max: 18 },
     },
     fieldName: "lowMidGainDb",
@@ -8135,7 +7612,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 4800,
       range: { min: 1600, max: 10000 },
     },
     fieldName: "highMidFrequencyHz",
@@ -8147,7 +7623,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -18, max: 18 },
     },
     fieldName: "highMidGainDb",
@@ -8159,7 +7634,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 12000,
       range: { min: 10000, max: 16000 },
     },
     fieldName: "highShelfFrequencyHz",
@@ -8171,7 +7645,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -18, max: 18 },
     },
     fieldName: "highShelfGainDb",
@@ -8183,7 +7656,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -8194,9 +7666,18 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "auxSendsAreActive",
+  },
+  "mixerChannel:13": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "boolean",
+      scalarType: ScalarType.BOOL,
+    },
+    fieldName: "auxSendsArePreGain",
   },
   "mixerChannel:10": {
     type: "object",
@@ -8220,7 +7701,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -8232,7 +7712,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1.9952620267868042 },
     },
     fieldName: "postGain",
@@ -8244,7 +7723,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -8255,7 +7733,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSoloed",
   },
@@ -8276,7 +7753,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -Infinity, max: +Infinity },
     },
     fieldName: "orderAmongStrips",
@@ -8299,7 +7775,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 41 },
     },
     fieldName: "colorIndex",
@@ -8311,7 +7786,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 7.943282127380371 },
     },
     fieldName: "preGain",
@@ -8328,7 +7802,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 20,
       range: { min: 20, max: 20000 },
     },
     fieldName: "highPassCutoffFrequencyHz",
@@ -8340,7 +7813,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 20000,
       range: { min: 20, max: 20000 },
     },
     fieldName: "lowPassCutoffFrequencyHz",
@@ -8352,7 +7824,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -8363,7 +7834,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.30000001192092896,
       range: { min: 0, max: 0.800000011920929 },
     },
     fieldName: "feedbackFactor",
@@ -8375,7 +7845,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 3,
       range: { min: 1, max: 7 },
     },
     fieldName: "stepCount",
@@ -8387,7 +7856,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 3 },
     },
     fieldName: "stepLengthIndex",
@@ -8404,7 +7872,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -8416,7 +7883,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1.9952620267868042 },
     },
     fieldName: "postGain",
@@ -8428,7 +7894,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -8439,7 +7904,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSoloed",
   },
@@ -8460,7 +7924,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -Infinity, max: +Infinity },
     },
     fieldName: "orderAmongStrips",
@@ -8483,7 +7946,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 41 },
     },
     fieldName: "colorIndex",
@@ -8500,7 +7962,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 20,
       range: { min: 20, max: 20000 },
     },
     fieldName: "highPassCutoffFrequencyHz",
@@ -8512,7 +7973,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 20000,
       range: { min: 20, max: 20000 },
     },
     fieldName: "lowPassCutoffFrequencyHz",
@@ -8524,7 +7984,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -8540,7 +7999,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 15,
       range: { min: 0.0010000000474974513, max: 200 },
     },
     fieldName: "attackMs",
@@ -8552,7 +8010,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 100,
       range: { min: 0.0010000000474974513, max: 2000 },
     },
     fieldName: "releaseMs",
@@ -8564,7 +8021,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -24, max: 24 },
     },
     fieldName: "makeupGainDb",
@@ -8576,7 +8032,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 2 },
     },
     fieldName: "detectionModeIndex",
@@ -8588,7 +8043,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 2,
       range: { min: 1, max: 50 },
     },
     fieldName: "ratio",
@@ -8600,7 +8054,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: -10,
       range: { min: -48, max: 0 },
     },
     fieldName: "thresholdDb",
@@ -8612,7 +8065,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isActive",
   },
@@ -8633,7 +8085,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 60,
       range: { min: 35, max: 220 },
     },
     fieldName: "lowShelfFrequencyHz",
@@ -8645,7 +8096,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -18, max: 18 },
     },
     fieldName: "lowShelfGainDb",
@@ -8657,7 +8107,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 500,
       range: { min: 200, max: 1600 },
     },
     fieldName: "lowMidFrequencyHz",
@@ -8669,7 +8118,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -18, max: 18 },
     },
     fieldName: "lowMidGainDb",
@@ -8681,7 +8129,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 4800,
       range: { min: 1600, max: 10000 },
     },
     fieldName: "highMidFrequencyHz",
@@ -8693,7 +8140,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -18, max: 18 },
     },
     fieldName: "highMidGainDb",
@@ -8705,7 +8151,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 12000,
       range: { min: 10000, max: 16000 },
     },
     fieldName: "highShelfFrequencyHz",
@@ -8717,7 +8162,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -18, max: 18 },
     },
     fieldName: "highShelfGainDb",
@@ -8729,7 +8173,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -8750,9 +8193,18 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "auxSendsAreActive",
+  },
+  "mixerGroup:12": {
+    type: "primitive",
+    targetTypes: [],
+    immutable: false,
+    primitive: {
+      type: "boolean",
+      scalarType: ScalarType.BOOL,
+    },
+    fieldName: "auxSendsArePreGain",
   },
   "mixerGroup:9": {
     type: "object",
@@ -8776,7 +8228,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -8788,7 +8239,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1.9952620267868042 },
     },
     fieldName: "postGain",
@@ -8800,7 +8250,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -8811,7 +8260,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSoloed",
   },
@@ -8827,7 +8275,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -8839,7 +8286,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -8851,7 +8297,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "doBypassInserts",
   },
@@ -8872,7 +8317,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -8884,7 +8328,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1.9952620267868042 },
     },
     fieldName: "postGain",
@@ -8896,7 +8339,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "limiterEnabled",
   },
@@ -8907,7 +8349,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -8928,7 +8369,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -Infinity, max: +Infinity },
     },
     fieldName: "orderAmongStrips",
@@ -8951,7 +8391,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 41 },
     },
     fieldName: "colorIndex",
@@ -8963,7 +8402,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 7.943282127380371 },
     },
     fieldName: "preGain",
@@ -8980,7 +8418,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 20,
       range: { min: 20, max: 20000 },
     },
     fieldName: "highPassCutoffFrequencyHz",
@@ -8992,7 +8429,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 20000,
       range: { min: 20, max: 20000 },
     },
     fieldName: "lowPassCutoffFrequencyHz",
@@ -9004,7 +8440,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -9015,7 +8450,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.800000011920929,
       range: { min: 0, max: 1 },
     },
     fieldName: "roomSizeFactor",
@@ -9027,7 +8461,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 160,
       range: { min: 8, max: 500 },
     },
     fieldName: "preDelayTimeMs",
@@ -9039,7 +8472,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.10000000149011612,
       range: { min: 0, max: 1 },
     },
     fieldName: "dampFactor",
@@ -9056,7 +8488,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -9068,7 +8499,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1.9952620267868042 },
     },
     fieldName: "postGain",
@@ -9080,7 +8510,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -9091,7 +8520,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSoloed",
   },
@@ -9172,7 +8600,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -9184,7 +8611,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -9228,7 +8654,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "velocityModulation",
@@ -9240,7 +8665,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -9267,7 +8691,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -9279,7 +8702,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -9302,7 +8724,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: -1, max: 1 },
     },
     fieldName: "leftFactor",
@@ -9314,7 +8735,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: -1, max: 1 },
     },
     fieldName: "rightFactor",
@@ -9326,7 +8746,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: -1,
       range: { min: -1, max: 1 },
     },
     fieldName: "leftPanning",
@@ -9338,7 +8757,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: -1, max: 1 },
     },
     fieldName: "rightPanning",
@@ -9360,7 +8778,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -9387,7 +8804,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -9399,7 +8815,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -9422,7 +8837,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 12 },
     },
     fieldName: "preDelayLeftTimeSemibreveIndex",
@@ -9434,7 +8848,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 500 },
     },
     fieldName: "preDelayLeftTimeMs",
@@ -9446,7 +8859,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: -1,
       range: { min: -1, max: 1 },
     },
     fieldName: "preDelayLeftPanning",
@@ -9458,7 +8870,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 3,
       range: { min: 1, max: 12 },
     },
     fieldName: "preDelayRightTimeSemibreveIndex",
@@ -9470,7 +8881,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 500 },
     },
     fieldName: "preDelayRightTimeMs",
@@ -9482,7 +8892,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: -1, max: 1 },
     },
     fieldName: "preDelayRightPanning",
@@ -9494,7 +8903,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 12 },
     },
     fieldName: "feedbackDelayTimeSemibreveIndex",
@@ -9506,7 +8914,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 500 },
     },
     fieldName: "feedbackDelayTimeMs",
@@ -9518,7 +8925,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 5,
       range: { min: 0.10000000149011612, max: 25 },
     },
     fieldName: "lfoSpeedHz",
@@ -9530,7 +8936,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 50 },
     },
     fieldName: "lfoModulationDepthMs",
@@ -9542,7 +8947,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.699999988079071,
       range: { min: 0, max: 1 },
     },
     fieldName: "feedbackFactor",
@@ -9554,7 +8958,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "stereoCrossFactor",
@@ -9566,7 +8969,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 20,
       range: { min: 20, max: 20000 },
     },
     fieldName: "filterMinHz",
@@ -9578,7 +8980,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 20000,
       range: { min: 20, max: 20000 },
     },
     fieldName: "filterMaxHz",
@@ -9590,7 +8991,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "dryGain",
@@ -9602,7 +9002,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.699999988079071,
       range: { min: 0, max: 1 },
     },
     fieldName: "wetGain",
@@ -9614,7 +9013,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -9651,7 +9049,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -9663,7 +9060,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -9701,7 +9097,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.7079460024833679,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -9723,7 +9118,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -9734,7 +9128,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -9746,7 +9139,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -9763,7 +9155,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -7, max: 7 },
     },
     fieldName: "tuneSemitones",
@@ -9775,7 +9166,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -3, max: 3 },
     },
     fieldName: "tuneOctaves",
@@ -9787,7 +9177,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "waveform",
@@ -9809,7 +9198,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -9820,7 +9208,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -9832,7 +9219,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -9849,7 +9235,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -7, max: 7 },
     },
     fieldName: "tuneSemitones",
@@ -9861,7 +9246,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -3, max: 3 },
     },
     fieldName: "tuneOctaves",
@@ -9873,7 +9257,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "waveform",
@@ -9885,7 +9268,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "hardSyncToOscillatorA",
   },
@@ -9906,7 +9288,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -9917,7 +9298,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -9929,7 +9309,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -9946,7 +9325,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -7, max: 7 },
     },
     fieldName: "tuneSemitones",
@@ -9958,7 +9336,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -3, max: 3 },
     },
     fieldName: "tuneOctaves",
@@ -9970,7 +9347,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "waveform",
@@ -9982,7 +9358,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "doesTrackKeyboard",
   },
@@ -10003,7 +9378,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -10014,7 +9388,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -10026,7 +9399,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -10038,7 +9410,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "color",
@@ -10060,7 +9431,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -10071,7 +9441,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -10083,7 +9452,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -10095,7 +9463,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "drive",
@@ -10112,7 +9479,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 2 },
     },
     fieldName: "modeIndex",
@@ -10124,7 +9490,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 15500,
       range: { min: 18, max: 15500 },
     },
     fieldName: "cutoffFrequencyHz",
@@ -10136,7 +9501,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "resonance",
@@ -10148,7 +9512,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "filterSpacing",
@@ -10160,7 +9523,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "keyboardTrackingAmount",
@@ -10177,7 +9539,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "waveform",
@@ -10189,7 +9550,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "rateIsSynced",
   },
@@ -10200,7 +9560,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.25,
       range: { min: 0, max: 1 },
     },
     fieldName: "rateNormalized",
@@ -10212,7 +9571,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "restartOnNote",
   },
@@ -10223,7 +9581,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "targetsOscillatorAPitch",
   },
@@ -10234,7 +9591,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "targetsOscillatorBPitch",
   },
@@ -10245,7 +9601,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "targetsOscillatorCPitch",
   },
@@ -10256,7 +9611,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "targetsFilterCutoff",
   },
@@ -10267,7 +9621,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "targetsPulseWidth",
   },
@@ -10278,7 +9631,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "modulationDepth",
@@ -10295,7 +9647,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 1, max: 5000 },
     },
     fieldName: "attackMs",
@@ -10307,7 +9658,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 500,
       range: { min: 1, max: 5000 },
     },
     fieldName: "decayMs",
@@ -10319,7 +9669,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "decayIsLooped",
   },
@@ -10330,7 +9679,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "sustainFactor",
@@ -10342,7 +9690,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 1, max: 20000 },
     },
     fieldName: "releaseMs",
@@ -10354,7 +9701,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "modulationDepth",
@@ -10371,7 +9717,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 1, max: 5000 },
     },
     fieldName: "attackMs",
@@ -10383,7 +9728,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 500,
       range: { min: 1, max: 5000 },
     },
     fieldName: "decayMs",
@@ -10395,7 +9739,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "decayIsLooped",
   },
@@ -10406,7 +9749,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "sustainFactor",
@@ -10418,7 +9760,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 1, max: 20000 },
     },
     fieldName: "releaseMs",
@@ -10430,7 +9771,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 10000 },
     },
     fieldName: "glideTimeMs",
@@ -10442,7 +9782,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -12, max: 12 },
     },
     fieldName: "tuneSemitones",
@@ -10454,7 +9793,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 2,
       range: { min: 1, max: 2 },
     },
     fieldName: "playModeIndex",
@@ -10477,7 +9815,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -10504,7 +9841,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -10516,7 +9852,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -10539,7 +9874,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -24, max: 24 },
     },
     fieldName: "gainDb",
@@ -10551,7 +9885,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 5,
       range: { min: 0, max: 30 },
     },
     fieldName: "rmsWindowMs",
@@ -10563,7 +9896,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -10574,7 +9906,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 2,
       range: { min: 1, max: 3 },
     },
     fieldName: "spectrumModeIndex",
@@ -10592,7 +9923,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 20,
       range: { min: 20, max: 20000 },
     },
     fieldName: "[]",
@@ -10615,7 +9945,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: -10,
       range: { min: -48, max: 0 },
     },
     fieldName: "thresholdDb",
@@ -10627,7 +9956,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 4,
       range: { min: 1, max: 50 },
     },
     fieldName: "ratio",
@@ -10639,7 +9967,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 3,
       range: { min: 0, max: 24 },
     },
     fieldName: "kneeDb",
@@ -10651,7 +9978,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 5,
       range: { min: 0, max: 1000 },
     },
     fieldName: "attackMs",
@@ -10663,7 +9989,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 50,
       range: { min: 0, max: 1000 },
     },
     fieldName: "releaseMs",
@@ -10675,7 +10000,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -24, max: 24 },
     },
     fieldName: "makeupGainDb",
@@ -10687,7 +10011,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isCompressorActive",
   },
@@ -10698,7 +10021,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -10709,7 +10031,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSoloed",
   },
@@ -10746,7 +10067,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -10758,7 +10078,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -10781,7 +10100,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1000 },
     },
     fieldName: "preDelayMs",
@@ -10793,7 +10111,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 20000,
       range: { min: 20, max: 20000 },
     },
     fieldName: "lowPassFrequencyHz",
@@ -10805,7 +10122,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 20,
       range: { min: 20, max: 20000 },
     },
     fieldName: "highPassFrequencyHz",
@@ -10817,7 +10133,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 4 },
     },
     fieldName: "filterSlopeIndex",
@@ -10829,7 +10144,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5011870265007019,
       range: { min: 0, max: 1 },
     },
     fieldName: "dryGain",
@@ -10841,7 +10155,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5011870265007019,
       range: { min: 0, max: 1 },
     },
     fieldName: "wetGain",
@@ -10853,7 +10166,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -10864,7 +10176,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.75,
       range: { min: 0, max: 1 },
     },
     fieldName: "plateDecay",
@@ -10876,7 +10187,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "plateDamp",
@@ -10888,7 +10198,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "inputDiffusion",
@@ -10900,7 +10209,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "tankDiffusion",
@@ -10912,7 +10220,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "vibratoDepth",
@@ -10924,7 +10231,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0.009999999776482582, max: 20 },
     },
     fieldName: "vibratoFrequencyHz",
@@ -10962,7 +10268,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -10974,7 +10279,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -11008,7 +10312,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 31 },
     },
     fieldName: "patternIndex",
@@ -11031,7 +10334,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -11043,7 +10345,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "panning",
@@ -11055,7 +10356,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "mix",
@@ -11067,7 +10367,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 1,
       range: { min: 1, max: 2 },
     },
     fieldName: "mixMode",
@@ -11079,7 +10378,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -11090,7 +10388,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSoloed",
   },
@@ -11111,7 +10408,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 3,
       range: { min: 1, max: 4 },
     },
     fieldName: "intervalIndex",
@@ -11123,7 +10419,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 16777215,
       range: { min: 65535, max: 16777215 },
     },
     fieldName: "seed",
@@ -11135,7 +10430,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -11146,7 +10440,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSoloed",
   },
@@ -11162,7 +10455,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 6,
       range: { min: 1, max: 8 },
     },
     fieldName: "speedRatioIndex",
@@ -11174,7 +10466,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -11185,7 +10476,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSoloed",
   },
@@ -11201,7 +10491,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 5,
       range: { min: 1, max: 7 },
     },
     fieldName: "durationIndex",
@@ -11213,7 +10502,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "doesSpinback",
   },
@@ -11224,7 +10512,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -11235,7 +10522,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSoloed",
   },
@@ -11251,7 +10537,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 5,
       range: { min: 1, max: 8 },
     },
     fieldName: "intervalDurationIndex",
@@ -11263,7 +10548,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: 0, max: 1 },
     },
     fieldName: "durationFactor",
@@ -11275,7 +10559,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -11286,7 +10569,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSoloed",
   },
@@ -11302,7 +10584,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 5,
       range: { min: 1, max: 8 },
     },
     fieldName: "intervalDurationIndex",
@@ -11314,7 +10595,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "scaleFactor",
@@ -11326,7 +10606,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -12, max: 12 },
     },
     fieldName: "pitchSemitones",
@@ -11338,7 +10617,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -11349,7 +10627,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSoloed",
   },
@@ -11365,7 +10642,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 4,
       range: { min: 1, max: 11 },
     },
     fieldName: "rateBars",
@@ -11377,7 +10653,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 2 },
     },
     fieldName: "modulationDepth",
@@ -11389,7 +10664,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "modulationOffset",
@@ -11401,7 +10675,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 4 },
     },
     fieldName: "modulationShapeIndex",
@@ -11413,7 +10686,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -11424,7 +10696,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSoloed",
   },
@@ -11440,7 +10711,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -11451,7 +10721,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSoloed",
   },
@@ -11472,7 +10741,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -11499,7 +10767,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 16,
       range: { min: 1, max: 64 },
     },
     fieldName: "length",
@@ -11533,7 +10800,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isOn",
   },
@@ -11544,7 +10810,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isEnd",
   },
@@ -11561,7 +10826,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -Infinity, max: +Infinity },
     },
     fieldName: "[]",
@@ -11595,7 +10859,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isOn",
   },
@@ -11606,7 +10869,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isEnd",
   },
@@ -11644,7 +10906,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -11656,7 +10917,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -11683,7 +10943,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 7.943282127380371 },
     },
     fieldName: "gain",
@@ -11695,7 +10954,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -11722,7 +10980,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT64,
-      default: 0,
       range: { min: -Infinity, max: +Infinity },
     },
     fieldName: "uploadStartTime",
@@ -11750,7 +11007,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -11762,7 +11018,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -11796,7 +11051,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.7079399824142456,
       range: { min: 0, max: 1 },
     },
     fieldName: "gain",
@@ -11808,7 +11062,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "stereoDetuneShift",
@@ -11820,7 +11073,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -12, max: 12 },
     },
     fieldName: "tuneSemitones",
@@ -11832,7 +11084,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -12, max: 12 },
     },
     fieldName: "tuneASemitones",
@@ -11844,7 +11095,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -12, max: 12 },
     },
     fieldName: "tuneBSemitones",
@@ -11856,7 +11106,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 5000 },
     },
     fieldName: "glideMs",
@@ -11868,7 +11117,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: -1,
       range: { min: -1, max: 1 },
     },
     fieldName: "mixAB",
@@ -11880,7 +11128,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "lfoMixModulationDepth",
@@ -11892,7 +11139,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "lfoGainModulationDepth",
@@ -11904,7 +11150,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "lfoStereoDetuneShiftModulationDepth",
@@ -11916,7 +11161,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "lfoPanningModulationDepth",
@@ -11928,7 +11172,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "envelopeMixModulationDepth",
@@ -11940,7 +11183,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "envelopeTuneModulationDepth",
@@ -11952,7 +11194,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "envelopeLfoRateModulationDepth",
@@ -11964,7 +11205,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "envelopeLfoAmountModulationDepth",
@@ -11976,7 +11216,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "velocityGainModulationDepth",
@@ -11988,7 +11227,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "velocityMixModulationDepth",
@@ -12000,7 +11238,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "keyboardMixModulationDepth",
@@ -12012,7 +11249,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 3,
       range: { min: 1, max: 3 },
     },
     fieldName: "notePlayModeIndex",
@@ -12029,7 +11265,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 5 },
     },
     fieldName: "waveformIndex",
@@ -12041,7 +11276,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.25,
       range: { min: 0, max: 1 },
     },
     fieldName: "rateNormalized",
@@ -12053,7 +11287,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "phaseOffset",
@@ -12065,7 +11298,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSynced",
   },
@@ -12076,7 +11308,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "doesRetrigger",
   },
@@ -12092,7 +11323,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSynced",
   },
@@ -12103,7 +11333,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "attackTimeNormalized",
@@ -12115,7 +11344,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: -0.5,
       range: { min: -1, max: 1 },
     },
     fieldName: "attackSlopeFactor",
@@ -12127,7 +11355,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.25,
       range: { min: 0, max: 1 },
     },
     fieldName: "decayTimeNormalized",
@@ -12139,7 +11366,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: -1, max: 1 },
     },
     fieldName: "decaySlopeFactor",
@@ -12151,7 +11377,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "decayIsLooped",
   },
@@ -12162,7 +11387,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: 0, max: 1 },
     },
     fieldName: "sustainFactor",
@@ -12174,7 +11398,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.25,
       range: { min: 0, max: 1 },
     },
     fieldName: "releaseTimeNormalized",
@@ -12186,7 +11409,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: -1, max: 1 },
     },
     fieldName: "releaseSlopeFactor",
@@ -12203,7 +11425,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSynced",
   },
@@ -12214,7 +11435,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "attackTimeNormalized",
@@ -12226,7 +11446,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: -0.5,
       range: { min: -1, max: 1 },
     },
     fieldName: "attackSlopeFactor",
@@ -12238,7 +11457,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.25,
       range: { min: 0, max: 1 },
     },
     fieldName: "decayTimeNormalized",
@@ -12250,7 +11468,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: -1, max: 1 },
     },
     fieldName: "decaySlopeFactor",
@@ -12262,7 +11479,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "decayIsLooped",
   },
@@ -12273,7 +11489,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: 0, max: 1 },
     },
     fieldName: "sustainFactor",
@@ -12285,7 +11500,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.25,
       range: { min: 0, max: 1 },
     },
     fieldName: "releaseTimeNormalized",
@@ -12297,7 +11511,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: -1, max: 1 },
     },
     fieldName: "releaseSlopeFactor",
@@ -12309,7 +11522,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "modulationEnvelopeHasRelease",
   },
@@ -12325,7 +11537,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: 0, max: 1 },
     },
     fieldName: "dispersion",
@@ -12337,7 +11548,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.20000000298023224,
       range: { min: 0, max: 1 },
     },
     fieldName: "vaporisation",
@@ -12349,7 +11559,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "brightness",
@@ -12361,7 +11570,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "metal",
@@ -12373,7 +11581,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 1,
       range: { min: 1, max: 4 },
     },
     fieldName: "separation",
@@ -12385,7 +11592,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 32,
       range: { min: 1, max: 32 },
     },
     fieldName: "harmonicsCount",
@@ -12397,7 +11603,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "combFilterAmount",
@@ -12409,7 +11614,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.15000000596046448,
       range: { min: 0, max: 1 },
     },
     fieldName: "combFilterRate",
@@ -12421,7 +11625,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "combFilterWidth",
@@ -12438,7 +11641,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.5,
       range: { min: 0, max: 1 },
     },
     fieldName: "dispersion",
@@ -12450,7 +11652,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.20000000298023224,
       range: { min: 0, max: 1 },
     },
     fieldName: "vaporisation",
@@ -12462,7 +11663,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "brightness",
@@ -12474,7 +11674,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "metal",
@@ -12486,7 +11685,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 1,
       range: { min: 1, max: 4 },
     },
     fieldName: "separation",
@@ -12498,7 +11696,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 32,
       range: { min: 1, max: 32 },
     },
     fieldName: "harmonicsCount",
@@ -12510,7 +11707,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "combFilterAmount",
@@ -12522,7 +11718,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.15000000596046448,
       range: { min: 0, max: 1 },
     },
     fieldName: "combFilterRate",
@@ -12534,7 +11729,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "combFilterWidth",
@@ -12556,7 +11750,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -12583,7 +11776,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -12595,7 +11787,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -12607,7 +11798,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "expression",
@@ -12619,7 +11809,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "dynamics",
@@ -12631,7 +11820,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "reverb",
@@ -12643,7 +11831,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "release",
@@ -12655,7 +11842,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "tightness",
@@ -12667,7 +11853,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "vibrato",
@@ -12679,7 +11864,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "simpleMix",
@@ -12691,7 +11875,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "stereoPan",
@@ -12703,7 +11886,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "adsrAttack",
@@ -12715,7 +11897,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "adsrDecay",
@@ -12727,7 +11908,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "adsrSustain",
@@ -12739,7 +11919,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "adsrRelease",
@@ -12751,7 +11930,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "globalGain",
@@ -12763,7 +11941,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "globalPan",
@@ -12775,7 +11952,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "globalTune",
@@ -12787,7 +11963,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "stereoFlip",
@@ -12799,7 +11974,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "stereoSpread",
@@ -12811,7 +11985,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "variation",
@@ -12823,7 +11996,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "delay",
@@ -12835,7 +12007,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "amount",
@@ -12847,7 +12018,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "distortion",
@@ -12859,7 +12029,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "lushVerb",
@@ -12871,7 +12040,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "pedalVol",
@@ -12883,7 +12051,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "pedalDyn",
@@ -12895,7 +12062,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "length",
@@ -12907,7 +12073,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "timeMachine",
@@ -12919,7 +12084,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "stretch",
@@ -12931,7 +12095,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "softPedal",
@@ -12943,7 +12106,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "response",
@@ -12955,7 +12117,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "mallet",
@@ -12967,7 +12128,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "stopMute",
@@ -12979,7 +12139,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "direction",
@@ -12991,7 +12150,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "lowPassFilter",
@@ -13003,7 +12161,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "portamento",
@@ -13015,7 +12172,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "generalPurpose1",
@@ -13027,7 +12183,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "generalPurpose2",
@@ -13039,7 +12194,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "generalPurpose3",
@@ -13051,7 +12205,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "generalPurpose4",
@@ -13063,7 +12216,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "generalPurpose5",
@@ -13075,7 +12227,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "generalPurpose6",
@@ -13087,7 +12238,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "generalPurpose7",
@@ -13099,7 +12249,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "generalPurpose8",
@@ -13111,7 +12260,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "generalPurpose9",
@@ -13123,7 +12271,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "speed",
@@ -13135,7 +12282,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "compression",
@@ -13147,7 +12293,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "scale",
@@ -13159,7 +12304,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "depth",
@@ -13171,7 +12315,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "noiseFx",
@@ -13183,7 +12326,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "grainSpeed",
@@ -13231,7 +12373,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -13243,7 +12384,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -13266,7 +12406,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "channelsAreInverted",
   },
@@ -13277,7 +12416,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 11000,
       range: { min: 32.70000076293945, max: 16744.0390625 },
     },
     fieldName: "frequencyHz",
@@ -13289,7 +12427,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.25,
       range: { min: -1, max: 1 },
     },
     fieldName: "stereoWidth",
@@ -13311,7 +12448,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -13338,7 +12474,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -13350,7 +12485,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -13373,7 +12507,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 20,
       range: { min: 20, max: 40 },
     },
     fieldName: "delayTimeMs",
@@ -13385,7 +12518,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "feedbackFactor",
@@ -13397,7 +12529,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.33329999446868896,
       range: { min: 0.10000000149011612, max: 5 },
     },
     fieldName: "lfoFrequencyHz",
@@ -13409,7 +12540,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "lfoModulationDepth",
@@ -13421,10 +12551,20 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "spreadFactor",
+  },
+  "stompboxChorus:14": {
+    type: "primitive",
+    targetTypes: ["AutomatableParameter"],
+    immutable: false,
+    primitive: {
+      type: "number",
+      scalarType: ScalarType.FLOAT,
+      range: { min: -1, max: 0 },
+    },
+    fieldName: "mix",
   },
   "stompboxChorus:10": {
     type: "primitive",
@@ -13433,7 +12573,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -13470,7 +12609,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -13482,7 +12620,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -13505,7 +12642,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 5,
       range: { min: 1, max: 100 },
     },
     fieldName: "attackMs",
@@ -13517,7 +12653,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 25,
       range: { min: 1, max: 600 },
     },
     fieldName: "releaseMs",
@@ -13529,7 +12664,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -12, max: 12 },
     },
     fieldName: "makeupGainDb",
@@ -13541,7 +12675,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 2 },
     },
     fieldName: "detectionModeIndex",
@@ -13553,7 +12686,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.4000000059604645,
       range: { min: 0, max: 1 },
     },
     fieldName: "ratio",
@@ -13565,7 +12697,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: -15,
       range: { min: -24, max: 0 },
     },
     fieldName: "thresholdDb",
@@ -13577,7 +12708,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -13619,7 +12749,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -13631,7 +12760,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -13654,7 +12782,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 22.387210845947266 },
     },
     fieldName: "preGain",
@@ -13666,7 +12793,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "downsamplingFactor",
@@ -13678,7 +12804,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 2.818382978439331 },
     },
     fieldName: "postGain",
@@ -13690,7 +12815,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 8,
       range: { min: 1, max: 24 },
     },
     fieldName: "bits",
@@ -13702,7 +12826,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "mix",
@@ -13714,7 +12837,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -13751,7 +12873,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -13763,7 +12884,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -13786,7 +12906,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 3,
       range: { min: 1, max: 7 },
     },
     fieldName: "stepCount",
@@ -13798,7 +12917,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 3 },
     },
     fieldName: "stepLengthIndex",
@@ -13810,7 +12928,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.4000000059604645,
       range: { min: 0, max: 1 },
     },
     fieldName: "feedbackFactor",
@@ -13822,7 +12939,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.20000000298023224,
       range: { min: 0, max: 1 },
     },
     fieldName: "mix",
@@ -13834,7 +12950,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -13871,7 +12986,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -13883,7 +12997,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -13906,7 +13019,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 3,
       range: { min: 1, max: 10 },
     },
     fieldName: "delayTimeMs",
@@ -13918,7 +13030,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "feedbackFactor",
@@ -13930,7 +13041,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.03999999910593033,
       range: { min: 0.03999999910593033, max: 5 },
     },
     fieldName: "lfoFrequencyHz",
@@ -13942,10 +13052,20 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "lfoModulationDepth",
+  },
+  "stompboxFlanger:13": {
+    type: "primitive",
+    targetTypes: ["AutomatableParameter"],
+    immutable: false,
+    primitive: {
+      type: "number",
+      scalarType: ScalarType.FLOAT,
+      range: { min: -1, max: 0 },
+    },
+    fieldName: "mix",
   },
   "stompboxFlanger:9": {
     type: "primitive",
@@ -13954,7 +13074,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -13991,7 +13110,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -14003,7 +13121,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -14026,7 +13143,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 10,
       range: { min: 1, max: 100 },
     },
     fieldName: "attackMs",
@@ -14038,7 +13154,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 50,
       range: { min: 10, max: 600 },
     },
     fieldName: "releaseMs",
@@ -14050,7 +13165,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 2.818382978439331 },
     },
     fieldName: "postGain",
@@ -14062,7 +13176,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isInverted",
   },
@@ -14073,7 +13186,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 100,
       range: { min: 0.009999999776482582, max: 2000 },
     },
     fieldName: "holdMs",
@@ -14085,7 +13197,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.6665999889373779,
       range: { min: 0, max: 1 },
     },
     fieldName: "thresholdGain",
@@ -14097,7 +13208,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -14139,7 +13249,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -14151,7 +13260,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -14174,7 +13282,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 3600,
       range: { min: 31, max: 12000 },
     },
     fieldName: "frequencyHz",
@@ -14186,7 +13293,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.15000000596046448,
       range: { min: 0, max: 1 },
     },
     fieldName: "bandwidthFactor",
@@ -14198,7 +13304,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -12, max: 12 },
     },
     fieldName: "postGainDb",
@@ -14210,7 +13315,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -14247,7 +13351,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -14259,7 +13362,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -14282,7 +13384,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 240,
       range: { min: 30, max: 300 },
     },
     fieldName: "minFrequencyHz",
@@ -14294,7 +13395,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 3000,
       range: { min: 300, max: 8000 },
     },
     fieldName: "maxFrequencyHz",
@@ -14306,7 +13406,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.699999988079071,
       range: { min: 0, max: 1 },
     },
     fieldName: "feedbackFactor",
@@ -14318,7 +13417,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.6000000238418579,
       range: { min: 0.03999999910593033, max: 5 },
     },
     fieldName: "lfoFrequencyHz",
@@ -14330,7 +13428,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "mix",
@@ -14342,7 +13439,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -14379,7 +13475,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -14391,7 +13486,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -14414,7 +13508,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 3,
       range: { min: 1, max: 7 },
     },
     fieldName: "stepCount",
@@ -14426,7 +13519,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 3 },
     },
     fieldName: "stepLengthIndex",
@@ -14438,7 +13530,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.6660000085830688,
       range: { min: 0, max: 1 },
     },
     fieldName: "feedbackFactor",
@@ -14450,7 +13541,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.20000000298023224,
       range: { min: -1, max: 1 },
     },
     fieldName: "tuneFactor",
@@ -14462,7 +13552,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.699999988079071,
       range: { min: 0, max: 1 },
     },
     fieldName: "mix",
@@ -14474,7 +13563,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -14511,7 +13599,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -14523,7 +13610,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -14546,7 +13632,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.800000011920929,
       range: { min: 0, max: 1 },
     },
     fieldName: "roomSizeFactor",
@@ -14558,7 +13643,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 160,
       range: { min: 8, max: 500 },
     },
     fieldName: "preDelayTimeMs",
@@ -14570,7 +13654,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.6669999957084656,
       range: { min: 0, max: 1 },
     },
     fieldName: "feedbackFactor",
@@ -14582,7 +13665,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.10000000149011612,
       range: { min: 0, max: 1 },
     },
     fieldName: "dampFactor",
@@ -14594,7 +13676,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.20000000298023224,
       range: { min: 0, max: 1 },
     },
     fieldName: "mix",
@@ -14606,7 +13687,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -14643,7 +13723,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -14655,7 +13734,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -14678,7 +13756,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 1,
       range: { min: 1, max: 4 },
     },
     fieldName: "filterModeIndex",
@@ -14690,7 +13767,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 300,
       range: { min: 18, max: 10000 },
     },
     fieldName: "frequencyHz",
@@ -14702,7 +13778,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "resonanceFactor",
@@ -14714,7 +13789,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -500, max: 500 },
     },
     fieldName: "bandWidthHz",
@@ -14726,7 +13800,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "mix",
@@ -14738,7 +13811,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -14775,7 +13847,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -14787,7 +13858,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -14810,7 +13880,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.25,
       range: { min: -1, max: 1 },
     },
     fieldName: "detuneSemitones",
@@ -14822,7 +13891,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 14,
       range: { min: 2, max: 30 },
     },
     fieldName: "delayTimeMs",
@@ -14834,9 +13902,19 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
+  },
+  "stompboxStereoDetune:11": {
+    type: "primitive",
+    targetTypes: ["AutomatableParameter"],
+    immutable: false,
+    primitive: {
+      type: "number",
+      scalarType: ScalarType.FLOAT,
+      range: { min: -1, max: 0 },
+    },
+    fieldName: "mix",
   },
   "stompboxStereoDetune:8": {
     type: "object",
@@ -14871,7 +13949,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -14883,7 +13960,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -14906,7 +13982,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 12,
       range: { min: 0.10000000149011612, max: 12 },
     },
     fieldName: "drive",
@@ -14918,7 +13993,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -10, max: 10 },
     },
     fieldName: "tone",
@@ -14930,7 +14004,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 2 },
     },
     fieldName: "postGain",
@@ -14942,7 +14015,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -14973,7 +14045,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 4294967295 },
     },
     fieldName: "positionTicks",
@@ -14985,7 +14056,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 15360,
       range: { min: 0, max: 4294967295 },
     },
     fieldName: "durationTicks",
@@ -14997,7 +14067,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "collectionOffsetTicks",
@@ -15009,7 +14078,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "loopOffsetTicks",
@@ -15021,7 +14089,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 15360,
       range: { min: 0, max: 4294967295 },
     },
     fieldName: "loopDurationTicks",
@@ -15033,7 +14100,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isEnabled",
   },
@@ -15044,7 +14110,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 41 },
     },
     fieldName: "colorIndex",
@@ -15100,7 +14165,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 31.622777938842773 },
     },
     fieldName: "gain",
@@ -15112,7 +14176,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 10,
       range: { min: 0, max: 4294967295 },
     },
     fieldName: "fadeInDurationTicks",
@@ -15124,7 +14187,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "fadeInSlope",
@@ -15136,7 +14198,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 10,
       range: { min: 0, max: 4294967295 },
     },
     fieldName: "fadeOutDurationTicks",
@@ -15148,7 +14209,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "fadeOutSlope",
@@ -15160,7 +14220,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 2,
       range: { min: 1, max: 2 },
     },
     fieldName: "timestretchMode",
@@ -15172,7 +14231,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -24, max: 24 },
     },
     fieldName: "pitchShiftSemitones",
@@ -15189,7 +14247,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -Infinity, max: +Infinity },
     },
     fieldName: "orderAmongTracks",
@@ -15201,7 +14258,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isEnabled",
   },
@@ -15255,7 +14311,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionTicks",
@@ -15267,7 +14322,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "value",
@@ -15279,7 +14333,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "slope",
@@ -15291,7 +14344,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 1,
       range: { min: 1, max: 2 },
     },
     fieldName: "interpolation",
@@ -15303,7 +14355,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isSecond",
   },
@@ -15324,7 +14375,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 4294967295 },
     },
     fieldName: "positionTicks",
@@ -15336,7 +14386,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 15360,
       range: { min: 0, max: 4294967295 },
     },
     fieldName: "durationTicks",
@@ -15348,7 +14397,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "collectionOffsetTicks",
@@ -15360,7 +14408,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "loopOffsetTicks",
@@ -15372,7 +14419,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 15360,
       range: { min: 0, max: 4294967295 },
     },
     fieldName: "loopDurationTicks",
@@ -15384,7 +14430,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isEnabled",
   },
@@ -15395,7 +14440,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 41 },
     },
     fieldName: "colorIndex",
@@ -15445,7 +14489,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -Infinity, max: +Infinity },
     },
     fieldName: "orderAmongTracks",
@@ -15457,7 +14500,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isEnabled",
   },
@@ -15484,7 +14526,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isEnabled",
   },
@@ -15511,7 +14552,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionTicks",
@@ -15523,7 +14563,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 960,
       range: { min: 0, max: 4294967295 },
     },
     fieldName: "durationTicks",
@@ -15535,7 +14574,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 60,
       range: { min: 0, max: 127 },
     },
     fieldName: "pitch",
@@ -15547,7 +14585,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0.699999988079071,
       range: { min: 0, max: 1 },
     },
     fieldName: "velocity",
@@ -15559,7 +14596,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "doesSlide",
   },
@@ -15585,7 +14621,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 4294967295 },
     },
     fieldName: "positionTicks",
@@ -15597,7 +14632,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 15360,
       range: { min: 0, max: 4294967295 },
     },
     fieldName: "durationTicks",
@@ -15609,7 +14643,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "collectionOffsetTicks",
@@ -15621,7 +14654,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "loopOffsetTicks",
@@ -15633,7 +14665,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 15360,
       range: { min: 0, max: 4294967295 },
     },
     fieldName: "loopDurationTicks",
@@ -15645,7 +14676,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isEnabled",
   },
@@ -15656,7 +14686,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 41 },
     },
     fieldName: "colorIndex",
@@ -15706,7 +14735,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -Infinity, max: +Infinity },
     },
     fieldName: "orderAmongTracks",
@@ -15718,7 +14746,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isEnabled",
   },
@@ -15761,7 +14788,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 4294967295 },
     },
     fieldName: "positionTicks",
@@ -15773,7 +14799,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 15360,
       range: { min: 0, max: 4294967295 },
     },
     fieldName: "durationTicks",
@@ -15785,7 +14810,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "collectionOffsetTicks",
@@ -15797,7 +14821,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "loopOffsetTicks",
@@ -15809,7 +14832,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 15360,
       range: { min: 0, max: 4294967295 },
     },
     fieldName: "loopDurationTicks",
@@ -15821,7 +14843,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isEnabled",
   },
@@ -15832,7 +14853,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 41 },
     },
     fieldName: "colorIndex",
@@ -15855,7 +14875,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 32 },
     },
     fieldName: "patternIndex",
@@ -15878,7 +14897,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "restart",
   },
@@ -15894,7 +14912,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -Infinity, max: +Infinity },
     },
     fieldName: "orderAmongTracks",
@@ -15906,7 +14923,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isEnabled",
   },
@@ -15944,7 +14960,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -15956,7 +14971,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -15978,7 +14992,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 2.818382978439331 },
     },
     fieldName: "gain",
@@ -15990,7 +15003,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "isMuted",
   },
@@ -16001,7 +15013,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -16028,7 +15039,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -16040,7 +15050,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -16063,7 +15072,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.UINT32,
-      default: 0,
       range: { min: 0, max: 7 },
     },
     fieldName: "patternIndex",
@@ -16107,7 +15115,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -16151,7 +15158,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "[]",
   },
@@ -16189,7 +15195,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionX",
@@ -16201,7 +15206,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.INT32,
-      default: 0,
       range: { min: -2147483648, max: 2147483647 },
     },
     fieldName: "positionY",
@@ -16224,7 +15228,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 2.818382978439331 },
     },
     fieldName: "preGain",
@@ -16236,7 +15239,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "mix",
@@ -16248,7 +15250,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "autoDrive",
@@ -16260,7 +15261,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 5,
       range: { min: 1, max: 1000 },
     },
     fieldName: "attackMs",
@@ -16272,7 +15272,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 50,
       range: { min: 1, max: 1000 },
     },
     fieldName: "releaseMs",
@@ -16284,7 +15283,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 2.818382978439331 },
     },
     fieldName: "thresholdGain",
@@ -16296,7 +15294,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "invertEnvelope",
   },
@@ -16307,7 +15304,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "finalSlope",
@@ -16319,7 +15315,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 1,
       range: { min: 0, max: 1 },
     },
     fieldName: "finalY",
@@ -16346,7 +15341,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: true,
     },
     fieldName: "isActive",
   },
@@ -16357,7 +15351,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "boolean",
       scalarType: ScalarType.BOOL,
-      default: false,
     },
     fieldName: "disableOversampling",
   },
@@ -16373,7 +15366,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "x",
@@ -16385,7 +15377,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: 0, max: 1 },
     },
     fieldName: "y",
@@ -16397,7 +15388,6 @@ export const NEXUS_SCHEMA_INFO = {
     primitive: {
       type: "number",
       scalarType: ScalarType.FLOAT,
-      default: 0,
       range: { min: -1, max: 1 },
     },
     fieldName: "slope",

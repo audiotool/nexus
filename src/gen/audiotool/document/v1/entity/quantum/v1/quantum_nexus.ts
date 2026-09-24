@@ -22,7 +22,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type Quantum = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Quantum"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -45,7 +49,11 @@ export type Quantum = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  Gain of the compressor.
@@ -89,7 +97,7 @@ export type Quantum = {
    *
    * key | value
    * --- | ---
-   * default | 2
+   * default | 3
    * range | [1, 3]*/
   spectrumModeIndex: PrimitiveField<number, "mut">
   /**
@@ -102,7 +110,6 @@ export type Quantum = {
    *
    * key | value
    * --- | ---
-   * default | 20
    * range | [20, 20000]*/
   splitFrequencyHz: ArrayField<PrimitiveField<number, "mut">, 3>
   /**
@@ -131,7 +138,11 @@ export type Quantum = {
 export type QuantumConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Quantum"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -154,7 +165,11 @@ export type QuantumConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  Gain of the compressor.
@@ -195,7 +210,7 @@ export type QuantumConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 2
+   * default | 3
    * range | [1, 3]*/
   spectrumModeIndex?: number
   /**
@@ -208,7 +223,6 @@ export type QuantumConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 20
    * range | [20, 20000]*/
   splitFrequencyHz?: number[] & { length: 3 }
   /**

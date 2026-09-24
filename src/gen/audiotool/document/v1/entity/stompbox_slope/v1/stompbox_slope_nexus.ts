@@ -23,7 +23,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type StompboxSlope = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Slope"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -46,7 +50,11 @@ export type StompboxSlope = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  Selects the filter mode of the slope.
@@ -59,7 +67,7 @@ export type StompboxSlope = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 2
    * range | [1, 4]
    * is | {@link api.TargetType.AutomatableParameter}*/
   filterModeIndex: PrimitiveField<number, "mut">
@@ -69,7 +77,7 @@ export type StompboxSlope = {
    *
    * key | value
    * --- | ---
-   * default | 300
+   * default | 1200
    * range | [18, 10000]
    * is | {@link api.TargetType.AutomatableParameter}*/
   frequencyHz: PrimitiveField<number, "mut">
@@ -79,7 +87,7 @@ export type StompboxSlope = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 0.7
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   resonanceFactor: PrimitiveField<number, "mut">
@@ -90,7 +98,7 @@ export type StompboxSlope = {
    *
    * key | value
    * --- | ---
-   * default | 0
+   * default | -40
    * range | [-500, 500]
    * is | {@link api.TargetType.AutomatableParameter}*/
   bandWidthHz: PrimitiveField<number, "mut">
@@ -136,7 +144,11 @@ export type StompboxSlope = {
 export type StompboxSlopeConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Slope"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -159,7 +171,11 @@ export type StompboxSlopeConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  Selects the filter mode of the slope.
@@ -172,7 +188,7 @@ export type StompboxSlopeConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 2
    * range | [1, 4]*/
   filterModeIndex?: number
   /**
@@ -181,7 +197,7 @@ export type StompboxSlopeConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 300
+   * default | 1200
    * range | [18, 10000]*/
   frequencyHz?: number
   /**
@@ -190,7 +206,7 @@ export type StompboxSlopeConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 0.7
    * range | [0, 1]*/
   resonanceFactor?: number
   /**
@@ -200,7 +216,7 @@ export type StompboxSlopeConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0
+   * default | -40
    * range | [-500, 500]*/
   bandWidthHz?: number
   /**

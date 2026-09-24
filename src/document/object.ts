@@ -1,7 +1,6 @@
 // noinspection JSUnusedLocalSymbols,JSUnusedGlobalSymbols
 
 import type { NexusLocation } from "@document/location"
-import { throw_ } from "@utils/lang"
 import type { NexusField } from "./fields"
 
 /**
@@ -26,15 +25,10 @@ export class NexusObject<F extends NexusFieldTypes = NexusFieldTypes>
     this.fields = fields
   }
 
-  /** @internal Returns the field with the given field number. Throws if it can't find it. */
-  _getField(fieldNumber: number): NexusField {
-    return (
-      Object.values(this.fields).find(
-        (field) => field.location.fieldIndex.at(-1) === fieldNumber,
-      ) ??
-      throw_(
-        `can't find field with number ${fieldNumber} on NexusObject ${this}`,
-      )
+  /** @internal Returns the field with the given field number, or undefined if the SDK doesn't know it. */
+  _getField(fieldNumber: number): NexusField | undefined {
+    return Object.values(this.fields).find(
+      (field) => field.location.fieldIndex.at(-1) === fieldNumber,
     )
   }
 }

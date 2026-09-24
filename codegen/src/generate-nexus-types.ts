@@ -4,6 +4,7 @@ import * as opt_pb from "../../src/gen/audiotool/document/v1/opt/opt_pb"
 import { throw_ } from "../../src/utils/lang.js"
 import { ENTITY_GROUPS } from "./entity-groups"
 import type { GeneratedFile } from "./file"
+import { fieldKey } from "./gather-field-defaults"
 import {
   findOptions,
   formatComments,
@@ -20,11 +21,12 @@ export const generateNexusTypes = (
   messages: DescMessage[],
   entityNames: Map<string, string>,
   fieldTargets: Map<string, string[]>,
+  fieldDefaults: Map<string, string>,
 ): void => {
   // for every message in this file
   messages.forEach((message) => {
-    generateNexusType(file, message, entityNames, fieldTargets)
-    generateConstructorType(file, message)
+    generateNexusType(file, message, entityNames, fieldTargets, fieldDefaults)
+    generateConstructorType(file, message, fieldDefaults)
   })
 
   file.write()
@@ -35,6 +37,7 @@ const generateNexusType = (
   message: DescMessage,
   entityNames: Map<string, string>,
   fieldTargets: Map<string, string[]>,
+  fieldDefaults: Map<string, string>,
 ): void => {
   // don't generate the type of the id field, since it is immutable
   const nonIdFields = message.fields.filter(
@@ -46,7 +49,9 @@ const generateNexusType = (
   file.print(formatEntityComments(message, name))
   file.print(`export type ${toTypeName(message)} = {`)
   nonIdFields.forEach((field) => {
-    file.print(formatNexusFieldComments(field, true, fieldTargets))
+    file.print(
+      formatNexusFieldComments(field, true, fieldDefaults, fieldTargets),
+    )
     file.print(`${localName(field)}: ${toFieldType(field, file)},`)
   })
   file.print(`}`)
@@ -55,6 +60,7 @@ const generateNexusType = (
 const generateConstructorType = (
   file: GeneratedFile,
   message: DescMessage,
+  fieldDefaults: Map<string, string>,
 ): void => {
   // don't generate the type of the id field, since it is immutable
   const nonIdFields = message.fields.filter(
@@ -104,7 +110,7 @@ const generateConstructorType = (
         throw_("list length is required for repeated fields")
       fieldType = `${fieldType}[] & { length: ${arrayLength} }`
     }
-    file.print(formatNexusFieldComments(field, false, undefined))
+    file.print(formatNexusFieldComments(field, false, fieldDefaults))
     file.print(
       `${localName(field)}${fieldIsRequired ? "" : "?"}: ${fieldType},`,
     )
@@ -116,6 +122,7 @@ const generateConstructorType = (
 const formatNexusFieldComments = (
   field: DescField,
   includeTargetTypes: boolean,
+  fieldDefaults: Map<string, string>,
   fieldTargets?: Map<string, string[]>,
 ): string => {
   const opts = getFieldOptions(field)
@@ -127,14 +134,12 @@ const formatNexusFieldComments = (
     lines.push(`${key} | ${value}`)
   }
 
-  if (opts.bool !== undefined) {
-    // pushMeta("type", "boolean")
-    pushMeta("default", opts.bool.init ? "true" : "false")
+  const defaultValue = fieldDefaults.get(fieldKey(field.parent, field))
+  if (defaultValue !== undefined) {
+    pushMeta("default", defaultValue)
   }
 
   if (opts.float !== undefined) {
-    // pushMeta("type", "number (float)")
-    pushMeta("default", opts.float.init.toString())
     if (opts.float.range !== undefined) {
       pushMeta("range", `[${opts.float.range.min}, ${opts.float.range.max}]`)
     } else {
@@ -143,8 +148,6 @@ const formatNexusFieldComments = (
   }
 
   if (opts.int32 !== undefined) {
-    // pushMeta("type", "number (int32)")
-    pushMeta("default", opts.int32.init.toString())
     if (opts.int32.range !== undefined) {
       pushMeta("range", `[${opts.int32.range.min}, ${opts.int32.range.max}]`)
     } else {
@@ -153,8 +156,6 @@ const formatNexusFieldComments = (
   }
 
   if (opts.uint32 !== undefined) {
-    // pushMeta("type", "number (uint32)")
-    pushMeta("default", opts.uint32.init.toString())
     if (opts.uint32.range !== undefined) {
       pushMeta("range", `[${opts.uint32.range.min}, ${opts.uint32.range.max}]`)
     } else {
@@ -224,18 +225,6 @@ const formatNexusFieldComments = (
   }
 
   return formatComments({ leading: fullComment }, undefined, undefined)
-}
-
-const formatConstructorFieldComments = (field: DescField): string => {
-  const opts = getFieldOptions(field)
-  const comments = field.getComments()
-
-  let lines: string[] = []
-  if (opts.bool !== undefined) {
-    lines.push(`@defaultValue ${opts.bool.init ? "true" : "false"}\n`)
-  }
-
-  return formatComments(comments, ...lines)
 }
 
 const formatEntityComments = (message: DescMessage, name?: string): string => {

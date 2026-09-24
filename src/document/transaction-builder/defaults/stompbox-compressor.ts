@@ -6,12 +6,12 @@ export const stompboxCompressorDefaults: Defaults<StompboxCompressorConstructor>
   {
     ...defaultDisplayParams,
     displayName: "Compressor",
-    attackMs: 5,
-    releaseMs: 25,
-    makeupGainDb: 0,
-    detectionModeIndex: 1,
-    ratio: 0.4000000059604645,
-    thresholdDb: -15,
+    attackMs: 10,
+    releaseMs: 50,
+    makeupGainDb: 1.4838908910751343,
+    detectionModeIndex: 2,
+    ratio: 0.6014999747276306,
+    thresholdDb: -24,
     isActive: true,
     presetName: "",
   }

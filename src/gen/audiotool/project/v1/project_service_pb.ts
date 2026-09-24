@@ -646,6 +646,10 @@ export class SyncTrackRequest extends Message<SyncTrackRequest> {
   /**
    * Required. The mode to sync the track.
    *
+   * IMPORTANT: If mode is set to SYNC_TRACK_MODE_AUDIO or SYNC_TRACK_MODE_ALL, the
+   * returned operation will stall until DocumentService.RenderSyncTrackAudio is called
+   * which will trigger the actual rendering of the track.
+   *
    * @generated from field: audiotool.project.v1.SyncTrackMode mode = 2;
    */
   mode = SyncTrackMode.UNSPECIFIED;
@@ -656,6 +660,21 @@ export class SyncTrackRequest extends Message<SyncTrackRequest> {
    * @generated from field: uint64 commit_index = 3;
    */
   commitIndex = protoInt64.zero;
+
+  /**
+   * Optional note posted as a comment on the resulting track after the sync
+   * completes.
+   *
+   * The server creates the comment attributed to the calling user and stamps
+   * `system_tags["origin"]` to `republish` (subsequent sync of an existing track). Clients
+   * cannot set `system_tags` directly via `CommentService`.
+   *
+   * The field is ignored on initial publish of a project as a track and a comment will not be
+   * created.
+   *
+   * @generated from field: string publish_note = 4;
+   */
+  publishNote = "";
 
   constructor(data?: PartialMessage<SyncTrackRequest>) {
     super();
@@ -668,6 +687,7 @@ export class SyncTrackRequest extends Message<SyncTrackRequest> {
     { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 2, name: "mode", kind: "enum", T: proto3.getEnumType(SyncTrackMode) },
     { no: 3, name: "commit_index", kind: "scalar", T: 4 /* ScalarType.UINT64 */ },
+    { no: 4, name: "publish_note", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SyncTrackRequest {

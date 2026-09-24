@@ -26,7 +26,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type Rasselbock = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Rasselbock"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -49,7 +53,11 @@ export type Rasselbock = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  Empty fields which RasselbockPatterns can point to. At most one pattern
@@ -136,7 +144,11 @@ export type Rasselbock = {
 export type RasselbockConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Rasselbock"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -159,7 +171,11 @@ export type RasselbockConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  The index of the currently selected pattern. Determines which pattern the Rasselbock
@@ -267,7 +283,6 @@ export type RasselbockPattern = {
    *
    * key | value
    * --- | ---
-   * default | 0
    * range | full*/
   effectOrder: ArrayField<PrimitiveField<number, "mut">, 7>
   /**
@@ -331,7 +346,6 @@ export type RasselbockPatternConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0
    * range | full*/
   effectOrder?: number[] & { length: 7 }
   /**

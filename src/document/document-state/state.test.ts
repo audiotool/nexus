@@ -525,6 +525,34 @@ describe("NexusDocumentState", () => {
       )
     })
 
+    it("should ignore updates on fields the SDK doesn't know", () => {
+      const onUpdate = vi.fn()
+      const state = nexusDocumentState({
+        callbacks: {
+          onUpdate,
+        },
+      })
+      state.applyModification(noteTrackCreate("id"))
+      state.applyModification(
+        new Modification({
+          modification: {
+            case: "update",
+            value: {
+              field: {
+                entityId: "id",
+                fieldIndex: [999],
+              },
+              value: {
+                case: "bool",
+                value: true,
+              },
+            },
+          },
+        }),
+      )
+      expect(onUpdate).not.toHaveBeenCalled()
+    })
+
     it("should call onUpdate on pointer field", () => {
       const onUpdate = vi.fn()
       const state = nexusDocumentState({

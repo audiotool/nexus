@@ -17,4 +17,5 @@ export const autoFilterDefaults: Defaults<AutoFilterConstructor> = {
   mix: 1,
   isActive: true,
   presetName: "",
+  spectrumModeIndex: 0,
 }

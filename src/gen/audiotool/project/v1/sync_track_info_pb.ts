@@ -21,6 +21,7 @@ import type { BinaryReadOptions, FieldList, JsonReadOptions, JsonValue, PartialM
 import { Message, proto3, protoInt64, Timestamp } from "@bufbuild/protobuf";
 import { Project } from "./project_pb.js";
 import { SyncTrackMode } from "./project_service_pb.js";
+import { DocumentMetadata } from "../../document/v1/metadata/v1/document_metadata_pb.js";
 
 /**
  * SyncTrackMetadataStatus is the current status of the SyncTrackMetadata.
@@ -76,6 +77,13 @@ export enum SyncTrackStatus {
    * @generated from enum value: SYNC_TRACK_STATUS_FINISHED = 7;
    */
   FINISHED = 7,
+
+  /**
+   * A render has been linked to a sync track request and is waiting for a worker to process the render.
+   *
+   * @generated from enum value: SYNC_TRACK_STATUS_AUDIO_RENDER_QUEUED = 8;
+   */
+  AUDIO_RENDER_QUEUED = 8,
 }
 // Retrieve enum metadata with: proto3.getEnumType(SyncTrackStatus)
 proto3.util.setEnumType(SyncTrackStatus, "audiotool.project.v1.SyncTrackStatus", [
@@ -86,6 +94,7 @@ proto3.util.setEnumType(SyncTrackStatus, "audiotool.project.v1.SyncTrackStatus",
   { no: 5, name: "SYNC_TRACK_STATUS_AUDIO_CONVERTING" },
   { no: 6, name: "SYNC_TRACK_STATUS_AUDIO_CONVERTED" },
   { no: 7, name: "SYNC_TRACK_STATUS_FINISHED" },
+  { no: 8, name: "SYNC_TRACK_STATUS_AUDIO_RENDER_QUEUED" },
 ]);
 
 /**
@@ -146,6 +155,37 @@ export class SyncTrackInfo extends Message<SyncTrackInfo> {
    */
   status = SyncTrackStatus.UNSPECIFIED;
 
+  /**
+   * Optional. Mirrored from SyncTrackRequest.publish_note when this sync
+   * republishes an existing track (project already had track_name) and mode is
+   * AUDIO or ALL. The gatherer turns this into a track comment with
+   * system_tags["origin"] = "republish" on SYNC_TRACK_STATUS_FINISHED.
+   *
+   * @generated from field: string publish_note = 8;
+   */
+  publishNote = "";
+
+  /**
+   * The render that produced the published audio (renders/{uuid}). Set when
+   * reporting SYNC_TRACK_STATUS_AUDIO_CONVERTED; gatherer uses this with
+   * commit_index to copy CDN render outputs into the tracks bucket.
+   *
+   * @generated from field: string render_name = 9;
+   */
+  renderName = "";
+
+  /**
+   * Document metadata summarized by Hermes at the rendered commit index while
+   * the document was live in memory. Set from
+   * SYNC_TRACK_STATUS_AUDIO_RENDER_QUEUED (source: RenderUploadFinishedRequest)
+   * through SYNC_TRACK_STATUS_AUDIO_CONVERTED, where the gatherer persists it
+   * directly without re-opening the document. Cleared again before
+   * SYNC_TRACK_STATUS_FINISHED so client-facing operation updates stay small.
+   *
+   * @generated from field: audiotool.document.v1.metadata.v1.DocumentMetadata document_metadata = 10;
+   */
+  documentMetadata?: DocumentMetadata;
+
   constructor(data?: PartialMessage<SyncTrackInfo>) {
     super();
     proto3.util.initPartial(data, this);
@@ -161,6 +201,9 @@ export class SyncTrackInfo extends Message<SyncTrackInfo> {
     { no: 5, name: "user_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "create_time", kind: "message", T: Timestamp },
     { no: 7, name: "status", kind: "enum", T: proto3.getEnumType(SyncTrackStatus) },
+    { no: 8, name: "publish_note", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 9, name: "render_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 10, name: "document_metadata", kind: "message", T: DocumentMetadata },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): SyncTrackInfo {

@@ -9,8 +9,8 @@ export const stompboxPitchDelayDefaults: Defaults<StompboxPitchDelayConstructor>
     stepCount: 3,
     stepLengthIndex: 1,
     feedbackFactor: 0.6660000085830688,
-    tuneFactor: 0.2,
-    mix: 0.7,
+    tuneFactor: 0.20000000298023224,
+    mix: 0.699999988079071,
     isActive: true,
     presetName: "",
   }

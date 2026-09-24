@@ -22,7 +22,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type Quasar = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Quasar"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -45,7 +49,11 @@ export type Quasar = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  Pre-delay applied globally to all delays.
@@ -100,7 +108,7 @@ export type Quasar = {
    *
    * key | value
    * --- | ---
-   * default | 0.5011870265007019
+   * default | 0.501187
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   dryGain: PrimitiveField<number, "mut">
@@ -110,7 +118,7 @@ export type Quasar = {
    *
    * key | value
    * --- | ---
-   * default | 0.5011870265007019
+   * default | 0.501187
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   wetGain: PrimitiveField<number, "mut">
@@ -208,7 +216,11 @@ export type Quasar = {
 export type QuasarConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Quasar"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -231,7 +243,11 @@ export type QuasarConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  Pre-delay applied globally to all delays.
@@ -282,7 +298,7 @@ export type QuasarConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.5011870265007019
+   * default | 0.501187
    * range | [0, 1]*/
   dryGain?: number
   /**
@@ -291,7 +307,7 @@ export type QuasarConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.5011870265007019
+   * default | 0.501187
    * range | [0, 1]*/
   wetGain?: number
   /**

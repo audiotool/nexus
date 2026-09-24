@@ -33,12 +33,16 @@ export type MicroTuningOctave = {
    *
    * key | value
    * --- | ---
-   * default | 0
+   * default | 0 (every element)
    * range | [-1, 1]*/
   semitones: ArrayField<PrimitiveField<number, "mut">, 12>
   /**
    *  The name of this micro tuning octave.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Micro Tuning"`*/
   displayName: PrimitiveField<string, "mut">
 }
 /** @internal */
@@ -58,12 +62,16 @@ export type MicroTuningOctaveConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0
+   * default | 0 (every element)
    * range | [-1, 1]*/
   semitones?: number[] & { length: 12 }
   /**
    *  The name of this micro tuning octave.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Micro Tuning"`*/
   displayName?: string
 }
 

@@ -21,7 +21,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type StompboxPhaser = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Phaser"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -44,7 +48,11 @@ export type StompboxPhaser = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  Allow for a frequency range to be set for the effect. Only frequencies between the min and max will be affected.
@@ -52,7 +60,7 @@ export type StompboxPhaser = {
    *
    * key | value
    * --- | ---
-   * default | 240
+   * default | 30
    * range | [30, 300]
    * is | {@link api.TargetType.AutomatableParameter}*/
   minFrequencyHz: PrimitiveField<number, "mut">
@@ -62,7 +70,7 @@ export type StompboxPhaser = {
    *
    * key | value
    * --- | ---
-   * default | 3000
+   * default | 378.48438
    * range | [300, 8000]
    * is | {@link api.TargetType.AutomatableParameter}*/
   maxFrequencyHz: PrimitiveField<number, "mut">
@@ -72,7 +80,7 @@ export type StompboxPhaser = {
    *
    * key | value
    * --- | ---
-   * default | 0.699999988079071
+   * default | 0.7291667
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   feedbackFactor: PrimitiveField<number, "mut">
@@ -82,7 +90,7 @@ export type StompboxPhaser = {
    *
    * key | value
    * --- | ---
-   * default | 0.6000000238418579
+   * default | 0.36185876
    * range | [0.03999999910593033, 5]
    * is | {@link api.TargetType.AutomatableParameter}*/
   lfoFrequencyHz: PrimitiveField<number, "mut">
@@ -95,7 +103,7 @@ export type StompboxPhaser = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 0.26950002
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   mix: PrimitiveField<number, "mut">
@@ -130,7 +138,11 @@ export type StompboxPhaser = {
 export type StompboxPhaserConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Phaser"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -153,7 +165,11 @@ export type StompboxPhaserConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  Allow for a frequency range to be set for the effect. Only frequencies between the min and max will be affected.
@@ -161,7 +177,7 @@ export type StompboxPhaserConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 240
+   * default | 30
    * range | [30, 300]*/
   minFrequencyHz?: number
   /**
@@ -170,7 +186,7 @@ export type StompboxPhaserConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 3000
+   * default | 378.48438
    * range | [300, 8000]*/
   maxFrequencyHz?: number
   /**
@@ -179,7 +195,7 @@ export type StompboxPhaserConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.699999988079071
+   * default | 0.7291667
    * range | [0, 1]*/
   feedbackFactor?: number
   /**
@@ -188,7 +204,7 @@ export type StompboxPhaserConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.6000000238418579
+   * default | 0.36185876
    * range | [0.03999999910593033, 5]*/
   lfoFrequencyHz?: number
   /**
@@ -200,7 +216,7 @@ export type StompboxPhaserConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 0.26950002
    * range | [0, 1]*/
   mix?: number
   /**

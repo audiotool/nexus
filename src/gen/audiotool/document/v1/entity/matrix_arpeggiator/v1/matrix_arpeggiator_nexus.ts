@@ -25,7 +25,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type MatrixArpeggiator = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Matrix Arpeggiator"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -48,7 +52,11 @@ export type MatrixArpeggiator = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  Whether the arpeggio is active or not. If is_active=false, the notes are passed
@@ -239,7 +247,11 @@ export type MatrixArpeggiator = {
 export type MatrixArpeggiatorConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Matrix Arpeggiator"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -262,7 +274,11 @@ export type MatrixArpeggiatorConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  Whether the arpeggio is active or not. If is_active=false, the notes are passed
@@ -520,7 +536,7 @@ export type MatrixArpeggiatorPatternStep = {
    *
    * key | value
    * --- | ---
-   * default | false*/
+   * default | true*/
   overrideVelocity: PrimitiveField<boolean, "mut">
   /**
    *  The velocity to use for this step. If override_velocity is false, the velocity defined
@@ -572,7 +588,7 @@ export type MatrixArpeggiatorPatternStepConstructor = {
    *
    * key | value
    * --- | ---
-   * default | false*/
+   * default | true*/
   overrideVelocity?: boolean
   /**
    *  The velocity to use for this step. If override_velocity is false, the velocity defined

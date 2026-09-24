@@ -25,7 +25,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type AudioMerger = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Merger"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -51,25 +55,25 @@ export type AudioMerger = {
    *  A, B and C in the AudioMergerCoordinates below.
    *
    *  - 0: invalid
-   *  - 1: full-power
-   *  - 2: equal-power
+   *  - 1: equal-power
+   *  - 2: full-power
    *
    *  The difference between algorithms is best understood when considering
    *  the situation where all 3 input signals receive an identical sine wave
    *  peak value 1.
+   *
+   *  - equal-power:
+   *     The output gain of the signal will be near-constant when moving the knob.
    *
    *  - full-power:
    *     Means the output will become louder when the knob is in the
    *     center - you will basically add all 3 signals, resulting in a sine wave
    *     with peak 3. If the knob is at e.g. point A, the signal will get gain 1.
    *
-   *  - equal-power:
-   *     The output gain of the signal will be near-constant when moving the knob.
-   *
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 2
    * range | [1, 2]
    * is | {@link api.TargetType.AutomatableParameter}*/
   blendModeIndex: PrimitiveField<number, "mut">
@@ -116,7 +120,11 @@ export type AudioMerger = {
 export type AudioMergerConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Merger"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -142,25 +150,25 @@ export type AudioMergerConstructor = {
    *  A, B and C in the AudioMergerCoordinates below.
    *
    *  - 0: invalid
-   *  - 1: full-power
-   *  - 2: equal-power
+   *  - 1: equal-power
+   *  - 2: full-power
    *
    *  The difference between algorithms is best understood when considering
    *  the situation where all 3 input signals receive an identical sine wave
    *  peak value 1.
+   *
+   *  - equal-power:
+   *     The output gain of the signal will be near-constant when moving the knob.
    *
    *  - full-power:
    *     Means the output will become louder when the knob is in the
    *     center - you will basically add all 3 signals, resulting in a sine wave
    *     with peak 3. If the knob is at e.g. point A, the signal will get gain 1.
    *
-   *  - equal-power:
-   *     The output gain of the signal will be near-constant when moving the knob.
-   *
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 2
    * range | [1, 2]*/
   blendModeIndex?: number
   /**
@@ -200,7 +208,7 @@ export type AudioMergerCoordinates = {
    *
    * key | value
    * --- | ---
-   * default | 0.6666666865348816
+   * default | 0.33333334
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   x: PrimitiveField<number, "mut">
@@ -224,7 +232,7 @@ export type AudioMergerCoordinatesConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.6666666865348816
+   * default | 0.33333334
    * range | [0, 1]*/
   x?: number
   /**

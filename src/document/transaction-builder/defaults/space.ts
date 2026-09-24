@@ -20,7 +20,7 @@ export const spaceDefaults: Defaults<SpaceConstructor> = {
   displayName: "Space",
   isActive: true,
   microTuning: new NexusLocation(),
-  gain: 0.70794,
+  gain: 1,
   stereoDetuneShift: 0,
   tuneSemitones: 0,
   tuneASemitones: 0,

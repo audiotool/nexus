@@ -63,6 +63,61 @@ proto3.util.setEnumType(CommentMode, "audiotool.user.v1.CommentMode", [
 ]);
 
 /**
+ * Controls who may see a user's online presence (see
+ * `audiotool.presence.v1.Presence`). Applies to online/offline state, custom
+ * status, and active resource contexts together — there is no separate
+ * visibility setting for custom status. When a caller is not permitted to see
+ * presence, the user is reported as offline and no custom status is returned.
+ *
+ * @generated from enum audiotool.user.v1.OnlineStatusVisibility
+ */
+export enum OnlineStatusVisibility {
+  /**
+   * Unspecified. Treated as `ONLINE_STATUS_VISIBILITY_EVERYONE`.
+   *
+   * @generated from enum value: ONLINE_STATUS_VISIBILITY_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * Presence is visible to everyone.
+   *
+   * @generated from enum value: ONLINE_STATUS_VISIBILITY_EVERYONE = 1;
+   */
+  EVERYONE = 1,
+
+  /**
+   * Presence is visible only to users who follow this user.
+   *
+   * @generated from enum value: ONLINE_STATUS_VISIBILITY_FOLLOWERS = 2;
+   */
+  FOLLOWERS = 2,
+
+  /**
+   * Presence is visible only to mutuals (users who follow this user and are
+   * followed back).
+   *
+   * @generated from enum value: ONLINE_STATUS_VISIBILITY_MUTUALS = 3;
+   */
+  MUTUALS = 3,
+
+  /**
+   * Presence is never visible; the user always appears offline.
+   *
+   * @generated from enum value: ONLINE_STATUS_VISIBILITY_NOBODY = 4;
+   */
+  NOBODY = 4,
+}
+// Retrieve enum metadata with: proto3.getEnumType(OnlineStatusVisibility)
+proto3.util.setEnumType(OnlineStatusVisibility, "audiotool.user.v1.OnlineStatusVisibility", [
+  { no: 0, name: "ONLINE_STATUS_VISIBILITY_UNSPECIFIED" },
+  { no: 1, name: "ONLINE_STATUS_VISIBILITY_EVERYONE" },
+  { no: 2, name: "ONLINE_STATUS_VISIBILITY_FOLLOWERS" },
+  { no: 3, name: "ONLINE_STATUS_VISIBILITY_MUTUALS" },
+  { no: 4, name: "ONLINE_STATUS_VISIBILITY_NOBODY" },
+]);
+
+/**
  * The settings of the user.
  *
  * @generated from message audiotool.user.v1.Settings
@@ -92,7 +147,12 @@ export class Settings extends Message<Settings> {
   /**
    * Show online status.
    *
-   * @generated from field: bool show_online_status = 4;
+   * Deprecated: use `online_status_visibility` instead. `true` is equivalent to
+   * `ONLINE_STATUS_VISIBILITY_EVERYONE` and `false` to
+   * `ONLINE_STATUS_VISIBILITY_NOBODY`.
+   *
+   * @generated from field: bool show_online_status = 4 [deprecated = true];
+   * @deprecated
    */
   showOnlineStatus = false;
 
@@ -131,6 +191,13 @@ export class Settings extends Message<Settings> {
    */
   allowLinksOnPlaylistComments = false;
 
+  /**
+   * Controls who may see this user's online presence.
+   *
+   * @generated from field: audiotool.user.v1.OnlineStatusVisibility online_status_visibility = 10;
+   */
+  onlineStatusVisibility = OnlineStatusVisibility.UNSPECIFIED;
+
   constructor(data?: PartialMessage<Settings>) {
     super();
     proto3.util.initPartial(data, this);
@@ -148,6 +215,7 @@ export class Settings extends Message<Settings> {
     { no: 7, name: "allow_links_on_user_page_comments", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 8, name: "allow_links_on_track_comments", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 9, name: "allow_links_on_playlist_comments", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 10, name: "online_status_visibility", kind: "enum", T: proto3.getEnumType(OnlineStatusVisibility) },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Settings {

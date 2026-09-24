@@ -73,6 +73,14 @@ export class StompboxStereoDetune extends Message<StompboxStereoDetune> {
   isActive = false;
 
   /**
+   * Controls the mix between the incoming and the effect signal. -1.0 ("dry") means 0% effect
+   * applied, 0.0 ("wet") means 100% effect applied; values between mixes the two linearly.
+   *
+   * @generated from field: float mix = 11;
+   */
+  mix = 0;
+
+  /**
    * Single Input.
    *
    * @generated from field: audiotool.document.v1.Empty audio_input = 8;
@@ -102,6 +110,7 @@ export class StompboxStereoDetune extends Message<StompboxStereoDetune> {
     { no: 5, name: "detune_semitones", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 6, name: "delay_time_ms", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 7, name: "is_active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 11, name: "mix", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 8, name: "audio_input", kind: "message", T: Empty },
     { no: 9, name: "audio_output", kind: "message", T: Empty },
   ]);

@@ -113,6 +113,8 @@ export enum SampleUsage {
    * The Sample is allowed to be used (e.g. for remixes) but hidden from listing/searching.
    *
    * You can retrieve the samples by a get requests and they will be exposed by the tracks API.
+   * After a takedown this is forced to UNLISTED; use takedown_reason to tell owner-unlisted
+   * from moderation takedown (UNSPECIFIED means not taken down).
    *
    * @generated from enum value: SAMPLE_USAGE_UNLISTED = 2;
    */
@@ -123,6 +125,60 @@ proto3.util.setEnumType(SampleUsage, "audiotool.sample.v1.SampleUsage", [
   { no: 0, name: "SAMPLE_USAGE_UNSPECIFIED" },
   { no: 1, name: "SAMPLE_USAGE_PUBLIC" },
   { no: 2, name: "SAMPLE_USAGE_UNLISTED" },
+]);
+
+/**
+ * Why a sample was taken down. New values may be added.
+ *
+ * SAMPLE_TAKEDOWN_REASON_UNSPECIFIED means the sample has not been taken down.
+ *
+ * @generated from enum audiotool.sample.v1.SampleTakedownReason
+ */
+export enum SampleTakedownReason {
+  /**
+   * Default / unused. On Sample: not taken down. Invalid as a TakeDownSample request value.
+   *
+   * @generated from enum value: SAMPLE_TAKEDOWN_REASON_UNSPECIFIED = 0;
+   */
+  UNSPECIFIED = 0,
+
+  /**
+   * Removed for copyright or rights-holder concerns.
+   *
+   * @generated from enum value: SAMPLE_TAKEDOWN_REASON_COPYRIGHT = 1;
+   */
+  COPYRIGHT = 1,
+
+  /**
+   * Removed for terms-of-service or community-guidelines violations.
+   *
+   * @generated from enum value: SAMPLE_TAKEDOWN_REASON_TERMS_VIOLATION = 2;
+   */
+  TERMS_VIOLATION = 2,
+
+  /**
+   * Removed for another moderation reason not covered above.
+   *
+   * @generated from enum value: SAMPLE_TAKEDOWN_REASON_OTHER = 3;
+   */
+  OTHER = 3,
+
+  /**
+   * Taken down at the owner's request: set when the owner deletes a sample that is still
+   * used by a project (public SampleService.DeleteSample keeps the resource in that case),
+   * or when an admin records an owner-requested takedown.
+   *
+   * @generated from enum value: SAMPLE_TAKEDOWN_REASON_BY_USER = 4;
+   */
+  BY_USER = 4,
+}
+// Retrieve enum metadata with: proto3.getEnumType(SampleTakedownReason)
+proto3.util.setEnumType(SampleTakedownReason, "audiotool.sample.v1.SampleTakedownReason", [
+  { no: 0, name: "SAMPLE_TAKEDOWN_REASON_UNSPECIFIED" },
+  { no: 1, name: "SAMPLE_TAKEDOWN_REASON_COPYRIGHT" },
+  { no: 2, name: "SAMPLE_TAKEDOWN_REASON_TERMS_VIOLATION" },
+  { no: 3, name: "SAMPLE_TAKEDOWN_REASON_OTHER" },
+  { no: 4, name: "SAMPLE_TAKEDOWN_REASON_BY_USER" },
 ]);
 
 /**
@@ -158,16 +214,6 @@ export class Sample extends Message<Sample> {
    * @generated from field: string owner_name = 4;
    */
   ownerName = "";
-
-  /**
-   * Whether the authed user liked the sample.
-   *
-   * This is only exposed if the user is authenticated.  The user can like a Preset via
-   * Favor API.
-   *
-   * @generated from field: bool favorited_by_user = 5;
-   */
-  favoritedByUser = false;
 
   /**
    * The number of favorites of the Sample.
@@ -229,6 +275,8 @@ export class Sample extends Message<Sample> {
 
   /**
    * The usage of the Sample.
+   *
+   * After a takedown this is forced to SAMPLE_USAGE_UNLISTED.
    *
    * @generated from field: audiotool.sample.v1.SampleUsage usage = 14;
    */
@@ -301,6 +349,16 @@ export class Sample extends Message<Sample> {
    */
   waveformUrl = "";
 
+  /**
+   * Why this sample was taken down. UNSPECIFIED means it has not been taken down.
+   *
+   * When not UNSPECIFIED, usage is forced to UNLISTED and all URL fields above are empty.
+   * The row is kept so existing track references remain valid.
+   *
+   * @generated from field: audiotool.sample.v1.SampleTakedownReason takedown_reason = 31;
+   */
+  takedownReason = SampleTakedownReason.UNSPECIFIED;
+
   constructor(data?: PartialMessage<Sample>) {
     super();
     proto3.util.initPartial(data, this);
@@ -313,7 +371,6 @@ export class Sample extends Message<Sample> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "owner_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "favorited_by_user", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 6, name: "num_favorites", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 7, name: "num_usages", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 8, name: "bpm", kind: "scalar", T: 1 /* ScalarType.DOUBLE */ },
@@ -329,6 +386,7 @@ export class Sample extends Message<Sample> {
     { no: 18, name: "preview_mp3_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 19, name: "flac_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 20, name: "waveform_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 31, name: "takedown_reason", kind: "enum", T: proto3.getEnumType(SampleTakedownReason) },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Sample {

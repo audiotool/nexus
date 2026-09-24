@@ -28,7 +28,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type AutoFilter = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Auto Filter"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -51,7 +55,11 @@ export type AutoFilter = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  The threshold gain above which the filter envelope is triggered. Equivalent to a dB range of [-inf, 0.0].
@@ -143,7 +151,7 @@ export type AutoFilter = {
    *
    * key | value
    * --- | ---
-   * default | 1.4142135381698608
+   * default | 1.4142135
    * range | [0.009999999776482582, 1.4142135381698608]
    * is | {@link api.TargetType.AutomatableParameter}*/
   filterResonance: PrimitiveField<number, "mut">
@@ -205,13 +213,30 @@ export type AutoFilter = {
    * default | true
    * is | {@link api.TargetType.AutomatableParameter}*/
   isActive: PrimitiveField<boolean, "mut">
+  /**
+   *  Selects the spectrum mode of the equalizer. This only affects the visual representation
+   *  in the DAW.
+   *  - 0: Off   - no spectrum is displayed
+   *  - 1: Pre   - the spectrum is displayed before the equalizer is applied
+   *  - 2: Post  - the spectrum is displayed after the equalizer is applied
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | 0
+   * range | [0, 2]*/
+  spectrumModeIndex: PrimitiveField<number, "mut">
 }
 /** @internal */
 
 export type AutoFilterConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Auto Filter"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -234,7 +259,11 @@ export type AutoFilterConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  The threshold gain above which the filter envelope is triggered. Equivalent to a dB range of [-inf, 0.0].
@@ -319,7 +348,7 @@ export type AutoFilterConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 1.4142135381698608
+   * default | 1.4142135
    * range | [0.009999999776482582, 1.4142135381698608]*/
   filterResonance?: number
   /**
@@ -349,5 +378,18 @@ export type AutoFilterConstructor = {
    * --- | ---
    * default | true*/
   isActive?: boolean
+  /**
+   *  Selects the spectrum mode of the equalizer. This only affects the visual representation
+   *  in the DAW.
+   *  - 0: Off   - no spectrum is displayed
+   *  - 1: Pre   - the spectrum is displayed before the equalizer is applied
+   *  - 2: Post  - the spectrum is displayed after the equalizer is applied
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | 0
+   * range | [0, 2]*/
+  spectrumModeIndex?: number
 }
 

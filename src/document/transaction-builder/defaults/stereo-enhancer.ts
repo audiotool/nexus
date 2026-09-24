@@ -7,7 +7,7 @@ export const stereoEnhancerDefaults: Defaults<StereoEnhancerConstructor> = {
   displayName: "Stereo Enhancer",
   isActive: true,
   channelsAreInverted: false,
-  frequencyHz: 11000,
-  stereoWidth: 0.25,
+  frequencyHz: 5678.92529296875,
+  stereoWidth: 1,
   presetName: "",
 }

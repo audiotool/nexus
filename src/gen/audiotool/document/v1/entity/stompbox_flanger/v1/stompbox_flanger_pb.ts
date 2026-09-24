@@ -78,6 +78,14 @@ export class StompboxFlanger extends Message<StompboxFlanger> {
   lfoModulationDepth = 0;
 
   /**
+   * Controls the mix between the incoming and the effect signal. -1.0 ("dry") means 0% effect
+   * applied, 0.0 ("wet") means 100% effect applied; values between mixes the two linearly.
+   *
+   * @generated from field: float mix = 13;
+   */
+  mix = 0;
+
+  /**
    * Whether the stompbox is active or not. When is_active=false, audio signal bypasses the device
    *
    * @generated from field: bool is_active = 9;
@@ -115,6 +123,7 @@ export class StompboxFlanger extends Message<StompboxFlanger> {
     { no: 6, name: "feedback_factor", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 7, name: "lfo_frequency_hz", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 8, name: "lfo_modulation_depth", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
+    { no: 13, name: "mix", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 9, name: "is_active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 10, name: "audio_input", kind: "message", T: Empty },
     { no: 11, name: "audio_output", kind: "message", T: Empty },

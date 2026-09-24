@@ -29,7 +29,11 @@ import {
 export type Space = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Space"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -52,7 +56,11 @@ export type Space = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  Micro tuning.
@@ -70,7 +78,7 @@ export type Space = {
    *
    * key | value
    * --- | ---
-   * default | 0.7079399824142456
+   * default | 1
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   gain: PrimitiveField<number, "mut">
@@ -329,7 +337,11 @@ export type Space = {
 export type SpaceConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Space"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -352,7 +364,11 @@ export type SpaceConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  Micro tuning.
@@ -369,7 +385,7 @@ export type SpaceConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.7079399824142456
+   * default | 1
    * range | [0, 1]*/
   gain?: number
   /**
@@ -758,7 +774,7 @@ export type SpaceSound = {
    *
    * key | value
    * --- | ---
-   * default | 0.20000000298023224
+   * default | 0.2
    * range | [0, 1]*/
   vaporisation: PrimitiveField<number, "mut">
   /**
@@ -814,7 +830,7 @@ export type SpaceSound = {
    *
    * key | value
    * --- | ---
-   * default | 0.15000000596046448
+   * default | 0.15
    * range | [0, 1]*/
   combFilterRate: PrimitiveField<number, "mut">
   /**
@@ -846,7 +862,7 @@ export type SpaceSoundConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.20000000298023224
+   * default | 0.2
    * range | [0, 1]*/
   vaporisation?: number
   /**
@@ -902,7 +918,7 @@ export type SpaceSoundConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.15000000596046448
+   * default | 0.15
    * range | [0, 1]*/
   combFilterRate?: number
   /**

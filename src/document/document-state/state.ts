@@ -124,7 +124,7 @@ export const nexusDocumentState = (props?: {
 
     const value = extractPbUpdateValue(update.value, getEntityType)
 
-    applyUpdate(entity, location, value, {
+    const applied = applyUpdate(entity, location, value, {
       onStopPointingTo: (source, target) => {
         removeSourceTarget(references, source, target) || throw_()
         callbacks.onStopPointingTo(source, target)
@@ -135,7 +135,9 @@ export const nexusDocumentState = (props?: {
       },
     })
 
-    callbacks.onUpdate(location, value)
+    if (applied) {
+      callbacks.onUpdate(location, value)
+    }
   }
 
   return {

@@ -31,7 +31,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type SpitfireLabsVst3Plugin = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Spitfire LABS"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -618,7 +622,11 @@ export type SpitfireLabsVst3Plugin = {
    *  If the state contains a sample pack that the user doesn't have installed,
    *  the user won't hear any sound (the plugin UI shows some error), otherwise
    *  it will continue working as expected.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | empty*/
   state: PrimitiveField<Uint8Array, "mut">
 }
 /** @internal */
@@ -626,7 +634,11 @@ export type SpitfireLabsVst3Plugin = {
 export type SpitfireLabsVst3PluginConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Spitfire LABS"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -1148,7 +1160,11 @@ export type SpitfireLabsVst3PluginConstructor = {
    *  If the state contains a sample pack that the user doesn't have installed,
    *  the user won't hear any sound (the plugin UI shows some error), otherwise
    *  it will continue working as expected.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | empty*/
   state?: Uint8Array
 }
 

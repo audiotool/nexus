@@ -22,7 +22,7 @@ export type MixerCompressor = {
    *
    * key | value
    * --- | ---
-   * default | 15
+   * default | 5
    * range | [0.0010000000474974513, 200]
    * is | {@link api.TargetType.AutomatableParameter}*/
   attackMs: PrimitiveField<number, "mut">
@@ -32,7 +32,7 @@ export type MixerCompressor = {
    *
    * key | value
    * --- | ---
-   * default | 100
+   * default | 50
    * range | [0.0010000000474974513, 2000]
    * is | {@link api.TargetType.AutomatableParameter}*/
   releaseMs: PrimitiveField<number, "mut">
@@ -106,7 +106,7 @@ export type MixerCompressorConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 15
+   * default | 5
    * range | [0.0010000000474974513, 200]*/
   attackMs?: number
   /**
@@ -115,7 +115,7 @@ export type MixerCompressorConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 100
+   * default | 50
    * range | [0.0010000000474974513, 2000]*/
   releaseMs?: number
   /**

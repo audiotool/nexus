@@ -94,6 +94,14 @@ export type MixerGroup = {
    * default | true*/
   auxSendsAreActive: PrimitiveField<boolean, "mut">
   /**
+   *  true if aux sends are branched off before post fain fader (default: they aren't)
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | false*/
+  auxSendsArePreGain: PrimitiveField<boolean, "mut">
+  /**
    *  Sends to the aux strip.
    *
    *
@@ -141,6 +149,14 @@ export type MixerGroupConstructor = {
    * --- | ---
    * default | true*/
   auxSendsAreActive?: boolean
+  /**
+   *  true if aux sends are branched off before post fain fader (default: they aren't)
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | false*/
+  auxSendsArePreGain?: boolean
   /**
    *  Fader parameters of this strip.
    */

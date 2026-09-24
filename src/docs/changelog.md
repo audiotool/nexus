@@ -7,6 +7,37 @@ title: 📜 Changelog
 
 To get more background on the changes we make, join our [Discord](https://developer.audiotool.com/discord).
 
+## 0.0.18
+
+### New fields
+
+These entity fields are new. You can read and modify them:
+
+- `mixerChannel.auxSendsArePreGain` and `mixerGroup.auxSendsArePreGain`: if `true`, the aux sends branch off before the main fader (pre fader). By default, they branch off after it (post fader).
+- `stompboxChorus.mix`: the new mix knob on the Chorus.
+- `stompboxFlanger.mix`: the new mix knob on the Flanger.
+- `stompboxStereoDetune.mix`: the new mix knob on the Stereo Detune.
+- `autoFilter.spectrumModeIndex`: changes what the Auto Filter shows on the desktop. This is purely visual.
+
+### Breaking changes
+
+- `favoritedByUser` was removed from {@link api.SamplePending} and from the `Sample` message, because the API no longer returns it.
+- `default` was removed from `NumberPrimitive` and `BooleanPrimitive` (returned by {@link document.getSchemaLocationDetails}). The protos no longer define default values.
+
+### Other changes
+
+- **Synced 73 default values** from the DAW to the SDK. Newly created devices now sound like devices created in the DAW. If your app relies on default values, check the result. For example, Helmholtz now uses a C major scale, and the mixer compressor has faster attack and release times.
+- **More robust syncing:** the SDK no longer throws when another participant changes a field that this SDK version doesn't know. It ignores the change instead.
+
+### Changes in how the engine interprets some values
+
+Our recent changes described in [Fighting sound mismatches (part 1)](https://www.audiotool.com/blog/fighting-sound-mismatches-pt1) can affect your app as well. Some of them are not in that post's changelog, so they are listed here. **Only check these if you use the features.** We expect most apps to be unaffected.
+
+- **Machiniste channel filter frequency** (`machiniste.channels[i].cutoffFrequencyHz`): the engine now interprets this value differently. A value in Hz now corresponds to the actual filter frequency in Hz.
+- **Automation of the Orbit filter frequencies and the Stereo Enhancer tone**: automation lanes of `graphicalEQ.filter1.frequencyHz`, `graphicalEQ.filter2.frequencyHz` and `stereoEnhancer.frequencyHz` are now interpreted differently.
+- **Empty automation regions** now behave differently, as described in the blog post.
+- **Stompbox Phaser depth** (`stompboxPhaser.mix`): the parameter and its automation lane now behave like a regular mix parameter. Before, `0` meant a 10% mix. Now, `0` means 0%. To keep the old sound, remap every value (including automation) from `[0, 1]` to `[0.1, 1]` with `x * 0.9 + 0.1`.
+
 ## 0.0.16 & 0.0.17
 
 New sample API, helper methods to:
@@ -25,7 +56,7 @@ If you're working with samples, we think it's much easer to use - give it a look
 - **New Goodies in {@link api.PresetsAPI}**:
   - use `at.presets.getInstrument("marimba")` to get the marimba instrument
   - use `at.presets.getDrums("jazz-kit")` to get the jazz drum kit
-  - use `at.presets.getInstrument(8)` to use instrument with GM Program number `8` (see [1])
+  - use `at.presets.getInstrument(8)` to use instrument with GM Program number `8` (see \[1\])
   - use `at.presets.getDrums(8)` to get the Room Kit (available programs: 0, 8, 16, 24, 25, 32, 40, 48)
   - use `at.presets.gmInstruments` to get a list of all GM instruments, incl. `.displayName`, `.description`, and `.program` to get the GM number.
   - use `at.presets.gmDrums` to get a list of all GM drums, like the other one
@@ -40,7 +71,7 @@ If you're working with samples, we think it's much easer to use - give it a look
 
 See a list of all available instruments at {@link api.GmInstrumentSlug}, drums at {@link api.GmDrumSlug}.
 
-[1]: For background on GM program numbers, see [General MIDI on Wikipedia](https://en.wikipedia.org/wiki/General_MIDI). Many listings show programs as 1–128; in this SDK they are 0-indexed per MIDI 1.0.
+\[1\]: For background on GM program numbers, see [General MIDI on Wikipedia](https://en.wikipedia.org/wiki/General_MIDI). Many listings show programs as 1–128; in this SDK they are 0-indexed per MIDI 1.0.
 
 ## 0.0.13 & 0.0.14
 
@@ -138,7 +169,7 @@ Migrate my code from @audiotool/nexus 0.0.12 to 0.0.14. Apply these changes:
 
 ## 0.0.11
 
-- {@link index.AudiotoolClient.createSyncedDocument} (now: `open`) changed it's signature: `mode: "online"` is no longer needed - the document is always
+- ~~`AudiotoolClient.createSyncedDocument`~~ (now: `open`) changed it's signature: `mode: "online"` is no longer needed - the document is always
   online and synced:
 
   ```
@@ -215,7 +246,7 @@ more fun and easy to use!
 Here's a summary:
 
 - the ability to self host your app!
-- the new gakki soundfontplayer & audio region repitching: {@link entities.Gakki}, {@link entities.AudioRegion | FOO}.
+- the new gakki soundfontplayer & audio region repitching: {@link entities.Gakki}, {@link entities.AudioRegion.pitchShiftSemitones}.
 - a major revision of the entire API structure - hopefully the last one!
 
 > [!NOTE]

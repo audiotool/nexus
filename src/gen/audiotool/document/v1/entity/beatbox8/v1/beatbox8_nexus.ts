@@ -22,7 +22,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type Beatbox8 = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Beatbox 8"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -45,7 +49,11 @@ export type Beatbox8 = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  This device's output gain. Equivalent to a dB range of [-inf, 0.0].
@@ -53,7 +61,7 @@ export type Beatbox8 = {
    *
    * key | value
    * --- | ---
-   * default | 0.7079457640647888
+   * default | 0.70794
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   gain: PrimitiveField<number, "mut">
@@ -161,7 +169,11 @@ export type Beatbox8 = {
 export type Beatbox8Constructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Beatbox 8"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -184,7 +196,11 @@ export type Beatbox8Constructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  This device's output gain. Equivalent to a dB range of [-inf, 0.0].
@@ -192,7 +208,7 @@ export type Beatbox8Constructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.7079457640647888
+   * default | 0.70794
    * range | [0, 1]*/
   gain?: number
   /**
@@ -624,7 +640,7 @@ export type Beatbox8Bassdrum = {
    *
    * key | value
    * --- | ---
-   * default | 0.6000000238418579
+   * default | 0.6
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   tone: PrimitiveField<number, "mut">
@@ -634,7 +650,7 @@ export type Beatbox8Bassdrum = {
    *
    * key | value
    * --- | ---
-   * default | 0.2750000059604645
+   * default | 0.275
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   decay: PrimitiveField<number, "mut">
@@ -665,7 +681,7 @@ export type Beatbox8BassdrumConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.6000000238418579
+   * default | 0.6
    * range | [0, 1]*/
   tone?: number
   /**
@@ -674,7 +690,7 @@ export type Beatbox8BassdrumConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.2750000059604645
+   * default | 0.275
    * range | [0, 1]*/
   decay?: number
 }
@@ -964,7 +980,7 @@ export type Beatbox8TomCongaHigh = {
    *
    * key | value
    * --- | ---
-   * default | 0.6000000238418579
+   * default | 0.6
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   tuning: PrimitiveField<number, "mut">
@@ -1008,7 +1024,7 @@ export type Beatbox8TomCongaHighConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.6000000238418579
+   * default | 0.6
    * range | [0, 1]*/
   tuning?: number
   /**
@@ -1316,7 +1332,7 @@ export type Beatbox8OpenHihat = {
    *
    * key | value
    * --- | ---
-   * default | 0.8220000267028809
+   * default | 0.822
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   decay: PrimitiveField<number, "mut">
@@ -1347,7 +1363,7 @@ export type Beatbox8OpenHihatConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.8220000267028809
+   * default | 0.822
    * range | [0, 1]*/
   decay?: number
 }

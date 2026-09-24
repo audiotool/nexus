@@ -10,7 +10,7 @@ export const stompboxGateDefaults: Defaults<StompboxGateConstructor> = {
   postGain: 1,
   isInverted: false,
   holdMs: 100,
-  thresholdGain: 0.6665999889373779,
+  thresholdGain: 0.10000000149011612,
   isActive: true,
   presetName: "",
 }

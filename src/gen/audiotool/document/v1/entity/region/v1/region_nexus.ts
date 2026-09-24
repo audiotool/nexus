@@ -118,7 +118,11 @@ export type Region = {
   colorIndex: PrimitiveField<number, "mut">
   /**
    *  A user-assigned name for the region.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   displayName: PrimitiveField<string, "mut">
 }
 /** @internal */
@@ -188,7 +192,11 @@ export type RegionConstructor = {
   colorIndex?: number
   /**
    *  A user-assigned name for the region.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   displayName?: string
 }
 

@@ -594,13 +594,6 @@ export class String extends Message<String> {
  * @generated from message audiotool.document.v1.opt.Bool
  */
 export class Bool extends Message<Bool> {
-  /**
-   * Suggested default value of this field.
-   *
-   * @generated from field: bool init = 1;
-   */
-  init = false;
-
   constructor(data?: PartialMessage<Bool>) {
     super();
     proto3.util.initPartial(data, this);
@@ -609,7 +602,6 @@ export class Bool extends Message<Bool> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "audiotool.document.v1.opt.Bool";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "init", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Bool {
@@ -636,13 +628,6 @@ export class Bool extends Message<Bool> {
  */
 export class Int32 extends Message<Int32> {
   /**
-   * Suggested default value of this field.
-   *
-   * @generated from field: int32 init = 1;
-   */
-  init = 0;
-
-  /**
    * Optional validity range of this field.
    *
    * @generated from field: audiotool.document.v1.opt.Int32Range range = 2;
@@ -657,7 +642,6 @@ export class Int32 extends Message<Int32> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "audiotool.document.v1.opt.Int32";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "init", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 2, name: "range", kind: "message", T: Int32Range },
   ]);
 
@@ -737,13 +721,6 @@ export class Int32Range extends Message<Int32Range> {
  */
 export class UInt32 extends Message<UInt32> {
   /**
-   * Suggested default value of this field.
-   *
-   * @generated from field: uint32 init = 1;
-   */
-  init = 0;
-
-  /**
    * Optional validity range of this field.
    *
    * @generated from field: audiotool.document.v1.opt.UInt32Range range = 2;
@@ -758,7 +735,6 @@ export class UInt32 extends Message<UInt32> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "audiotool.document.v1.opt.UInt32";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "init", kind: "scalar", T: 13 /* ScalarType.UINT32 */ },
     { no: 2, name: "range", kind: "message", T: UInt32Range },
   ]);
 
@@ -838,13 +814,6 @@ export class UInt32Range extends Message<UInt32Range> {
  */
 export class Float extends Message<Float> {
   /**
-   * Default value of this field.
-   *
-   * @generated from field: float init = 1;
-   */
-  init = 0;
-
-  /**
    * Optional validity range of this field.
    *
    * @generated from field: audiotool.document.v1.opt.FloatRange range = 2;
@@ -859,7 +828,6 @@ export class Float extends Message<Float> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "audiotool.document.v1.opt.Float";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
-    { no: 1, name: "init", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 2, name: "range", kind: "message", T: FloatRange },
   ]);
 

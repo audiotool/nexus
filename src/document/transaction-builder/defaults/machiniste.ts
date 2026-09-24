@@ -43,7 +43,9 @@ export const machinisteChannelDefaults: Defaults<MachinisteChannelConstructor> =
     pitchSemitones: 0,
     pitchModulationDepth: 0,
     filterTypeIndex: 1,
-    cutoffFrequencyHz: 6000,
+    // 6000 was the linear encoding of about half travel. The filter hears about
+    // 576 Hz there, and the field now holds that frequency.
+    cutoffFrequencyHz: 575.5615234375,
     cutoffModulationDepth: 0,
     resonance: 0,
     resonanceModulationDepth: 0,

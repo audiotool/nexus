@@ -429,16 +429,6 @@ export class Preset extends Message<Preset> {
   ownerName = "";
 
   /**
-   * Whether the authed user liked the Preset.
-   *
-   * This is only exposed if the user is authenticated. The user can like a Preset via
-   * Favorite API.
-   *
-   * @generated from field: bool favorited_by_user = 5;
-   */
-  favoritedByUser = false;
-
-  /**
    * The number of favorites of the Preset.
    *
    * @generated from field: int32 num_favorites = 6;
@@ -513,7 +503,6 @@ export class Preset extends Message<Preset> {
     { no: 2, name: "display_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 3, name: "description", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "owner_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
-    { no: 5, name: "favorited_by_user", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 6, name: "num_favorites", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 7, name: "num_usages", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 8, name: "create_time", kind: "message", T: Timestamp },

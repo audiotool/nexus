@@ -21,7 +21,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type AudioDevice = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"AudioDevice"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -47,7 +51,7 @@ export type AudioDevice = {
    *
    * key | value
    * --- | ---
-   * default | 0.7079399824142456
+   * default | 0.70794
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   gain: PrimitiveField<number, "mut">
@@ -85,7 +89,11 @@ export type AudioDevice = {
 export type AudioDeviceConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"AudioDevice"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -111,7 +119,7 @@ export type AudioDeviceConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.7079399824142456
+   * default | 0.70794
    * range | [0, 1]*/
   gain?: number
   /**

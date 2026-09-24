@@ -136,14 +136,12 @@ const getPrimitiveInfo = (
       return `{
       type: "number",
       scalarType: ${scalarType},
-      default: ${options.float?.init ?? options.int32?.init ?? options.uint32?.init ?? 0},
       range: ${getMinMax(field.scalar, options)},
       }`
     case ScalarType.BOOL:
       return `{
       type: "boolean",
       scalarType: ${scalarType},
-      default: ${options.bool?.init ?? false},
       }`
     case ScalarType.STRING:
       return `{

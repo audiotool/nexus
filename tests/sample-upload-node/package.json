@@ -1,0 +1,15 @@
+{
+  "name": "sample-upload-node",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "npx tsx src/main.ts"
+  },
+  "dependencies": {
+    "@audiotool/nexus": "link:../.."
+  },
+  "devDependencies": {
+    "tsx": "^4",
+    "typescript": "^5"
+  }
+}

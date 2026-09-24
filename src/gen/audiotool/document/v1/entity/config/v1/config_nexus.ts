@@ -41,7 +41,7 @@ export type Config = {
    * key | value
    * --- | ---
    * default | 440
-   * range | [400, 800]*/
+   * range | [300, 800]*/
   baseFrequencyHz: PrimitiveField<number, "mut">
   /**
    *  The numerator of the time signature.
@@ -105,7 +105,7 @@ export type ConfigConstructor = {
    * key | value
    * --- | ---
    * default | 440
-   * range | [400, 800]*/
+   * range | [300, 800]*/
   baseFrequencyHz?: number
   /**
    *  The numerator of the time signature.

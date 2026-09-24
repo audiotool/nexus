@@ -115,7 +115,10 @@ export class Project extends Message<Project> {
   creatorName = "";
 
   /**
-   * The track_name of the project (this is set when a the project has been published as a track).
+   * The track_name of the project.
+   *
+   * NOTE: This does not act as a guarantee that the track exists if this field is set only that a render has been triggered and
+   * a track name has been reserved for the project.
    *
    * @generated from field: string track_name = 4;
    */

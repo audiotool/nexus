@@ -21,7 +21,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type StompboxFlanger = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Flanger"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -44,7 +48,11 @@ export type StompboxFlanger = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  Allows control of the Flanger's short delay.
@@ -52,7 +60,7 @@ export type StompboxFlanger = {
    *
    * key | value
    * --- | ---
-   * default | 3
+   * default | 1
    * range | [1, 10]
    * is | {@link api.TargetType.AutomatableParameter}*/
   delayTimeMs: PrimitiveField<number, "mut">
@@ -62,7 +70,7 @@ export type StompboxFlanger = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 0
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   feedbackFactor: PrimitiveField<number, "mut">
@@ -72,7 +80,7 @@ export type StompboxFlanger = {
    *
    * key | value
    * --- | ---
-   * default | 0.03999999910593033
+   * default | 0.13232197
    * range | [0.03999999910593033, 5]
    * is | {@link api.TargetType.AutomatableParameter}*/
   lfoFrequencyHz: PrimitiveField<number, "mut">
@@ -82,10 +90,21 @@ export type StompboxFlanger = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 0.74039996
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   lfoModulationDepth: PrimitiveField<number, "mut">
+  /**
+   *  Controls the mix between the incoming and the effect signal. -1.0 ("dry") means 0% effect
+   *  applied, 0.0 ("wet") means 100% effect applied; values between mixes the two linearly.
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | 0
+   * range | [-1, 0]
+   * is | {@link api.TargetType.AutomatableParameter}*/
+  mix: PrimitiveField<number, "mut">
   /**
    *  Whether the stompbox is active or not. When is_active=false, audio signal bypasses the device
    *
@@ -117,7 +136,11 @@ export type StompboxFlanger = {
 export type StompboxFlangerConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Flanger"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -140,7 +163,11 @@ export type StompboxFlangerConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  Allows control of the Flanger's short delay.
@@ -148,7 +175,7 @@ export type StompboxFlangerConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 3
+   * default | 1
    * range | [1, 10]*/
   delayTimeMs?: number
   /**
@@ -157,7 +184,7 @@ export type StompboxFlangerConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 0
    * range | [0, 1]*/
   feedbackFactor?: number
   /**
@@ -166,7 +193,7 @@ export type StompboxFlangerConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.03999999910593033
+   * default | 0.13232197
    * range | [0.03999999910593033, 5]*/
   lfoFrequencyHz?: number
   /**
@@ -175,9 +202,19 @@ export type StompboxFlangerConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 0.74039996
    * range | [0, 1]*/
   lfoModulationDepth?: number
+  /**
+   *  Controls the mix between the incoming and the effect signal. -1.0 ("dry") means 0% effect
+   *  applied, 0.0 ("wet") means 100% effect applied; values between mixes the two linearly.
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | 0
+   * range | [-1, 0]*/
+  mix?: number
   /**
    *  Whether the stompbox is active or not. When is_active=false, audio signal bypasses the device
    *

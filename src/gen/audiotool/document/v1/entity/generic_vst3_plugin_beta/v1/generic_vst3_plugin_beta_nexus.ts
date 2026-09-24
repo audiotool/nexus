@@ -31,11 +31,19 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type GenericVst3PluginBeta = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  The path to the plugin to load
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   pluginPath: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -91,7 +99,11 @@ export type GenericVst3PluginBeta = {
    *  If the state contains a sample pack that the user doesn't have installed,
    *  the user won't hear any sound (the plugin UI shows some error), otherwise
    *  it will continue working as expected.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | empty*/
   state: PrimitiveField<Uint8Array, "mut">
   /**
    *  Whether the device is active  or not. When is_active=false, audio signal bypasses the device
@@ -108,11 +120,19 @@ export type GenericVst3PluginBeta = {
 export type GenericVst3PluginBetaConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   displayName?: string
   /**
    *  The path to the plugin to load
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   pluginPath?: string
   /**
    *  X position on the desktop in the DAW.
@@ -144,7 +164,11 @@ export type GenericVst3PluginBetaConstructor = {
    *  If the state contains a sample pack that the user doesn't have installed,
    *  the user won't hear any sound (the plugin UI shows some error), otherwise
    *  it will continue working as expected.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | empty*/
   state?: Uint8Array
   /**
    *  Whether the device is active  or not. When is_active=false, audio signal bypasses the device

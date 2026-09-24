@@ -30,9 +30,10 @@ export class NexusEntity<
   /**
    * @internal
    *
-   * Returns a field with a specific field index. Throws if it can't find it.
+   * Returns a field with a specific field index, or undefined if the SDK doesn't
+   * know the field. This happens if the protos have fields the SDK doesn't expose.
    */
-  _resolveField(fieldNumbers: ReadonlyArray<number>): NexusField {
+  _resolveField(fieldNumbers: ReadonlyArray<number>): NexusField | undefined {
     if (fieldNumbers.length === 0) {
       throw "tried resolving empty field path"
     }
@@ -40,6 +41,9 @@ export class NexusEntity<
     const [first, ...rest] = fieldNumbers
     let cursor = this._getField(first)
     for (const fieldNumber of rest) {
+      if (cursor === undefined) {
+        return undefined
+      }
       if (cursor instanceof NexusObject) {
         cursor = cursor._getField(fieldNumber)
         continue

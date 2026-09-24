@@ -25,7 +25,7 @@ export const basslinePatternDefaults: Defaults<BasslinePatternConstructor> = {
 export const basslineDefaults: Defaults<BasslineConstructor> = {
   ...defaultDisplayParams,
   displayName: "Bassline",
-  gain: 0.70794,
+  gain: 1,
   tuneSemitones: 0,
   cutoffFrequencyHz: 220,
   filterResonance: 1,
@@ -34,6 +34,7 @@ export const basslineDefaults: Defaults<BasslineConstructor> = {
   accent: 1,
   waveformIndex: 1,
   patternIndex: 0,
+  microTuning: new NexusLocation(),
   isActive: true,
   presetName: "",
 } as Defaults<BasslineConstructor>

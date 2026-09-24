@@ -55,7 +55,8 @@ export class User extends Message<User> {
   description = "";
 
   /**
-   * The number of public tracks the user has.
+   * The number of total tracks the user is credited on. To see number of public tracks, you can get the count from the users
+   * published playlist. Can be found at users/{user}/playlists/published
    *
    * @generated from field: int32 num_tracks = 5;
    */

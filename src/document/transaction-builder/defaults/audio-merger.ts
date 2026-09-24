@@ -5,7 +5,7 @@ import { defaultDisplayParams } from "./shared"
 export const audioMergerDefaults: Defaults<AudioMergerConstructor> = {
   ...defaultDisplayParams,
   displayName: "Merger",
-  blendModeIndex: 1,
+  blendModeIndex: 2,
   mergeCoords: {
     x: 0.3333333432674408,
     y: 0,

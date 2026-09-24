@@ -1,0 +1,16 @@
+{
+  "name": "sample-upload-bun",
+  "private": true,
+  "type": "module",
+  "module": "index.ts",
+  "scripts": {
+    "start": "bun run index.ts"
+  },
+  "dependencies": {
+    "@audiotool/nexus": "link:../.."
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5"
+  }
+}

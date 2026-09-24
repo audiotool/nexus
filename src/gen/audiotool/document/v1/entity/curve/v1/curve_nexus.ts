@@ -26,7 +26,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type Curve = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Curve"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -49,7 +53,11 @@ export type Curve = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  Gain applied to the signal after equalization.
@@ -81,7 +89,7 @@ export type Curve = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 3
    * range | [1, 3]*/
   spectrumModeIndex: PrimitiveField<number, "mut">
   /**
@@ -134,7 +142,11 @@ export type Curve = {
 export type CurveConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Curve"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -157,7 +169,11 @@ export type CurveConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  Gain applied to the signal after equalization.
@@ -187,7 +203,7 @@ export type CurveConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 1
+   * default | 3
    * range | [1, 3]*/
   spectrumModeIndex?: number
   /**
@@ -237,7 +253,6 @@ export type CurvePass = {
    *
    * key | value
    * --- | ---
-   * default | 40
    * range | [20, 20000]
    * is | {@link api.TargetType.AutomatableParameter}*/
   cutoffFrequencyHz: PrimitiveField<number, "mut">
@@ -253,7 +268,8 @@ export type CurvePass = {
    * key | value
    * --- | ---
    * default | 1
-   * range | [1, 4]*/
+   * range | [1, 4]
+   * is | {@link api.TargetType.AutomatableParameter}*/
   filterSlopeIndex: PrimitiveField<number, "mut">
   /**
    *  The high/low pass Q parameter, controls the bandwidth and resonance of the filter.
@@ -261,7 +277,7 @@ export type CurvePass = {
    *
    * key | value
    * --- | ---
-   * default | 0.7099999785423279
+   * default | 0.71
    * range | [0.009999999776482582, 10]
    * is | {@link api.TargetType.AutomatableParameter}*/
   q: PrimitiveField<number, "mut">
@@ -284,7 +300,6 @@ export type CurvePassConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 40
    * range | [20, 20000]*/
   cutoffFrequencyHz?: number
   /**
@@ -307,7 +322,7 @@ export type CurvePassConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.7099999785423279
+   * default | 0.71
    * range | [0.009999999776482582, 10]*/
   q?: number
   /**
@@ -337,7 +352,6 @@ export type CurveShelf = {
    *
    * key | value
    * --- | ---
-   * default | 10000
    * range | [20, 20000]
    * is | {@link api.TargetType.AutomatableParameter}*/
   centerFrequencyHz: PrimitiveField<number, "mut">
@@ -370,7 +384,6 @@ export type CurveShelfConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 10000
    * range | [20, 20000]*/
   centerFrequencyHz?: number
   /**
@@ -409,7 +422,6 @@ export type CurvePeak = {
    *
    * key | value
    * --- | ---
-   * default | 4000
    * range | [20, 20000]
    * is | {@link api.TargetType.AutomatableParameter}*/
   centerFrequencyHz: PrimitiveField<number, "mut">
@@ -439,7 +451,6 @@ export type CurvePeak = {
    *
    * key | value
    * --- | ---
-   * default | true
    * is | {@link api.TargetType.AutomatableParameter}*/
   isEnabled: PrimitiveField<boolean, "mut">
 }
@@ -452,7 +463,6 @@ export type CurvePeakConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 4000
    * range | [20, 20000]*/
   centerFrequencyHz?: number
   /**
@@ -475,11 +485,7 @@ export type CurvePeakConstructor = {
   q?: number
   /**
    *  Whether this peak filter is enabled. If is_enabled=false, the filter is disabled.
-   *
-   *
-   * key | value
-   * --- | ---
-   * default | true*/
+   */
   isEnabled?: boolean
 }
 

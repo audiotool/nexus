@@ -75,10 +75,6 @@ export type NumberPrimitive = {
     | ScalarType.UINT64
     | ScalarType.SINT32
     | ScalarType.SINT64
-
-  /** Default value for the field as indicated by the protos. Might be removed. */
-  default: number
-
   /**
    * The range of values for this field. If protos are unset, is the range of the
    * number type.
@@ -100,7 +96,6 @@ export type StringPrimitive = {
 export type BooleanPrimitive = {
   type: "boolean"
   scalarType: ScalarType.BOOL
-  default: boolean
 }
 
 /** If the primitive field contains a bytes array (Uint8Array), this is returned. */

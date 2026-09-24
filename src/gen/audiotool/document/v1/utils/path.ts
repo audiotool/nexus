@@ -83,6 +83,7 @@ export type AutoFilterPath =
   | "sideChainInput"
   | "audioOutput"
   | "isActive"
+  | "spectrumModeIndex"
 
 /** @internal */
 export type BandSplitterPath =
@@ -830,6 +831,7 @@ export type MixerChannelPath =
   | Submessage<"compressor", MixerCompressorPath>
   | Submessage<"eq", MixerEqPath>
   | "auxSendsAreActive"
+  | "auxSendsArePreGain"
   | "auxSend"
   | "sideChainOutput"
   | Submessage<"faderParameters", MixerStripFaderParametersPath>
@@ -853,6 +855,7 @@ export type MixerGroupPath =
   | "insertOutput"
   | "insertInput"
   | "auxSendsAreActive"
+  | "auxSendsArePreGain"
   | "auxSend"
   | "sideChainOutput"
   | Submessage<"faderParameters", MixerStripFaderParametersPath>
@@ -1349,6 +1352,7 @@ export type StompboxChorusPath =
   | "lfoFrequencyHz"
   | "lfoModulationDepth"
   | "spreadFactor"
+  | "mix"
   | "isActive"
   | "audioInput"
   | "audioOutput"
@@ -1409,6 +1413,7 @@ export type StompboxFlangerPath =
   | "feedbackFactor"
   | "lfoFrequencyHz"
   | "lfoModulationDepth"
+  | "mix"
   | "isActive"
   | "audioInput"
   | "audioOutput"
@@ -1512,6 +1517,7 @@ export type StompboxStereoDetunePath =
   | "detuneSemitones"
   | "delayTimeMs"
   | "isActive"
+  | "mix"
   | "audioInput"
   | "audioOutput"
 

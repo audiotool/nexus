@@ -139,9 +139,6 @@ export const getFieldOptions = (field: DescField): NexusFieldOptions => {
             findOptions(field, opt_pb.float) ?? new opt_pb.Float()
 
           if (result["float"] !== undefined) {
-            // round init to 7 decimal digits
-            result["float"].init = Math.fround(result["float"].init)
-
             if (result["float"].range !== undefined) {
               // round range.min and range.max to 7 decimal digits
               result["float"].range.min = Math.fround(result["float"].range.min)

@@ -8,7 +8,7 @@ plugins:
     out: src/gen
 
 inputs:
-  - git_repo: https://github.com/audiotool/protos
-    branch: main
+  # built by codegen/bin/build-image.ts
+  - binary_image: codegen/.image.binpb
     paths:
       - audiotool/document/

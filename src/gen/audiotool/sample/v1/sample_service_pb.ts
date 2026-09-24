@@ -199,7 +199,6 @@ export class ListSamplesRequest extends Message<ListSamplesRequest> {
    * - sample.update_time
    * - sample.clearance
    * - sample.tags
-   * - sample.favorited_by_user
    *
    * @generated from field: string filter = 4;
    */
@@ -821,6 +820,14 @@ export class DeleteSampleRequest extends Message<DeleteSampleRequest> {
  * @generated from message audiotool.sample.v1.DeleteSampleResponse
  */
 export class DeleteSampleResponse extends Message<DeleteSampleResponse> {
+  /**
+   * The sample after the delete, if it was taken down instead of fully removed (it was still
+   * used by a project). Unset when the resource was fully removed.
+   *
+   * @generated from field: audiotool.sample.v1.Sample sample = 1;
+   */
+  sample?: Sample;
+
   constructor(data?: PartialMessage<DeleteSampleResponse>) {
     super();
     proto3.util.initPartial(data, this);
@@ -829,6 +836,7 @@ export class DeleteSampleResponse extends Message<DeleteSampleResponse> {
   static readonly runtime: typeof proto3 = proto3;
   static readonly typeName = "audiotool.sample.v1.DeleteSampleResponse";
   static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "sample", kind: "message", T: Sample },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): DeleteSampleResponse {

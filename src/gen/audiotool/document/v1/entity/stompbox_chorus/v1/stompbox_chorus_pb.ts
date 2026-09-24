@@ -87,6 +87,14 @@ export class StompboxChorus extends Message<StompboxChorus> {
   spreadFactor = 0;
 
   /**
+   * Controls the mix between the incoming and the effect signal. -1.0 ("dry") means 0% effect
+   * applied, 0.0 ("wet") means 100% effect applied; values between mixes the two linearly.
+   *
+   * @generated from field: float mix = 14;
+   */
+  mix = 0;
+
+  /**
    * Whether the stompbox is active or not. When is_active=false, audio signal bypasses the device
    *
    * @generated from field: bool is_active = 10;
@@ -125,6 +133,7 @@ export class StompboxChorus extends Message<StompboxChorus> {
     { no: 7, name: "lfo_frequency_hz", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 8, name: "lfo_modulation_depth", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 9, name: "spread_factor", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
+    { no: 14, name: "mix", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 10, name: "is_active", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
     { no: 11, name: "audio_input", kind: "message", T: Empty },
     { no: 12, name: "audio_output", kind: "message", T: Empty },

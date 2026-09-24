@@ -55,7 +55,7 @@ export type MixerReverbAux = {
    *
    * key | value
    * --- | ---
-   * default | 0.800000011920929
+   * default | 0.8
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   roomSizeFactor: PrimitiveField<number, "mut">
@@ -77,7 +77,7 @@ export type MixerReverbAux = {
    *
    * key | value
    * --- | ---
-   * default | 0.10000000149011612
+   * default | 0.1
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   dampFactor: PrimitiveField<number, "mut">
@@ -112,7 +112,7 @@ export type MixerReverbAuxConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.800000011920929
+   * default | 0.8
    * range | [0, 1]*/
   roomSizeFactor?: number
   /**
@@ -132,7 +132,7 @@ export type MixerReverbAuxConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.10000000149011612
+   * default | 0.1
    * range | [0, 1]*/
   dampFactor?: number
   /**

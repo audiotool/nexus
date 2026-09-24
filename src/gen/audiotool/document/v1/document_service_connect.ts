@@ -3,7 +3,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { ApplyTransactionsRequest, ApplyTransactionsResponse, AttachMetadataRequest, AttachMetadataResponse, AttachRequest, AttachResponse, GetClientStatsRequest, GetClientStatsResponse, GetCommitIndexRangeRequest, GetCommitIndexRangeResponse, GetEntitiesRequest, GetEntitiesResponse, GetTimeRequest, GetTimeResponse, GetVersionRequest, GetVersionResponse, GetWasmExecRequest, GetWasmExecResponse, GetWasmRequest, GetWasmResponse, PingRequest, PingResponse, PutMetadataRequest, PutMetadataResponse, RenderAudioRequest } from "./document_service_pb.js";
+import { ApplyTransactionsRequest, ApplyTransactionsResponse, AttachMetadataRequest, AttachMetadataResponse, AttachRequest, AttachResponse, GetClientStatsRequest, GetClientStatsResponse, GetCommitIndexRangeRequest, GetCommitIndexRangeResponse, GetEntitiesRequest, GetEntitiesResponse, GetMetadataRequest, GetMetadataResponse, GetTimeRequest, GetTimeResponse, GetVersionRequest, GetVersionResponse, GetWasmExecRequest, GetWasmExecResponse, GetWasmRequest, GetWasmResponse, ListSampleUsagesRequest, ListSampleUsagesResponse, PingRequest, PingResponse, PutMetadataRequest, PutMetadataResponse, RenderAudioRequest, RenderSyncTrackAudioRequest } from "./document_service_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 import { Operation } from "../../longrunning/v1/operation_pb.js";
 
@@ -61,6 +61,54 @@ export const DocumentService = {
       name: "GetEntities",
       I: GetEntitiesRequest,
       O: GetEntitiesResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * GetMetadata is a simplified version of GetEntities. Instead of the full
+     * entity payload it returns a lightweight summary of the document content:
+     * the config (tempo, time signature, duration), the referenced samples,
+     * the desktop devices with their loaded presets, the connections between
+     * them (desktop cables and mixer routing), the arrangement, and entity
+     * counts per type.
+     *
+     * The response stays small even for large documents and contains enough
+     * signal to characterize ("fingerprint") a project state — e.g. arrangement
+     * (regions, tracks), routing (devices, cables), sound design (device types,
+     * automation, presets), and material (samples) — without downloading the
+     * document itself.
+     *
+     * Not related to AttachMetadata/PutMetadata, which carry live client
+     * metadata (cursor positions etc.) rather than document content.
+     *
+     * @generated from rpc audiotool.document.v1.DocumentService.GetMetadata
+     */
+    getMetadata: {
+      name: "GetMetadata",
+      I: GetMetadataRequest,
+      O: GetMetadataResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * ListSampleUsages scans the project history log and returns every backend
+     * sample that was ever created as a document entity, keyed by sample_name with
+     * the earliest commit_index at which it appeared.
+     *
+     * The history log is append-only: snapshots are interleaved checkpoints and
+     * never discard the transactions before them, so samples that were added and
+     * later deleted still appear in the result.
+     *
+     * Documents migrated from the legacy format are the one gap: they start with a
+     * single snapshot, so everything before the migration collapses into that
+     * snapshot's commit_index and samples deleted before it are missing. Live usage
+     * reporting via prisma ProjectSampleService is authoritative for samples
+     * created after deployment.
+     *
+     * @generated from rpc audiotool.document.v1.DocumentService.ListSampleUsages
+     */
+    listSampleUsages: {
+      name: "ListSampleUsages",
+      I: ListSampleUsagesRequest,
+      O: ListSampleUsagesResponse,
       kind: MethodKind.Unary,
     },
     /**
@@ -190,6 +238,29 @@ export const DocumentService = {
     renderAudio: {
       name: "RenderAudio",
       I: RenderAudioRequest,
+      O: Operation,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * RenderSyncTrackAudio serializes the project on this hermes instance, uploads
+     * the transaction blob to prisma's ProjectAudioService, and links the render to
+     * an in-progress SyncTrack operation from ProjectService.SyncTrack.
+     *
+     * Call this after SyncTrack returns a long-running operation name (second step of
+     * the publish flow). Hermes must be able to reach prisma outbound; prisma does not
+     * call back into hermes.
+     *
+     * Returns immediately with a render long-running Operation (`done` is false). Poll
+     * until `done` is true; on success `response` unpacks to
+     * [audiotool.projectaudio.v1.RenderResult] and `metadata` uses
+     * [audiotool.projectaudio.v1.RenderInfo]. The SyncTrack operation is advanced
+     * asynchronously by prisma-gatherer when the render completes.
+     *
+     * @generated from rpc audiotool.document.v1.DocumentService.RenderSyncTrackAudio
+     */
+    renderSyncTrackAudio: {
+      name: "RenderSyncTrackAudio",
+      I: RenderSyncTrackAudioRequest,
       O: Operation,
       kind: MethodKind.Unary,
     },

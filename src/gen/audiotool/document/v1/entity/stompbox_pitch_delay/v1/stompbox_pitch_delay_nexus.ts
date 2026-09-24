@@ -24,7 +24,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type StompboxPitchDelay = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Pitch Delay"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -47,7 +51,11 @@ export type StompboxPitchDelay = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  Count of delay steps.
@@ -79,7 +87,7 @@ export type StompboxPitchDelay = {
    *
    * key | value
    * --- | ---
-   * default | 0.6660000085830688
+   * default | 0.666
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   feedbackFactor: PrimitiveField<number, "mut">
@@ -89,7 +97,7 @@ export type StompboxPitchDelay = {
    *
    * key | value
    * --- | ---
-   * default | 0.20000000298023224
+   * default | 0.2
    * range | [-1, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   tuneFactor: PrimitiveField<number, "mut">
@@ -100,7 +108,7 @@ export type StompboxPitchDelay = {
    *
    * key | value
    * --- | ---
-   * default | 0.699999988079071
+   * default | 0.7
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   mix: PrimitiveField<number, "mut">
@@ -135,7 +143,11 @@ export type StompboxPitchDelay = {
 export type StompboxPitchDelayConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Pitch Delay"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -158,7 +170,11 @@ export type StompboxPitchDelayConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  Count of delay steps.
@@ -188,7 +204,7 @@ export type StompboxPitchDelayConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.6660000085830688
+   * default | 0.666
    * range | [0, 1]*/
   feedbackFactor?: number
   /**
@@ -197,7 +213,7 @@ export type StompboxPitchDelayConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.20000000298023224
+   * default | 0.2
    * range | [-1, 1]*/
   tuneFactor?: number
   /**
@@ -207,7 +223,7 @@ export type StompboxPitchDelayConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.699999988079071
+   * default | 0.7
    * range | [0, 1]*/
   mix?: number
   /**

@@ -39,7 +39,11 @@ import { type Empty } from "@gen/document/v1/empty_nexus"
 export type Waveshaper = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Waveshaper"`*/
   displayName: PrimitiveField<string, "mut">
   /**
    *  X position on the desktop in the DAW.
@@ -62,7 +66,11 @@ export type Waveshaper = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName: PrimitiveField<string, "mut">
   /**
    *  Allow adjustment of the volume of the signal before it is processed
@@ -202,7 +210,11 @@ export type Waveshaper = {
 export type WaveshaperConstructor = {
   /**
    *  The user-assigned name of this device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `"Waveshaper"`*/
   displayName?: string
   /**
    *  X position on the desktop in the DAW.
@@ -225,7 +237,11 @@ export type WaveshaperConstructor = {
   /**
    *  The backend name of the preset applied to this device, if any. Usually presets/{uuid}.
    *  This is used for record-keeping only and has no effect on the sound of the device.
-   */
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | `""`*/
   presetName?: string
   /**
    *  Allow adjustment of the volume of the signal before it is processed

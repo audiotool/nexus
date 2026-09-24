@@ -1,6 +1,6 @@
 {
   "name": "@audiotool/nexus",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "type": "module",
   "license": "MIT",
   "description": "Audiotool Nexus SDK",
@@ -59,7 +59,7 @@
     "test": "vitest run",
     "test-docs": "cd docs && uv run python -m http.server",
     "validator": "cd ../hermes && just wasm && cd - && cp ../hermes/document_validator_wasm/document_validator.wasm src/document/mock/wasm/document_validator.wasm",
-    "codegen": "buf generate --template codegen/proto.buf.gen.yaml && buf generate --template codegen/nexus.buf.gen.yaml",
+    "codegen": "tsx codegen/bin/build-image.ts && buf generate --template codegen/proto.buf.gen.yaml && buf generate --template codegen/nexus.buf.gen.yaml",
     "gen:presets": "uv run src/api/presets/generate.py",
     "check": "tsc --noEmit"
   },

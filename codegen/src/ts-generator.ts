@@ -1,6 +1,7 @@
 import type { DescField, DescFile, DescMessage } from "@bufbuild/protobuf"
 import type { Schema } from "@bufbuild/protoplugin/ecmascript"
 import { GeneratedFile } from "./file"
+import { gatherFieldDefaults } from "./gather-field-defaults"
 import { gatherFieldTargets } from "./gather-field-targets"
 import { generateNexusTypes } from "./generate-nexus-types"
 import { generateSchemaDetails } from "./generate-schema-details"
@@ -55,6 +56,8 @@ export const generateTs = (schema: Schema): void => {
     entityNames,
   )
 
+  const fieldDefaults = gatherFieldDefaults(entityMessages, entityNames)
+
   // generate nexus
   files.forEach((file: DescFile) => {
     const fileName: string = file.name + "_nexus.ts"
@@ -64,7 +67,13 @@ export const generateTs = (schema: Schema): void => {
       importSymbols,
     )
     file.messages.forEach((message) => genFile.exclude(toTypeName(message)))
-    generateNexusTypes(genFile, file.messages, entityNames, targetTypes)
+    generateNexusTypes(
+      genFile,
+      file.messages,
+      entityNames,
+      targetTypes,
+      fieldDefaults,
+    )
   })
 
   /** generates a new file, passes it to fa file generator function, collects
