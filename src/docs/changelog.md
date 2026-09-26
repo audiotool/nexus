@@ -7,6 +7,12 @@ title: 📜 Changelog
 
 To get more background on the changes we make, join our [Discord](https://developer.audiotool.com/discord).
 
+## 0.0.19
+
+### Bug fixes
+
+- **Fixed a crash in minified builds:** creating or updating an entity with a nested object field could throw `TypeError: Cannot read properties of undefined (reading 'slice')` when the app was minified. The SDK mistook the nested object for a pointer, because it compared class names, and minifiers shorten class names.
+
 ## 0.0.18
 
 ### New fields

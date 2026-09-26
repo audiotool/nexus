@@ -87,7 +87,7 @@ const toFieldValue = (
 ): unknown => {
   switch (field.kind) {
     case "message": {
-      if (field.T.name === Pointer.name) {
+      if (field.T === Pointer) {
         const loc = newVal as NexusLocation
         return new Pointer({
           fieldIndex: loc.fieldIndex.slice(),
