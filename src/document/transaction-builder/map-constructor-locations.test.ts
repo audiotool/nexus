@@ -33,6 +33,16 @@ describe("test mapConstructorLocations", () => {
     expect(mapped).toMatchObject(cons)
   })
 
+  it("should preserve Uint8Array fields as-is", () => {
+    const cons = {
+      pluginState: new Uint8Array([1, 2, 3]),
+    } as ConstructorTypes["fmxDevice"]
+
+    const mapped = mapConstructorLocations(cons, (loc) => loc)
+
+    expect(mapped.pluginState).toBeInstanceOf(Uint8Array)
+  })
+
   it("should properly clone with mapped locations", () => {
     const [loc1, loc2] = [
       NexusLocation.fromSchemaPath(

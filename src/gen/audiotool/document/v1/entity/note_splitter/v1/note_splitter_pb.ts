@@ -129,6 +129,37 @@ export class NoteSplitterChannel extends Message<NoteSplitterChannel> {
    */
   isMuted = false;
 
+  /**
+   * The lower limit of the midi pitch range that is processed by this channel. Lower notes are not forwarded.
+   *
+   * @generated from field: float range_lower_limit_pitch = 4;
+   */
+  rangeLowerLimitPitch = 0;
+
+  /**
+   * The upper limit of the midi pitch range that is processed by this channel. Higher notes are not forwarded.
+   * Shifted into negative range to keep the API backwards compatible.
+   *
+   * @generated from field: float range_upper_limit_pitch = 5;
+   */
+  rangeUpperLimitPitch = 0;
+
+  /**
+   * Transpose notes by this amount of semitones before forwarding them to the output. Valid range is +/- 2 octaves.
+   *
+   * @generated from field: float transpose_semitones = 6;
+   */
+  transposeSemitones = 0;
+
+  /**
+   * This value describes the percentage of the range that is faded out.
+   * A value of 1 means that only the center note is fully audible, while notes towards the edges fade out.
+   * A value of 0 means that no fading is applied.
+   *
+   * @generated from field: float velocity_range_fade_factor = 7;
+   */
+  velocityRangeFadeFactor = 0;
+
   constructor(data?: PartialMessage<NoteSplitterChannel>) {
     super();
     proto3.util.initPartial(data, this);
@@ -140,6 +171,10 @@ export class NoteSplitterChannel extends Message<NoteSplitterChannel> {
     { no: 1, name: "notes_output", kind: "message", T: Empty },
     { no: 2, name: "velocity_modulation", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
     { no: 3, name: "is_muted", kind: "scalar", T: 8 /* ScalarType.BOOL */ },
+    { no: 4, name: "range_lower_limit_pitch", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
+    { no: 5, name: "range_upper_limit_pitch", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
+    { no: 6, name: "transpose_semitones", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
+    { no: 7, name: "velocity_range_fade_factor", kind: "scalar", T: 2 /* ScalarType.FLOAT */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): NoteSplitterChannel {

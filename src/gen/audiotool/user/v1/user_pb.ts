@@ -55,8 +55,13 @@ export class User extends Message<User> {
   description = "";
 
   /**
-   * The number of total tracks the user is credited on. To see number of public tracks, you can get the count from the users
-   * published playlist. Can be found at users/{user}/playlists/published
+   * The number of tracks on the user's published playlist
+   * (`users/{user}/playlists/published`).
+   *
+   * This is the public track count and is the same for every caller. Tracks
+   * the user is credited on but has not published are on
+   * `users/{user}/playlists/hidden`, which only the user and admins can read,
+   * and are never counted here.
    *
    * @generated from field: int32 num_tracks = 5;
    */
@@ -107,6 +112,9 @@ export class User extends Message<User> {
    * - 300x300.webp
    * - 600x600.webp
    *
+   * The avatar must be uploaded via ImageUploadService and can be removed via
+   * UserService.ClearAvatarImage.
+   *
    * @generated from field: string avatar_url = 10;
    */
   avatarUrl = "";
@@ -131,6 +139,9 @@ export class User extends Message<User> {
    *
    * - 2880x600.webp
    * - 960x200.webp
+   *
+   * The artist page header must be uploaded via ImageUploadService and can be removed via
+   * UserService.ClearBannerImage.
    *
    * @generated from field: string artist_page_header_url = 12;
    */

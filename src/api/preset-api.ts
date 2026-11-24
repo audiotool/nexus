@@ -244,6 +244,7 @@ export const presetDeviceTypeToDeviceKey: {
   machiniste: "PRESET_DEVICE_TYPE_MACHINISTE",
   matrixArpeggiator: "PRESET_DEVICE_TYPE_MATRIX",
   gakki: "PRESET_DEVICE_TYPE_GAKKI",
+  tinySampler: "PRESET_DEVICE_TYPE_TINY_SAMPLER",
   noteSplitter: "PRESET_DEVICE_TYPE_NOTE_SPLITTER",
   panorama: "PRESET_DEVICE_TYPE_PANORAMA",
   pulsar: "PRESET_DEVICE_TYPE_PULSAR",

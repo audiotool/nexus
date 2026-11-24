@@ -17,7 +17,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { BatchGetUsersRequest, BatchGetUsersResponse, DeleteUserRequest, DeleteUserResponse, GetSettingsRequest, GetSettingsResponse, GetUserRequest, GetUserResponse, ListMutualUsersRequest, ListMutualUsersResponse, ListUsersRequest, ListUsersResponse, UpdateSettingsRequest, UpdateSettingsResponse, UpdateUserRequest, UpdateUserResponse } from "./user_service_pb.js";
+import { BatchGetUsersRequest, BatchGetUsersResponse, ClearAvatarImageRequest, ClearAvatarImageResponse, ClearBannerImageRequest, ClearBannerImageResponse, DeleteUserRequest, DeleteUserResponse, GetSettingsRequest, GetSettingsResponse, GetUserRequest, GetUserResponse, ListMutualUsersRequest, ListMutualUsersResponse, ListUsersRequest, ListUsersResponse, UpdateSettingsRequest, UpdateSettingsResponse, UpdateUserRequest, UpdateUserResponse } from "./user_service_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 
 /**
@@ -122,6 +122,35 @@ export const UserService = {
       name: "BatchGetUsers",
       I: BatchGetUsersRequest,
       O: BatchGetUsersResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * Removes the avatar of a user.
+     *
+     * Clears `avatar_url` and deletes the stored avatar images. Only the user themselves can clear
+     * their avatar. Calling this on a user without an avatar succeeds without changes.
+     *
+     * @generated from rpc audiotool.user.v1.UserService.ClearAvatarImage
+     */
+    clearAvatarImage: {
+      name: "ClearAvatarImage",
+      I: ClearAvatarImageRequest,
+      O: ClearAvatarImageResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * Removes the artist page header (banner) of a user.
+     *
+     * Clears `artist_page_header_url` and deletes the stored header images. Only the user
+     * themselves can clear their banner. Calling this on a user without a banner succeeds without
+     * changes.
+     *
+     * @generated from rpc audiotool.user.v1.UserService.ClearBannerImage
+     */
+    clearBannerImage: {
+      name: "ClearBannerImage",
+      I: ClearBannerImageRequest,
+      O: ClearBannerImageResponse,
       kind: MethodKind.Unary,
     },
   }

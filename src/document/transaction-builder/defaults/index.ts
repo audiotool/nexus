@@ -18,6 +18,7 @@ import type { Defaults } from "./default-type"
 import { desktopAudioCableDefaults } from "./desktop-audio-cable"
 import { desktopNoteCableDefaults } from "./desktop-note-cable"
 import { exciterDefaults } from "./exciter"
+import { fmxDeviceDefaults } from "./fmx-device"
 import { gakkiDefaults } from "./gakki"
 import { genericVst3PluginBetaDefaults } from "./generic-vst3-plugin-beta"
 import { graphicalEQDefaults } from "./graphical-eq"
@@ -85,6 +86,11 @@ import {
   tempoAutomationTrackDefaults,
 } from "./timeline"
 import { tinyGainDefaults } from "./tiny-gain"
+import {
+  tinySamplerDefaults,
+  tinySamplerSampleDefaults,
+  tinySamplerSampleLayerDefaults,
+} from "./tiny-sampler"
 import { tonematrixDefaults, tonematrixPatternDefaults } from "./tonematrix"
 import { waveshaperAnchorDefaults, waveshaperDefaults } from "./waveshaper"
 
@@ -121,6 +127,7 @@ export const entityDefaultsMap: Record<
   desktopAudioCable: desktopAudioCableDefaults,
   desktopNoteCable: desktopNoteCableDefaults,
   exciter: exciterDefaults,
+  fmxDevice: fmxDeviceDefaults,
   gakki: gakkiDefaults,
   genericVst3PluginBeta: genericVst3PluginBetaDefaults,
   graphicalEQ: graphicalEQDefaults,
@@ -178,6 +185,9 @@ export const entityDefaultsMap: Record<
   stompboxTube: stompboxTubeDefaults,
   tempoAutomationTrack: tempoAutomationTrackDefaults,
   tinyGain: tinyGainDefaults,
+  tinySampler: tinySamplerDefaults,
+  tinySamplerSample: tinySamplerSampleDefaults,
+  tinySamplerSampleLayer: tinySamplerSampleLayerDefaults,
   tonematrix: tonematrixDefaults,
   tonematrixPattern: tonematrixPatternDefaults,
   waveshaper: waveshaperDefaults,

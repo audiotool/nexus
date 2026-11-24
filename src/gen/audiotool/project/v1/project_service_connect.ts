@@ -17,7 +17,7 @@
 /* eslint-disable */
 // @ts-nocheck
 
-import { CreateProjectRequest, CreateProjectResponse, DeleteProjectRequest, DeleteProjectResponse, GetLatestVersionBundleRequest, GetLatestVersionBundleResponse, GetProjectRequest, GetProjectResponse, ListProjectsRequest, ListProjectsResponse, ListSessionsRequest, ListSessionsResponse, OpenSessionRequest, OpenSessionResponse, ReconvertLegacyProjectRequest, ReconvertLegacyProjectResponse, SyncTrackRequest, UpdateProjectRequest, UpdateProjectResponse } from "./project_service_pb.js";
+import { ClearCoverImageRequest, ClearCoverImageResponse, CreateProjectRequest, CreateProjectResponse, DeleteProjectRequest, DeleteProjectResponse, GetLatestVersionBundleRequest, GetLatestVersionBundleResponse, GetProjectRequest, GetProjectResponse, ListProjectsRequest, ListProjectsResponse, ListSessionsRequest, ListSessionsResponse, OpenSessionRequest, OpenSessionResponse, ReconvertLegacyProjectRequest, ReconvertLegacyProjectResponse, SyncTrackRequest, UpdateProjectRequest, UpdateProjectResponse } from "./project_service_pb.js";
 import { MethodKind } from "@bufbuild/protobuf";
 import { Operation } from "../../longrunning/v1/operation_pb.js";
 
@@ -96,6 +96,16 @@ export const ProjectService = {
      * returned operation will stall until DocumentService.RenderSyncTrackAudio is called
      * which will trigger the actual rendering of the track.
      *
+     * Creating a track, or republishing one that credits a new contributor, fails
+     * with FAILED_PRECONDITION when that user already has 10,000 tracks (published
+     * and hidden together). The limit is checked when the operation is accepted,
+     * so concurrent publishes can exceed it by a small amount. Republishing with
+     * SYNC_TRACK_MODE_AUDIO does not change credits and is not limited.
+     *
+     * Creating a track requires the project to be on TRACK_LICENSE_AUDIOTOOL or
+     * TRACK_LICENSE_ALL_RIGHTS_RESERVED_2026; any legacy license fails with INVALID_ARGUMENT.
+     * Republishing a track that is still on a legacy license keeps working.
+     *
      * @generated from rpc audiotool.project.v1.ProjectService.SyncTrack
      */
     syncTrack: {
@@ -156,6 +166,21 @@ export const ProjectService = {
       name: "ReconvertLegacyProject",
       I: ReconvertLegacyProjectRequest,
       O: ReconvertLegacyProjectResponse,
+      kind: MethodKind.Unary,
+    },
+    /**
+     * Removes the cover of a project.
+     *
+     * Clears `cover_url` and deletes the stored cover images. If the project has a track, the
+     * track's `cover_url` and cover images are cleared as well. Only owners of the project can
+     * clear its cover. Calling this on a project without a cover succeeds without changes.
+     *
+     * @generated from rpc audiotool.project.v1.ProjectService.ClearCoverImage
+     */
+    clearCoverImage: {
+      name: "ClearCoverImage",
+      I: ClearCoverImageRequest,
+      O: ClearCoverImageResponse,
       kind: MethodKind.Unary,
     },
   }

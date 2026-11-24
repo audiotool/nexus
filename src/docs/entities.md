@@ -17,13 +17,17 @@ t.create("bassline", {})
 
 Devices that generate sound based on a timeline track.
 
-| Link                           | Key               | Description                                             |
-| ------------------------------ | ----------------- | ------------------------------------------------------- |
-| {@link entities.Space}         | `"space"`         | The space synth                                         |
-| {@link entities.Heisenberg}    | `"heisenberg"`    | The heisenberg synth                                    |
-| {@link entities.Pulverisateur} | `"pulverisateur"` | The pulv synth                                          |
-| {@link entities.Gakki}         | `"gakki"`         | A soundfont player.                                     |
-| {@link entities.AudioDevice}   | `"audioDevice"`   | The device to which an audio track can be connected to. |
+| Link                                    | Key                        | Description                                                                                  |
+| --------------------------------------- | -------------------------- | -------------------------------------------------------------------------------------------- |
+| {@link entities.Space}                  | `"space"`                  | The space synth                                                                              |
+| {@link entities.Heisenberg}             | `"heisenberg"`             | The heisenberg synth                                                                         |
+| {@link entities.Pulverisateur}          | `"pulverisateur"`          | The pulv synth                                                                               |
+| {@link entities.Gakki}                  | `"gakki"`                  | A soundfont player.                                                                          |
+| {@link entities.AudioDevice}            | `"audioDevice"`            | The device to which an audio track can be connected to.                                      |
+| {@link entities.TinySampler}            | `"tinySampler"`            | A sampler that maps samples to keys and velocity ranges.                                     |
+| {@link entities.TinySamplerSample}      | `"tinySamplerSample"`      | A sample of the tiny sampler, mapped to one key. Must point to a tiny sampler.               |
+| {@link entities.TinySamplerSampleLayer} | `"tinySamplerSampleLayer"` | A velocity layer of a tiny sampler sample. Must point to a tiny sampler sample and a sample. |
+| {@link entities.FmxDevice}              | `"fmxDevice"`              | Hosts an NXS plugin, which can be an instrument or an effect.                                |
 
 ## Pattern Devices
 

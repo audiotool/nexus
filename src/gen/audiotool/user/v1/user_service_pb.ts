@@ -904,3 +904,167 @@ export class BatchGetUsersResponse extends Message<BatchGetUsersResponse> {
   }
 }
 
+/**
+ * Request for UserService.ClearAvatarImage.
+ *
+ * @generated from message audiotool.user.v1.ClearAvatarImageRequest
+ */
+export class ClearAvatarImageRequest extends Message<ClearAvatarImageRequest> {
+  /**
+   * The name of the user whose avatar will be cleared, in the form of `users/{user}`.
+   *
+   * @generated from field: string name = 1;
+   */
+  name = "";
+
+  constructor(data?: PartialMessage<ClearAvatarImageRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "audiotool.user.v1.ClearAvatarImageRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClearAvatarImageRequest {
+    return new ClearAvatarImageRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClearAvatarImageRequest {
+    return new ClearAvatarImageRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClearAvatarImageRequest {
+    return new ClearAvatarImageRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ClearAvatarImageRequest | PlainMessage<ClearAvatarImageRequest> | undefined, b: ClearAvatarImageRequest | PlainMessage<ClearAvatarImageRequest> | undefined): boolean {
+    return proto3.util.equals(ClearAvatarImageRequest, a, b);
+  }
+}
+
+/**
+ * Response for UserService.ClearAvatarImage.
+ *
+ * @generated from message audiotool.user.v1.ClearAvatarImageResponse
+ */
+export class ClearAvatarImageResponse extends Message<ClearAvatarImageResponse> {
+  /**
+   * The updated user.
+   *
+   * @generated from field: audiotool.user.v1.User user = 1;
+   */
+  user?: User;
+
+  constructor(data?: PartialMessage<ClearAvatarImageResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "audiotool.user.v1.ClearAvatarImageResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "user", kind: "message", T: User },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClearAvatarImageResponse {
+    return new ClearAvatarImageResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClearAvatarImageResponse {
+    return new ClearAvatarImageResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClearAvatarImageResponse {
+    return new ClearAvatarImageResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ClearAvatarImageResponse | PlainMessage<ClearAvatarImageResponse> | undefined, b: ClearAvatarImageResponse | PlainMessage<ClearAvatarImageResponse> | undefined): boolean {
+    return proto3.util.equals(ClearAvatarImageResponse, a, b);
+  }
+}
+
+/**
+ * Request for UserService.ClearBannerImage.
+ *
+ * @generated from message audiotool.user.v1.ClearBannerImageRequest
+ */
+export class ClearBannerImageRequest extends Message<ClearBannerImageRequest> {
+  /**
+   * The name of the user whose banner will be cleared, in the form of `users/{user}`.
+   *
+   * @generated from field: string name = 1;
+   */
+  name = "";
+
+  constructor(data?: PartialMessage<ClearBannerImageRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "audiotool.user.v1.ClearBannerImageRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClearBannerImageRequest {
+    return new ClearBannerImageRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClearBannerImageRequest {
+    return new ClearBannerImageRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClearBannerImageRequest {
+    return new ClearBannerImageRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ClearBannerImageRequest | PlainMessage<ClearBannerImageRequest> | undefined, b: ClearBannerImageRequest | PlainMessage<ClearBannerImageRequest> | undefined): boolean {
+    return proto3.util.equals(ClearBannerImageRequest, a, b);
+  }
+}
+
+/**
+ * Response for UserService.ClearBannerImage.
+ *
+ * @generated from message audiotool.user.v1.ClearBannerImageResponse
+ */
+export class ClearBannerImageResponse extends Message<ClearBannerImageResponse> {
+  /**
+   * The updated user.
+   *
+   * @generated from field: audiotool.user.v1.User user = 1;
+   */
+  user?: User;
+
+  constructor(data?: PartialMessage<ClearBannerImageResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "audiotool.user.v1.ClearBannerImageResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "user", kind: "message", T: User },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClearBannerImageResponse {
+    return new ClearBannerImageResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClearBannerImageResponse {
+    return new ClearBannerImageResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClearBannerImageResponse {
+    return new ClearBannerImageResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ClearBannerImageResponse | PlainMessage<ClearBannerImageResponse> | undefined, b: ClearBannerImageResponse | PlainMessage<ClearBannerImageResponse> | undefined): boolean {
+    return proto3.util.equals(ClearBannerImageResponse, a, b);
+  }
+}
+

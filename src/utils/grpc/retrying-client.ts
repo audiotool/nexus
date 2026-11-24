@@ -52,6 +52,30 @@ export type RetryingClient<T extends ServiceType> = {
     : Client<T>[P]
 }
 
+/** Back off time the first time a call is retried. */
+export const GRPC_DEFAULT_INITIAL_BACKOFF_MS = 2_000
+
+/** Maximum backoff time after multiple retries. Each retry doubles the backoff time. */
+export const GRPC_DEFAULT_MAXIMUM_BACKOFF_MS = 30_000
+
+/**
+ * Calculates exponential backoff delay with jitter.
+ * The delay doubles on each attempt, capped at the maximum.
+ * Adds 10% random jitter to avoid simultaneous reconnections.
+ */
+export const calculateExponentialBackoff = (
+  attemptNumber: number,
+  initialBackoffMs: number,
+  maximumBackoffMs: number = GRPC_DEFAULT_MAXIMUM_BACKOFF_MS,
+): number => {
+  const baseDelay = Math.min(
+    initialBackoffMs * Math.pow(2, attemptNumber),
+    maximumBackoffMs,
+  )
+  const delayWithJitter = baseDelay + Math.random() * baseDelay * 0.1
+  return Math.min(delayWithJitter, maximumBackoffMs)
+}
+
 export type RetryingPromiseClientOptions = {
   /**
    * Predicate an error thrown during a call attempt has to fulfill if the call should be retried.
@@ -59,9 +83,13 @@ export type RetryingPromiseClientOptions = {
    */
   retryErrorPredicate?: (error: Error) => boolean
   /**
-   * Default backoff time in case of reconnects. Defaults to 1000.
+   * Initial backoff time in case of reconnects. Defaults to 2000ms.
    */
-  backoffMs?: number
+  initialBackoffMs?: number
+  /**
+   * Maximum backoff time in milliseconds. Defaults to 30 seconds (30000ms).
+   */
+  maximumBackoffMs?: number
   /**
    * Whether retries should be logged by default, defaults to true. Can be overwritten for each
    * method call.
@@ -74,7 +102,10 @@ export const createRetryingPromiseClient = <S extends ServiceType>(
   transport: KeepaliveTransport,
   options?: RetryingPromiseClientOptions,
 ): RetryingClient<S> => {
-  const backoffMs = options?.backoffMs ?? 2000
+  const initialBackoffMs =
+    options?.initialBackoffMs ?? GRPC_DEFAULT_INITIAL_BACKOFF_MS
+  const maximumBackoffMs =
+    options?.maximumBackoffMs ?? GRPC_DEFAULT_MAXIMUM_BACKOFF_MS
   const logIfRetrying = options?.logIfRetrying ?? true
 
   // we retry if the error matches this function
@@ -108,6 +139,7 @@ export const createRetryingPromiseClient = <S extends ServiceType>(
       options?: RetryOptions,
     ): Promise<Error | unknown> => {
       options = packKeepaliveOptions(options)
+      let attemptNumber = 0
 
       while (true) {
         try {
@@ -128,16 +160,21 @@ export const createRetryingPromiseClient = <S extends ServiceType>(
 
           options?.onRetry?.(error)
 
+          const backoffDelay = calculateExponentialBackoff(
+            attemptNumber,
+            initialBackoffMs,
+            maximumBackoffMs,
+          )
+
           if (options?.logIfRetrying ?? logIfRetrying) {
             console.warn(
-              `${service.typeName}.${methodName} call failed, retrying in ${backoffMs} ms. Error:`,
+              `${service.typeName}.${methodName} call failed, retrying in ${Math.round(backoffDelay)} ms (attempt ${attemptNumber + 1}). Error:`,
               error,
             )
           }
 
-          // sleep backoffMs with some random offset to avoid simultaneous reconnections
           await sleep(
-            backoffMs + Math.random() * backoffMs * 0.1,
+            backoffDelay,
             // pass in signal for earlier return in case of abort
             options?.signal,
           )
@@ -149,6 +186,7 @@ export const createRetryingPromiseClient = <S extends ServiceType>(
             })
           }
 
+          attemptNumber++
           continue
         }
       }

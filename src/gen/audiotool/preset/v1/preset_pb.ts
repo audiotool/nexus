@@ -305,6 +305,13 @@ export enum PresetDeviceType {
    * @generated from enum value: PRESET_DEVICE_TYPE_GAKKI = 39;
    */
   GAKKI = 39,
+
+  /**
+   * Tiny Sampler device type.
+   *
+   * @generated from enum value: PRESET_DEVICE_TYPE_TINY_SAMPLER = 40;
+   */
+  TINY_SAMPLER = 40,
 }
 // Retrieve enum metadata with: proto3.getEnumType(PresetDeviceType)
 proto3.util.setEnumType(PresetDeviceType, "audiotool.preset.v1.PresetDeviceType", [
@@ -348,6 +355,7 @@ proto3.util.setEnumType(PresetDeviceType, "audiotool.preset.v1.PresetDeviceType"
   { no: 37, name: "PRESET_DEVICE_TYPE_TONEMATRIX" },
   { no: 38, name: "PRESET_DEVICE_TYPE_WAVESHAPER" },
   { no: 39, name: "PRESET_DEVICE_TYPE_GAKKI" },
+  { no: 40, name: "PRESET_DEVICE_TYPE_TINY_SAMPLER" },
 ]);
 
 /**
@@ -491,6 +499,22 @@ export class Preset extends Message<Preset> {
    */
   dataUrl = "";
 
+  /**
+   * Output only. Timestamp when this Preset first became usable by other users.
+   *
+   * Set when the preset is created as PRESET_USAGE_PUBLIC or PRESET_USAGE_UNLISTED, or when it
+   * moves from PRESET_USAGE_PRIVATE to either of those. Never reset afterwards, not even when
+   * the preset goes private again.
+   *
+   * Compare it against `audiotool.terms.v1.Terms.effective_time` to tell whether a preset was
+   * shared under the current terms or under the rules that applied before them. Presets that
+   * were already public or unlisted when the current terms took effect carry a timestamp from
+   * before that point. Unset for presets that have never been shared.
+   *
+   * @generated from field: google.protobuf.Timestamp first_share_time = 14;
+   */
+  firstShareTime?: Timestamp;
+
   constructor(data?: PartialMessage<Preset>) {
     super();
     proto3.util.initPartial(data, this);
@@ -511,6 +535,7 @@ export class Preset extends Message<Preset> {
     { no: 11, name: "tags", kind: "scalar", T: 9 /* ScalarType.STRING */, repeated: true },
     { no: 12, name: "device_type", kind: "enum", T: proto3.getEnumType(PresetDeviceType) },
     { no: 13, name: "data_url", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 14, name: "first_share_time", kind: "message", T: Timestamp },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): Preset {

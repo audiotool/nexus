@@ -1,7 +1,7 @@
 import { packEntity, unpackEntity } from "@document/entity-utils"
 import { Preset } from "@gen/document/v1/preset/v1/preset_pb"
 import { throw_ } from "@utils/lang"
-import { visitPointers } from "./entity-message-utils"
+import { deduplicateEntitiesById, visitPointers } from "./entity-message-utils"
 
 /** This function prepares the pointers of a new preset. It does two things:
  * * the target entity id of the preset gets replaced with an existing  entity id
@@ -24,7 +24,12 @@ export const updatePresetPointers = (
 
   // empty pointers remain empty
   uuidMap.set("", "")
-  const relatives = preset.relatives.map((e) => unpackEntity(e) ?? throw_())
+
+  // Some stored presets were created with a bug that allowed duplicate relative entities.
+  // Dedup them, so that applying such a preset doesn't throw.
+  const relatives = deduplicateEntitiesById(
+    preset.relatives.map((e) => unpackEntity(e) ?? throw_()),
+  )
 
   // map uuids of all secondary entities
   relatives.forEach((entity) => {

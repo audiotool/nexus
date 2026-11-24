@@ -69,7 +69,7 @@ export const toposortEntities = (
  */
 export const PRESET_TARGET_RELATIVE_TYPES = {
   // synthesizers
-  bassline: ["basslinePattern", "groove"],
+  bassline: ["basslinePattern", "groove", "microTuningOctave"],
   pulverisateur: ["microTuningOctave"],
   heisenberg: ["microTuningOctave"],
   tonematrix: ["tonematrixPattern", "groove", "microTuningOctave"],
@@ -97,7 +97,7 @@ export const PRESET_TARGET_RELATIVE_TYPES = {
 
   // other effects
   quasar: [],
-  rasselbock: ["rasselbockPattern"],
+  rasselbock: ["rasselbockPattern", "groove"],
   pulsar: [],
   quantum: [],
   curve: [],
@@ -105,12 +105,13 @@ export const PRESET_TARGET_RELATIVE_TYPES = {
   gravity: [],
   autoFilter: [],
   waveshaper: ["waveshaperAnchor"],
-  helmholtz: [],
+  helmholtz: ["microTuningOctave"],
   stereoEnhancer: [],
   exciter: [],
   ringModulator: undefined,
   panorama: [],
   tinyGain: undefined,
+  fmxDevice: undefined,
 
   // mixer
   minimixer: undefined,
@@ -167,6 +168,14 @@ export const PRESET_TARGET_RELATIVE_TYPES = {
   centroidChannel: undefined,
   genericVst3PluginBeta: undefined,
   gakki: [],
+  tinySampler: [
+    "tinySamplerSample",
+    "tinySamplerSampleLayer",
+    "sample",
+    "microTuningOctave",
+  ],
+  tinySamplerSample: undefined,
+  tinySamplerSampleLayer: undefined,
 } as const satisfies Record<EntityTypeKey, EntityTypeKey[] | undefined>
 
 type AllDeviceEntities = typeof PRESET_TARGET_RELATIVE_TYPES

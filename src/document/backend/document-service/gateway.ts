@@ -3,14 +3,14 @@ import { ValueNotifier } from "@utils/observable-notifier-value"
 import type { NexusGateway, ReadonlyTransaction } from "../gateway"
 
 import type { DocumentService } from "@gen/document/v1/document_service_connect"
-import type { RetryingClient } from "@utils/grpc/retrying-client"
+import type { RehomableRetryingClient } from "@utils/grpc/rehomable-retrying-client"
 import type { WasmConsolidator } from "../create-wasm-document-state"
 import { createDocumentServiceConnection } from "./connection"
 
 /** Collab gateway returns a gateway that syncs with a document service.
  */
 export const createCollabGateway = (
-  documentService: RetryingClient<typeof DocumentService>,
+  documentService: RehomableRetryingClient<typeof DocumentService>,
   createConsolidator: () => WasmConsolidator,
   projectName: string,
   opts?: {

@@ -1,12 +1,19 @@
 import { Code, ConnectError } from "@connectrpc/connect"
 import type { DocumentService } from "@gen/document/v1/document_service_connect"
 import { Transaction } from "@gen/document/v1/document_service_pb"
-import type { RetryingClient } from "@utils/grpc/retrying-client"
+import type { RehomableRetryingClient } from "@utils/grpc/rehomable-retrying-client"
+import { calculateExponentialBackoff } from "@utils/grpc/retrying-client"
 import { sleep } from "@utils/lang"
 import {
   ObservableValue,
   ValueNotifier,
 } from "@utils/observable-notifier-value"
+
+/** Initial backoff time in milliseconds, the time waited before the first retry.*/
+const DEFAULT_INITIAL_BACKOFF_MS = 1_000
+
+/** Maximum backoff time in milliseconds, the time waited after multiple retries. Each retry doubles the backoff time. */
+const DEFAULT_MAXIMUM_BACKOFF_MS = 2_000
 
 export type TransactionReceiver = {
   /** Get the next transaction sent from the backend. On disconnect, just blocks until
@@ -30,10 +37,16 @@ export type TransactionReceiver = {
 }
 
 export const createTransactionReceiver = (
-  documentService: Pick<RetryingClient<typeof DocumentService>, "attach">,
+  documentService: Pick<
+    RehomableRetryingClient<typeof DocumentService>,
+    "attach" | "rehome" | "resetRehomeBackoff"
+  >,
   projectName: string,
   opts?: {
-    backoffMs?: number
+    /** Initial backoff time in milliseconds. Defaults to 1000ms. */
+    initialBackoffMs?: number
+    /** Maximum backoff time in milliseconds. Defaults to 2000ms. */
+    maximumBackoffMs?: number
   },
 ): TransactionReceiver => {
   // The implementation complexity from this function stems from the fact that receiving transactions
@@ -90,7 +103,9 @@ export const createTransactionReceiver = (
   }
   let asyncIterator = recreateResponseIterator()
 
-  const backoffMs = opts?.backoffMs ?? 1000
+  const initialBackoffMs = opts?.initialBackoffMs ?? DEFAULT_INITIAL_BACKOFF_MS
+  const maximumBackoffMs = opts?.maximumBackoffMs ?? DEFAULT_MAXIMUM_BACKOFF_MS
+  let attemptNumber = 0
 
   // This is the master async iterator that's returned to the caller. We use an async iterator
   // so we can:
@@ -109,9 +124,13 @@ export const createTransactionReceiver = (
           throw new Error("document service attach stream closed")
         }
         connectionOk.setValue(true)
+        attemptNumber = 0
+        documentService.resetRehomeBackoff()
         switch (value.message.case) {
           case "noop": {
             if (!firstTransactionReceived) {
+              // continue from here when reconnecting, instead of loading the whole document again
+              commitIndex = value.message.value.serverCommitIndex
               firstTransactionReceived = true
               yield new Transaction({ id: crypto.randomUUID() })
               continue
@@ -139,41 +158,71 @@ export const createTransactionReceiver = (
           // unknown error, propagate
           throw e
         }
-        switch (e.code) {
-          case Code.Canceled: // thrown if abort controller is aborted
-          case Code.Aborted:
-          case Code.Unavailable:
-          case Code.Unknown: {
-            connectionOk.setValue(false)
-            // wait with random backoff to avoid simultaneous reconnections
-            await sleep(
-              backoffMs + Math.random() * backoffMs * 0.1,
-
-              // pass in master abort controller for early termination
-              masterAbortController.signal,
-            )
-            if (masterAbortController.signal.aborted) {
-              // if the master abort controller is aborted, we've been terminated
-              return
-            }
-
-            // else, create a fresh async iterator
-            asyncIterator = recreateResponseIterator()
-            continue
+        // The backend we're talking to no longer owns the project (e.g. because of an idle
+        // timeout), which surfaces as FailedPrecondition. If the backend doesn't exist anymore,
+        // the gateway answers without CORS headers, which surfaces as Unknown. Being offline also
+        // surfaces as Unknown: the re-home then waits until the project service is reachable,
+        // and keeps the current backend if it's still assigned.
+        // In all cases we ask for the currently assigned backend, then attach again with the same
+        // commit index. If the new backend can't serve that commit index, it returns OutOfRange.
+        const shouldRehome =
+          e.code === Code.FailedPrecondition || e.code === Code.Unknown
+        if (shouldRehome) {
+          connectionOk.setValue(false)
+          const rehomeErr = await documentService.rehome()
+          if (rehomeErr !== undefined) {
+            throw new Error("failed to re-home document service", {
+              cause: rehomeErr,
+            })
           }
-          // else throw
-          default: {
-            if (e.code === Code.OutOfRange) {
-              // This error is thrown if the commit index is "too low" and the backend doesn't have
-              // it cached anymore. This should only happen during collab sessions (or when being offline
-              // for multiple hours). In this case we have to reload the tab.
-              throw new Error(
-                "local document state too far in the past, must reload tab",
-              )
-            }
-            throw e
+          // go back to fast retries, since we just re-homed
+          attemptNumber = 0
+          if (masterAbortController.signal.aborted) {
+            return
           }
         }
+
+        if (
+          shouldRehome ||
+          e.code === Code.Canceled || // thrown if abort controller is aborted
+          e.code === Code.Aborted ||
+          e.code === Code.Unavailable
+        ) {
+          connectionOk.setValue(false)
+          const backoffDelay = calculateExponentialBackoff(
+            attemptNumber,
+            initialBackoffMs,
+            maximumBackoffMs,
+          )
+          await sleep(
+            backoffDelay,
+            // `terminate` ends the backoff early, and so does `reconnect`, e.g. after a re-home
+            AbortSignal.any([
+              masterAbortController.signal,
+              receiveAbortController.signal,
+            ]),
+          )
+          if (masterAbortController.signal.aborted) {
+            // if the master abort controller is aborted, we've been terminated
+            return
+          }
+
+          attemptNumber++
+          // else, create a fresh async iterator
+          asyncIterator = recreateResponseIterator()
+          continue
+        }
+
+        if (e.code === Code.OutOfRange) {
+          // This error is thrown if the commit index is "too low" and the backend doesn't have
+          // it cached anymore. This should only happen during collab sessions (or when being offline
+          // for multiple hours). In this case we have to reload the tab.
+          throw new Error(
+            "local document state too far in the past, must reload tab",
+            { cause: e },
+          )
+        }
+        throw e
       }
     }
   }

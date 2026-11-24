@@ -28,12 +28,17 @@ import { KEEPALIVE_HEADER } from "./types"
  * ```
  */
 export const createNodeTransport = (): TransportFactory => ({
-  createTransport: async (opts: TransportOptions): Promise<KeepaliveTransport> => {
+  createTransport: async (
+    opts: TransportOptions,
+  ): Promise<KeepaliveTransport> => {
     const { createConnectTransport } = await import("@connectrpc/connect-node")
 
     return createConnectTransport({
       baseUrl: opts.baseUrl,
       httpVersion: "2",
+      // Bun fails to decompress larger compressed HTTP/2 responses (Z_BUF_ERROR),
+      // so ask the server not to compress them.
+      ...(process.versions.bun !== undefined ? { acceptCompression: [] } : {}),
       jsonOptions: {
         typeRegistry: opts.typeRegistry,
       },

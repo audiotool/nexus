@@ -1,3 +1,5 @@
+import type { NexusPlugin } from "@api/plugin-api"
+import { FMX_DISPLAY_NAME_MAX_LENGTH } from "@api/plugins/fmx-parameters"
 import { NexusPreset } from "@api/preset-api"
 import type { SampleMeta, SampleUpload } from "@api/sample-api"
 import type { NexusEntityUnion } from "@document/entity"
@@ -207,6 +209,37 @@ export type TransactionBuilder = {
     preset: NexusPreset<T>,
   ): NexusEntityUnion<T>
 
+  /**
+   * Create a new {@link entities.FmxDevice} that hosts the plugin, with the plugin's
+   * name and the default values of its parameters. The device isn't placed
+   * or connected.
+   *
+   * ```ts
+   * const vocoder = await client.plugins.get("plugins/01f345db-d130-46c9-b728-aa5dc4ce2915")
+   * if (vocoder instanceof Error) {
+   *   throw vocoder
+   * }
+   * const carrier = vocoder.parameter("Carrier")
+   * const chord = carrier?.normalize("Chord")
+   * await nexus.modify((t) => {
+   *   const device = t.createDeviceFromPlugin(vocoder, { positionX: 100 })
+   *   if (carrier !== undefined && chord !== undefined) {
+   *     t.update(device.fields.parameters.array[carrier.id], chord)
+   *   }
+   * })
+   * ```
+   *
+   * @param plugin - A plugin returned by {@link api.PluginsAPI.get}.
+   * @param overrides - Fields to set on the device instead of the plugin's values.
+   */
+  createDeviceFromPlugin(
+    plugin: Pick<
+      NexusPlugin,
+      "displayName" | "assetName" | "defaultParameters"
+    >,
+    overrides?: Partial<EntityConstructorType<"fmxDevice">>,
+  ): NexusEntity<"fmxDevice">
+
   /** Create a preset of a given entity. This doesn't modify the nexus document.  */
   createPresetFor(entity: NexusEntity<DevicePresetEntityType>): Preset
   /**
@@ -394,17 +427,17 @@ export type SafeTransactionBuilder = Omit<TransactionBuilder, "send">
  */
 export const transactionBuilder = (opts: {
   /** Query the current state of the document. For the nexus document to work as intended,
-   * modifications applied using `applyModification` should immediately be reflected
+   * modifications applied using `applyModifications` should immediately be reflected
    * in the query.
    */
   query: EntityQuery
-  /** Modifications created during this transaction. If `throwIfInvalid` is false, it should
+  /** Modifications created during this transaction, applied in order. If `throwIfInvalid` is false, it should
    * return `string` in case an error occurs, otherwise it should throw an error or return undefined.
    *
    * The modifications must immediately be applied to `query`, otherwise the builder will throw.
    */
-  applyModification: (
-    mod: Modification,
+  applyModifications: (
+    modifications: readonly Modification[],
     throwIfInvalid: boolean,
   ) => string | void
   /** Called when `t.send()` is called, and the transaction becomes "invalid". */
@@ -421,7 +454,7 @@ export const transactionBuilder = (opts: {
       }
       const { modification, entityId: newEntityId } =
         buildModificationForNewEntity(name, args)
-      opts.applyModification(modification, true)
+      opts.applyModifications([modification], true)
       return opts.query.mustGetEntity(newEntityId) as NexusEntityUnion<T>
     },
 
@@ -434,7 +467,7 @@ export const transactionBuilder = (opts: {
       }
       const { modification, entityId: newEntityId } =
         buildModificationForEntityClone(entity, args)
-      opts.applyModification(modification, true)
+      opts.applyModifications([modification], true)
       return opts.query.mustGetEntity(newEntityId) as NexusEntityUnion<T>
     },
 
@@ -446,7 +479,7 @@ export const transactionBuilder = (opts: {
       }
       const { modifications: newModifications, uuidMap } =
         buildModificationsForCloneLinkedEntities(...entities)
-      newModifications.forEach((mod) => opts.applyModification(mod, true))
+      newModifications.forEach((mod) => opts.applyModifications([mod], true))
 
       return entities.map((e) => {
         const oldEntityId = e instanceof NexusEntity ? e.id : e.entity.id
@@ -468,7 +501,7 @@ export const transactionBuilder = (opts: {
         return
       }
       const modification = buildModificationForFieldUpdate(field, value)
-      opts.applyModification(modification, true)
+      opts.applyModifications([modification], true)
     },
 
     tryUpdate: <P extends PrimitiveType>(
@@ -479,7 +512,7 @@ export const transactionBuilder = (opts: {
         throw new CallAfterSendError("tryUpdate")
       }
       const modification = buildModificationForFieldUpdate(field, value)
-      return opts.applyModification(modification, false) ?? undefined
+      return opts.applyModifications([modification], false) ?? undefined
     },
 
     remove: (idOrEntity: string | NexusEntity) => {
@@ -488,7 +521,7 @@ export const transactionBuilder = (opts: {
       }
       const id = idOrEntity instanceof NexusEntity ? idOrEntity.id : idOrEntity
       const modification = buildModificationForRemove(id)
-      opts.applyModification(modification, true)
+      opts.applyModifications([modification], true)
     },
 
     removeWithDependencies: (idOrEntity: string | NexusEntity) => {
@@ -497,7 +530,7 @@ export const transactionBuilder = (opts: {
       }
       const id = idOrEntity instanceof NexusEntity ? idOrEntity.id : idOrEntity
       const mods = buildModificationForRemoveWithDependencies(id, opts.query)
-      mods.forEach((mod) => opts.applyModification(mod, true))
+      opts.applyModifications(mods, true)
     },
 
     applyPresetTo: (
@@ -525,7 +558,7 @@ export const transactionBuilder = (opts: {
         applyTo,
         preset._presetName,
       )
-      mods.forEach((mod) => opts.applyModification(mod, true))
+      mods.forEach((mod) => opts.applyModifications([mod], true))
     },
 
     createDeviceFromPreset: <T extends DevicePresetEntityType>(
@@ -543,6 +576,18 @@ export const transactionBuilder = (opts: {
         preset,
       )
       return entity
+    },
+
+    createDeviceFromPlugin: (plugin, overrides) => {
+      if (finished) {
+        throw new CallAfterSendError("createDeviceFromPlugin")
+      }
+      return builder.create("fmxDevice", {
+        displayName: plugin.displayName.slice(0, FMX_DISPLAY_NAME_MAX_LENGTH),
+        pluginAssetName: plugin.assetName,
+        parameters: plugin.defaultParameters(),
+        ...overrides,
+      })
     },
 
     createPresetFor: (entity: NexusEntity<DevicePresetEntityType>): Preset => {
@@ -570,7 +615,7 @@ export const transactionBuilder = (opts: {
         },
         options,
       )
-      modifications.forEach((mod) => opts.applyModification(mod, true))
+      modifications.forEach((mod) => opts.applyModifications([mod], true))
       return opts.query.mustGetEntityAs(regionId, "audioRegion")
     },
 
@@ -578,7 +623,7 @@ export const transactionBuilder = (opts: {
       if (finished) {
         throw new CallAfterSendError("_addModification")
       }
-      opts.applyModification(mod, true)
+      opts.applyModifications([mod], true)
     },
 
     send() {

@@ -25,9 +25,8 @@ export const extractPbUpdateValue = (
     case "sint32":
     case "uint32":
     case "string":
-      return value.value
     case "bytes":
-      throw "unexpected update message type 'bytes'"
+      return value.value
     case undefined:
       return throw_("update message type is undefined")
   }

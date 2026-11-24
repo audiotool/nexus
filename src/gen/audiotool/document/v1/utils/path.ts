@@ -361,6 +361,8 @@ export type ConfigPath =
   | "signatureDenominator"
   | "durationTicks"
   | "defaultGroove"
+  | "keyIndex"
+  | "scaleIndex"
 
 /** @internal */
 export type CrossfaderPath =
@@ -440,6 +442,20 @@ export type ExciterPath =
   | "powerFactor"
   | "mix"
   | "isActive"
+
+/** @internal */
+export type FmxDevicePath =
+  | "displayName"
+  | "positionX"
+  | "positionY"
+  | "audioInput"
+  | "sideChainInput"
+  | "notesInput"
+  | "audioOutput"
+  | "isActive"
+  | "pluginAssetName"
+  | Submessage<"parameters", Arr<0 | 1 | 2 | 3 | 4>>
+  | "pluginState"
 
 /** @internal */
 export type GakkiPath =
@@ -902,6 +918,10 @@ export type NoteSplitterChannelPath =
   | "notesOutput"
   | "velocityModulation"
   | "isMuted"
+  | "rangeLowerLimitPitch"
+  | "rangeUpperLimitPitch"
+  | "transposeSemitones"
+  | "velocityRangeFadeFactor"
 
 /** @internal */
 export type PanoramaPath =
@@ -1629,6 +1649,49 @@ export type TinyGainPath =
   | "isActive"
 
 /** @internal */
+export type TinySamplerPath =
+  | "displayName"
+  | "positionX"
+  | "positionY"
+  | "presetName"
+  | "notesInput"
+  | "audioOutput"
+  | "gainFactor"
+  | "overrideVelocity"
+  | "velocityImpactFactor"
+  | "isActive"
+  | "microTuning"
+
+/** @internal */
+export type TinySamplerSamplePath = "midiKey" | "gain" | "tinySampler"
+
+/** @internal */
+export type TinySamplerSampleLayerPath =
+  | "tinySamplerSample"
+  | "sample"
+  | "pitchCorrectionCents"
+  | "lowPassCutoffFrequencyHz"
+  | "highPassCutoffFrequencyHz"
+  | Submessage<"levelEnvelope", AdsrEnvelopePath>
+  | Submessage<"filterEnvelope", AdsrEnvelopePath>
+  | "velocityLevelEnvelopeAmount"
+  | "velocityFilterEnvelopeAmount"
+  | "velocityDecayModulation"
+  | "startPct"
+  | "endPct"
+  | "sustainLoopStartPct"
+  | "sustainLoopEndPct"
+  | "loopOverlapMs"
+  | "sustainLoopIsActive"
+  | "timestretchMode"
+  | "gain"
+  | "velocityGainRiseStart"
+  | "velocityGainRiseEnd"
+  | "velocityGainFallStart"
+  | "velocityGainFallEnd"
+  | "index"
+
+/** @internal */
 export type TonematrixPath =
   | "displayName"
   | "positionX"
@@ -1712,6 +1775,7 @@ export type SchemaPath = `/${
   | Submessage<"desktopAudioCable", DesktopAudioCablePath>
   | Submessage<"desktopNoteCable", DesktopNoteCablePath>
   | Submessage<"exciter", ExciterPath>
+  | Submessage<"fmxDevice", FmxDevicePath>
   | Submessage<"gakki", GakkiPath>
   | Submessage<"genericVst3PluginBeta", GenericVst3PluginBetaPath>
   | Submessage<"graphicalEQ", GraphicalEQPath>
@@ -1775,6 +1839,9 @@ export type SchemaPath = `/${
   | Submessage<"patternRegion", PatternRegionPath>
   | Submessage<"patternTrack", PatternTrackPath>
   | Submessage<"tinyGain", TinyGainPath>
+  | Submessage<"tinySampler", TinySamplerPath>
+  | Submessage<"tinySamplerSample", TinySamplerSamplePath>
+  | Submessage<"tinySamplerSampleLayer", TinySamplerSampleLayerPath>
   | Submessage<"tonematrix", TonematrixPath>
   | Submessage<"tonematrixPattern", TonematrixPatternPath>
   | Submessage<"waveshaper", WaveshaperPath>

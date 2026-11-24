@@ -15,6 +15,9 @@ export const mapConstructorLocations = <C extends EntityConstructorType>(
     if (cons instanceof Array) {
       return cons.map((el) => updateLocations(el))
     }
+    if (ArrayBuffer.isView(cons)) {
+      return cons
+    }
     if (typeof cons === "object" && cons != null) {
       const ret: Record<string, unknown> = {}
       Object.entries(cons).forEach(([key, value]) => {

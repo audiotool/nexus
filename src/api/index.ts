@@ -12,6 +12,21 @@ export {
   type PresetUtil,
 } from "./preset-api"
 export {
+  type NexusPlugin,
+  type NexusPluginInfo,
+  type NexusPluginParameter,
+  type NexusPluginType,
+  type NexusPluginValidation,
+  type NexusPluginVisibility,
+  type PluginSearchOptions,
+  type PluginsAPI,
+  type PluginUploadOptions,
+} from "./plugin-api"
+export {
+  type FmxParameter,
+  type FmxParameterCurve,
+} from "./plugins/fmx-parameters"
+export {
   type GmDrum,
   type GmDrumProgram,
   type GmDrumSlug,

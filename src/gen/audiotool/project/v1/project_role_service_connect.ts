@@ -52,6 +52,8 @@ export const ProjectRoleService = {
     },
     /**
      * Deletes a ProjectRole.
+     * When a user leaves a project, the author, if a track has been published and the user is credited, will be removed
+     * from the track and have the track removed from the users published playlist (assuming it's not hidden).
      *
      * @generated from rpc audiotool.project.v1.ProjectRoleService.DeleteProjectRole
      */

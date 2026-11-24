@@ -105,7 +105,7 @@ export const applyUpdate = <P extends PrimitiveType>(
     return false
   }
   if (!(field instanceof PrimitiveField)) {
-    throw "received update on non-primitive field"
+    throw new Error("received update on non-primitive field")
   }
 
   if (!(value instanceof NexusLocation)) {

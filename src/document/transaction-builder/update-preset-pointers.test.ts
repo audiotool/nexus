@@ -140,4 +140,29 @@ describe("updatePresetPointers", () => {
     // updated in other secondary messages
     expect(updatedPattern.groove?.entityId).toBe(updatedGroove.id)
   })
+
+  it("deduplicates duplicate relative ids from legacy corrupt presets", () => {
+    const tonematrix = createDefaultEntityMessage("tonematrix")
+    const groove = createDefaultEntityMessage("groove")
+    const pattern = createDefaultEntityMessage("tonematrixPattern")
+
+    pattern.groove = createPointerFromNexusPath(groove.id, "/groove")
+
+    const preset = new Preset({
+      target: packedEntity("tonematrix", tonematrix),
+      relatives: [
+        packedEntity("groove", groove),
+        packedEntity("groove", groove),
+        packedEntity("tonematrixPattern", pattern),
+      ],
+    })
+
+    const updatedPreset = updatePresetPointers(preset, tonematrix.id)
+
+    expect(updatedPreset.relatives).toHaveLength(2)
+    expect(
+      mustUnpackEntityAs("tonematrixPattern", updatedPreset.relatives[1]).groove
+        ?.entityId,
+    ).toBe(mustUnpackEntityAs("groove", updatedPreset.relatives[0]).id)
+  })
 })

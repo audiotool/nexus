@@ -6,7 +6,10 @@ import type { Modification } from "@gen/document/v1/document_service_pb"
  * all validation to eb turned off e.g. during testing.
  */
 export interface NexusValidator {
-  validate(mod: Modification): string | undefined
+  /** Validates the modifications in order, atomically: if any of them is invalid, none are applied
+   * to the validator state.
+   */
+  validate(modifications: readonly Modification[]): string | undefined
   /** terminate causes {@link validate} to throw. */
   terminate(): void
 }

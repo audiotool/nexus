@@ -1143,3 +1143,85 @@ export class ReconvertLegacyProjectResponse extends Message<ReconvertLegacyProje
   }
 }
 
+/**
+ * Request for ProjectService.ClearCoverImage.
+ *
+ * @generated from message audiotool.project.v1.ClearCoverImageRequest
+ */
+export class ClearCoverImageRequest extends Message<ClearCoverImageRequest> {
+  /**
+   * The name of the project whose cover will be cleared, in the form of `projects/{project_id}`.
+   *
+   * @generated from field: string name = 1;
+   */
+  name = "";
+
+  constructor(data?: PartialMessage<ClearCoverImageRequest>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "audiotool.project.v1.ClearCoverImageRequest";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClearCoverImageRequest {
+    return new ClearCoverImageRequest().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClearCoverImageRequest {
+    return new ClearCoverImageRequest().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClearCoverImageRequest {
+    return new ClearCoverImageRequest().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ClearCoverImageRequest | PlainMessage<ClearCoverImageRequest> | undefined, b: ClearCoverImageRequest | PlainMessage<ClearCoverImageRequest> | undefined): boolean {
+    return proto3.util.equals(ClearCoverImageRequest, a, b);
+  }
+}
+
+/**
+ * Response for ProjectService.ClearCoverImage.
+ *
+ * @generated from message audiotool.project.v1.ClearCoverImageResponse
+ */
+export class ClearCoverImageResponse extends Message<ClearCoverImageResponse> {
+  /**
+   * The updated project.
+   *
+   * @generated from field: audiotool.project.v1.Project project = 1;
+   */
+  project?: Project;
+
+  constructor(data?: PartialMessage<ClearCoverImageResponse>) {
+    super();
+    proto3.util.initPartial(data, this);
+  }
+
+  static readonly runtime: typeof proto3 = proto3;
+  static readonly typeName = "audiotool.project.v1.ClearCoverImageResponse";
+  static readonly fields: FieldList = proto3.util.newFieldList(() => [
+    { no: 1, name: "project", kind: "message", T: Project },
+  ]);
+
+  static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ClearCoverImageResponse {
+    return new ClearCoverImageResponse().fromBinary(bytes, options);
+  }
+
+  static fromJson(jsonValue: JsonValue, options?: Partial<JsonReadOptions>): ClearCoverImageResponse {
+    return new ClearCoverImageResponse().fromJson(jsonValue, options);
+  }
+
+  static fromJsonString(jsonString: string, options?: Partial<JsonReadOptions>): ClearCoverImageResponse {
+    return new ClearCoverImageResponse().fromJsonString(jsonString, options);
+  }
+
+  static equals(a: ClearCoverImageResponse | PlainMessage<ClearCoverImageResponse> | undefined, b: ClearCoverImageResponse | PlainMessage<ClearCoverImageResponse> | undefined): boolean {
+    return proto3.util.equals(ClearCoverImageResponse, a, b);
+  }
+}
+

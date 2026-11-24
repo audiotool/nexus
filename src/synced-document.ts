@@ -3,6 +3,7 @@ import {
   initWasmLoader,
 } from "@document/backend/create-wasm-document-state"
 import { createCollabGateway } from "@document/backend/document-service/gateway"
+import { DOCUMENT_SERVICE_RETRY_OPTIONS } from "@document/backend/document-service/document-service-retry-options"
 import { createWasmNexusValidator } from "@document/backend/document-service/wasm-nexus-validator"
 import { NexusGateway } from "@document/backend/gateway"
 import { NexusValidator } from "@document/backend/validator"
@@ -16,12 +17,9 @@ import {
   TransactionBuilder,
 } from "@document/transaction-builder"
 import { DocumentService } from "@gen/document/v1/document_service_connect"
-import {
-  createRetryingPromiseClient,
-  type RetryingClient,
-} from "@utils/grpc/retrying-client"
 import type { ProjectService } from "@gen/project/v1/project_service_connect"
-import { throw_ } from "@utils/lang"
+import { createRehomableRetryingClient } from "@utils/grpc/rehomable-retrying-client"
+import type { RetryingClient } from "@utils/grpc/retrying-client"
 import { ValueNotifier } from "@utils/observable-notifier-value"
 import type { TransportFactory } from "./transport/types"
 import type { WasmLoader } from "./wasm/types"
@@ -268,9 +266,13 @@ export const createOfflineDocument = async (opts?: {
   return nexus
 }
 
-/** Create a SyncedDocument wrapper that's connected to the backend. */
+/** Create a SyncedDocument wrapper that's connected to the backend.
+ *
+ * `projectService` is used to find the document service of the project, also when re-homing.
+ * It should retry timeouts with a short backoff, like {@link DOCUMENT_SERVICE_RETRY_OPTIONS}.
+ */
 export const createOnlineDocument = async (
-  projectService: RetryingClient<typeof ProjectService>,
+  projectService: Pick<RetryingClient<typeof ProjectService>, "openSession">,
   projectName: string,
   getToken: () => Promise<string>,
   transportFactory: TransportFactory,
@@ -278,26 +280,30 @@ export const createOnlineDocument = async (
   // start compiling validator
   let validatorPromise: Promise<NexusValidator> = createWasmNexusValidator()
 
-  // get session from project service
-  const session = await projectService.openSession({
+  const getDocumentServiceUrl = createGetDocumentServiceUrl(
+    projectService,
     projectName,
-  })
+  )
 
-  if (session instanceof Error) {
-    throw new Error(`Couldn't open session`, { cause: session })
+  // get the url of the document service currently assigned to the project
+  const initialBaseUrl = await getDocumentServiceUrl()
+  if (initialBaseUrl instanceof Error) {
+    throw new Error(`Couldn't open session`, { cause: initialBaseUrl })
   }
 
-  // create document service using url contained in session
-  const documentService = createRetryingPromiseClient(
-    DocumentService,
-    await transportFactory.createTransport({
-      baseUrl:
-        session.session?.documentServiceUrl ??
-        throw_("backend returned no document service url"),
-      useBinaryFormat: true,
-      getToken,
-    }),
-  )
+  // the document service can be re-homed to a different url if the project is reassigned
+  const documentService = await createRehomableRetryingClient({
+    service: DocumentService,
+    initialBaseUrl,
+    getNextBaseUrl: getDocumentServiceUrl,
+    createTransport: (baseUrl) =>
+      transportFactory.createTransport({
+        baseUrl,
+        useBinaryFormat: true,
+        getToken,
+      }),
+    retryOptions: DOCUMENT_SERVICE_RETRY_OPTIONS,
+  })
 
   // await validator to make sure wasm is loaded before gateway is initialized
   const validator = await validatorPromise
@@ -320,3 +326,32 @@ export const createOnlineDocument = async (
   gateway.blocked.subscribe((v) => connected.setValue(!v), true)
   return createSyncedDocument(document, connected, validator, gateway, dawUrl)
 }
+
+/** Deadline for a single `openSession` attempt. Without one, a project service that
+ * stopped answering keeps the document stuck reconnecting forever.
+ */
+export const OPEN_SESSION_TIMEOUT_MS = 10_000
+
+/** Returns a function that asks the project service for the url of the document service
+ * currently assigned to the project. The project service should retry network failures and
+ * timeouts until it answers, because a document can't recover from a failed re-home.
+ */
+export const createGetDocumentServiceUrl =
+  (
+    projectService: Pick<RetryingClient<typeof ProjectService>, "openSession">,
+    projectName: string,
+  ): (() => Promise<string | Error>) =>
+  async () => {
+    const response = await projectService.openSession(
+      { projectName },
+      { timeoutMs: OPEN_SESSION_TIMEOUT_MS },
+    )
+    if (response instanceof Error) {
+      return new Error("failed to open a session", { cause: response })
+    }
+    const url = response.session?.documentServiceUrl
+    if (url === undefined || url === "") {
+      return new Error("backend returned no document service url")
+    }
+    return url
+  }

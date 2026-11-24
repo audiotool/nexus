@@ -3,6 +3,15 @@ import { Pointer } from "@gen/document/v1/pointer_pb"
 import { throw_ } from "@utils/lang"
 import toposort from "toposort"
 
+/** Keeps the first entry for each entity id. */
+export const deduplicateEntitiesById = <T extends { id: string }>(
+  entities: T[],
+): T[] =>
+  entities.filter(
+    (entity, index, entities) =>
+      index === entities.findIndex((other) => other.id === entity.id),
+  )
+
 /** Topologically sorts a list of entity messages. */
 export const toposortEntityMessages = (
   entityMessages: EntityMessage[],

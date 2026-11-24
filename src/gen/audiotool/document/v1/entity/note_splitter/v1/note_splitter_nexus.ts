@@ -154,6 +154,49 @@ export type NoteSplitterChannel = {
    * default | false
    * is | {@link api.TargetType.AutomatableParameter}*/
   isMuted: PrimitiveField<boolean, "mut">
+  /**
+   *  The lower limit of the midi pitch range that is processed by this channel. Lower notes are not forwarded.
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | 0
+   * range | [0, 127]
+   * is | {@link api.TargetType.AutomatableParameter}*/
+  rangeLowerLimitPitch: PrimitiveField<number, "mut">
+  /**
+   *  The upper limit of the midi pitch range that is processed by this channel. Higher notes are not forwarded.
+   *  Shifted into negative range to keep the API backwards compatible.
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | 0
+   * range | [-127, 0]
+   * is | {@link api.TargetType.AutomatableParameter}*/
+  rangeUpperLimitPitch: PrimitiveField<number, "mut">
+  /**
+   *  Transpose notes by this amount of semitones before forwarding them to the output. Valid range is +/- 2 octaves.
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | 0
+   * range | [-24, 24]
+   * is | {@link api.TargetType.AutomatableParameter}*/
+  transposeSemitones: PrimitiveField<number, "mut">
+  /**
+   *  This value describes the percentage of the range that is faded out.
+   *  A value of 1 means that only the center note is fully audible, while notes towards the edges fade out.
+   *  A value of 0 means that no fading is applied.
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | 0
+   * range | [0, 1]
+   * is | {@link api.TargetType.AutomatableParameter}*/
+  velocityRangeFadeFactor: PrimitiveField<number, "mut">
 }
 /** @internal */
 
@@ -177,5 +220,44 @@ export type NoteSplitterChannelConstructor = {
    * --- | ---
    * default | false*/
   isMuted?: boolean
+  /**
+   *  The lower limit of the midi pitch range that is processed by this channel. Lower notes are not forwarded.
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | 0
+   * range | [0, 127]*/
+  rangeLowerLimitPitch?: number
+  /**
+   *  The upper limit of the midi pitch range that is processed by this channel. Higher notes are not forwarded.
+   *  Shifted into negative range to keep the API backwards compatible.
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | 0
+   * range | [-127, 0]*/
+  rangeUpperLimitPitch?: number
+  /**
+   *  Transpose notes by this amount of semitones before forwarding them to the output. Valid range is +/- 2 octaves.
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | 0
+   * range | [-24, 24]*/
+  transposeSemitones?: number
+  /**
+   *  This value describes the percentage of the range that is faded out.
+   *  A value of 1 means that only the center note is fully audible, while notes towards the edges fade out.
+   *  A value of 0 means that no fading is applied.
+   *
+   *
+   * key | value
+   * --- | ---
+   * default | 0
+   * range | [0, 1]*/
+  velocityRangeFadeFactor?: number
 }
 

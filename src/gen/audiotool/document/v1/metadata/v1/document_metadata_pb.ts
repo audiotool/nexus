@@ -72,6 +72,7 @@ export class DocumentMetadata extends Message<DocumentMetadata> {
    * - entity.crossfader.v1.Crossfader
    * - entity.curve.v1.Curve
    * - entity.exciter.v1.Exciter
+   * - entity.fmx_device.v1.FmxDevice
    * - entity.gakki.v1.Gakki
    * - entity.generic_vst3_plugin_beta.v1.GenericVst3PluginBeta
    * - entity.graphical_eq.v1.GraphicalEQ
@@ -108,6 +109,7 @@ export class DocumentMetadata extends Message<DocumentMetadata> {
    * - entity.stompbox_stereo_detune.v1.StompboxStereoDetune
    * - entity.stompbox_tube.v1.StompboxTube
    * - entity.tiny_gain.v1.TinyGain
+   * - entity.tiny_sampler.v1.TinySampler
    * - entity.tonematrix.v1.Tonematrix
    * - entity.waveshaper.v1.Waveshaper
    *
@@ -688,6 +690,20 @@ export class DeviceMetadata extends Message<DeviceMetadata> {
    */
   pluginPath = "";
 
+  /**
+   * The plugin asset this device hosts, in the form `pluginAssets/{plugin_asset}`. Mirrors
+   * entity.fmx_device.v1.FmxDevice.plugin_asset_name.
+   *
+   * Resolve it with `PluginAssetService.BatchGetPluginAssets`; `PluginAsset.plugin` names the
+   * listing it currently belongs to, which can change. Taken-down assets still resolve.
+   *
+   * Empty for every device that is not an entity.fmx_device.v1.FmxDevice, and for FMX
+   * development devices whose file was only loaded locally (`localPluginAssets/{uuid}`).
+   *
+   * @generated from field: string plugin_asset_name = 8;
+   */
+  pluginAssetName = "";
+
   constructor(data?: PartialMessage<DeviceMetadata>) {
     super();
     proto3.util.initPartial(data, this);
@@ -703,6 +719,7 @@ export class DeviceMetadata extends Message<DeviceMetadata> {
     { no: 5, name: "position_x", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 6, name: "position_y", kind: "scalar", T: 5 /* ScalarType.INT32 */ },
     { no: 7, name: "plugin_path", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 8, name: "plugin_asset_name", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): DeviceMetadata {

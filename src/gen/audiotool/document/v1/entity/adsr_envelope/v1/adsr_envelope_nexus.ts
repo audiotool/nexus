@@ -47,7 +47,6 @@ export type AdsrEnvelope = {
    *
    * key | value
    * --- | ---
-   * default | -0.5
    * range | [-1, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   attackSlopeFactor: PrimitiveField<number, "mut">
@@ -75,7 +74,6 @@ export type AdsrEnvelope = {
    *
    * key | value
    * --- | ---
-   * default | 0.5
    * range | [-1, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   decaySlopeFactor: PrimitiveField<number, "mut">
@@ -95,7 +93,6 @@ export type AdsrEnvelope = {
    *
    * key | value
    * --- | ---
-   * default | 0.5
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   sustainFactor: PrimitiveField<number, "mut">
@@ -113,7 +110,6 @@ export type AdsrEnvelope = {
    *
    * key | value
    * --- | ---
-   * default | 0.25
    * range | [0, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   releaseTimeNormalized: PrimitiveField<number, "mut">
@@ -123,7 +119,6 @@ export type AdsrEnvelope = {
    *
    * key | value
    * --- | ---
-   * default | 0.5
    * range | [-1, 1]
    * is | {@link api.TargetType.AutomatableParameter}*/
   releaseSlopeFactor: PrimitiveField<number, "mut">
@@ -162,7 +157,6 @@ export type AdsrEnvelopeConstructor = {
    *
    * key | value
    * --- | ---
-   * default | -0.5
    * range | [-1, 1]*/
   attackSlopeFactor?: number
   /**
@@ -188,7 +182,6 @@ export type AdsrEnvelopeConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.5
    * range | [-1, 1]*/
   decaySlopeFactor?: number
   /**
@@ -206,7 +199,6 @@ export type AdsrEnvelopeConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.5
    * range | [0, 1]*/
   sustainFactor?: number
   /**
@@ -223,7 +215,6 @@ export type AdsrEnvelopeConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.25
    * range | [0, 1]*/
   releaseTimeNormalized?: number
   /**
@@ -232,7 +223,6 @@ export type AdsrEnvelopeConstructor = {
    *
    * key | value
    * --- | ---
-   * default | 0.5
    * range | [-1, 1]*/
   releaseSlopeFactor?: number
 }

@@ -31,6 +31,7 @@ const config = {
     "src/docs/overview.md",
     "src/docs/login.md",
     "src/docs/api.md",
+    "src/docs/nxs-plugins.md",
     "src/docs/transaction-errors.md",
     "src/docs/entities.md",
     "src/docs/changelog.md",

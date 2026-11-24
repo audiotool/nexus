@@ -5,7 +5,50 @@ title: 📜 Changelog
 > [!WARNING]
 > The package should be considered "early alpha" and can change **significantly** between releases, even between minor version numbers.
 
-To get more background on the changes we make, join our [Discord](https://developer.audiotool.com/discord).
+To get more background on the changes we make, join our [Discord](https://audiotool.com/discord).
+
+## 0.0.20
+
+### New entities
+
+- {@link entities.TinySampler}, {@link entities.TinySamplerSample} and {@link entities.TinySamplerSampleLayer}: a sampler that maps samples to keys and velocity ranges. You can create presets for it and apply presets to it, like for other devices.
+- {@link entities.FmxDevice}: the NXS plugin device. It can't be used in presets yet.
+
+### NXS plugins
+
+- **`client.plugins`** ({@link api.PluginsAPI}): find NXS plugins with `search` (use `owner: "me"` for your own), load a plugin with `get` (by name, or from an `fmxDevice` in a project), upload an `.fmx` file with `upload`, and check a file against the plugin rules with `validate`. A loaded plugin knows the names, ranges and choices of its parameters, and converts values between the parameter's own units and the normalized values stored in the device. `get` caches downloads with `WeakRef`s.
+- **{@link document.TransactionBuilder.createDeviceFromPlugin}** creates a device for a plugin, with the plugin's name and the default value of every parameter.
+- **`client.pluginServices` and `client.pluginAssets`**: the raw plugin services, for example to upload plugin icons.
+- New guide: [NXS Plugins](./nxs-plugins.md).
+
+### New fields
+
+- `config.keyIndex` and `config.scaleIndex`: the key and scale of the project.
+- `noteSplitter` channels: `rangeLowerLimitPitch`, `rangeUpperLimitPitch`, `transposeSemitones` and `velocityRangeFadeFactor`.
+
+### Bug fixes
+
+- **Byte fields from other participants:** the SDK threw when another participant changed a byte field, for example the plugin state of a {@link entities.FmxDevice}. It now applies the change.
+- **Presets with duplicate entities:** creating a preset could add the same relative entity twice, for example when two patterns share a groove. Applying such a preset threw `duplicate entity id`. Both are fixed, and presets that were already saved this way now apply without an error.
+- **Presets that grabbed other devices' entities:** creating a preset for a device could include patterns of other devices that share a groove (or layers of other tiny samplers that share a sample). It now only includes entities that belong to the device, plus the entities they use.
+- **Missing preset relatives:** presets for Bassline and Helmholtz now include the custom micro tuning, and presets for Rasselbock now include the groove, when the device uses one.
+- **Cloning entities with byte fields** no longer breaks the byte field.
+- Errors thrown by the SDK are now always `Error` objects, never strings.
+- **Large responses in Bun:** with `createNodeTransport`, Bun failed to decompress larger API responses, for example a page of 50 projects (`decompression failed`). The transport now asks the server not to compress responses when it runs in Bun.
+
+### Connection changes
+
+- **Retries back off exponentially:** failed API calls are now retried after 2 seconds, then 4, 8, and so on, up to 30 seconds. Before, the SDK retried every 2 seconds.
+- **Dead connections are detected faster:** a ping to the document server now times out after 5 seconds. If it times out, the SDK reconnects, and resends transactions that were not confirmed.
+- **Re-homing:** if a project moves to a different document server, the SDK now asks the backend for the new server and reconnects to it. Unconfirmed transactions are resent. Before, the SDK threw an error.
+- **Calls to the document server that time out are retried**, with a short backoff of at most 2 seconds.
+- **Document stuck after a short disconnect:** if the connection dropped and came back while the document was still loading, every later `modify` call waited forever. This is fixed.
+
+### Other changes
+
+- Applying many changes at once is faster: modifications are validated in batches, and removing entities with many listeners is quicker.
+- Updated dependencies, including `uuid` 14.
+- `@bufbuild/protobuf` is no longer pinned to exactly 1.10.0, resulting in a cleaner dependency tree.
 
 ## 0.0.19
 

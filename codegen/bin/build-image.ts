@@ -21,7 +21,10 @@ const PATHS = [
   "audiotool/user/",
   "audiotool/sample/",
   "audiotool/audiograph/",
+  "audiotool/auth/",
   "audiotool/longrunning/",
+  "audiotool/plugin/",
+  "audiotool/pluginvalidator/",
 ]
 
 const EXCLUDE_PATHS = [

@@ -80,6 +80,21 @@ export class ListPresetsRequest extends Message<ListPresetsRequest> {
    */
   textSearch = "";
 
+  /**
+   * Optional. Restricts results to presets favorited by this user, in the form `users/{user}`.
+   *
+   * Combined with `filter` and `text_search` via AND. Presets that are not visible to the
+   * caller are omitted. Unset means no favorite restriction. An invalid name is rejected
+   * with `INVALID_ARGUMENT`.
+   *
+   * Must be the caller's own user name, so that UNLISTED presets cannot be discovered through
+   * another user's favorites. Anonymous callers get `UNAUTHENTICATED`, any other user name
+   * `PERMISSION_DENIED`.
+   *
+   * @generated from field: string favorited_by = 6;
+   */
+  favoritedBy = "";
+
   constructor(data?: PartialMessage<ListPresetsRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -93,6 +108,7 @@ export class ListPresetsRequest extends Message<ListPresetsRequest> {
     { no: 3, name: "page_token", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 4, name: "order_by", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "text_search", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 6, name: "favorited_by", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListPresetsRequest {

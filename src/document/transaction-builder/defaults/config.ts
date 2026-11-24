@@ -7,4 +7,6 @@ export const configDefaults: Defaults<ConfigConstructor> = {
   signatureNumerator: 4,
   signatureDenominator: 4,
   durationTicks: 1966080,
+  keyIndex: 0,
+  scaleIndex: 0,
 }

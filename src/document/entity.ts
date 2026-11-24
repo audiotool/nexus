@@ -35,7 +35,7 @@ export class NexusEntity<
    */
   _resolveField(fieldNumbers: ReadonlyArray<number>): NexusField | undefined {
     if (fieldNumbers.length === 0) {
-      throw "tried resolving empty field path"
+      throw new Error("tried resolving empty field path")
     }
 
     const [first, ...rest] = fieldNumbers
@@ -54,7 +54,9 @@ export class NexusEntity<
       }
 
       // if we get here, we're trying to access a field number on a non-object and non-array field
-      throw `tried resolving field number ${fieldNumber} on non-object field ${cursor}`
+      throw new Error(
+        `tried resolving field number ${fieldNumber} on non-object field ${cursor}`,
+      )
     }
     return cursor
   }

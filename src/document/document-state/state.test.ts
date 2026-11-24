@@ -5,6 +5,7 @@ import type { DeepPartial } from "utility-types"
 import { describe, expect, it, vi } from "vitest"
 import type { NexusEntity } from "../entity"
 import { NexusLocation } from "../location"
+import { collectingTransactionBuilder } from "../transaction-builder/builder-test-utils"
 import { nexusDocumentState } from "./state"
 
 describe("NexusDocumentState", () => {
@@ -523,6 +524,18 @@ describe("NexusDocumentState", () => {
         new NexusLocation("id", "noteTrack", [2]),
         44,
       )
+    })
+
+    it("should apply updates on bytes fields", () => {
+      const builder = collectingTransactionBuilder()
+      const device = builder.t.create("fmxDevice", {})
+      builder.t.update(device.fields.pluginState, new Uint8Array([1, 2, 3]))
+
+      const state = nexusDocumentState()
+      builder.modifications.forEach((mod) => state.applyModification(mod))
+
+      const entity = state.entities.get(device.id) as NexusEntity<"fmxDevice">
+      expect(entity.fields.pluginState.value).toEqual(new Uint8Array([1, 2, 3]))
     })
 
     it("should ignore updates on fields the SDK doesn't know", () => {

@@ -1,6 +1,7 @@
+import { Code, ConnectError } from "@connectrpc/connect"
 import type { DocumentService } from "@gen/document/v1/document_service_connect"
 import type { Transaction } from "@gen/document/v1/document_service_pb"
-import type { RetryingClient } from "@utils/grpc/retrying-client"
+import type { RehomableRetryingClient } from "@utils/grpc/rehomable-retrying-client"
 import {
   ValueNotifier,
   type ObservableValue,
@@ -12,6 +13,12 @@ export type TransactionSender = {
   /** Turns to false if sending is temporarily interrupted. */
   connectionOk: ObservableValue<boolean>
 
+  /** Abort the in-flight send and send the same batch again. Call this when a problem is
+   * detected outside of the sender (e.g. a failing ping), because a send to a server that
+   * silently stopped answering never settles on its own.
+   */
+  reconnect: () => void
+
   /** Terminate this sender. This will cause all sendNextTransaction calls
    * to throw. The promise will resolve once the last transaction has been
    * confirmed as received by the backend, and the sendNextTransaction
@@ -22,8 +29,8 @@ export type TransactionSender = {
 
 export const createTransactionSender = (
   documentService: Pick<
-    RetryingClient<typeof DocumentService>,
-    "applyTransactions"
+    RehomableRetryingClient<typeof DocumentService>,
+    "applyTransactions" | "rehome" | "resetRehomeBackoff"
   >,
   projectName: string,
 ): TransactionSender => {
@@ -46,6 +53,8 @@ export const createTransactionSender = (
   // if this is defined, we want to terminate. When termination is complete, resolve.
   let terminalResolve: PromiseWithResolvers<void> | undefined = undefined
 
+  let sendAbortController = new AbortController()
+
   const sendLoop = async () => {
     while (true) {
       const data = nextBatch.splice(0)
@@ -60,7 +69,9 @@ export const createTransactionSender = (
         await nextTransactionArrived.wait
         continue
       }
-      // send the data
+      // send the data. Only `reconnect` aborts the signal, termination doesn't: we want to
+      // send everything.
+      sendAbortController = new AbortController()
       const response = await documentService.applyTransactions(
         {
           projectName,
@@ -68,14 +79,39 @@ export const createTransactionSender = (
         },
         {
           callIsOk: connectionOk,
+          signal: sendAbortController.signal,
         },
-        // no signal passed: we want to send everything
       )
       if (response instanceof Error) {
-        // throw an error - the application overall should crash and start from scratch.
-        // TODO: make this recoverable.
-        throw new Error("error sending transaction", { cause: response })
+        if (sendAbortController.signal.aborted) {
+          // Put the batch back in front so ordering is preserved and retry.
+          nextBatch.unshift(...data)
+          continue
+        }
+        if (
+          !(response.cause instanceof ConnectError) ||
+          response.cause.code !== Code.FailedPrecondition
+        ) {
+          throw new Error(`error sending transaction: ${response.message}`, {
+            cause: response,
+          })
+        }
+        // The current backend no longer owns the project, e.g. after it was unassigned
+        // because of an idle timeout. Re-home to a freshly-assigned backend and retry the
+        // same batch. This re-home is deduped with the one of the receiver.
+        const rehomeErr = await documentService.rehome()
+        if (rehomeErr !== undefined) {
+          throw new Error(
+            `error sending transaction after re-home: ${rehomeErr.message}`,
+            { cause: rehomeErr },
+          )
+        }
+        // Put the batch back in front so ordering is preserved and retry.
+        // Repeated re-homes are backed off inside `rehome()`.
+        nextBatch.unshift(...data)
+        continue
       }
+      documentService.resetRehomeBackoff()
       data.forEach(([t, resolve]) => {
         resolve(response.errors[t.id] ?? undefined)
       })
@@ -121,6 +157,7 @@ export const createTransactionSender = (
       }
     },
     connectionOk,
+    reconnect: () => sendAbortController.abort(),
   }
 }
 

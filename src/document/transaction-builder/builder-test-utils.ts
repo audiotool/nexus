@@ -21,9 +21,11 @@ export const collectingTransactionBuilder = (): {
   const builder = transactionBuilder({
     query,
 
-    applyModification: (mod) => {
-      modifications.push(mod)
-      documentState.applyModification(mod)
+    applyModifications: (mods) => {
+      for (const mod of mods) {
+        modifications.push(mod)
+        documentState.applyModification(mod)
+      }
     },
   })
   return {
@@ -40,8 +42,8 @@ export const onlyTransactionBuilder = (): TransactionBuilder => {
   const builder = transactionBuilder({
     query,
 
-    applyModification: (mod) => {
-      documentState.applyModification(mod)
+    applyModifications: (mods) => {
+      mods.forEach((mod) => documentState.applyModification(mod))
     },
   })
   return builder

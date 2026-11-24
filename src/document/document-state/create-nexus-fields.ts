@@ -138,7 +138,7 @@ export const mustExtractMutability = (
 ): boolean => {
   const details = getSchemaLocationDetails({ entityType: type, fieldIndex })
   if (details?.type !== "primitive") {
-    throw "Expected primitive field details, got: " + details?.type
+    throw new Error(`Expected primitive field details, got: ${details?.type}`)
   }
   return details?.immutable ?? false
 }

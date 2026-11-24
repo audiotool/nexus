@@ -23,7 +23,11 @@ import { Duration, Message, proto3, protoInt64, Timestamp } from "@bufbuild/prot
 /**
  * TrackLicense is the license of the Track.
  *
- * This is a copy of the TrackLicense enum from the Track proto to avoid dependencies.
+ * This is a copy of the TrackLicense enum from the Track proto to avoid dependencies. The two
+ * are mapped onto each other by value on sync, so they must stay numerically identical: never
+ * add or renumber a value here without doing the same in `audiotool.track.v1.TrackLicense`.
+ *
+ * Only ALL_RIGHTS_RESERVED_2026 and AUDIOTOOL can be set, see `Project.license`.
  *
  * @generated from enum audiotool.project.v1.TrackLicense
  */
@@ -36,39 +40,55 @@ export enum TrackLicense {
   UNSPECIFIED = 0,
 
   /**
-   * No rights reserved.
+   * Legacy. No rights reserved.
    *
    * @generated from enum value: TRACK_LICENSE_NO_RIGHTS_RESERVED = 1;
    */
   NO_RIGHTS_RESERVED = 1,
 
   /**
-   * Creative Commons license.
+   * Legacy. Creative Commons license.
    *
    * @generated from enum value: TRACK_LICENSE_CREATIVE_COMMONS = 2;
    */
   CREATIVE_COMMONS = 2,
 
   /**
-   * Creative Commons Non-Commercial license.
+   * Legacy. Creative Commons Non-Commercial license.
    *
    * @generated from enum value: TRACK_LICENSE_CREATIVE_COMMONS_NON_COMMERCIAL = 3;
    */
   CREATIVE_COMMONS_NON_COMMERCIAL = 3,
 
   /**
-   * All rights reserved.
+   * Legacy. All rights reserved (ARR) under the terms before 2026.
    *
    * @generated from enum value: TRACK_LICENSE_ALL_RIGHTS_RESERVED = 4;
    */
   ALL_RIGHTS_RESERVED = 4,
 
   /**
-   * Royalty free license.
+   * Legacy. Royalty free license.
    *
    * @generated from enum value: TRACK_LICENSE_ROYALTY_FREE = 5;
    */
   ROYALTY_FREE = 5,
+
+  /**
+   * The Audiotool License (ATL).
+   *
+   * Applies to tracks only; there is no Audiotool License for samples, presets or plugins.
+   *
+   * @generated from enum value: TRACK_LICENSE_AUDIOTOOL = 6;
+   */
+  AUDIOTOOL = 6,
+
+  /**
+   * All rights reserved (ARR) under the 2026 terms.
+   *
+   * @generated from enum value: TRACK_LICENSE_ALL_RIGHTS_RESERVED_2026 = 7;
+   */
+  ALL_RIGHTS_RESERVED_2026 = 7,
 }
 // Retrieve enum metadata with: proto3.getEnumType(TrackLicense)
 proto3.util.setEnumType(TrackLicense, "audiotool.project.v1.TrackLicense", [
@@ -78,6 +98,8 @@ proto3.util.setEnumType(TrackLicense, "audiotool.project.v1.TrackLicense", [
   { no: 3, name: "TRACK_LICENSE_CREATIVE_COMMONS_NON_COMMERCIAL" },
   { no: 4, name: "TRACK_LICENSE_ALL_RIGHTS_RESERVED" },
   { no: 5, name: "TRACK_LICENSE_ROYALTY_FREE" },
+  { no: 6, name: "TRACK_LICENSE_AUDIOTOOL" },
+  { no: 7, name: "TRACK_LICENSE_ALL_RIGHTS_RESERVED_2026" },
 ]);
 
 /**
@@ -129,10 +151,12 @@ export class Project extends Message<Project> {
    *
    * If this value is specified, the value of `copy_of_project_name` and
    * `copy_of_project_commit_index` is ignored and the project of the `Track` message is used.
-   * `remix_allowed` must be set to `true`.
+   * The track's `remix_allowed` must be `true`, unless the caller is one of the track's
+   * `contributor_names`: contributors can always remix their own track. Otherwise the create is
+   * rejected with `FAILED_PRECONDITION`.
    *
-   * The resulting project will have the `copy_of_project_name` set to the name of the
-   * remixed track and the `copy_of_project_commit_index` set to the commit index.
+   * The resulting project will have the `copy_of_project_name` set to the project of the
+   * remixed track and the `copy_of_project_commit_index` set to the track's commit index.
    *
    * Historical data of the project will not be copied, only the current state of the project.
    *
@@ -143,8 +167,11 @@ export class Project extends Message<Project> {
   /**
    * If the project was copied from another project, this will be the name of the project.
    *
-   * At create time the caller will enforce a copy of a project by setting this value. The project
-   * must have `copy_allowed` set to true or the calling user must have a role in the project.
+   * At create time the caller will enforce a copy of a project by setting this value. The
+   * calling user must have a role in the copied project; otherwise the create is rejected with
+   * `PERMISSION_DENIED`. Copying a project a user is not part of is not possible, regardless of
+   * the project's license. To build on someone else's work, remix the published track instead,
+   * see `remix_of_track_name`.
    *
    * Historical data of the project will not be copied, only the current state of the project.
    *
@@ -235,7 +262,8 @@ export class Project extends Message<Project> {
    * - 300x300.webp
    * - 600x600.webp
    *
-   * The cover_url must be uploaded via ImageUploadService.
+   * The cover_url must be uploaded via ImageUploadService and can be removed via
+   * ProjectService.ClearCoverImage.
    *
    * Refers to track.cover_url on sync.
    *
@@ -273,26 +301,44 @@ export class Project extends Message<Project> {
    *
    * Refers to track.download_allowerd on sync.
    *
+   * Defaults to false. The owner may enable it under any license; it is not restricted by
+   * `license`. A download only allows personal listening and grants no other rights.
+   *
    * @generated from field: bool download_allowed = 18;
    */
   downloadAllowed = false;
 
   /**
-   * Whether copying is allowed for users not having a role in the project.
+   * Deprecated: ignored on write, and derived from `license` on sync.
    *
-   * If this is set to true and the project is published as a track, the tracks `remix_allowed` is
-   * set to true. The tracks bool flag `remix_allowed` is used to determine if a track can be copied
-   * by users not having a role in the project and takes precedence over this value. To override
-   * this value, the metadata of the track must be updated / synced again.
+   * Copying a project now always requires a role in that project, so this flag no longer grants
+   * anyone access. Its only remaining effect was to set the published track's `remix_allowed`,
+   * and remixing now follows the license: TRACK_LICENSE_AUDIOTOOL means remixing is allowed,
+   * TRACK_LICENSE_ALL_RIGHTS_RESERVED_2026 means it is not. Projects on a legacy license,
+   * including TRACK_LICENSE_ALL_RIGHTS_RESERVED, keep the value their track was published with.
    *
-   * @generated from field: bool copy_allowed = 19;
+   * @generated from field: bool copy_allowed = 19 [deprecated = true];
+   * @deprecated
    */
   copyAllowed = false;
 
   /**
-   * The license of the Project.
+   * The license of the Project, which becomes the track license on publish.
    *
    * Refers to track.license on sync.
+   *
+   * Only TRACK_LICENSE_ALL_RIGHTS_RESERVED_2026 and TRACK_LICENSE_AUDIOTOOL can be set; any legacy
+   * value, including TRACK_LICENSE_ALL_RIGHTS_RESERVED, is rejected with `INVALID_ARGUMENT`. Unset
+   * on create means TRACK_LICENSE_ALL_RIGHTS_RESERVED_2026.
+   *
+   * Switching between the two is allowed in both directions, and remixes created while the
+   * project was under the Audiotool License stay valid. A project still on a legacy license can
+   * move to either of the two, but never back to a legacy license; updating any other field
+   * leaves the legacy license untouched. A project on one of the two current licenses has had its
+   * license chosen under the current terms.
+   *
+   * The license also determines whether the published track can be remixed, see
+   * `audiotool.track.v1.Track.remix_allowed`.
    *
    * @generated from field: audiotool.project.v1.TrackLicense license = 20;
    */

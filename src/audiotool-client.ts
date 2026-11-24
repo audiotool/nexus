@@ -1,11 +1,19 @@
 import { createRegistry } from "@bufbuild/protobuf"
 import { initWasmLoader } from "@document/backend/create-wasm-document-state"
+import { DOCUMENT_SERVICE_RETRY_OPTIONS } from "@document/backend/document-service/document-service-retry-options"
+import { createPluginUtil, type PluginsAPI } from "./api/plugin-api"
 import { createPresetUtil, type PresetsAPI } from "./api/preset-api"
 import { createSampleUtil, type SamplesAPI } from "./api/sample-api"
 import { createPATAuth } from "./auth/pat-auth"
 import type { AuthProvider } from "./auth/types"
 import { AudiographService } from "./gen/audiotool/audiograph/v1/audiograph_service_connect"
 import { Preset } from "./gen/audiotool/document/v1/preset/v1/preset_pb"
+import {
+  PluginConvertInfo,
+  PluginValidationInfo,
+} from "./gen/audiotool/plugin/event/v1/plugin_event_pb"
+import { PluginAssetService } from "./gen/audiotool/plugin/v1/plugin_asset_service_connect"
+import { PluginService } from "./gen/audiotool/plugin/v1/plugin_service_connect"
 import { ProjectRoleService } from "./gen/audiotool/project/v1/project_role_service_connect"
 import { ProjectService } from "./gen/audiotool/project/v1/project_service_connect"
 import { SampleConvertInfo } from "./gen/audiotool/sample/v1/sample_event_pb"
@@ -108,6 +116,28 @@ export type AudiotoolClient = {
   audioGraph: RetryingClient<typeof AudiographService>
 
   /**
+   * Find, load, and upload NXS plugins.
+   *
+   * @example
+   * ```typescript
+   * const vocoder = await at.plugins.get("plugins/01f345db-d130-46c9-b728-aa5dc4ce2915")
+   * if (!(vocoder instanceof Error)) {
+   *   await nexus.modify((t) => t.createDeviceFromPlugin(vocoder))
+   * }
+   * ```
+   */
+  plugins: PluginsAPI
+
+  /** The raw plugin service, for anything {@link plugins} doesn't cover, like editing a plugin's description. */
+  pluginServices: Omit<RetryingClient<typeof PluginService>, "deletePlugin">
+
+  /** The raw plugin asset service, for anything {@link plugins} doesn't cover, like listing the versions of a plugin. */
+  pluginAssets: Omit<
+    RetryingClient<typeof PluginAssetService>,
+    "deletePluginAsset"
+  >
+
+  /**
    * Fetch with authorization headers included.
    * Never throws - returns Error on failure.
    */
@@ -134,7 +164,12 @@ export const createAudiotoolClientInternal = async ({
   const rpcTransport = await transportFactory.createTransport({
     baseUrl: "https://rpc.audiotool.com/",
     useBinaryFormat: false,
-    typeRegistry: createRegistry(Preset, SampleConvertInfo),
+    typeRegistry: createRegistry(
+      Preset,
+      SampleConvertInfo,
+      PluginConvertInfo,
+      PluginValidationInfo,
+    ),
     getToken,
   })
 
@@ -144,11 +179,26 @@ export const createAudiotoolClientInternal = async ({
     ProjectRoleService,
     rpcTransport,
   )
+  // only used to find the document service of a project: retries timeouts, with a short backoff
+  const documentSessions = createRetryingPromiseClient(
+    ProjectService,
+    rpcTransport,
+    DOCUMENT_SERVICE_RETRY_OPTIONS,
+  )
   const users = createRetryingPromiseClient(UserService, rpcTransport)
   const samples = createSampleUtil(rpcTransport)
   const presets = createPresetUtil(rpcTransport)
   const audioGraph = createRetryingPromiseClient(
     AudiographService,
+    rpcTransport,
+  )
+  const plugins = createPluginUtil(rpcTransport)
+  const pluginServices = createRetryingPromiseClient(
+    PluginService,
+    rpcTransport,
+  )
+  const pluginAssets = createRetryingPromiseClient(
+    PluginAssetService,
     rpcTransport,
   )
 
@@ -169,13 +219,16 @@ export const createAudiotoolClientInternal = async ({
     samples,
     presets,
     audioGraph,
+    plugins,
+    pluginServices,
+    pluginAssets,
     authorizedFetch,
     fetch: neverThrowingFetch,
 
     open: async (project) => {
       const projectName = extractProjectName(project)
       const document = await createOnlineDocument(
-        projects,
+        documentSessions,
         projectName,
         getToken,
         transportFactory,

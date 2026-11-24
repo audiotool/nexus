@@ -2,10 +2,9 @@ import assert from "assert"
 import { existsSync, readdirSync } from "fs"
 import { resolve } from "path"
 import dts from "vite-plugin-dts"
-import tsconfigPaths from "vite-tsconfig-paths"
 import { defineConfig } from "vitest/config"
 
-import packageJson from "./package.json"
+import packageJson from "./package.json" with { type: "json" }
 
 // Generate entry points by looking at package.json's `exports` field. For each
 //
@@ -18,7 +17,7 @@ import packageJson from "./package.json"
 // Collect all path src/exports/foo.ts.
 const entry = Object.entries(packageJson.exports).map(([key, value]) => {
   const name = key === "." ? "index" : key.slice(2)
-  const path = resolve(__dirname, "src/exports", `${name}.ts`)
+  const path = resolve(import.meta.dirname, "src/exports", `${name}.ts`)
   console.debug(path)
   assert(
     existsSync(path),
@@ -34,7 +33,7 @@ const entry = Object.entries(packageJson.exports).map(([key, value]) => {
 
 // make sure we have the same number of files in src/exports as in package.json `exports` field
 assert(
-  readdirSync(resolve(__dirname, "src/exports")).length ===
+  readdirSync(resolve(import.meta.dirname, "src/exports")).length ===
     Object.keys(packageJson.exports).length,
   "src/exports has more files than package.json `exports` field; update package.json or remove file",
 )
@@ -70,8 +69,10 @@ export default defineConfig({
   test: {
     setupFiles: ["./src/testing/test-setup.ts"],
   },
+  resolve: {
+    tsconfigPaths: true,
+  },
   plugins: [
-    tsconfigPaths(),
     dts({
       insertTypesEntry: true,
     }),

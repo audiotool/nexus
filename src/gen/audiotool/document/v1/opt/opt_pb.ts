@@ -281,6 +281,20 @@ export enum TargetType {
    * @generated from enum value: MixerAuxReceive = 34;
    */
   MixerAuxReceive = 34,
+
+  /**
+   * Used by TinySamplerSample to point to its TinySampler
+   *
+   * @generated from enum value: TinySampler = 35;
+   */
+  TinySampler = 35,
+
+  /**
+   * Used by TinySamplerSampleLayer to point to its TinySamplerSample
+   *
+   * @generated from enum value: TinySamplerSample = 36;
+   */
+  TinySamplerSample = 36,
 }
 // Retrieve enum metadata with: proto3.getEnumType(TargetType)
 proto3.util.setEnumType(TargetType, "audiotool.document.v1.opt.TargetType", [
@@ -317,6 +331,8 @@ proto3.util.setEnumType(TargetType, "audiotool.document.v1.opt.TargetType", [
   { no: 32, name: "MixerSideChainOutput" },
   { no: 33, name: "MixerAuxSend" },
   { no: 34, name: "MixerAuxReceive" },
+  { no: 35, name: "TinySampler" },
+  { no: 36, name: "TinySamplerSample" },
 ]);
 
 /**

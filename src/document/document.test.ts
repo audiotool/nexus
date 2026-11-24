@@ -1,7 +1,12 @@
+import { Transaction } from "@gen/document/v1/document_service_pb"
+import { sleep } from "@utils/lang"
+import { ValueNotifier } from "@utils/observable-notifier-value"
 import { beforeEach, describe, expect, it } from "vitest"
 import { NexusDocument } from "./document"
 
 import { createWasmNexusValidator } from "./backend/document-service/wasm-nexus-validator"
+import type { NexusGateway } from "./backend/gateway"
+import { mockNexusGateway } from "./mock/mock-gateway"
 import { collectingTransactionBuilder } from "./transaction-builder/builder-test-utils"
 
 type TestContext = {
@@ -137,6 +142,85 @@ describe("queryEntitiesWithoutLock", () => {
     const quasar = builder.t.create("quasar", {})
     await nexus._applyIncomingTransactions([builder.getTransaction()])
     expect(nexus.queryEntitiesWithoutLock.get()).toMatchObject([quasar])
+  })
+})
+
+describe("gateway blocking", () => {
+  const controllableGateway = () => {
+    let initialTransactionReady = false
+    let initialTransactionReturned = false
+    const blocked = new ValueNotifier(false)
+    const gateway: NexusGateway = {
+      ...mockNexusGateway(),
+      blocked,
+      synchronize: () => {
+        if (!initialTransactionReady || initialTransactionReturned) {
+          return []
+        }
+        initialTransactionReturned = true
+        return [new Transaction()]
+      },
+    }
+    return {
+      gateway,
+      blocked,
+      deliverInitialTransaction: () => {
+        initialTransactionReady = true
+      },
+    }
+  }
+
+  const modifyWithin = (nexus: NexusDocument, ms: number) =>
+    Promise.race([
+      nexus.modify(() => "modified"),
+      sleep(ms).then(() => "timed out"),
+    ])
+
+  it("unlocks the document if the gateway unblocks while loading", async () => {
+    const { gateway, blocked, deliverInitialTransaction } =
+      controllableGateway()
+    const nexus = new NexusDocument()
+    const loaded = nexus.takeTransactions({ gateway })
+
+    blocked.setValue(true)
+    await sleep(10)
+    blocked.setValue(false)
+    deliverInitialTransaction()
+    await loaded
+
+    expect(await modifyWithin(nexus, 500)).toBe("modified")
+  })
+
+  it("locks the document while the gateway is blocked", async () => {
+    const { gateway, blocked, deliverInitialTransaction } =
+      controllableGateway()
+    const nexus = new NexusDocument()
+    const loaded = nexus.takeTransactions({ gateway })
+    deliverInitialTransaction()
+    await loaded
+
+    blocked.setValue(true)
+    expect(await modifyWithin(nexus, 100)).toBe("timed out")
+
+    blocked.setValue(false)
+    expect(await modifyWithin(nexus, 500)).toBe("modified")
+  })
+
+  it("stays locked if the gateway blocks again while loading", async () => {
+    const { gateway, blocked, deliverInitialTransaction } =
+      controllableGateway()
+    const nexus = new NexusDocument()
+    const loaded = nexus.takeTransactions({ gateway })
+
+    blocked.setValue(true)
+    blocked.setValue(false)
+    blocked.setValue(true)
+    deliverInitialTransaction()
+    await loaded
+    expect(await modifyWithin(nexus, 100)).toBe("timed out")
+
+    blocked.setValue(false)
+    expect(await modifyWithin(nexus, 500)).toBe("modified")
   })
 })
 

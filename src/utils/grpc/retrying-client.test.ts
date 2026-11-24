@@ -8,9 +8,53 @@ import { ValueNotifier } from "@utils/observable-notifier-value"
 import { describe, expect, expectTypeOf, it, vi } from "vitest"
 import type { KeepaliveTransport } from "../../transport/types"
 import {
+  calculateExponentialBackoff,
   createRetryingPromiseClient,
   type RetryingClient,
 } from "./retrying-client"
+
+describe("calculateExponentialBackoff", () => {
+  it("should return initial backoff on attempt 0", () => {
+    const result = calculateExponentialBackoff(0, 1000, 300000)
+    expect(result).toBeGreaterThanOrEqual(1000)
+    expect(result).toBeLessThanOrEqual(1100)
+  })
+
+  it("should double the backoff on each attempt", () => {
+    const attempt1 = calculateExponentialBackoff(1, 1000, 300000)
+    const attempt2 = calculateExponentialBackoff(2, 1000, 300000)
+    const attempt3 = calculateExponentialBackoff(3, 1000, 300000)
+
+    expect(attempt1).toBeGreaterThanOrEqual(2000)
+    expect(attempt1).toBeLessThanOrEqual(2200)
+    expect(attempt2).toBeGreaterThanOrEqual(4000)
+    expect(attempt2).toBeLessThanOrEqual(4400)
+    expect(attempt3).toBeGreaterThanOrEqual(8000)
+    expect(attempt3).toBeLessThanOrEqual(8800)
+  })
+
+  it("should cap at maximum backoff", () => {
+    const randomSpy = vi.spyOn(Math, "random").mockReturnValue(1)
+    const result = calculateExponentialBackoff(100, 1000, 5000)
+    expect(result).toBe(5000)
+    randomSpy.mockRestore()
+  })
+
+  it("should cap at 30 seconds by default", () => {
+    const randomSpy = vi.spyOn(Math, "random").mockReturnValue(1)
+    const thirtySeconds = 30 * 1000
+    const result = calculateExponentialBackoff(20, 1000)
+    expect(result).toBe(thirtySeconds)
+    randomSpy.mockRestore()
+  })
+
+  it("should still apply jitter when below maximum", () => {
+    const randomSpy = vi.spyOn(Math, "random").mockReturnValue(1)
+    const result = calculateExponentialBackoff(1, 1000, 300000)
+    expect(result).toBe(2200)
+    randomSpy.mockRestore()
+  })
+})
 
 describe("RetryingPromiseClient", () => {
   describe("type tests", () => {
@@ -76,7 +120,7 @@ describe("RetryingPromiseClient", () => {
       transport as KeepaliveTransport,
       {
         logIfRetrying: false,
-        backoffMs: 10,
+        initialBackoffMs: 10,
       },
     )
     expect(await client.getClientStats({})).toMatchObject(response)
@@ -104,7 +148,7 @@ describe("RetryingPromiseClient", () => {
       transport as KeepaliveTransport,
       {
         logIfRetrying: false,
-        backoffMs: 10,
+        initialBackoffMs: 10,
       },
     )
     expect(await client.getClientStats({})).toMatchObject(response)
@@ -132,7 +176,7 @@ describe("RetryingPromiseClient", () => {
       transport as KeepaliveTransport,
       {
         logIfRetrying: false,
-        backoffMs: 10,
+        initialBackoffMs: 10,
       },
     )
     expect(await client.getClientStats({})).toBeInstanceOf(Error)
@@ -160,7 +204,7 @@ describe("RetryingPromiseClient", () => {
       transport as KeepaliveTransport,
       {
         logIfRetrying: false,
-        backoffMs: 10,
+        initialBackoffMs: 10,
       },
     )
     expect(((await client.getClientStats({})) as Error).cause).toBeInstanceOf(

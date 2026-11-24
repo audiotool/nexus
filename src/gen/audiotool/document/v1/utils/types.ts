@@ -97,6 +97,11 @@ import {
 } from "@gen/document/v1/entity/exciter/v1/exciter_nexus"
 import { Exciter as Exciter_pb } from "@gen/document/v1/entity/exciter/v1/exciter_pb"
 import {
+  type FmxDevice,
+  type FmxDeviceConstructor,
+} from "@gen/document/v1/entity/fmx_device/v1/fmx_device_nexus"
+import { FmxDevice as FmxDevice_pb } from "@gen/document/v1/entity/fmx_device/v1/fmx_device_pb"
+import {
   type Gakki,
   type GakkiConstructor,
 } from "@gen/document/v1/entity/gakki/v1/gakki_nexus"
@@ -412,6 +417,19 @@ import {
 } from "@gen/document/v1/entity/tiny_gain/v1/tiny_gain_nexus"
 import { TinyGain as TinyGain_pb } from "@gen/document/v1/entity/tiny_gain/v1/tiny_gain_pb"
 import {
+  type TinySampler,
+  type TinySamplerConstructor,
+  type TinySamplerSample,
+  type TinySamplerSampleConstructor,
+  type TinySamplerSampleLayer,
+  type TinySamplerSampleLayerConstructor,
+} from "@gen/document/v1/entity/tiny_sampler/v1/tiny_sampler_nexus"
+import {
+  TinySampler as TinySampler_pb,
+  TinySamplerSample as TinySamplerSample_pb,
+  TinySamplerSampleLayer as TinySamplerSampleLayer_pb,
+} from "@gen/document/v1/entity/tiny_sampler/v1/tiny_sampler_pb"
+import {
   type Tonematrix,
   type TonematrixConstructor,
   type TonematrixPattern,
@@ -466,6 +484,7 @@ export type EntityTypes = {
   desktopAudioCable: DesktopAudioCable
   desktopNoteCable: DesktopNoteCable
   exciter: Exciter
+  fmxDevice: FmxDevice
   gakki: Gakki
   genericVst3PluginBeta: GenericVst3PluginBeta
   graphicalEQ: GraphicalEQ
@@ -529,6 +548,9 @@ export type EntityTypes = {
   patternRegion: PatternRegion
   patternTrack: PatternTrack
   tinyGain: TinyGain
+  tinySampler: TinySampler
+  tinySamplerSample: TinySamplerSample
+  tinySamplerSampleLayer: TinySamplerSampleLayer
   tonematrix: Tonematrix
   tonematrixPattern: TonematrixPattern
   waveshaper: Waveshaper
@@ -568,6 +590,7 @@ export type ConstructorTypes = {
   desktopAudioCable: DesktopAudioCableConstructor
   desktopNoteCable: DesktopNoteCableConstructor
   exciter: ExciterConstructor
+  fmxDevice: FmxDeviceConstructor
   gakki: GakkiConstructor
   genericVst3PluginBeta: GenericVst3PluginBetaConstructor
   graphicalEQ: GraphicalEQConstructor
@@ -631,6 +654,9 @@ export type ConstructorTypes = {
   patternRegion: PatternRegionConstructor
   patternTrack: PatternTrackConstructor
   tinyGain: TinyGainConstructor
+  tinySampler: TinySamplerConstructor
+  tinySamplerSample: TinySamplerSampleConstructor
+  tinySamplerSampleLayer: TinySamplerSampleLayerConstructor
   tonematrix: TonematrixConstructor
   tonematrixPattern: TonematrixPatternConstructor
   waveshaper: WaveshaperConstructor
@@ -668,6 +694,7 @@ export const entityUrlToTypeKey = {
   ["audiotool.document.v1.entity.desktop_note_cable.v1.DesktopNoteCable"]:
     "desktopNoteCable",
   ["audiotool.document.v1.entity.exciter.v1.Exciter"]: "exciter",
+  ["audiotool.document.v1.entity.fmx_device.v1.FmxDevice"]: "fmxDevice",
   ["audiotool.document.v1.entity.gakki.v1.Gakki"]: "gakki",
   ["audiotool.document.v1.entity.generic_vst3_plugin_beta.v1.GenericVst3PluginBeta"]:
     "genericVst3PluginBeta",
@@ -765,6 +792,11 @@ export const entityUrlToTypeKey = {
   ["audiotool.document.v1.entity.timeline.v1.pattern.PatternTrack"]:
     "patternTrack",
   ["audiotool.document.v1.entity.tiny_gain.v1.TinyGain"]: "tinyGain",
+  ["audiotool.document.v1.entity.tiny_sampler.v1.TinySampler"]: "tinySampler",
+  ["audiotool.document.v1.entity.tiny_sampler.v1.TinySamplerSample"]:
+    "tinySamplerSample",
+  ["audiotool.document.v1.entity.tiny_sampler.v1.TinySamplerSampleLayer"]:
+    "tinySamplerSampleLayer",
   ["audiotool.document.v1.entity.tonematrix.v1.Tonematrix"]: "tonematrix",
   ["audiotool.document.v1.entity.tonematrix.v1.TonematrixPattern"]:
     "tonematrixPattern",
@@ -794,6 +826,7 @@ export const entityMessageTypes = {
   desktopAudioCable: DesktopAudioCable_pb,
   desktopNoteCable: DesktopNoteCable_pb,
   exciter: Exciter_pb,
+  fmxDevice: FmxDevice_pb,
   gakki: Gakki_pb,
   genericVst3PluginBeta: GenericVst3PluginBeta_pb,
   graphicalEQ: GraphicalEQ_pb,
@@ -857,6 +890,9 @@ export const entityMessageTypes = {
   patternRegion: PatternRegion_pb,
   patternTrack: PatternTrack_pb,
   tinyGain: TinyGain_pb,
+  tinySampler: TinySampler_pb,
+  tinySamplerSample: TinySamplerSample_pb,
+  tinySamplerSampleLayer: TinySamplerSampleLayer_pb,
   tonematrix: Tonematrix_pb,
   tonematrixPattern: TonematrixPattern_pb,
   waveshaper: Waveshaper_pb,

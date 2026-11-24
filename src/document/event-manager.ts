@@ -67,7 +67,7 @@ export class NexusEventManager {
    * For debugging purposes, the first instance of the nexus event manager ever created. */
   static debugWindowInstance: NexusEventManager | undefined
 
-  #updateCallbacks: HashMap<NexusLocation, Set<UpdateCallback>> = new HashMap()
+  #updateCallbacks = new LocationCallbacks<UpdateCallback>()
   #createCallbacks: Map<keyof EntityTypes | "*", Set<CreateCallback>> =
     new Map()
 
@@ -75,10 +75,8 @@ export class NexusEventManager {
   #removeCallbacks: Map<string | "*" | keyof EntityTypes, Set<RemoveCallback>> =
     new Map()
 
-  #pointingToCallbacks: HashMap<NexusLocation, Set<PointerCallback>> =
-    new HashMap()
-  #stopPointingToCallbacks: HashMap<NexusLocation, Set<PointerCallback>> =
-    new HashMap()
+  #pointingToCallbacks = new LocationCallbacks<PointerCallback>()
+  #stopPointingToCallbacks = new LocationCallbacks<PointerCallback>()
 
   #state: NexusDocumentState
 
@@ -165,8 +163,7 @@ export class NexusEventManager {
     // This works because we know that the value is of the correct type with `field`.
     const castedCallback = callback as UpdateCallback
 
-    const callbacks = getOrDefault(this.#updateCallbacks, field.location)
-    callbacks.add(castedCallback)
+    this.#updateCallbacks.getOrCreate(field.location).add(castedCallback)
 
     if (initialTrigger) {
       callback(field.value)
@@ -233,20 +230,9 @@ export class NexusEventManager {
     // remove onRemove callbacks
     this.#removeCallbacks.delete(entity.id)
 
-    // remove pointingTo callbacks
-    ;[...this.#pointingToCallbacks.keys()]
-      .filter((to) => to.entityId === entity.id)
-      .forEach((to) => this.#pointingToCallbacks.delete(to))
-
-    // remove stopPointingTo callbacks
-    ;[...this.#stopPointingToCallbacks.keys()]
-      .filter((to) => to.entityId === entity.id)
-      .forEach((to) => this.#stopPointingToCallbacks.delete(to))
-
-    // remove update callbacks
-    ;[...this.#updateCallbacks.keys()]
-      .filter((of) => of.entityId === entity.id)
-      .forEach((of) => this.#updateCallbacks.delete(of))
+    this.#pointingToCallbacks.deleteEntity(entity.id)
+    this.#stopPointingToCallbacks.deleteEntity(entity.id)
+    this.#updateCallbacks.deleteEntity(entity.id)
   }
 
   /** Subscribe to the event that some pointer in the document starts pointing to a given location.
@@ -281,8 +267,7 @@ export class NexusEventManager {
     initialTrigger: boolean = true,
   ): Terminable {
     // same same as onUpdate
-    const callbacks = getOrDefault(this.#pointingToCallbacks, to)
-    callbacks.add(callback)
+    this.#pointingToCallbacks.getOrCreate(to).add(callback)
 
     if (initialTrigger) {
       this.#state.references.get(to)?.forEach((from) => callback(from))
@@ -321,8 +306,7 @@ export class NexusEventManager {
       from: NexusLocation,
     ) => void,
   ): Terminable {
-    const callbacks = getOrDefault(this.#stopPointingToCallbacks, to)
-    callbacks.add(callback)
+    this.#stopPointingToCallbacks.getOrCreate(to).add(callback)
 
     return TerminableBuilder.terminableFrom(() =>
       this.#stopPointingToCallbacks.get(to)?.delete(callback),
@@ -359,11 +343,45 @@ export class NexusEventManager {
   } {
     return {
       numCreateListeners: sizeOf(this.#createCallbacks),
-      numUpdateListeners: sizeOf(this.#updateCallbacks),
+      numUpdateListeners: this.#updateCallbacks.size(),
       numRemoveListeners: sizeOf(this.#removeCallbacks),
-      numPointingToListeners: sizeOf(this.#pointingToCallbacks),
-      numStopPointingToListeners: sizeOf(this.#stopPointingToCallbacks),
+      numPointingToListeners: this.#pointingToCallbacks.size(),
+      numStopPointingToListeners: this.#stopPointingToCallbacks.size(),
     }
+  }
+}
+
+/**
+ * Callbacks keyed by location, grouped by the entity the location belongs to, so that all
+ * callbacks of a removed entity can be dropped without scanning the callbacks of other entities.
+ */
+class LocationCallbacks<C> {
+  #byEntity: Map<string, HashMap<NexusLocation, Set<C>>> = new Map()
+
+  get(location: NexusLocation): Set<C> | undefined {
+    return this.#byEntity.get(location.entityId)?.get(location)
+  }
+
+  getOrCreate(location: NexusLocation): Set<C> {
+    const ofEntity =
+      this.#byEntity.get(location.entityId) ??
+      this.#byEntity
+        .set(location.entityId, new HashMap())
+        .get(location.entityId) ??
+      throw_()
+    return getOrDefault(ofEntity, location)
+  }
+
+  deleteEntity(entityId: string): void {
+    this.#byEntity.delete(entityId)
+  }
+
+  size(): number {
+    return this.#byEntity.values().reduce((acc, map) => acc + sizeOf(map), 0)
+  }
+
+  clear(): void {
+    this.#byEntity.clear()
   }
 }
 

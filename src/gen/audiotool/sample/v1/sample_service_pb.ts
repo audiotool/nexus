@@ -199,6 +199,7 @@ export class ListSamplesRequest extends Message<ListSamplesRequest> {
    * - sample.update_time
    * - sample.clearance
    * - sample.tags
+   * - sample.ai_generation
    *
    * @generated from field: string filter = 4;
    */
@@ -238,6 +239,21 @@ export class ListSamplesRequest extends Message<ListSamplesRequest> {
    */
   textSearch = "";
 
+  /**
+   * Optional. Restricts results to samples favorited by this user, in the form `users/{user}`.
+   *
+   * Combined with `filter` and `text_search` via AND. Samples that are not visible to the
+   * caller are omitted. Unset means no favorite restriction. An invalid name is rejected
+   * with `INVALID_ARGUMENT`.
+   *
+   * Must be the caller's own user name, so that UNLISTED samples cannot be discovered through
+   * another user's favorites. Anonymous callers get `UNAUTHENTICATED`, any other user name
+   * `PERMISSION_DENIED`.
+   *
+   * @generated from field: string favorited_by = 7;
+   */
+  favoritedBy = "";
+
   constructor(data?: PartialMessage<ListSamplesRequest>) {
     super();
     proto3.util.initPartial(data, this);
@@ -251,6 +267,7 @@ export class ListSamplesRequest extends Message<ListSamplesRequest> {
     { no: 4, name: "filter", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 5, name: "order_by", kind: "scalar", T: 9 /* ScalarType.STRING */ },
     { no: 6, name: "text_search", kind: "scalar", T: 9 /* ScalarType.STRING */ },
+    { no: 7, name: "favorited_by", kind: "scalar", T: 9 /* ScalarType.STRING */ },
   ]);
 
   static fromBinary(bytes: Uint8Array, options?: Partial<BinaryReadOptions>): ListSamplesRequest {

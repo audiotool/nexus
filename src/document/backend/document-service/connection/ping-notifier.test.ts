@@ -1,17 +1,18 @@
 import type { PartialMessage } from "@bufbuild/protobuf"
+import type { RehomableRetryingClient } from "@utils/grpc/rehomable-retrying-client"
+import type { RetryingClient } from "@utils/grpc/retrying-client"
 import type { DocumentService } from "@gen/document/v1/document_service_connect"
 import {
   PingResponse,
   type PingRequest,
 } from "@gen/document/v1/document_service_pb"
-import type { RetryingClient } from "@utils/grpc/retrying-client"
 import { beforeEach, describe, expect, it, vi } from "vitest"
-import { createPingNotifier } from "./ping-notifier"
+import { createPingNotifier, PING_TIMEOUT_MS } from "./ping-notifier"
 
 /** create a document service with a mock ping function */
 const createDocumentService = (
   pingFn: RetryingClient<typeof DocumentService>["ping"],
-): Pick<RetryingClient<typeof DocumentService>, "ping"> => ({
+): Pick<RehomableRetryingClient<typeof DocumentService>, "ping"> => ({
   ping: vi.fn(pingFn),
 })
 
@@ -19,20 +20,31 @@ describe("ping-notifier", () => {
   beforeEach(() => {
     vi.useFakeTimers()
   })
-  it("should ping the backend", async () => {
-    const documentService = createDocumentService(
-      async () => new PingResponse({}),
+  it("should ping the backend", () => {
+    const documentService = createDocumentService(() =>
+      Promise.resolve(new PingResponse({})),
     )
     createPingNotifier(documentService, "test")
     vi.advanceTimersByTime(1000)
     expect(documentService.ping).toHaveBeenCalled()
   })
 
+  it("should pass a timeout to the ping call", () => {
+    const documentService = createDocumentService(() =>
+      Promise.resolve(new PingResponse({})),
+    )
+    createPingNotifier(documentService, "test")
+    expect(documentService.ping).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({ timeoutMs: PING_TIMEOUT_MS }),
+    )
+  })
+
   it("should crash if the ping call returns an unrecoverable error", async () => {
     // create document service that returns an unrecoverable error.
     // document service is of type RetryingClient which never throws, but returns errors.
     const error = new Error("unrecoverable")
-    const documentService = createDocumentService(async () => error)
+    const documentService = createDocumentService(() => Promise.resolve(error))
 
     // we expect the ping notifier to throw an unhandled rejection, so we need to catch it.
     const rejectionPromise = new Promise<unknown>((resolve) => {
@@ -53,14 +65,34 @@ describe("ping-notifier", () => {
     expect(uncaughtRejection).toBe(error)
   })
 
+  it("should send a new ping without crashing when reconnect aborts the in-flight one", async () => {
+    const documentService = createDocumentService(
+      (_: PartialMessage<PingRequest>, opts) =>
+        new Promise((resolve) => {
+          // A ping retrying against a backend that is gone: only an abort settles it,
+          // and RetryingClient returns the abort as an error.
+          opts?.signal?.addEventListener("abort", () =>
+            resolve(new Error("aborted")),
+          )
+        }),
+    )
+    const pingNotifier = createPingNotifier(documentService, "test")
+
+    pingNotifier.reconnect()
+    await vi.advanceTimersByTimeAsync(1000)
+
+    expect(documentService.ping).toHaveBeenCalledTimes(2)
+    pingNotifier.terminate()
+  })
+
   describe("pingCallResults", () => {
     it("should emit true on a successful ping call", async () => {
       // create document service that returns a successful ping response.
       // resolve a promise we can await to know when the ping call is complete.
       const pingCompleted = Promise.withResolvers<void>()
-      const documentService = createDocumentService(async () => {
+      const documentService = createDocumentService(() => {
         pingCompleted.resolve()
-        return new PingResponse({})
+        return Promise.resolve(new PingResponse({}))
       })
 
       // create notifier

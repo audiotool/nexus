@@ -103,6 +103,36 @@ describe("EventManager", () => {
         context.manager._dispatchRemove(context.entity1)
         expect(context.manager.getStats().numRemoveListeners).toEqual(0)
       })
+
+      it<TestContext>("removing entity should keep callbacks of other entities", (context) => {
+        const updateSpy = vi.fn()
+        const pointingToSpy = vi.fn()
+        const stopPointingToSpy = vi.fn()
+        context.manager.onUpdate(primitiveField(context.location1, 0), () => {})
+        context.manager.onUpdate(
+          primitiveField(context.location2, 0),
+          updateSpy,
+          false,
+        )
+        context.manager.onPointingTo(context.location2, pointingToSpy, false)
+        context.manager.onStopPointingTo(context.location2, stopPointingToSpy)
+
+        context.manager._dispatchRemove(context.entity1)
+        context.manager._dispatchUpdate(context.location2, 0.5)
+        context.manager._dispatchPointingTo(
+          context.location2,
+          context.location1,
+        )
+        context.manager._dispatchStopPointingTo(
+          context.location2,
+          context.location1,
+        )
+
+        expect(context.manager.getStats().numUpdateListeners).toEqual(1)
+        expect(updateSpy).toHaveBeenCalledWith(0.5)
+        expect(pointingToSpy).toHaveBeenCalledWith(context.location1)
+        expect(stopPointingToSpy).toHaveBeenCalledWith(context.location1)
+      })
     })
   })
 

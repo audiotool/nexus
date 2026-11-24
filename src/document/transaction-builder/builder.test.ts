@@ -10,7 +10,10 @@ import { StompboxCrusher } from "@gen/document/v1/entity/stompbox_crusher/v1/sto
 import * as docpreset from "@gen/document/v1/preset/v1/preset_pb"
 import { Preset } from "@gen/preset/v1/preset_pb"
 
+import { FMX_PARAMETER_SLOT_COUNT } from "@api/plugins/fmx-parameters"
 import { NexusPreset } from "@api/preset-api"
+import { NexusDocument } from "../document"
+import { createWasmNexusValidator } from "../backend/document-service/wasm-nexus-validator"
 import { packedEntity } from "@document/entity-utils"
 import {
   nexusDocumentState,
@@ -37,7 +40,7 @@ describe("transaction builder", () => {
     beforeEach<TestContext>((ctx) => {
       ctx.builder = transactionBuilder({
         finish: () => {},
-        applyModification: () => {},
+        applyModifications: () => {},
         query: new EntityQuery(),
       })
       ctx.builder.send()
@@ -94,6 +97,16 @@ describe("transaction builder", () => {
       ).toThrowError(CallAfterSendError)
     })
 
+    it<TestContext>("should throw for createDeviceFromPlugin", (ctx) => {
+      expect(() =>
+        ctx.builder.createDeviceFromPlugin({
+          displayName: "Vocoder",
+          assetName: "pluginAssets/vocoder",
+          defaultParameters: () => [],
+        } as never),
+      ).toThrowError(CallAfterSendError)
+    })
+
     it<TestContext>("should throw for createPresetFor", (ctx) => {
       expect(() =>
         ctx.builder.createPresetFor(
@@ -113,12 +126,14 @@ describe("transaction builder", () => {
       ctx.entities = nexusDocumentState()
       ctx.builder = transactionBuilder({
         finish: () => {},
-        applyModification: (mod) => {
+        applyModifications: (mods) => {
           // the transaction builder expects the updates to immediately be applied
           // to the passed entity query. We just create a mocked entity when the applied
           // modification is a create modification.
-          ctx.appliedModifications.push(mod)
-          ctx.entities.applyModification(mod)
+          for (const mod of mods) {
+            ctx.appliedModifications.push(mod)
+            ctx.entities.applyModification(mod)
+          }
         },
         query: new EntityQuery({
           documentState: ctx.entities,
@@ -221,6 +236,63 @@ describe("transaction builder", () => {
         const [firstMod, ...rest] = ctx.appliedModifications
         expect(firstMod?.modification.case).toBe("create")
         expect(rest.length).toBeGreaterThan(0)
+      })
+    })
+
+    describe("createDeviceFromPlugin", () => {
+      const vocoder = {
+        displayName: "Vocoder",
+        assetName: "pluginAssets/vocoder",
+        defaultParameters: () => {
+          const values = Array.from(
+            { length: FMX_PARAMETER_SLOT_COUNT },
+            () => 0,
+          ) as number[] & { length: typeof FMX_PARAMETER_SLOT_COUNT }
+          values[0] = 0.25
+          values[7] = 0.5
+          return values
+        },
+      }
+
+      it<TestContext>("should create an fmx device with the plugin's asset, name, and defaults", (ctx) => {
+        const device = ctx.builder.createDeviceFromPlugin(vocoder)
+        expect(device.entityType).toBe("fmxDevice")
+        expect(device.fields.pluginAssetName.value).toBe("pluginAssets/vocoder")
+        expect(device.fields.displayName.value).toBe("Vocoder")
+        expect(device.fields.parameters.array[0].value).toBe(0.25)
+        expect(device.fields.parameters.array[7].value).toBe(0.5)
+        expect(device.fields.parameters.array[1].value).toBe(0)
+      })
+
+      it<TestContext>("should apply overrides", (ctx) => {
+        const device = ctx.builder.createDeviceFromPlugin(vocoder, {
+          displayName: "Robot voice",
+          positionX: 100,
+        })
+        expect(device.fields.displayName.value).toBe("Robot voice")
+        expect(device.fields.positionX.value).toBe(100)
+        expect(device.fields.pluginAssetName.value).toBe("pluginAssets/vocoder")
+      })
+
+      it<TestContext>("should shorten long plugin names", (ctx) => {
+        const device = ctx.builder.createDeviceFromPlugin({
+          ...vocoder,
+          displayName: "x".repeat(300),
+        })
+        expect(device.fields.displayName.value).toHaveLength(100)
+      })
+
+      it("should create a device the validator accepts", async () => {
+        const nexus = new NexusDocument()
+        await nexus.takeTransactions({
+          validator: await createWasmNexusValidator(),
+        })
+        const device = await nexus.modify((t) =>
+          t.createDeviceFromPlugin(vocoder),
+        )
+        expect(
+          nexus.queryEntitiesWithoutLock.ofTypes("fmxDevice").getOne()?.id,
+        ).toBe(device.id)
       })
     })
 

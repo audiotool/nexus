@@ -128,6 +128,12 @@ export const ENTITY_GROUPS: Record<string, EntityGroupConfig> = {
   gakki: { category: "Device Entities" },
   pulsar: { category: "Device Entities" },
   quasar: { category: "Device Entities" },
+  fmxDevice: { category: "Device Entities" },
+
+  // Tiny Sampler
+  tinySampler: { category: "Device Entities" },
+  tinySamplerSample: { category: "Device Entities" },
+  tinySamplerSampleLayer: { category: "Device Entities" },
 
   // Centroid
   centroid: { category: "Device Entities" },

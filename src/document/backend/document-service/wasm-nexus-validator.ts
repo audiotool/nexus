@@ -11,9 +11,9 @@ import type { NexusValidator } from "../validator"
 export const createWasmNexusValidator = async (): Promise<NexusValidator> => {
   const state = await getWasmDocumentState()
   return {
-    validate: (mod: Modification): string | undefined => {
+    validate: (modifications: readonly Modification[]): string | undefined => {
       const ret = state.applyTransaction(
-        new Transaction({ modifications: [mod] }),
+        new Transaction({ modifications: [...modifications] }),
       )
       if (ret instanceof Transaction) {
         return undefined

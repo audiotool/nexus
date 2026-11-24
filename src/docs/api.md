@@ -34,6 +34,9 @@ denotes a method taking {@link api.CreateProjectRequest} and returning {@link ap
 | `client.users` | {@link api.UserService} | List, delete, update users |
 | `client.samples` | {@link api.SamplesAPI} | Upload, download, manage samples |
 | `client.presets` | {@link api.PresetsAPI} | Get and apply device presets |
+| `client.plugins` | {@link api.PluginsAPI} | Find, load, and upload NXS plugins |
+| `client.pluginServices` | {@link api.PluginService} | Raw plugin service, for example to upload icons |
+| `client.pluginAssets` | {@link api.PluginAssetService} | Upload and manage plugin files |
 | `client.audioGraph` | {@link api.AudiographService} | Get audio graphs (waveforms) |
 
 ## Cheat sheet
@@ -84,3 +87,29 @@ Pass an {@link api.SampleMeta} (or a plain `{ name, durationSeconds, bpm? }`) to
 A wrapper around the preset's API. Presets are device configurations that can be applied to existing devices to create a specific sound/effect. You can copy preset ids in the preset browser in the DAW:
 
 ![Right Click To Get Preset Id](./images/copy-preset-id.png)
+
+**`client.plugins`** ({@link api.PluginsAPI}):
+
+A wrapper around the plugin services. It finds and uploads NXS plugins, and loads the names, ranges and choices of their parameters from the plugin file:
+
+- `search({ query, type, owner, limit })`: find plugins, most favorited first. Use `owner: "me"` for your own plugins.
+- `get(plugin)`: load a plugin with its parameters, by `plugins/{uuid}`, `pluginAssets/{uuid}`, or an `fmxDevice` from a project.
+- `upload({ file, plugin, displayName, description, tags, visibility }, signal)`: upload an `.fmx` file as a new plugin, or as a new version of one of your plugins.
+- `validate(file, signal)`: check an `.fmx` file against the plugin rules, without uploading it as a plugin.
+
+```ts
+const vocoder = await client.plugins.get("plugins/01f345db-d130-46c9-b728-aa5dc4ce2915")
+if (vocoder instanceof Error) {
+  throw vocoder
+}
+const carrier = vocoder.parameter("Carrier")
+const chord = carrier?.normalize("Chord")
+await nexus.modify((t) => {
+  const device = t.createDeviceFromPlugin(vocoder)
+  if (carrier !== undefined && chord !== undefined) {
+    t.update(device.fields.parameters.array[carrier.id], chord)
+  }
+})
+```
+
+See [NXS Plugins](./nxs-plugins.md) for more.

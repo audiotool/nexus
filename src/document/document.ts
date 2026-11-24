@@ -256,11 +256,11 @@ export class NexusDocument {
     const actionId = opts?.actionId ?? Symbol()
 
     return transactionBuilder({
-      applyModification: (mod, throwIfInvalid) => {
-        // when a modification is applied through the transaction builder, we immediately
-        // apply the modification to the document, and store if to send as a transaction later.
-        // Calling `applyModification` will update the `query` object.
-        const error = this.#applyModification(mod, {
+      applyModifications: (mods, throwIfInvalid) => {
+        // when modifications are applied through the transaction builder, we immediately
+        // apply them to the document, and store them to send as a transaction later.
+        // Calling `applyModifications` will update the `query` object.
+        const error = this.#applyModifications(mods, {
           local: true,
           throwIfInvalid,
           actionId,
@@ -268,7 +268,7 @@ export class NexusDocument {
         if (error !== undefined) {
           return error
         }
-        modifications.push(mod)
+        modifications.push(...mods)
       },
       finish: () => {
         // when the transaction is finished, we send the modifications to the backend
@@ -336,16 +336,17 @@ export class NexusDocument {
     this.#gateway = props?.gateway ?? mockNexusGateway()
 
     // lock document if gateway is blocked
-    let lock: Lock | undefined = undefined
-    this.#gateway.blocked.subscribe(async (blocked) => {
+    // The lock is stored as a promise because acquiring it can take a while, for example while the
+    // initial lock below is held. If the gateway unblocks before then, the lock must still be
+    // released once it's acquired.
+    let lock: Promise<Lock> | undefined = undefined
+    this.#gateway.blocked.subscribe((blocked) => {
       if (blocked) {
-        // only get lock if not already gotten, in case this ever triggers with `false`
+        // only get lock if not already gotten, in case this ever triggers with `true`
         // multiple times.
-        if (lock === undefined) {
-          lock = await this.#transactionLock.acquire()
-        }
+        lock ??= this.#transactionLock.acquire()
       } else {
-        lock?.release()
+        lock?.then((l) => l.release())
         lock = undefined
       }
     })
@@ -463,16 +464,22 @@ export class NexusDocument {
           )
 
     for (const t of ts) {
-      for (const [modIndex, mod] of t.modifications.entries()) {
-        this.#applyModification(mod, {
-          local: false,
-          throwIfInvalid: true,
-        })
-
-        if (modIndex % this.#incomingModificationsBatchSize === 0) {
-          // yield to scheduler to do something else if he feels like it
-          await sleep(0)
-        }
+      const { modifications } = t
+      const batchSize = this.#incomingModificationsBatchSize
+      for (
+        let startIndex = 0;
+        startIndex < modifications.length;
+        startIndex += batchSize
+      ) {
+        this.#applyModifications(
+          modifications.slice(startIndex, startIndex + batchSize),
+          {
+            local: false,
+            throwIfInvalid: true,
+          },
+        )
+        // yield to scheduler to do something else if he feels like it
+        await sleep(0)
       }
     }
 
@@ -481,13 +488,13 @@ export class NexusDocument {
   }
 
   /**
-   * Apply a modification to the document after validating it, and dispatch events to
-   * {@link onModification} listeners. Throws if the modification is invalid, unless `throwIfInvalid` is false;
+   * Apply modifications to the document after validating them all at once, and dispatch events to
+   * {@link onModification} listeners. Throws if any modification is invalid, unless `throwIfInvalid` is false;
    * in that case, the function returns `string` on error and doesn't change the document state. If application
    * succeeds, always returns undefined.
    */
-  #applyModification(
-    modification: Modification,
+  #applyModifications(
+    modifications: readonly Modification[],
     {
       local = true,
       throwIfInvalid = true,
@@ -509,7 +516,7 @@ export class NexusDocument {
       "tried applying modification without lock",
     )
 
-    const validation = this.#validator.validate(modification)
+    const validation = this.#validator.validate(modifications)
     if (validation !== undefined) {
       if (throwIfInvalid) {
         throw new Error(`modification failed validation: ${validation}`)
@@ -517,10 +524,12 @@ export class NexusDocument {
       return validation
     }
 
-    this.#state.applyModification(modification)
+    for (const modification of modifications) {
+      this.#state.applyModification(modification)
 
-    // notify listeners on modification
-    this.onModification.notify({ modification, local, actionId })
+      // notify listeners on modification
+      this.onModification.notify({ modification, local, actionId })
+    }
   }
 
   /** For debugging purposes */
