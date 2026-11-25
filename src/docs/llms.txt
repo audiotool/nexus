@@ -20,10 +20,10 @@ For example: `https://developer.audiotool.com/js-package-documentation/index.htm
 ## Guides
 
 - [Getting Started](https://developer.audiotool.com/js-package-documentation/documents/Getting_Started.html.md): Install, authenticate, and open your first project
-- [Overview](https://developer.audiotool.com/js-package-documentation/documents/Overview.html.md): Architecture and concepts — how the multiplayer document model works
-- [Authentication](https://developer.audiotool.com/js-package-documentation/documents/Login.html.md): OAuth2 authentication flow for browser and server-side apps
-- [API](https://developer.audiotool.com/js-package-documentation/documents/API.html.md): REST API reference for server-side operations (projects, presets, samples, users)
-- [NXS Plugins](https://developer.audiotool.com/js-package-documentation/documents/NXS_Plugins.html.md): Find and upload NXS plugins, create plugin devices, and set their parameters by name
+- [Concepts](https://developer.audiotool.com/js-package-documentation/documents/Concepts.html.md): Architecture and concepts — how the multiplayer document model works
+- [Authentication](https://developer.audiotool.com/js-package-documentation/documents/Authentication.html.md): OAuth2 authentication flow for browser and server-side apps
+- [Calling the API](https://developer.audiotool.com/js-package-documentation/documents/Calling_the_API.html.md): REST API reference for server-side operations (projects, presets, samples, users)
+- [Controlling plugins](https://developer.audiotool.com/js-package-documentation/documents/Controlling_plugins.html.md): Find and upload NXS plugins, create plugin devices, and set their parameters by name
 - [All Entities](https://developer.audiotool.com/js-package-documentation/documents/All_Entities.html.md): Complete list of audio devices, effects, and instruments
 - [Transaction Errors](https://developer.audiotool.com/js-package-documentation/documents/Transaction_Errors.html.md): Error handling for document mutations
 

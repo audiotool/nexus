@@ -16,13 +16,16 @@ For apps running in the browser, app authorization typically looks like this:
 > [!NOTE]
 > The login flow described here is intended for browser-based apps. For server-side apps, see [Node.js Usage](#nodejs-usage) or [PAT-based authentication](#pat-based-authentication).
 
-## Registering your application
+## Creating your app
 
-Register your application on developer.audiotool.com/applications. Press "Create Application" and fill in the following details:
+Go to [audiotool.com/apps](https://www.audiotool.com/apps), open the **Yours** tab and press **Create app**. Fill in the form:
 
-- Name/Description/Project URL - as you want
-- Redirect URI: enter `https://127.0.0.1:5173/` for now, later your project's deployed URL
-- scopes: `project:write` for creating a synced document
+- Display Name, Description and Website URL: as you please
+- Mode: Development. Development apps are private to you. Published apps appear in the public app list.
+- Redirect URIs: `http://127.0.0.1:5173/` for now, later your app's deployed URL
+- Scopes: **Write** next to Projects (`project:write`), for creating a synced document
+
+After you create it, the app's card under **Yours** shows its client ID.
 
 ## Running your server on `127.0.0.1:5173`
 
@@ -131,17 +134,17 @@ if (at.status === "authenticated") {
 
 To deploy your app, you need to update the `redirectUrl` so that the user is redirected to your page's URL rather than `http://127.0.0.1:5173/`. To do this:
 
-- add that (entire) URL as "redirectURI" on your app at developer.audiotool.com/applications
+- add that (entire) URL to "Redirect URIs" on your app: on [audiotool.com/apps](https://www.audiotool.com/apps), open **Yours** and press **Edit** on your app
 - when calling `audiotool`, pass that URL as `redirectUrl`
 
 ## Troubleshooting
 
-- make sure the `redirectURL` matches the `redirectURI` you specified on developer.audiotool.com/applications _exactly_ - pay attention in particular to the `/` character in the end.
+- make sure the `redirectURL` matches one of the "Redirect URIs" of your app on audiotool.com/apps _exactly_ - pay attention in particular to the `/` character in the end.
 - if you get `insufficient_permissions` error even if logged in, the "Scopes" you set in your app & pass to `audiotool` are likely insufficient for the API calls you're trying to make.
   The `projects:write` scope we use in the example above grants access to create and modify projects, but for other API calls, other scopes are needed. We're working on documentation in that regard.
 
-  If you need more scopes, update your app on developer.audiotool.com/applications, and then pass the scopes to `audiotool`, separated by spaces. Already logged in users
-  have to be logged out & in again for the new scopes to take effect. If your app is already deployed and users are already logged in, consider creating a new application on developer.audiotool.com/applications
+  If you need more scopes, edit your app on audiotool.com/apps, and then pass the scopes to `audiotool`, separated by spaces. Already logged in users
+  have to be logged out & in again for the new scopes to take effect. If your app is already deployed and users are already logged in, consider creating a new app on audiotool.com/apps
   so all users are automatically logged out again. We'll make this process smoother at some point.
 
 - for more issues and questions, join our discord: https://developer.audiotool.com/discord
@@ -154,7 +157,7 @@ To deploy your app, you need to update the `redirectUrl` so that the user is red
 > - sent to your users' browsers
 > - shared with friends and foes
 >
-> Only websites at the redirect URIs you specify for your app on developer.audiotool.com can use it to authorize their apps.
+> Only websites at the redirect URIs you specify for your app on audiotool.com/apps can use it to authorize their apps.
 
 ## Node.js Usage
 

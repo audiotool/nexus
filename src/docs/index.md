@@ -2,7 +2,7 @@
 title: Audiotool Nexus SDK
 ---
 
-A JS/TS package to interact with multiplayer projects of the [Audiotool DAW](https://new.audiotool.com) in real time. Read more at [Overview](./overview.md).
+A JS/TS package to interact with multiplayer projects of the [Audiotool DAW](https://new.audiotool.com) in real time. Read more at [Nexus apps](https://developer.audiotool.com/sdk).
 
 ---
 
@@ -45,7 +45,7 @@ export default defineConfig({
 
 ### Setup & Usage
 
-Register your app on [developer.audiotool.com/applications](https://developer.audiotool.com/applications) with redirect URI `http://127.0.0.1:5173/` and scope `project:write`.
+Create an app on [audiotool.com/apps](https://www.audiotool.com/apps) (open **Yours**, then press **Create app**) with redirect URI `http://127.0.0.1:5173/` and the Projects scope set to **Write**. Its card then shows the client ID.
 
 Then in your `main.ts`:
 
@@ -131,10 +131,10 @@ For personal scripts, see [PAT-based authentication](./login.md#pat-based-authen
 
 ## Documentation
 
-- [Overview](./overview.md) - to see what this is all about
-- [Getting Started](./getting-started.md) - an in-depth getting started for beginners
-- [API](./api.md) - other audiotool APis
-- [Authentication](./login.md) - setup your app for others to use
+- [Concepts](./overview.md): entities, transactions, events and queries
+- [Getting Started](./getting-started.md): an in-depth tutorial for beginners
+- [Calling the API](./api.md): other Audiotool APIs
+- [Authentication](./login.md): set up your app for others to use
 
 ### API Reference
 
@@ -144,86 +144,7 @@ For personal scripts, see [PAT-based authentication](./login.md#pat-based-authen
 - **{@link utils}** - Helper functions and classes
 - **{@link api}** - Types from the API
 
-## Common Use Cases
-
-### Creating Audio Devices
-
-```typescript
-// Create a delay effect
-const delay = t.create("stompboxDelay", {
-  feedbackFactor: 0.3,
-  mix: 0.3,
-  stepLengthIndex: 2,
-})
-
-// Create audio connection
-t.create("desktopAudioCable", {
-  fromSocket: sourceDevice.fields.audioOutput.location,
-  toSocket: delay.fields.audioInput.location,
-})
-```
-
-### Working with Timeline
-
-```typescript
-// Create a note track
-const noteTrack = t.create("noteTrack", {
-  orderAmongTracks: 0,
-  player: heisenberg.location,
-})
-
-// Add a note region
-const noteRegion = t.create("noteRegion", {
-  track: noteTrack.location,
-  region: {
-    positionTicks: Ticks.SemiBreve, // one whole note in a bar (4/4 time signature)
-    durationTicks: Ticks.SemiBreve * 4,
-  },
-})
-```
-
-See {@link utils.Ticks} for constants representing musical time divisions.
-
-### Querying Documents
-
-```typescript
-// Find all delay effects
-const delays = nexus.queryEntities.ofTypes("stompboxDelay").get()
-
-// Find connected devices
-const connected = nexus.queryEntities.pointedToBy
-  .types("desktopAudioCable")
-  .get()
-```
-
-### Offline Mode
-
-You can create an offline version of the document by calling {@link index.createOfflineDocument}. This will create a document instance
-that isn't synced to the backend and can immediately be modified.
-
-This is useful for writing integration tests for your app. Example:
-
-```ts
-import { createOfflineDocument } from "@audiotool/nexus"
-
-const nexus = await createOfflineDocument()
-
-nexus.events.onCreate("tonematrix", () => {
-  console.debug("tonematrix created")
-})
-
-await nexus.modify((t) => {
-  t.create("tonematrix", {})
-})
-```
-
-In offline mode, you can turn off validation of the document by passing in a flag:
-
-```ts
-const nexus = await createOfflineDocument({ validated: false })
-```
-
-This will result in fewer transaction errors being created, which can help during integration tests.
+Common use cases are in [Concepts](./overview.md#common-use-cases).
 
 ---
 

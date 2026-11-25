@@ -49,11 +49,14 @@ Open the link and you should see your app!
 
 The app will modify a project on some user's behalf. To do that, we first have to let a user grant us access to their account.
 
-To do this, first register your app on [https://developer.audiotool.com/applications](https://developer.audiotool.com/applications). Create an app there, and enter the following details:
+To do this, first create an app on [audiotool.com/apps](https://www.audiotool.com/apps): open the **Yours** tab and press **Create app**. Fill in the form:
 
-- Name/Description/Website: as you please
+- Display Name, Description and Website URL: as you please
+- Mode: Development. Development apps are private to you.
 - Redirect URIs: `http://127.0.0.1:5173/`
-- Scopes: `project:write`
+- Scopes: **Write** next to Projects (`project:write`)
+
+After you create it, the app's card under **Yours** shows its client ID.
 
 Then initialize Audiotool with your app credentials using {@link index.audiotool | audiotool}:
 
@@ -177,7 +180,7 @@ After this is done, if you go back to your project with the tab open, you can cr
 ## Modifying the document
 
 To modify the document, you can call `nexus.modify(t => {})`. The object `t` is of type {@link document.TransactionBuilder | TransactionBuilder}
-which has various utility functions to modify the document. You can read more on the structure of a document and how to modify it in [Overview](./overview.md).
+which has various utility functions to modify the document. You can read more on the structure of a document and how to modify it in [Concepts](./overview.md).
 
 In the example below, we create a tonematrix and place it on the desktop:
 
@@ -300,4 +303,4 @@ syncing stopped!
 
 ## Next Steps
 
-Now that you've built an app, dive in at [Overview](./overview.md).
+Now that you've built an app, dive in at [Concepts](./overview.md).

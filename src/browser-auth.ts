@@ -128,12 +128,12 @@ export const audiotool = async ({
   scope,
 }: {
   /**
-   * Client ID assigned to your application on https://developer.audiotool.com/applications
+   * Client ID of your app. It's shown on the app's card under "Yours" on https://www.audiotool.com/apps
    */
   clientId: string
   /**
    * Redirect URL after the user presses "Allow" on the consent screen.
-   * Must be registered for your application on https://developer.audiotool.com/applications
+   * Must be one of the redirect URIs of your app on https://www.audiotool.com/apps
    */
   redirectUrl: string
   /**
@@ -546,9 +546,8 @@ export const audiotoolPopup = async ({
   windowFeatures = DEFAULT_POPUP_FEATURES,
 }: {
   /**
-   * Client ID assigned to your application on
-   * https://developer.audiotool.com/applications. Must have an origin
-   * matching `targetOrigin` registered in its redirect URIs.
+   * Client ID of your app on https://www.audiotool.com/apps. One of the
+   * app's redirect URIs must have an origin matching `targetOrigin`.
    */
   clientId: string
   /** OAuth scopes (e.g. "project:write"). */

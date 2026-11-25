@@ -1,5 +1,5 @@
 ---
-title: NXS Plugins
+title: Controlling plugins
 ---
 
 NXS plugins are instruments and effects that users upload to Audiotool. A plugin is a `.fmx` file. It contains a WebAssembly DSP module that the audio engine runs, and an HTML interface that the DAW shows on the device. The DAW shows these devices as "NXS Plugin".

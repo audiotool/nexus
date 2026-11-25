@@ -1,39 +1,10 @@
 ---
-title: Overview
+title: Concepts
 ---
 
-# What is this?
+This guide explains the ideas behind the package: entities, pointers, transactions, events and queries. Read it after [Getting Started](./getting-started.md), once you have a running app.
 
-This package gives you the ability to **write audiotool projects
-programmatically**, in their entirety: Every audiotool project ever created on audiotool.com
-could be generated using this package. But this description alone doesn't quite give it justice.
-
-**Audiotool is a _multiplayer_ DAW**. This means that multiple people can open the same project at the same time, and
-see each others changes in real time as they happen. If person 1 turns a knob, person 2 that has the same
-project open must immediately see that knob turn as well.
-
-This involves that the DAW communicates with the server after every tiniest change to the project.
-Every single update the project, no matter how small, must be sent to the backend server, which
-then forwards that update to all other DAWs:
-
-![img-half](./images/multiplayer-no-app.png)
-
-And in turn, if person 2 changes something else, that change must be propagated back to person 1, and so on.
-
-To accomplish this, we wrote a typescript framework that allows us to listen to and create these changes
-in one go, "binding our code" to the underlying datastructure that is an audiotool project,
-so that it can react to updates, and create new updates.
-
-This package is this framework. **It allows you to create a bot that participates in an audiotool
-collaborative session in just the same way as our DAW does.**
-
-![img-half](./images/multiplayer-with-app.png)
-
-You can write entire audiotool projects from scratch if you like, but you can also write apps
-that modify projects _continuously_ or react to changes users that are working in the DAW make,
-and all users will see the changes you make in real time, as they happen.
-
-Note that real time here means mostly _fast_, but not (yet) in sync with the playhead in the studio. For example, in central Europe you can expect a latency between 150-300ms to our API-Servers in US-Central. However we will provide servers on other continents in the future to achieve lower latencies.
+To learn what Nexus apps are and how they join a project, see [Nexus apps](https://developer.audiotool.com/sdk).
 
 ## Entities
 
@@ -465,3 +436,84 @@ const connectedDelays = nexus.queryEntities
 ```
 
 See more at {@link document.EntityQuery}.
+
+## Common use cases
+
+### Creating Audio Devices
+
+```typescript
+// Create a delay effect
+const delay = t.create("stompboxDelay", {
+  feedbackFactor: 0.3,
+  mix: 0.3,
+  stepLengthIndex: 2,
+})
+
+// Create audio connection
+t.create("desktopAudioCable", {
+  fromSocket: sourceDevice.fields.audioOutput.location,
+  toSocket: delay.fields.audioInput.location,
+})
+```
+
+### Working with Timeline
+
+```typescript
+// Create a note track
+const noteTrack = t.create("noteTrack", {
+  orderAmongTracks: 0,
+  player: heisenberg.location,
+})
+
+// Add a note region
+const noteRegion = t.create("noteRegion", {
+  track: noteTrack.location,
+  region: {
+    positionTicks: Ticks.SemiBreve, // one whole note in a bar (4/4 time signature)
+    durationTicks: Ticks.SemiBreve * 4,
+  },
+})
+```
+
+See {@link utils.Ticks} for constants representing musical time divisions.
+
+### Querying Documents
+
+```typescript
+// Find all delay effects
+const delays = nexus.queryEntities.ofTypes("stompboxDelay").get()
+
+// Find connected devices
+const connected = nexus.queryEntities.pointedToBy
+  .types("desktopAudioCable")
+  .get()
+```
+
+### Offline Mode
+
+You can create an offline version of the document by calling {@link index.createOfflineDocument}. This will create a document instance
+that isn't synced to the backend and can immediately be modified.
+
+This is useful for writing integration tests for your app. Example:
+
+```ts
+import { createOfflineDocument } from "@audiotool/nexus"
+
+const nexus = await createOfflineDocument()
+
+nexus.events.onCreate("tonematrix", () => {
+  console.debug("tonematrix created")
+})
+
+await nexus.modify((t) => {
+  t.create("tonematrix", {})
+})
+```
+
+In offline mode, you can turn off validation of the document by passing in a flag:
+
+```ts
+const nexus = await createOfflineDocument({ validated: false })
+```
+
+This will result in fewer transaction errors being created, which can help during integration tests.

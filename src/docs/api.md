@@ -1,5 +1,5 @@
 ---
-title: API
+title: Calling the API
 ---
 
 Next to syncing audiotool documents, the package provides bindings to a subset of APIs from the audiotool platform. The APIs are auto generated from [our proto files](https://developer.audiotool.com/explore-protobufs), wrapped in our own client called {@link api.RetryingClient}.
@@ -112,4 +112,4 @@ await nexus.modify((t) => {
 })
 ```
 
-See [NXS Plugins](./nxs-plugins.md) for more.
+See [Controlling plugins](./nxs-plugins.md) for more.
